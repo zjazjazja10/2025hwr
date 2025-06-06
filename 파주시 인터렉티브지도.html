@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파주 인터랙티브 지도</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+        .popup-img { width: 100px; height: auto; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 파주시청 기준 중심 좌표
+        const map = L.map('map').setView([37.7599, 126.7798], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 파주시 장소 데이터 입력
+        const places = [
+{
+name: "호수-운정호수공원",
+lat: 37.718959,
+lon: 126.757258,
+desc: "파주 운정호수공원 안에 있는 유비파크는 신기한 모양의 건물과 함께 여러 가지 재미있는 볼거리가 가득한 특별한 공원이다. 이곳에는 높이 솟는 하늘 분수, 예쁜 꽃과 바람개비 언덕, 어린이 놀이터처럼 다양한 시설이 있어서 가족들이 함께 와서 즐겁게 쉬고 구경하기 좋은 곳이다.",
+youtube: "https://www.youtube.com/watch?v=td_Jwj7hsGI",
+img: "https://tour.paju.go.kr/upload/tour/open/culture/gallery/576/1958.gif"
+},
+{
+name: "오두산 통일전망대",
+lat: 37.773378,
+lon: 126.677559,
+desc: "오두산통일전망대는 한강과 임진강이 만나는 지점의 해발 118m 오두산 정상에 위치해 있다. 삼국사기와 고려사에 기록된 오두산성터(사적 제351호)가 남아 있는 군사적 요충지로, 현재는 서부전선 최북단의 분단 현장이기도 하다. 남과 북이 2km를 사이에 두고 반세기 넘게 왕래하지 못한 현실을 보여주는 상징적 장소로, 국민의 통일 염원을 담아 조성되었다. 1992년 개관 이후 1,900만 명이 넘는 내외국인이 방문한 통일교육의 중심지이다.",
+youtube: "https://www.youtube.com/watch?v=-7piN6GatC4",
+img: "https://tour.paju.go.kr/upload/tour/2016/3/23/723c7456-3781-4e8f-b321-daa239506df6.jpg"
+},
+{
+name: "강 - 임진강",
+lat: 37.787339,
+lon: 126.667108,
+desc: "임진강은 우리나라 남쪽과 북쪽 사이를 흐르는 아름다운 강이다. 지형적 위치와 특성 때문에 항상 각국의 세력다툼이 일어나는 공간이었으며 오늘날에도 6.25전쟁으로 인해 남과 북의 경계선 역할을 하는 강이 되었다. 역사도 있지만, 아름다운 경치와 함께 평화로운 느낌을 주는 곳이다.",
+youtube: "https://www.youtube.com/watch?v=9_vQTuawfZg",
+img: "https://tour.paju.go.kr/upload/tour/open/culture/gallery/281/290.jpg"
+},
+{
+name: "산 - 감악산",
+lat: 37.942212,
+lon: 126.968831,
+desc: "감악산은 경기도에 있는 유명한 산으로, 옛날부터 경기도에서 손꼽히는 다섯 개의 큰 산(경기 5악) 중 하나이다. 이 산은 폭포, 계곡, 바위 같은 여러 멋진 자연 모습을 가지고 있고, 정상에 올라가면 임진강처럼 아름다운 풍경을 볼 수 있는 곳이다.",
+youtube: "https://www.youtube.com/watch?v=6SGQAONKhyQ",
+img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR92B4oVfg2GuKGLqv4Ak_WoUOdzPl2xceVAQ&s"
+},
+{
+name: "호수 - 마장호수",
+lat: 37.775389,
+lon: 126.925334,
+desc: "깔끔하게 조성된 공원과 분수대, 곳곳에 마련된 벤치, 야생화가 가득한 하늘계단과 낭만적인 호수 둘레길이 어우러진 이곳은 주말 가족 나들이나 연인들의 데이트 장소로 제격이다. 산과 호수를 끼고 있어 물빛과 낙조가 군락목과 푸른 산과 조화를 이루며 아름다운 풍경을 자아낸다. 일상에서 벗어나 자연 속에서 편안한 휴식을 즐길 수 있는 파주의 대표적인 자연 관광지이다.",
+youtube: "https://www.youtube.com/watch?v=TJ9YQuQM3LA",
+img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftour.paju.go.kr%2Fuser%2Ftour%2Fplace%2FBD_tourPlaceInfoView.do%3FmenuCode%3D4%26cntntsSn%3D69&psig=AOvVaw0j8xnI8Eor1WXVf0QefOb7&ust=1749134124339000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJCwqcT-140DFQAAAAAdAAAAABAE"
+},
+{
+name: "산 - 월룡산",
+lat: 37.799111,
+lon: 126.765541,
+desc: "파주 월롱산은 산꼭대기 모습이 배가 떠나가거나 반달을 닮았다고 해서 이름이 붙여진 산이다. 이 산은 멋진 바위 절벽과 소나무가 어우러진 곳이 많고, 꼭대기에 올라가면 시원하게 펼쳐진 경치를 볼 수 있는 아름다운 곳이다. 산 입구에는 용주서원이 있으며 용상사라는 사찰도 있다.",
+youtube: "https://www.youtube.com/watch?v=L0yZF-DYSgg",
+img: "https://tour.paju.go.kr/upload/tour/open/culture/2009/07/06/12468427180863.JPG"
+},
+{
+name: "파주이이유적",
+lat: 37.866364,
+lon: 126.870464,
+desc: "파주 이이 유적은 옛날 훌륭한 학자인 율곡 이이 선생님과 관련된 여러 장소들이 모여 있는 곳입니다. 주요 시설로는 자운서원, 자운서원 묘정비, 문성사, 화석정, 율곡이이묘, 신사임당묘, 율곡이이신도비가 있습니다. 이곳은 사적 제525호로 지정된 역사적 유적지입니다.",
+youtube: "https://www.youtube.com/watch?v=du63Tn9Vstc",
+img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/nkPLCbClt7pIPUupRFzEEhzWFOshrAdEG81vQBce.jpg"
+},
+{
+name: "파주 삼릉",
+lat: 37.742805,
+lon: 126.829372,
+desc: "조선 시대 왕과 왕비의 무덤 세 곳이 모여 있는 파주 삼릉은 아름다운 자연 경관과 함께 역사 학습에 좋은 장소입니다. 많은 사람들이 조선 시대 문화를 배우기 위해 방문합니다.",
+youtube: "https://www.youtube.com/watch?v=6lLgvMyRre0",
+img: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fko.wikipedia.org%2Fwiki%2F%25ED%258C%258C%25EC%25A3%25BC_%25EC%2582%25BC%25EB%25A6%2589&psig=AOvVaw1hSgWN_iJCzBNvCB9Nrt5O&ust=1749134154803000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJi7tdH-140DFQAAAAAdAAAAABAE"
+},
+{
+name: "용미리 마애이불입상",
+lat: 37.754348,
+lon: 126.864372,
+desc: "경기도 파주에 있는 고려 시대의 마애불상으로, 큰 바위에 새겨진 두 부처님 형상이 인상적입니다. 독특한 지붕 구조와 왕실의 기원이 담긴 전설이 깃든 보물로 지정된 문화유산입니다.",
+youtube: "https://www.youtube.com/watch?v=3vnAyDIHTEs",
+img: "https://www.heritage.go.kr/unisearch/images/treasure/thumb/1615671.jpg"
+},
+{
+name: "오두산성",
+lat: 37.771863,
+lon: 126.678135,
+desc: "오두산 꼭대기에 위치한 삼국 시대의 산성 유적지로, 전략적 요충지였으며 한강과 임진강의 합류 지점을 내려다볼 수 있습니다. 북한과 인접하여 분단의 현실을 체감할 수 있는 역사적 장소입니다. 사적 제351호입니다.",
+youtube: "https://youtube.com/shorts/nnoeA17yg1E?si=bDR3KzWBUcGRp_T7",
+img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSz_FF7gC_m6pPGn9IOR4YrXL7d0ClNdrugA&s"
+},
+{
+name: "검단사",
+lat: 37.769128,
+lon: 126.685757,
+desc: "검단산 산속에 있는 절. 신라 시대 검단조사가 창건했다고 전해지며, 불교 음악과 차 문화를 전한 인물로 평가됨.",
+youtube: "https://youtu.be/3vnAyDIHTEs?si=_J3Eac9hYBodipBQ&t=140",
+img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsJpPUanW9S3o7lfXfkYsCqN6Pl6kEgl5Qig&s"
+},
+{
+name: "보광사",
+lat: 37.753307,
+lon: 126.920385,
+desc: "파주 고령산에 위치한 큰 사찰. 신라 시대 창건, 조선 영조와 인연이 있으며, 향나무와 옛 절 건물 등이 보존되어 있음.",
+youtube: "https://youtu.be/3vnAyDIHTEs?si=XJYhCdzm9hBs187p&t=197",
+img: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Bogwangsa%2C_Paju.jpg"
+},
+{
+name: "헤이리예술마을",
+lat: 37.788867,
+lon: 126.698647,
+desc: "파주에 위치한 국내 최대 규모 예술 마을. 미술관, 박물관, 문화 공간과 다양한 가게들로 구성되어 있음.",
+youtube: "https://www.youtube.com/watch?v=wM98FAZ0CAc",
+img: "https://cdn.imweb.me/thumbnail/20211019/30b1d04ef5de5.jpg"
+},
+{
+name: "파주출판단지",
+lat: 37.710918,
+lon: 126.684241,
+desc: "책과 출판 관련 기업과 문화시설이 모여 있는 복합 문화 공간. 인쇄 체험, 책방, 박물관, 카페 등 다양한 콘텐츠 제공.",
+youtube: "https://www.youtube.com/watch?v=IJJNC7MsV4M",
+img: "https://i.namu.wiki/i/JVGnwx8XzrH8VD3NRLgk35m4gqV1RjfMb91F86D7wOMIVjOub-siJPUTtcPvKamq6QGqfPhk7ef2N3c4J4gDqg.webp"
+},
+{
+name: "임진각 평화누리",
+lat: 37.892384,
+lon: 126.743092,
+desc: "한국전쟁의 상흔과 통일 염원을 담은 장소. 전시 기차, 전적비, 북한을 향한 망향의 장소로서 의미 깊음.",
+youtube: "https://www.youtube.com/watch?v=QZzYpj5nKHU",
+img: "https://tour.paju.go.kr/upload/tour/2017/4/4/3e04f41c-6798-4526-b3e9-bbfd034d9ee3.jpg"
+},
+{
+name: "임진강 황포돛배 관광",
+lat: 37.965514,
+lon: 126.889229,
+desc: "조선시대 황포돛배를 재현한 나룻배 체험 관광. 임진강 적벽을 감상하며 민간인 통제 구역을 처음으로 공개한 코스.",
+youtube: "https://www.youtube.com/watch?v=ETJxIIeNgNw",
+img: "https://tour.paju.go.kr/webcontent/ckeditor/2017/7/5/530b48f8-18f0-401a-905a-d04effe8158d.jpg"
+},
+{
+name: "파주장단콩웰빙마루",
+lat: 37.777246,
+lon: 126.683832,
+desc: "파주의 특산품 장단콩을 활용한 음식과 체험이 가능한 복합공간. 먹거리, 체험 프로그램, 제품 판매 병행.",
+youtube: "https://www.youtube.com/watch?v=n4hcpoAuI1c",
+img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4TFE8QSqMnZ2bfIUtaR0u33KOZTtikiEgQ&s"
+},
+{
+name: "프로방스마을",
+lat: 37.791018,
+lon: 126.684298,
+desc: "유럽풍 테마 마을로 다양한 나라의 음식과 체험 공간, 예쁜 상점들이 있는 관광지.",
+youtube: "https://www.youtube.com/watch?v=pxYXEASRCuo",
+img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbSKqNpVssUlcNaoQK9I72EEJOrObLCqG_YA&s"
+},
+{
+name: "DMZ (도라산역, 도라전망대, 제3땅굴)",
+lat: 37.913088,
+lon: 126.693340,
+desc: "비무장지대 안보 관광의 핵심 코스로, 분단의 현실을 생생하게 느낄 수 있습니다.",
+youtube: "",
+img: ""
+},
+{
+name: "파주 롯데프리미엄아울렛",
+lat: 37.719225,
+lon: 126.692649,
+desc: "국내 최대 규모의 프리미엄 아울렛 중 하나로, 다양한 명품 브랜드가 입점해 있습니다.",
+youtube: "",
+img: ""
+},
+{
+name: "신세계 프리미엄 아울렛 파주",
+lat: 37.772947,
+lon: 126.698053,
+desc: "파주에 위치한 또 다른 대형 프리미엄 아울렛입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "벽초지 문화수목원",
+lat: 37.801149,
+lon: 126.873840,
+desc: "다양한 테마 정원과 아름다운 연못이 있는 유럽식 수목원입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "파주평화곤돌라",
+lat: 37.895502,
+lon: 126.732284,
+desc: "임진각과 독개다리를 연결하는 곤돌라로, DMZ 일대를 조망할 수 있습니다.",
+youtube: "",
+img: ""
+},
+{
+name: "경기도의료원 파주병원",
+lat: 37.754935,
+lon: 126.779669,
+desc: "파주시 문산읍에 위치한 경기도 공공병원입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "메디인병원",
+lat: 37.760950,
+lon: 126.766551,
+desc: "파주시 야당동에 위치한 종합병원입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "파주시청",
+lat: 37.758921,
+lon: 126.778427,
+desc: "파주시의 행정 업무를 총괄하는 시청입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "금촌역",
+lat: 37.766097,
+lon: 126.774472,
+desc: "경의중앙선 금촌역입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "문산역",
+lat: 37.854624,
+lon: 126.787327,
+desc: "경의중앙선 문산역으로, 북한과 가장 가까운 남측 역 중 하나입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "운정역",
+lat: 37.725478,
+lon: 126.767023,
+desc: "경의중앙선 운정역입니다.",
+youtube: "",
+img: ""
+},
+{
+name: "파주시외버스터미널",
+lat: 37.858672,
+lon: 126.786761,
+desc: "파주시의 시외버스 운행의 주요 거점입니다.",
+youtube: "",
+img: ""
+}
+];
+        places.forEach(loc => {
+            let popupContent = `<b>${loc.name}</b>`;
+            if (loc.desc) popupContent += `<br>${loc.desc}`;
+            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
+            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+
+            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+        });
+    </script>
+</body>
+</html>

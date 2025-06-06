@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고양시 인터랙티브 지도 (이미지 포함 최종 수정)</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+        .popup-img { max-width: 200px; max-height: 150px; height: auto; display: block; margin-top: 5px; }
+        .popup-content a { color: #0078ff; text-decoration: none; }
+        .popup-content a:hover { text-decoration: underline; }
+        .popup-content { max-width: 300px; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([37.655, 126.82], 12); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Original Image URLs for the first 13 places
+        const originalImageUrls = [
+            "https://i.namu.wiki/i/5CTRCYq8jiW5XyBwRYWzwZl2JUtNGiPeFwEx_VHlvA729OsIztvTnYKEGiZP2NBqKNiIgihSQpJ9lBM74DHv1Q.webp", // 북한산
+            "https://nuri.goyang.go.kr/resources/images/contents/course9Img05.jpg", // 고봉산
+            "https://i.namu.wiki/i/i1K4spz6AtvtdqDw0fPIJfWL75puIbH83m7Q3wZ7_XyenIgty4wgM5jahnJSFARAuyINYmC7UmR0oY3HSTBYXA.webp", // 덕양산
+            "https://i.namu.wiki/i/EqAjRdd0rKER_YUnfEAmdRQ1cp8EyB5DlMfHcpyyYtCG4j74CJXGxA0_PaChNB4dWBIbEo6phi1AZNbQShi_Sw.webp", // 서삼릉
+            "https://i.namu.wiki/i/DA4wVw6d62-qJlIf0WBsdllKP_9Nl4YR-v4NsiZzqJeVl7c7kuM0tVUwUSotS1plDzrQFxxcU7DUlYuNcyyj1g.jpg", // 서오릉
+            "https://cdn.mygoyang.com/news/photo/202309/75112_104766_4939.jpg", // 안곡습지
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1a1hAI8PBd5sRwmzM6dZMlweCZmRj7mkgQw&s", // 장항습지
+            "https://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0906/IE002862701_STD.jpg", // 한화 아쿠아플라넷 일산
+            "https://i.namu.wiki/i/P9x318eJVS2DROSMfAOn9xAc7HjjqmNytvFZvlfehxNLogOuALn5XJh4tRDR9QFtEp9YeiUTlXHAOxpen4K3mQ.jpg", // 중남미문화원
+            "https://www.kintex.com/public/common/images/content/company_aboutkintex01_img.jpg", // 킨텍스
+            "https://www.goyang.go.kr/resources/dygu/images/main/themecourse_history1.png", // 행주산성
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGxhCkwnxpGBjYQd-w7AMKW8yctIyiLeiVxw&s", // 현대 모터스튜디오 고양
+            "https://lh4.googleusercontent.com/proxy/9ZGfvthvm75ceohA4Hf7Cbl-KKjfbkko44FxxrC2Dk3OHFwFK2gzA5qWD02W-gQD-DFAQ-U7ULhHFVLQMNWzZeq_ahoP-_F4Zo4Xs-kRPTtSS4g6WFQ"  // 일산호수공원
+        ];
+
+        const places = [
+          {
+            "name": "북한산",
+            "lat": 37.657299,
+            "lon": 126.952435,
+            "desc": "서울특별시와 경기도 고양시, 양주시, 의정부시에 걸쳐있는 산... 대표적인 상징물이다. 하지만 상징과 달리 대부분의 면적은 고양시에 위치해 있다. 한국의 알프스라고도 불리는 북한산은 멋진 풍경을 가진 큰 산으로, 아주 옛날부터 나라를 지키기 위한 중요한 산이었다. 이 산에는 옛날에 지어진 성벽과 보물로 지정된 탑 등이 남아 있어 우리 역사를 느낄 수 있는 곳이다.",
+            "youtube": "https://youtu.be/_V0hQR6H5vs?si=K5yOwoJDiDH7iSrG",
+            "img": originalImageUrls[0]
+          },
+          {
+            "name": "고봉산",
+            "lat": 37.693401,
+            "lon": 126.789959,
+            "desc": "고양시 일산에서 가장 높은 고봉산은 아주 오래전 삼국시대부터 중요한 산으로 알려진 곳이다. 이 산에는 그때의 흔적이 남아 있고, 정상에는 옛날에 소식을 전하던 봉수대가 있는 역사적인 장소이다.",
+            "youtube": "https://youtu.be/_WDiCE63LLY?si=v9W7mmyCgRGhmDMb",
+            "img": originalImageUrls[1]
+          },
+          {
+            "name": "덕양산",
+            "lat": 37.596354,
+            "lon": 126.830093,
+            "desc": "덕양산은 고양시 덕양구에 있는 유명한 산으로, 멋진 한강 옆에 있어서 아름다운 모습을 볼 수 있는 곳이다. 이 산에는 옛날 큰 싸움이 있었던 행주산성이 있고, 마치 강 위에 떠 있는 섬처럼 보이는 특별한 산이다.",
+            "youtube": "https://youtu.be/f08GS6ltA3c?si=RpJiMknisMV96vSK",
+            "img": originalImageUrls[2]
+          },
+          {
+            "name": "서삼릉",
+            "lat": 37.663809,
+            "lon": 126.868771,
+            "desc": "서삼릉은 옛날 조선 임금님과 왕비들의 무덤 세 개가 있는 곳이다. 이곳은 조용하고 공기가 좋아서 옆에 있는 말 농장(렛츠런팜)과 함께 가보면 좋은 곳이다.",
+            "youtube": "https://youtu.be/4JnxIGqojEo?si=3ptNOQ2rLDvRFUbQ",
+            "img": originalImageUrls[3]
+          },
+          {
+            "name": "서오릉",
+            "lat": 37.623638,
+            "lon": 126.900739,
+            "desc": "서오릉은 경기도 고양시에 있는 곳으로, 옛날 조선 시대 임금님과 왕비 등 다섯 분의 무덤이 모여 있는 곳이다. 드라마나 영화에서 보았던 유명한 무덤도 있고 유네스코 세계문화유산으로 지정된 곳이다.",
+            "youtube": "https://youtu.be/StTHetRA8Oo?si=QsrwQjICrJztNe4o",
+            "img": originalImageUrls[4]
+          },
+          {
+            "name": "안곡습지",
+            "lat": 37.684797,
+            "lon": 126.783482,
+            "desc": "고양시의 대표적인 생태공원인 안곡습지는 '고봉산 습지'라고도 불리며, 다양한 동식물을 관찰할 수 있는 자연이 살아있는 곳이다.",
+            "youtube": "https://youtu.be/GFAuemVXySc?si=HATVj9jyg2zEuZ-a",
+            "img": originalImageUrls[5]
+          },
+          {
+            "name": "장항습지",
+            "lat": 37.644812,
+            "lon": 126.742543,
+            "desc": "우리나라의 24번째 람사르 습지로 등록된 장항습지는 한강 하구에 위치하여 강물과 바닷물이 만나는 독특한 생태계를 이루는 곳이다.",
+            "youtube": "https://youtu.be/TJtEuvG1l6Y?si=4P47Mz5RlOXP8Qe4",
+            "img": originalImageUrls[6]
+          },
+          {
+            "name": "한화 아쿠아플라넷 일산",
+            "lat": 37.663698,
+            "lon": 126.755327,
+            "desc": "일산에 있는 한화 아쿠아플라넷은 우리나라에서 가장 큰 아쿠아리움으로 다양한 동물과 체험을 즐길 수 있는 가족 나들이 명소이다.",
+            "youtube": "https://youtu.be/56awPgQpY28?si=txCdqbleBDt8ewFe",
+            "img": originalImageUrls[7]
+          },
+          {
+            "name": "중남미문화원",
+            "lat": 37.703637,
+            "lon": 126.895233,
+            "desc": "고양시에 있는 중남미문화원은 아시아에서 가장 큰 중남미 박물관으로 마야, 아즈텍, 잉카 등의 문화를 전시한다.",
+            "youtube": "https://youtu.be/nmEFefos5iM?si=2mcIoGfxnyws538E",
+            "img": originalImageUrls[8]
+          },
+          {
+            "name": "킨텍스",
+            "lat": 37.668493,
+            "lon": 126.745757,
+            "desc": "킨텍스는 고양시에 있는 대형 전시장으로, 자동차, 로봇 등 다양한 박람회와 전시회가 열린다.",
+            "youtube": "https://youtu.be/tcVezvGW57g?si=SU5IQ2SUdhRD4hhl",
+            "img": originalImageUrls[9]
+          },
+          {
+            "name": "행주산성",
+            "lat": 37.595845,
+            "lon": 126.828044,
+            "desc": "임진왜란 당시 권율 장군이 행주대첩을 이끈 유서 깊은 성곽지로, 삼국시대부터 이어진 역사적 장소이다.",
+            "youtube": "https://youtu.be/uXEc6wtnvII?si=-XIYt3I0tYKybwW8",
+            "img": originalImageUrls[10]
+          },
+          {
+            "name": "현대 모터스튜디오 고양",
+            "lat": 37.666295,
+            "lon": 126.747714,
+            "desc": "자동차를 직접 체험하고 제작 과정을 배울 수 있는 자동차 테마 전시 공간이다.",
+            "youtube": "https://youtu.be/lmf05eO7I_I?si=rDYmgnBK4f2c2wSY",
+            "img": originalImageUrls[11]
+          },
+          {
+            "name": "일산호수공원",
+            "lat": 37.657316,
+            "lon": 126.764605,
+            "desc": "일산신도시 개발과 함께 조성된 국내 최대 규모의 인공호수 공원으로, 산책, 레저, 문화활동을 즐길 수 있다.",
+            "youtube": "https://youtu.be/1-vb35UIlkQ?si=2mnIAklGqEqYfGnu",
+            "img": originalImageUrls[12]
+          },
+          // Remaining 16 places (no img, no youtube)
+          {
+            "name": "원마운트",
+            "lat": 37.664645,
+            "lon": 126.754451,
+            "desc": "워터파크, 스노우파크, 쇼핑몰 등이 결합된 복합 테마파크입니다."
+          },
+          {
+            "name": "고양어린이박물관",
+            "lat": 37.629576,
+            "lon": 126.830878,
+            "desc": "어린이들을 위한 다양한 체험 전시와 교육 프로그램을 제공하는 박물관입니다."
+          },
+          {
+            "name": "한국항공대학교 항공우주박물관",
+            "lat": 37.599755,
+            "lon": 126.865766,
+            "desc": "항공우주 분야의 역사와 기술을 배울 수 있는 박물관입니다."
+          },
+          {
+            "name": "고양시립 일산도서관",
+            "lat": 37.685099,
+            "lon": 126.764465,
+            "desc": "일산에 위치한 고양시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다."
+          },
+          {
+            "name": "고양 스타필드",
+            "lat": 37.647315,
+            "lon": 126.895169,
+            "desc": "대규모 복합 쇼핑몰로 쇼핑, 식사, 여가 활동을 한 번에 즐길 수 있습니다."
+          },
+          {
+            "name": "애니골",
+            "lat": 37.671963,
+            "lon": 126.79158,
+            "desc": "이국적인 분위기의 레스토랑과 카페들이 모여 있는 음식 문화 거리입니다."
+          },
+          {
+            "name": "명지병원",
+            "lat": 37.642077,
+            "lon": 126.83076,
+            "desc": "고양시 화정동에 위치한 주요 종합병원입니다."
+          },
+          {
+            "name": "국민건강보험 일산병원",
+            "lat": 37.645631,
+            "lon": 126.79282,
+            "desc": "고양시 일산동구에 위치한 국민건강보험공단 소속 종합병원입니다."
+          },
+          {
+            "name": "동국대학교 일산병원",
+            "lat": 37.676542,
+            "lon": 126.806666,
+            "desc": "고양시 일산동구에 위치한 대학병원입니다."
+          },
+          {
+            "name": "일산백병원",
+            "lat": 37.674399,
+            "lon": 126.750335,
+            "desc": "고양시 일산서구에 위치한 종합병원입니다."
+          },
+          {
+            "name": "국립암센터",
+            "lat": 37.663963,
+            "lon": 126.782922,
+            "desc": "암 연구 및 치료를 전문으로 하는 국립병원입니다."
+          },
+          {
+            "name": "고양시청",
+            "lat": 37.658301,
+            "lon": 126.83196,
+            "desc": "고양시의 행정 업무를 총괄하는 시청입니다."
+          },
+          {
+            "name": "덕양구청",
+            "lat": 37.637621,
+            "lon": 126.832246,
+            "desc": "고양시 덕양구의 행정 업무를 담당하는 구청입니다."
+          },
+          {
+            "name": "일산동구청",
+            "lat": 37.659108,
+            "lon": 126.774907,
+            "desc": "고양시 일산동구의 행정 업무를 담당하는 구청입니다."
+          },
+          {
+            "name": "일산서구청",
+            "lat": 37.678054,
+            "lon": 126.745239,
+            "desc": "고양시 일산서구의 행정 업무를 담당하는 구청입니다."
+          },
+          {
+            "name": "고양종합터미널",
+            "lat": 37.643267,
+            "lon": 126.78981,
+            "desc": "고양시의 시외 및 고속버스 운행의 주요 거점입니다."
+          }
+        ];
+
+        places.forEach(place => {
+            if (place.lat && place.lon) { 
+                const marker = L.marker([place.lat, place.lon]).addTo(map);
+                let popupContent = `<div class="popup-content"><b>${place.name}</b><br>${place.desc}`;
+                
+                if (place.img && place.img.trim() !== "") {
+                    popupContent += `<br><img src="${place.img}" alt="${place.name}" class="popup-img">`;
+                }
+
+                if (place.youtube && place.youtube.trim() !== "") {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">관련 유튜브 영상 시청하기</a>`;
+                }
+                popupContent += `</div>`;
+                marker.bindPopup(popupContent);
+            }
+        });
+    </script>
+</body>
+</html>

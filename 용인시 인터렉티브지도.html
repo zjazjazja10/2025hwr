@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>용인시 인터랙티브 지도</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+        .popup-img { max-width: 200px; max-height: 150px; height: auto; display: block; margin-top: 5px; }
+        .popup-content a { color: #0078ff; text-decoration: none; }
+        .popup-content a:hover { text-decoration: underline; }
+        .popup-content { max-width: 300px; word-wrap: break-word; } /* 팝업 내 텍스트 자동 줄바꿈 */
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 용인시 중심 좌표 및 확대 레벨 설정 (예: 용인시청 근처)
+        const map = L.map('map').setView([37.2410, 127.1779], 11); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        const places = [
+          {
+            "name": "청년 김대건길",
+            "lat": 37.215524,
+            "lon": 127.278912,
+            "desc": "「청년 김대건길」은 우리나라 최초의 신부님이신 김대건 선생님이 옛날에 사람들을 만나러 다니셨던 중요한 길이다. 이 길을 걸으면서 김대건 선생님의 용기와 따뜻한 마음을 느끼고, 아름다운 숲길에서 편안하게 쉬면서 생각해볼 수 있는 곳이다.",
+            "youtube": "https://youtu.be/GRTsZK6bew0?si=hI9Sh-sC9gO4pMR5",
+            "img": "https://ojsfile.ohmynews.com/STD_IMG_FILE/2021/0805/IE002848850_STD.jpg"
+          },
+          {
+            "name": "처인성",
+            "lat": 37.147807,
+            "lon": 127.168658,
+            "desc": "경기도 용인에 있는 처인성은 아주 오래전 고려 시대에 만들어진 옛날 성이다. 이곳은 고려 사람들이 몽골군과 싸워 크게 이긴 유명한 전투가 있었던 곳이다. 작지만 주변 지형을 잘 활용하여 튼튼하게 지어졌고, 옛날 물건들도 발견되는 역사적인 장소이다.",
+            "youtube": "https://youtu.be/4Z0yxCmSgUA?si=0pyHfOXTaWOCD36O",
+            "img": "https://ggc.ggcf.kr/uploadimg/resize/db6340151541693184266.jpeg"
+          },
+          {
+            "name": "광교산",
+            "lat": 37.341082,
+            "lon": 127.034209,
+            "desc": "광교산은 용인과 수원, 의왕시에 걸쳐 있는 큰 산으로, 용인에 시루봉과 형제봉 같은 높은 봉우리가 있는 곳이다. 이 산의 높은 곳에서는 용인과 주변 도시들을 볼 수 있고, 나무가 우거져 여름에도 시원하게 숲속을 걸을 수 있는 곳이다. 그리고 물맛이 좋기로 유명한 약수터가 있어서 등산객들이 많이 찾는 곳이다.",
+            "youtube": "",
+            "img": "https://img1.yna.co.kr/etc/inner/KR/2021/08/02/AKR20210802047500061_01_i_P2.jpg"
+          },
+          {
+            "name": "기흥호수공원",
+            "lat": 37.238023,
+            "lon": 127.096624,
+            "desc": "기흥호수공원은 용인 기흥구에 있는 곳으로, 옛날에는 농사에 쓰이던 큰 저수지였지만 지금은 사람들이 쉬고 즐길 수 있는 공원으로 바뀐 곳이다. 호수 주변에 긴 산책길이 있어서 걸으면서 아름다운 풍경을 구경할 수 있고, 계절이나 시간에 따라 다른 멋진 모습을 보여주는 곳이다. 특히 밤에는 불빛이 켜져서 더욱 환상적이고 특별한 분위기를 느낄 수 있는 곳이다.",
+            "youtube": "",
+            "img": "https://www.yonginilbo.com/data/photos/20190727/art_15623007670117_46624e.jpg"
+          },
+          {
+            "name": "충렬서원",
+            "lat": 37.341185,
+            "lon": 127.170481,
+            "desc": "서원은 옛날 조선 시대에 공부를 가르치고 훌륭한 학자들을 기리기 위해 세워진 학교와 같은 곳이다. 이곳에서는 학자들이 제자들을 가르치고 함께 공부하며, 나라에 충성하고 예절을 중요하게 생각하는 마음을 배웠던 곳이다. 우리 조상들의 지혜와 가르침을 느낄 수 있는 중요한 옛날 교육 기관이다.",
+            "youtube": "https://www.youtube.com/watch?v=8profjdduWo",
+            "img": "https://ggc.ggcf.kr/uploadimg/resize/3f1934d71536239594599.jpeg"
+          },
+          {
+            "name": "심곡서원",
+            "lat": 37.305797,
+            "lon": 127.076706,
+            "desc": "서원은 옛날 조선 시대에 공부를 가르치고 훌륭한 학자들을 기리기 위해 세워진 학교와 같은 곳이다. 이곳에서는 학자들이 제자들을 가르치고 함께 공부하며, 나라에 충성하고 예절을 중요하게 생각하는 마음을 배웠던 곳이다. 우리 조상들의 지혜와 가르침을 느낄 수 있는 중요한 옛날 교육 기관이다.",
+            "youtube": "https://www.youtube.com/watch?v=8profjdduWo", // Note: Same youtube link as 충렬서원, as per provided data
+            "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/20TCUgMbmXhgf64D52HBOz7WhIlslBecoW1rnbCA.jpg"
+          },
+          {
+            "name": "석성산",
+            "lat": 37.273043,
+            "lon": 127.173287,
+            "desc": "석성산은 용인에서 중요한 산으로, 높이가 471.5m이다. 이 산은 옛날에 군사적으로 중요한 곳이었고, 봉수대 터가 남아 있어 그 역사를 알 수 있는 곳이다. 산 정상에서는 아름다운 해돋이를 볼 수 있어서 유명하며, 다른 산과는 특별한 다리로 연결되어 있는 곳이다.",
+            "youtube": "",
+            "img": "https://upload.wikimedia.org/wikipedia/commons/8/80/0_dankook_b.jpg"
+          },
+          {
+            "name": "에버랜드, 캐리비안베이",
+            "lat": 37.294141,
+            "lon": 127.202577,
+            "desc": "에버랜드는 신나는 놀이기구와 재미있는 동물들을 만날 수 있는 곳이고, 캐리비안 베이는 시원하게 물놀이를 즐길 수 있는 곳이다. 이곳들은 모두 함께 가면 하루 종일 신나게 놀 수 있는 큰 테마파크이다.",
+            "youtube": "https://youtu.be/lHl7Mg-CUDM?si=_z-rpqe7NryzcMzT",
+            "img": "https://i.namu.wiki/i/vt7U4W_eS2S_5vjr6JWRmMtflEPs6nXes5MUVcnzcE2U4IgbTVfommBs4cXZJVPCTGRJ8SNIZ179jCitR4G7AA.webp"
+          },
+          {
+            "name": "대장금파크",
+            "lat": 37.121053,
+            "lon": 127.338193,
+            "desc": "용인 대장금테파파크는 옛날 우리나라 삼국 시대부터 조선 시대까지의 건물을 똑같이 만들어 놓은 특별한 곳이다. 이곳은 우리가 텔레비전에서 보는 재미있는 MBC 역사 드라마들을 많이 찍는 촬영 장소이다. 옛날 옷을 입고 사진을 찍거나 다양한 체험을 하면서 마치 드라마 주인공처럼 멋진 추억을 만들 수 있는 곳이다.",
+            "youtube": "https://youtu.be/tFOThfxmsDI?si=mfGWJF9UjLa2UMgB",
+            "img": "https://i.namu.wiki/i/Dgpb3PedcsXRGgGVkPnZu7zMUOdYXy9LbAjJcu2B36LJKqpQEWgzlD9UzxiHTKfT3c0q_XVr4aKLIgMx05h-yQ.webp"
+          },
+          {
+            "name": "송전저수지",
+            "lat": 37.138217,
+            "lon": 127.219914,
+            "desc": "용인 이동읍에 있는 송전저수지에서는 해가 질 때 아주 아름다운 노을을 볼 수 있는 곳이다. 노을이 지면 저수지 물과 주변 들판이 온통 붉게 물들어 멋진 그림 같은 풍경을 만드는 곳이다. 이곳은 옛날에 물에 잠긴 어비리 마을을 기억하며 '어비낙조'라고도 부르는 유명한 장소이다.",
+            "youtube": "https://padlet.com/hwr03/padlet-anls2a81kuwoknbo/wish/E851Q06gBnLXWVAb", // Actual URL
+            "img": "https://mblogthumb-phinf.pstatic.net/MjAyMjA1MTJfMTQx/MDAxNjUyMzM3NzUwNzc2.ckFW85qQbZo7Yy45026AKlSmydodCoSOOnpQ_UwywB8g.G9cp6h2QU2T9_sOKFm7Gr0a7m2I3CsgZtYO_xVcDIe4g.JPEG.savefor0/%EC%86%A1%EC%A0%84%EC%A0%80%EC%88%98%EC%A7%80_(4).JPG?type=w800"
+          },
+          {
+            "name": "농촌테마파크",
+            "lat": 37.172424,
+            "lon": 127.298267,
+            "desc": "용인농촌테마파크는 시골의 좋은 점들을 살려서 만든 큰 체험 시설이다. 이곳은 도시 사람들이 와서 쉬고 가족과 함께 자연 속에서 즐거운 시간을 보낼 수 있는 곳이다.",
+            "youtube": "https://youtu.be/YCEXx-jPDh0?si=iXV4_UnCRDQIQgbn",
+            "img": "https://ggtour.or.kr/data/ggtour/place/comm_board/comm_board/20200401132111.png"
+          },
+          {
+            "name": "용인 자연휴양림",
+            "lat": 37.315247,
+            "lon": 127.267946,
+            "desc": "용인자연휴양림은 용인시에 있는 곳으로, 울창한 숲과 아름다운 자연을 그대로 잘 보존하고 있는 곳이다. 이곳은 사람들이 편안하게 쉬면서 자연을 배우고 숲의 소중함을 느낄 수 있도록 만들어진 곳이다. 숲길을 따라 산책하거나 등산을 하며 깨끗한 공기를 마시고, 가족들과 함께 즐거운 시간을 보내기 좋은 곳이다.",
+            "youtube": "https://youtu.be/sD8TOKnOkTk?si=qicgpnaPYEXoPvvA",
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsQ05Ed_eNjxnO9IVXqy-ivAMfszQJzxLbHg&s"
+          },
+          {
+            "name": "정몽주선생묘",
+            "lat": 37.337533,
+            "lon": 127.181499,
+            "desc": "정몽주 선생님은 옛날 고려 시대에 나라에 충성하고 학문을 발전시킨 아주 훌륭한 분이다. 나라가 어려울 때 백성을 돕고 바른 가르침을 펼치며 고려를 지키려 애썼지만, 결국 새로운 나라를 세우려는 사람들에게 돌아가신 분이다. 지금 경기도 용인에 있는 그분의 무덤은 그의 높은 뜻과 변치 않는 충성심을 기리기 위해 만들어진 곳이다.",
+            "youtube": "https://youtu.be/pUlcDrW6Lv4?si=wCbFJEn1GocPc1du",
+            "img": "https://image.foresttrip.go.kr/bb/202304/d1cfe9b6-a2f5-4d88-b154-b48bbd8c3d82.JPG"
+          },
+          {
+            "name": "조비산",
+            "lat": 37.119846,
+            "lon": 127.367008,
+            "desc": "조비산은 용인 백암면에 있는 산으로, 넓은 들판 가운데 새가 나는 것처럼 우뚝 솟아 있는 산이다. 이 산은 높지는 않지만 정상에서 주변의 아름다운 풍경을 시원하게 볼 수 있는 곳이다. 옛날에는 다른 산들과 달리 남쪽을 향하고 있다고 해서 '역적산'이라고 불리기도 했던 재미있는 이야기가 있는 산이다.",
+            "youtube": "",
+            "img": "https://i.namu.wiki/i/Tb7fQPTfOm7lr9288FdzjsX-06jn4j51i4OlTH-o-PSFzdHgiy3AFNfJTBKDRyzjydvHgXERCmjX2k0Gz5ykaA.webp"
+          },
+          {
+            "name": "한국민속촌",
+            "lat": 37.259187,
+            "lon": 127.118209,
+            "desc": "한국민속촌은 옛날 우리 조상들이 살았던 집과 마을 모습을 그대로 볼 수 있는 곳으로, 우리나라 전통 생활을 배우고 체험할 수 있는 야외 박물관이다. 이곳은 어른들에게는 옛 추억을 떠올리게 하고, 어린이들에게는 조상들의 지혜를 배우게 하며, 외국 사람들에게는 한국의 문화를 알리는 국제적인 관광지이다.",
+            "youtube": "https://youtu.be/nSW6BYvqK_Q?si=U1cINupCOjli439S",
+            "img": "https://access.visitkorea.or.kr/bfvk_img/call?cmd=VIEW&id=933dc944-154c-432b-b700-3558659c6d22&"
+          },
+          {
+            "name": "양지향교",
+            "lat": 37.238529,
+            "lon": 127.285936,
+            "desc": "향교는 옛날 조선 시대에 나라에서 세운 학교로, 공부도 가르치고 훌륭한 옛날 학자들에게 제사를 지내던 곳이다. 양지 향교는 1523년에 세워진 향교로, 다른 향교와는 조금 다르게 건물 배치가 특별한 곳이다. 이곳은 옛날 교육 기관의 모습을 통해 우리 조상들의 역사와 문화를 알 수 있는 중요한 장소이다.",
+            "youtube": "https://youtu.be/4tD7p0Q16Og?si=XiPaPzQ4fVMb2Y7R",
+            "img": "https://ggc.ggcf.kr/uploadimg/resize/8aaf4bba1545860401636.jpeg"
+          },
+          {
+            "name": "용인시청",
+            "lat": 37.240755,
+            "lon": 127.177242,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "처인구청",
+            "lat": 37.234662,
+            "lon": 127.201421,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "기흥구청",
+            "lat": 37.280525,
+            "lon": 127.114734,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "수지구청",
+            "lat": 37.322186,
+            "lon": 127.097229,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인법원",
+            "lat": 37.238247,
+            "lon": 127.184677,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "경기도어린이박물관",
+            "lat": 37.26752,
+            "lon": 127.109677,
+            "desc": "어린이들의 호기심과 상상력을 자극하는 체험형 박물관입니다.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "경기도박물관",
+            "lat": 37.268919,
+            "lon": 127.109088,
+            "desc": "경기도의 역사와 문화를 전시하는 대표 박물관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인박물관",
+            "lat": 37.274467,
+            "lon": 127.157036,
+            "desc": "용인의 지역사와 문화를 소개하는 시립 박물관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인 동백호수공원",
+            "lat": 37.275745,
+            "lon": 127.149755,
+            "desc": "동백지구에 위치한 아름다운 호수공원으로, 산책과 휴식을 즐기기 좋습니다.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인향교",
+            "lat": 37.295488,
+            "lon": 127.120932,
+            "desc": "조선시대 유교 교육기관으로 전통을 간직한 장소.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인포은아트홀",
+            "lat": 37.325893,
+            "lon": 127.104716,
+            "desc": "다양한 공연과 전시가 열리는 문화예술 공간.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "백남준아트센터",
+            "lat": 37.269295,
+            "lon": 127.110351,
+            "desc": "비디오 아트의 거장 백남준의 작품을 전시하고 연구하는 미술관입니다.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "한국미술관",
+            "lat": 37.309875,
+            "lon": 127.131901,
+            "desc": "현대미술 중심의 전시를 제공하는 사립 미술관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "안젤리미술관",
+            "lat": 37.184517,
+            "lon": 127.231801,
+            "desc": "자연과 어우러진 공간 속 예술작품 전시관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인종합버스터미널",
+            "lat": 37.233117,
+            "lon": 127.209781,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "근현대사미술관 담다",
+            "lat": 37.27729,
+            "lon": 127.136726,
+            "desc": "근현대 역사를 예술작품으로 담아낸 전시관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "용인세브란스병원",
+            "lat": 37.271235,
+            "lon": 127.14818,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "예아리박물관",
+            "lat": 37.141531,
+            "lon": 127.364323,
+            "desc": "우리 민속 음악과 악기를 소개하는 전통 박물관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "삼성화재 모빌리티뮤지엄",
+            "lat": 37.300533,
+            "lon": 127.217066,
+            "desc": "자동차와 모빌리티 산업의 역사 전시관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "한국등잔박물관",
+            "lat": 37.336616,
+            "lon": 127.177686,
+            "desc": "조선시대 등잔과 조명 문화를 소개하는 박물관.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "신맘곡저수지",
+            "lat": 37.295447,
+            "lon": 127.095314,
+            "desc": "자연경관이 아름답고 낚시로도 인기 있는 저수지.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "보정동 카페거리",
+            "lat": 37.321822,
+            "lon": 127.110167,
+            "desc": "개성 넘치는 카페들이 모여 있는 젊은이들의 핫플레이스.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "호암미술관",
+            "lat": 37.294669,
+            "lon": 127.191563,
+            "desc": "삼성그룹이 설립한 전통 미술 전문 미술관으로, 아름다운 정원과 함께 있습니다.",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "전대, 에버랜드역",
+            "lat": 37.285442,
+            "lon": 127.219492,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "시청 용인대역",
+            "lat": 37.238165,
+            "lon": 127.178472,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "수지구청역",
+            "lat": 37.32244,
+            "lon": 127.094473,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "기흥역",
+            "lat": 37.275757,
+            "lon": 127.115937,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "구성역, GTX용인역",
+            "lat": 37.298741,
+            "lon": 127.105061,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "초당역",
+            "lat": 37.260571,
+            "lon": 127.159742,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "고진역",
+            "lat": 37.24531,
+            "lon": 127.214738,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          },
+          {
+            "name": "보평역",
+            "lat": 37.259313,
+            "lon": 127.218414,
+            "desc": "",
+            "youtube": "",
+            "img": ""
+          }
+        ];
+
+        places.forEach(place => {
+            if (place.lat != null && place.lon != null && place.name && place.name.trim() !== "") { 
+                const marker = L.marker([place.lat, place.lon]).addTo(map);
+                let popupContent = `<div class="popup-content"><b>${place.name}</b>`;
+                
+                if (place.desc && place.desc.trim() !== "") {
+                    popupContent += `<br>${place.desc}`;
+                }
+                
+                if (place.img && place.img.trim() !== "") {
+                    popupContent += `<br><img src="${place.img}" alt="${place.name}" class="popup-img">`;
+                }
+
+                if (place.youtube && place.youtube.trim() !== "") {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">관련 유튜브 영상 시청하기</a>`;
+                }
+                popupContent += `</div>`;
+                marker.bindPopup(popupContent);
+            }
+        });
+    </script>
+</body>
+</html>
