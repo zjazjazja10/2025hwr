@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화성 인터랙티브 지도</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+        .popup-img { width: 100px; height: auto; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 경기 화성시청 인근 중심 좌표
+        const map = L.map('map').setView([37.1995, 126.8316], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 여기에 장소 데이터 입력!
+        const places = [
+            // { name: "예시", lat: 37.20, lon: 126.83, desc: "설명", youtube: "", img: "" }
+        ];
+
+        places.forEach(loc => {
+            let popupContent = `<b>${loc.name}</b>`;
+            if (loc.desc) popupContent += `<br>${loc.desc}`;
+            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
+            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+
+            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+        });
+    </script>
+</body>
+</html>

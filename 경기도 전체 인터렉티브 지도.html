@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경기도 인터랙티브 지도</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+        .popup-img { width: 100px; height: auto; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 경기도청(수원시) 중심 좌표
+        const map = L.map('map').setView([37.2751, 127.0095], 9);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // 여기에 경기도 주요지점 추가!
+        const places = [
+            // 예시
+            // { name: "경기도청", lat: 37.2751, lon: 127.0095, desc: "경기도청 본관", youtube: "", img: "" }
+        ];
+
+        places.forEach(loc => {
+            let popupContent = `<b>${loc.name}</b>`;
+            if (loc.desc) popupContent += `<br>${loc.desc}`;
+            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
+            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+
+            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+        });
+
+        // 경기도 전체 경계선 GeoJSON 추가하고 싶으면 아래 코드 사용 (GeoJSON 파일 필요)
+        /*
+        fetch('gyeonggi_boundary.json')
+          .then(res => res.json())
+          .then(geojson => {
+            L.geoJSON(geojson, {
+                style: { color: 'orange', weight: 3, fill: false }
+            }).addTo(map);
+          });
+        */
+    </script>
+</body>
+</html>
