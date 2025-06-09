@@ -6,32 +6,330 @@
     <title>여주 인터랙티브 지도</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        body { margin: 0; padding: 0; }
         #map { height: 100vh; }
-        .popup-img { width: 100px; height: auto; }
+        .popup-content { font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; }
+        .popup-content h3 { margin: 0 0 5px 0; font-size: 16px; }
+        .popup-content img { width: 100%; max-width: 200px; height: auto; border-radius: 5px; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // 여주시청 중심 좌표
-        const map = L.map('map').setView([37.2983, 127.6365], 12);
+        // 1. 지도 초기화 (여주시청 중심)
+        const map = L.map('map').setView([37.2983, 127.6371], 11);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+        // 2. 장소 데이터
         const places = [
-            // { name: "예시", lat: 37.30, lon: 127.64, desc: "설명", youtube: "", img: "" }
+            {
+                "name": "섬 - 강천섬",
+                "lat": 37.232755,
+                "lng": 127.697998,
+                "desc": "자연 그대로 보존되어 있는 섬으로 산책로와 자전거 도로가 잘 조성되어 있어 산책이나 자전거 타기를 즐기기 좋고 은행나무길이 유명함. 힐링센터와 캠핑을 즐길 수 있는 시설도 마련되어 있음.",
+                "youtube": "www.youtube.com/watch?v=Sgp2zI_JpoE습지",
+                "img": "https://media.triple.guide/triple-cms/c_limit,f_auto,h_1024,w_1024/2974b199-16dd-4507-8b89-23513a3bb986.jpeg"
+            },
+            {
+                "name": "여주저류지",
+                "lat": 37.382198,
+                "lng": 127.562485,
+                "desc": "저류지(貯溜池)는 일시적으로 물을 모아두는 곳으로, 주로 홍수 조절 및 지하수 보충 등의 목적으로 활용됩니다. 도시화로 인해 증가하는 강우 유출량을 감수하고, 홍수 피해를 예방하기 위해 중요한 역할을 합니다. 저류지는 빗물을 모아 임시적으로 저류했다가, 수위가 낮아지면 방류하는 방식으로 운영됩니다. 저류지 중 우리나라 최대 크기로 여의도 면적의 2/3가 될 만큼 큰 면적을 차지하는 자연생태공원입니다. 여주저류지에는 수로와 습지 등이 형성되어 습지식물 및 어류, 조류, 양서류 등 다양한 생물이 살고 있는 자연생태지역임.",
+                "youtube": "www.youtube.com/watch?v=DHYb2p7A6Ic섬",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnjL5G35-XN-KwKbgw0lnAsF4A_YNen3yAOg&s"
+            },
+            {
+                "name": "당남리섬",
+                "lat": 37.397845,
+                "lng": 127.542209,
+                "desc": "5-6월이면 유채꽃과 라벤더가 만개하여 봄꽃 나들이를 즐길 수 있고 9-10월 가을에는 핑크 뮬리와 코스모스가 절정을 이루며 인근에는 파사성, 이포보 등이 있음.",
+                "youtube": "www.youtube.com/watch?v=7j42hwdWL28여강길37.293518",
+                "img": "https://minio.nculture.org/amsweb-opt/multimedia_assets/24/111527/161236/c/%EC%97%AC%EC%A3%BC-%EB%8B%B9%EB%82%A8%EB%A6%AC%EC%84%AC_%EB%8B%B9%EB%82%A8%EB%A6%AC%EC%84%AC-%EC%A0%84%EA%B2%BD_%EC%97%AC%EC%A3%BC%EC%8B%9C%EC%B2%AD_%EC%A0%9C4%EC%9C%A0%ED%98%95-medium-size.jpg"
+            },
+            {
+                "name": "여강길",
+                "lat": 37.319808,
+                "lng": 127.666093,
+                "desc": "여강(남한강 여주 구간의 애칭)을 중심으로 산과 들이 조화를 이룬 풍경이 아름다운 여강길은 총 11개 코스로 구성되어 있으며 느리게 걷는 길은 바쁘게만 살아온 우리들이 미처 보지 못했던 세상의 다양성과 아름다움을 보여줌..",
+                "youtube": "https://www.youtube.com/watch?v=O0O-FgWrgsY호수",
+                "img": "https://img1.newsis.com/2024/05/08/NISI20240508_0001545149_web.jpg"
+            },
+            {
+                "name": "여주보",
+                "lat": 37.328215,
+                "lng": 127.608195,
+                "desc": "강을 따라 산책로가 잘 조성되어 있어 산책하기 좋으며, 사진 찍기 좋은 장소가 많이 있음. 특히 일몰 시간대에 방문하면 아름다운 풍경을 감상할 수 있음.",
+                "youtube": "www.youtube.com/watch?v=Q7aOhMEiWio소달산37.350440",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNanw23kLnF78e3TUld3-P8a3dYZYEJY0DCA&s"
+            },
+            {
+                "name": "소달산",
+                "lat": 37.362193,
+                "lng": 127.702769,
+                "desc": "소달산은 북내면 중암리와 장암리 사이에 있는 해발 358M의 산이다. 삼국시대 이전 ‘소달’ 이라는 고승이 세웠다고 전해지는 사찰 흥왕사가 터를 잡고 있는 불교의 문화를 간직한 산으로, 울창한 소나무림을 따라 이어지는 등산로를 즐길 수 있으며 동남쪽 경사면에서 10세기 무렵인 고려 초의 백자 가마터의 흔적을 발견 할 수 있는 여주의 문화를 간직한 아름다운 명산 중 하나이다.",
+                "youtube": "www.youtube.com/watch?v=dp3vHarai3U보금산",
+                "img": "https://www.yeoju.go.kr/DATA/tourCntnts/tourCntntsDetail/thumb/p_20231023085609873_gP1v.jpg"
+            },
+            {
+                "name": "보금산, 마감산",
+                "lat": 37.312034,
+                "lng": 127.729533,
+                "desc": "보금산은 경기도 여주에 있는 높지 않은 산이다. 고향 뒷산처럼 편안하고 소박한 멋이 있는 곳이다. 산길이 아주 험하지 않아서 가족들이 함께 등산하기 좋은 곳이다. 산 근처에는 박물관이나 절, 왕릉 같은 옛날 유적들도 있어서 함께 구경할 수 있는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=g8YIeWvnN3o오갑산37.149355",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAswMHuXSH-DbZGQ5v8huyDsD872Cak3O_Hg&s"
+            },
+            {
+                "name": "오갑산",
+                "lat": 37.201886,
+                "lng": 127.685028,
+                "desc": "오갑산은 경기도 여주시의 가장 남쪽에 있는 산이다. 옛날 삼국 시대에는 오압산이라고 불렸던 곳이다. 고구려와 신라의 경계지역으로 서로 땅을 차지하려고 자주 싸웠던 역사적인 장소이다. 군인들이 산 정상에 머물면서 오갑산이라는 이름이 붙었다는 이야기가 전해온다. 이 산에는 부처상이 남아있고 아름다운 숲과 바위, 그리고 억새풀이 있는 곳이다.",
+                "youtube": "",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSghFanczXdSqnsvIjrOqL59go69medIlgtdg&s"
+            },
+            {
+                "name": "호수 - 이포보",
+                "lat": 37.404299,
+                "lng": 127.539764,
+                "desc": "남한강 중에서도 아름답기로 이름난 여주 구간에 건설된 3개의 보(이포보 · 여주보 · 강천보)는 홍수와 가뭄에 시달려 온 한강 유역의 치수를 담당하는 데 큰 역할을 하고 있다. 뿐만 아니라 지역 주민과 관광객들을 위한 복합 공간들이 들어서며 관광과 여가를 한꺼번에 즐길 수 있는 남한강의 랜드마크로 자리 잡았다. 특히 빼어난 절경과 문화유산 및 다양한 시설들과 연계된 자전거길, 도보길, 레저 및 생태 공간 등이 곳곳에 산재해 수도권의 새로운 명소로 거듭나고 있다.",
+                "youtube": "www.youtube.com/watch?v=zlbG8b50BDQ호수",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSzJ-ey5j25_p_gZ97LrTAC-wqRbd_7qGPkQ&s"
+            },
+            {
+                "name": "강천보",
+                "lat": 37.277078,
+                "lng": 127.681577,
+                "desc": "한강의 명물이던 황포돛배의 모습을 형상화한 강천보는 한강문화관, 강천섬 수변공원과 함께 천혜의 풍광을 자랑한다. 특히 물빛누리로 이름 지어진 보의 야간조명은 시간대별, 계절별로 각기 다른 분위기를 연출해 보는 이들의 탄성을 끌어낸다. 한강통합물관리센터 역할을 하는 강천보는 남한강 투어의 새로운 중심지로 인근에 신륵사관광지(금은모래지구), 금은모래강변공원, 황포돛배나루터 등 볼거리와 즐길거리가 이어져 감동을 더한다.",
+                "youtube": "www.youtube.com/watch?v=y4WC-fMrl5Y싸리산37.335189",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHbT0xncWgtRsj7H7qOE6cYPcPRXoES83LgA&s"
+            },
+            {
+                "name": "싸리산",
+                "lat": 37.300654,
+                "lng": 127.632028,
+                "desc": "여주 싸리산은 여주시 오금동과 현암동에 걸쳐 있는 해발 196m의 낮은 산으로, 여주시민들에게 사랑받는 등산 명소이다.. 싸리산 정상의 낙조(해가 지면서 생기는 붉은 햇빛)가 아름다운 것으로 유명하다. 또한, 싸리산은 도자기 원료 생산의 중심이었으며, \"바위에서 쌀이 나온다\"는 이야기가 전해져 내려오는 산이다.",
+                "youtube": "www.youtube.com/watch?v=u768114aCOQ세종대왕릉37.307593",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ1YtfmvWCN1JCNx5tRNc4hgK5ZjM-_IMINQ&s"
+            },
+            {
+                "name": "세종대왕릉",
+                "lat": 37.30689,
+                "lng": 127.603971,
+                "desc": "조선 제4대 왕 세종과 소헌왕후의 합장릉. 세종대왕의 업적을 기리고 그 시대의 문화를 체험할 수 있는 곳으로, 세종대왕이 평소 즐겼던 음식을 재현한 작은 음식점들이 있어 먹는 재미도 있다.",
+                "youtube": "www.youtube.com/watch?v=KuXpBOGeEQs명성황후",
+                "img": "https://img4.yna.co.kr/photo/yna/YH/2020/10/08/PYH2020100816540006100_P4.jpg"
+            },
+            {
+                "name": "명성황후 생가",
+                "lat": 37.261023,
+                "lng": 127.65572,
+                "desc": "조선 제26대 왕 고종의 왕비이자 대한제국의 황후인 명성황후의 생가.",
+                "youtube": "www.youtube.com/watch?v=DGwbiZETS-A파사성37.410541",
+                "img": "https://www.yjcf.or.kr/jnrepo/upload/editor/202106/0b41403dd59c489ca322abc835249210_1623305944873.jpg"
+            },
+            {
+                "name": "파사성",
+                "lat": 37.398616,
+                "lng": 127.548908,
+                "desc": "여주시와 양평군의 경계를 이루는 파사산(해발 200m) 정상의 능선을 따라 쌓은 삼국시대의 산성으로 여강길 8코스인 파사성길 트레킹 코스이자 사진 출사지로 소문난임. 감탄사가 절로 나오는 남한강과 이포보를 한눈에 조망할 수 있는 파노라마 뷰 맛집으로 유명함. (왕복 1시간 30분소요)",
+                "youtube": "https://www.youtube.com/watch?v=0gjHUT6zamY신륵사37.297576",
+                "img": "https://minio.nculture.org/amsweb-opt/multimedia_assets/37/12205/19217/c/12205-medium-size.jpg"
+            },
+            {
+                "name": "신륵사",
+                "lat": 37.294133,
+                "lng": 127.661654,
+                "desc": "신라시대에 창건된 천년고찰로, 남한강의 아름다운 경관과 어우러져 있음. 보물 제180호인 조사당과 보물 제225호인 다층석탑 등 다양한 문화재를 보유하고 있으며, 강가에 위치한 정자에서 바라보는 풍경이 매우 아름다움.",
+                "youtube": "www.youtube.com/watch?v=a9e7bM7tf9c효종대왕릉37.314387",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq1--cZwYIP53dOdtf56leu00_Oa0GjzYgHg&s"
+            },
+            {
+                "name": "효종대왕릉",
+                "lat": 37.307223,
+                "lng": 127.608575,
+                "desc": "조선 제17대 왕 효종과 왕비 인선왕후의 무덤.",
+                "youtube": "youtu.be/KuXpBOGeEQs?si=sAtiBkWRxrdckkuV&t=157고달사지37.393887",
+                "img": "https://i.namu.wiki/i/-afdfLIxrWHn0oBf401sWJxu54vMEpY7J6K20wl7zh19DK2ipMiinDeqkZ8vfXtqDJ4YE9wmaHhO3hvF0lECmA.webp"
+            },
+            {
+                "name": "고달사지",
+                "lat": 37.368383,
+                "lng": 127.652765,
+                "desc": "여주 고달사지는 경기도 여주에 있는 아주 오래된 절이 있단 자리이다. 신라 시대에 처음 세워졌고 고려 시대에는 나라의 보호를 받아 아주 큰 절이었다. 고달이라는 석공이 절을 짓고 스님이 되어 절 이름이 되었다는 옛날이야기가 전해온다. 절터에는 국보와 보물로 지정된 탑, 비석, 부처님 조각 같은 훌륭한 돌 문화유산들이 많이 남아 있다. 최근 조사로 절터의 크기도 알게 되었고, 이곳은 우리나라 옛날 절의 모습과 역사를 보여주는 아주 중요한 유적이다.",
+                "youtube": "www.youtube.com/watch?v=KPHF3sXWRiU영월루36.288973",
+                "img": "https://i.namu.wiki/i/Xfyoz2R-UbJcYdLKxmNonllsXnOfUZEoBQjct-rwJ51lGpPvXO8epDl2Q0CWQKMGFnzogRM0XkJKH2vZPNCo3g.webp"
+            },
+            {
+                "name": "영월루",
+                "lat": 37.291771,
+                "lng": 127.633932,
+                "desc": "여주대교 남단에 위치한 영월근린공원 내에 있는 누각으로, 남한강의 아름다움을 만끽할 수 있는 명소이자, 다양한 여주의 역사를 간직한 곳으로 강 건너편의 신륵사를 한눈에 조망할 수 있음. 영월루 아래에 있는 기암절벽에 마암이라는 유명한 바위가 있는데, 이 마암은 여주의 지명과 관련된 이야기가 전해진다.",
+                "youtube": "www.youtube.com/watch?v=v_9AtxK2fKc목아박물관37.288682",
+                "img": "https://devin.aks.ac.kr/image/9e9c83d8-0670-48cd-b7c0-bbdee7967af3?preset=page"
+            },
+            {
+                "name": "목아박물관",
+                "lat": 37.251412,
+                "lng": 127.688227,
+                "desc": "중요무형문화재 제 108호 목조각장수인 박찬수 선생이 설립하였으며 1989년 개관한 사립 박물관으로 본관은 지하 1층, 지상 3층으로 이루어져 있으며, 상설전시실과 기획전시실, 영상실, 유물 수장고 등이 있음",
+                "youtube": "https://www.youtube.com/watch?v=Z4CUuCmLx-4여주박물관37.299688",
+                "img": "https://devin.aks.ac.kr/image/3d8923ea-1ce1-4ddb-9cc7-0151fb107057?preset=page"
+            },
+            {
+                "name": "여주박물관",
+                "lat": 37.293405,
+                "lng": 127.653284,
+                "desc": "여주의 역사와 문화를 전시하는 박물관으로 여주의 역사와 문화를 이해하고, 다양한 유물을 감상할 수 있음.",
+                "youtube": "www.youtube.com/watch?v=DPtqNTiXMoE여주",
+                "img": "https://www.kctg.or.kr/common/attachFile/getAttachFileDownLoad.do?file_id=FILE_ID00010862&width=806"
+            },
+            {
+                "name": "신륵사 관광지 출렁다리",
+                "lat": 37.296456,
+                "lng": 127.655379,
+                "desc": "신륵사관광지와 금은모래관광지구를 잇는 길이 515m, 폭 2.5m의 보도 현수교. 높이 48m의 주탑 2개에서 비스듬히 드리운 케이블이 다리를 지탱하는 형태로, 주탑 근처에는 강물을 내려다볼 수 있는 강화유리 조망창이 2개 설치되어 있음. 주탑과 연결된 케이블에는 조명시설이 설치되어 야간에 화려한 조명을 감상할 수 있음.",
+                "youtube": "www.youtube.com/watch?v=HBP-h9812a0금은모래강변공원37.287019",
+                "img": "https://tour.paju.go.kr/upload/tour/2018/5/1/513691ad-c829-4415-887d-22b7d86553b3.jpg"
+            },
+            {
+                "name": "금은모래강변공원",
+                "lat": 37.294156,
+                "lng": 127.67441,
+                "desc": "남한강변에 위치한 공원으로 산책로와 자전거 도로, 축구장, 농구장 등의 체육시설이 잘 조성있음. 공원 내에는 수상레저센터가 있어 수상스키, 웨이크보드, 바나나보트 등의 수상레저를 즐길 수 있으며 캠핑장도 마련되어 있음.",
+                "youtube": "www.youtube.com/watch?v=Rezbe2Ir0ow황학산수목원37.278079",
+                "img": "https://yeojuuc.or.kr/images/sub/sub01/s06-02_2.jpg"
+            },
+            {
+                "name": "여주 황학산수목원",
+                "lat": 37.280145,
+                "lng": 127.648543,
+                "desc": "다양한 식물을 관찰하고 자연 속에서 힐링할 수 있는 수목원. 습지원, 석정원, 산열매원 등의 테마정원과 항아리정원, 미니식물원 등의 특별전시시설로 이루어져 있으며 숲해설 프로그램도 운영하고 있음.",
+                "youtube": "www.youtube.com/watch?v=PwSe4ZWL3SY여주",
+                "img": "https://bbkk.kr/d/t/12/1256_%EB%A9%94%EC%9D%B8%EC%82%AC%EC%A7%84.jpg"
+            },
+            {
+                "name": "여주 한글시장",
+                "lat": 37.297565,
+                "lng": 127.635431,
+                "desc": "여주장 500년 역사를 잇는 전통시장으로 매월 5, 10일 오일장에 방문하면 특별한 먹거리, 볼거리를 즐길 수 있음. 지역 농작물을 판매하는 파머스 마켓도 운영하고 있으며 원도심의 분위기를 느낄 수 있음",
+                "youtube": "https://www.youtube.com/watch?v=Uj2pcyo0EmE여주도자세상37.300321",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN2sjIGf9MMd8kkrUy_cav_zb1XnLSjd_Icg&s"
+            },
+            {
+                "name": "여주도자세상",
+                "lat": 37.294719,
+                "lng": 127.656728,
+                "desc": "경기도에서 운영하는 국내 최대 규모의 도자 쇼핑몰로, 도자기를 보고, 사고, 만들고, 즐길 수 있는 복합문화공간으로 도자기 매장, 도자 미술관, 카페, 경기 공예 창작 지원센터 그리고 도자기 체험장과 전시공간이 마련된 여주도자문화센터로 구성되어 있음.",
+                "youtube": "www.youtube.com/watch?v=s3qv2tLkuO4폰박물관37.293784",
+                "img": "https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=5f831cab-0943-4e11-8b9f-1f4c93ca5a9f"
+            },
+            {
+                "name": "폰박물관",
+                "lat": 37.265737,
+                "lng": 127.666244,
+                "desc": "세계 각국의 휴대전화를 전시하고 있는 이색 박물관. 약 3,000여 점의 전화기를 통해 100년이 넘는 통신의 역사를 한눈에 볼 수 있음.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "여주 곤충박물관",
+                "lat": 37.267498,
+                "lng": 127.660034,
+                "desc": "다양한 곤충과 파충류를 전시하고 있으며, 곤충표본 만들기, 유충 기르기 등의 체험 프로그램을 운영하고 있음.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "은아목장",
+                "lat": 37.21269,
+                "lng": 127.620263,
+                "desc": "가족단위 방문하기 좋은곳으로 낙농 체험을 할 수 있는 목장임. 치즈 만들기, 피자 만들기, 소 젖 짜기 등의 체험 프로그램을 운영하고 있음.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "황포돛배",
+                "lat": 37.294814,
+                "lng": 127.661817,
+                "desc": "황포돛배를 타고 남한강을 유람하며 여주의 역사와 문화를 체험할수 있음.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "여주 프리미엄 아울렛",
+                "lat": 37.241582,
+                "lng": 127.612563,
+                "desc": "국내 최초의 프리미엄 아울렛으로, 다양한 명품 브랜드가 입점해 있습니다.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "세종여주병원",
+                "lat": 37.301478,
+                "lng": 127.624963,
+                "desc": "여주시 하동에 위치한 주요 종합병원입니다.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "여주시청",
+                "lat": 37.298379,
+                "lng": 127.637149,
+                "desc": "여주시의 행정 업무를 총괄하는 시청입니다.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "여주역",
+                "lat": 37.282324,
+                "lng": 127.628292,
+                "desc": "경강선 여주역입니다.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "여주종합버스터미널",
+                "lat": 37.291344,
+                "lng": 127.634994,
+                "desc": "여주시의 시외 및 고속버스 운행의 주요 거점입니다.",
+                "youtube": "",
+                "img": ""
+            },
+            {
+                "name": "능서역 (세종대왕릉역)",
+                "lat": 37.294057,
+                "lng": 127.570642,
+                "desc": "경강선 능서역입니다.",
+                "youtube": "",
+                "img": ""
+            }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 있는지 확인
+            if (place.lat && place.lng) {
+                // 이 부분의 오타를 수정해야 합니다.
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
