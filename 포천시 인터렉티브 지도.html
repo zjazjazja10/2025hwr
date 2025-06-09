@@ -3,35 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포천 인터랙티브 지도</title>
+    <title>포천시 인터랙티브 지도</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        body { margin: 0; padding: 0; }
         #map { height: 100vh; }
-        .popup-img { width: 100px; height: auto; }
+        .popup-content { font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; }
+        .popup-content h3 { margin: 0 0 5px 0; font-size: 16px; }
+        .popup-content img { width: 100%; max-width: 200px; height: auto; border-radius: 5px; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // 포천시청 중심 좌표
-        const map = L.map('map').setView([37.8942, 127.2007], 12);
+        // 1. 지도 초기화 (포천시청 중심)
+        const map = L.map('map').setView([37.8949, 127.2001], 10);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+        // 2. 장소 데이터
         const places = [
-            // { name: "예시", lat: 37.89, lon: 127.20, desc: "설명", youtube: "", img: "" }
+            {
+                "name": "호수 - 산정호수",
+                "lat": 38.0714,
+                "lng": 127.32005,
+                "desc": "산에 있는 우물이라는 뜻인 산정호수는 이름 그대로 맑은 수질과 아름다운 산세를 자랑한다. 1925년 농수용저수지로 만들어졌으며, 명성산을 비롯해 여러 높은 산봉우리, 자인사와 등룡폭포, 비선폭포 등이 있다. 1977년 3월 국민관광지로 지정되어 많은 관광객이 찾고 있으며, 특히 봄‧가을 호수의 밤 안개가 절경을 이루어 호수주변 산책길에 유명세를 타고 있다. 주변에 놀이공원, 조각공원, 보트장, 수영장, 썰매장 등이 조성되었다.",
+                "youtube": "www.youtube.com/watch?v=VwELnqmdPmY강",
+                "img": "https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=64cd9f38-097c-43d4-85ce-965c16ac25ce"
+            },
+            {
+                "name": "한탄강",
+                "lat": 38.084833,
+                "lng": 127.217988,
+                "desc": "포천 한탄강은 우리나라에 있는 특별한 바위 절벽(주상절리)이 있는 강이다. 포천 한탄강 하늘다리는 이 멋진 강 위 아주 높이 만들어진 다리이다. 이 다리는 길이가 200미터나 되고 많은 사람들이 안전하게 건널 수 있도록 튼튼하게 지어진 곳이다. 다리 위에서는 강 아래에 있는 아찔하고 웅장한 절벽 풍경을 내려다볼 수 있는 곳이다. 하늘다리는 강 옆을 따라 걸으며 아름다운 자연을 즐길 수 있는 산책 코스와 연결되어 있는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=3u3Aqq9gdfk포천",
+                "img": "https://newsimg-hams.hankookilbo.com/2024/09/29/f3f79980-2425-4539-9e86-94ef620fa86d.jpg"
+            },
+            {
+                "name": "한탄강 현무암협곡, 비둘기낭폭포",
+                "lat": 38.08047,
+                "lng": 127.216355,
+                "desc": "비둘기낭폭포는 경기도 포천 한탄강에 있는 아주 멋진 폭포이다. 아주 옛날 화산이 터져서 만들어진 신기한 바위와 계곡 사이에 있는 곳이다. 옛날에는 비둘기들이 이곳에 둥지를 틀고 살았다고 해서 이름이 붙여졌다. 물이 떨어지는 모습과 주변 풍경이 아름다워서 구경하는 사람들이 많이 찾아오는 곳이다. 이곳을 보면 포천 주변 땅이 어떻게 생겨났는지 알 수 있어서 아주 중요한 장소이다. 천연기념물 제537호로 지정되었다.",
+                "youtube": "www.youtube.com/watch?v=NtEXyvcdRAY계곡",
+                "img": "https://www.hantangeopark.kr/img/sight_slide_08_04.jpg"
+            },
+            {
+                "name": "백운계곡",
+                "lat": 38.068,
+                "lng": 127.416343,
+                "desc": "백운계곡은 광덕산과 백운산 정상에서 서쪽으로 흘러내리는 맑고 깨끗한 물이 모여 이룬 골짜기다. 계곡의 길이가 10km이며 연못과 기암괴석이 한데어울려 아름다움을 빚어내고 있다. 백운계곡과 광덕고개에 이르는 길은 주변경관이 아름다워 드라이브 코스로 각광받고 있다.",
+                "youtube": "www.youtube.com/watch?v=0wkBHby5EfI계곡",
+                "img": "https://www.hantangeopark.kr/img/sight_img_23_01.jpg"
+            },
+            {
+                "name": "지장산계곡",
+                "lat": 38.10735,
+                "lng": 127.194517,
+                "desc": "지장산은 경기도 포천과 연천 사이에 있는 높이 877미터의 산이다. 이곳은 얼음처럼 차가운 물이 흐르는 계곡과 멋진 숲, 바위들이 있어서 경치가 아름다운 산이다. 산길을 따라 올라가면 다양한 나무와 바위를 구경하며 등산하는 재미가 있는 곳이다. 산 꼭대기에 올라가면 멀리 다른 산들과 넓은 들판을 한눈에 볼 수 있는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=GtXLSJjgqDg산",
+                "img": "https://mblogthumb-phinf.pstatic.net/MjAyNDA4MDNfMzkg/MDAxNzIyNjk0NDM5MDc2.95pE20KkalPNuv4L0TCR2PZSy5BLMIVYvIvMj9RbdBEg.9b_jlATFt2Vph1JDt86Ejqn7z4pjwerKxzGFKjer0REg.PNG/SE-407456d6-63fb-4565-86ec-2a5bb1dc7a87.png?type=w800"
+            },
+            {
+                "name": "명성산",
+                "lat": 38.082582,
+                "lng": 127.326565,
+                "desc": "명성산은 경기도 포천에 있는 높이 923미터의 산이다. 이 산은 '울음산'이라고 불리기도 하는 곳이다. 신라의 마지막 왕자인 마의태자가 나라가 망한 슬픔에 여기서 크게 울자, 산도 함께 울었다는 옛날이야기가 전해져 오는 곳이다. 가을에 은빛 억새풀이 아주 넓게 펼쳐져서 아름다운 곳이다. 산정호수와 연결되어 있어서 함께 구경하기 좋은 산이다.",
+                "youtube": "www.youtube.com/watch?v=6z_u9vb3pdg산",
+                "img": "https://img.khan.co.kr/news/2009/01/08/20090109.01100124000004.01L.jpg"
+            },
+            {
+                "name": "수원산",
+                "lat": 37.855292,
+                "lng": 127.246168,
+                "desc": "수원산은 경기도 포천의 중심에 있는 높이 710미터의 산이다. 이 산은 포천천이라는 중요한 강의 시작점이 되는 곳이다. 이 산에는 부부송이라고 불리는 두 그루의 소나무가 있다. 두 나무의 가지가 서로 얽혀 있어서 진짜 부부처럼 다정해 보이는 나무이다. 산 정상에는 멋진 전망대가 있어서 주변 풍경을 볼 수 있는 산이다.",
+                "youtube": "www.youtube.com/watch?v=lko1HwCOd_E산",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTJhTJLxn4MGGV88KWw1tSNYexY0q1dd1-Pg&s"
+            },
+            {
+                "name": "왕방산",
+                "lat": 37.89714,
+                "lng": 127.156391,
+                "desc": "왕방산은 경기도 포천에 있는 높이 737미터의 산이다. 이 산은 옛날 도선국사라는 스님이 살고 있을 때 임금님이 찾아와 격려하였다 해서 왕방산이 되었다고 한다. 지금은 옛날 절터에 왕산사라는 절이 다시 만들어진 곳이다. 왕방산의 맑은 물이 모여 호병골이라는 예쁜 계곡을 만드는 산이다.",
+                "youtube": "www.youtube.com/watch?v=1V8FHJWWqco호수",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCPtUD2lF6oFwhOGq5X7uEhstqvPFJrSuk9g&s"
+            },
+            {
+                "name": "고모호수공원",
+                "lat": 37.798974,
+                "lng": 127.163187,
+                "desc": "고모호수공원은 경기도 포천에 있는 예쁜 호수이다. 원래는 농사를 짓기 위해 물을 모아두던 저수지였다. 지금은 호수 주변에 산책길이 잘 만들어져 있어서 사람들이 걷기 좋은 곳이다. 호수와 주변의 아름다운 풍경을 보며 편안하게 쉬어갈 수 있는 곳이다. 주위에는 많은 카페와 음식점들이 밀집해 있어 사람들이 자주 찾는다.",
+                "youtube": "www.youtube.com/watch?v=YuUA7DIczus포천",
+                "img": "https://cdn.incheonnews.com/news/photo/202208/408583_208198_2820.jpg"
+            },
+            {
+                "name": "반월성",
+                "lat": 37.893867,
+                "lng": 127.216874,
+                "desc": "포천 반월성은 포천에 있는 아주 오래된 산성이다. 청성산이라는 산의 능선을 따라 돌을 쌓아 만들었던 곳이다. 삼국 시대에 나라를 지키기 위해 만들어진 것으로 생각되는 중요한 옛 성이다. 1998년에 우리나라에서 소중한 문화재(사적 제403호)로 정해 보호하고 있는 곳이다.",
+                "youtube": "youtu.be/bcciRXpx2po?si=-g_FE0nmla8qAPhO금수정38.029036",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsbuP57AlDqod63LvzBzJiR6w4lAK52U11Mg&s"
+            },
+            {
+                "name": "화산서원, 금수정",
+                "lat": 37.957682,
+                "lng": 127.18816,
+                "desc": "천 금수정은 포천 창수면에 있는 조선 시대에 지어진 예쁜 정자이다. 영평천이라는 강 옆 멋진 절벽 위에 세워져 있는 곳이다. 멋진 경치를 바라보며 시를 짓거나 그림을 그리고 이야기를 나누던 장소이다. 예전부터 경치가 아주 아름다워서 많은 사람들이 찾았던 곳이다.",
+                "youtube": "youtu.be/XKy_zAQWoYQ?si=El4Y8jU8AO0R1SEH포천향교37.890156",
+                "img": "https://pocheon.grandculture.net/Image?localName=pocheon&id=GC050P01367"
+            },
+            {
+                "name": "포천향교",
+                "lat": 37.887258,
+                "lng": 127.221317,
+                "desc": "포천향교는 포천에 있는 아주 오래된 옛날 학교이다. 옛날 훌륭한 학자들을 기리고 학생들을 가르쳤던 곳이다. 고려 시대에 처음 만들어졌다가 전쟁으로 부서지고 다시 지어진 곳이다. 유교를 가르치고 제사를 지내는 특별한 건물들이 있는 곳이다. 지금도 옛날 모습을 간직하고 있는 소중한 문화재이다.",
+                "youtube": "youtu.be/rtm00KDIowM?si=uUYZbOnvDtPUmIvq인평대군묘",
+                "img": "https://ggc.ggcf.kr/uploadimg/resize/aeec23b61545857286003.jpeg"
+            },
+            {
+                "name": "인평대군묘 및 신도비",
+                "lat": 37.942842,
+                "lng": 127.216745,
+                "desc": "인평대군묘는 경기도 포천에 있는 조선 시대 무덤이다. 이 무덤에는 인조 임금님의 아들인 인평대군과 그의 부인이 함께 묻혀 있는 곳이다. 인평대군은 병자호란으로 인해 조선이 청나라와의 전쟁에서 패하자 인질로 잡혀가기고 하고 그 이후에 두 나라와의 관계를 위해 사신으로 자주 왕래하여 조선을 위해 일한 역사적인 인물이다. 무덤 주변에는 돌로 만든 여러 가지 상과 조각들이 갖추어져 있는 곳이다. 다른 임금님들이 인평대군을 생각하며 쓴 글이 새겨진 비석도 옆에 있는 중요한 곳이다.",
+                "youtube": "www.youtube.com/watch?v=IcHTn3Ask0o포천방어벙커37.945581",
+                "img": "https://i.namu.wiki/i/jd3HHzBo4xfLCPVbuufWQKhlg5MJpHl17sEn4kLSZPWqg9-iW6ZdK7KqY-L2SggmOA0_6L-ciGrKRVPRuYeQMg.webp"
+            },
+            {
+                "name": "포천방어벙커",
+                "lat": 37.818456,
+                "lng": 127.234621,
+                "desc": "포천 방어벙커(抱川 防禦벙커)는 등록문화재 제578호로 소재지는 경기도 포천시 신북면 기지리 45번지이다. 포천 방어 벙커는 남과 북이 첨예하게 대치하고 있던 1948년에 북한군의 침공을 방어하기 위하여 세운 것이다. 당시 38도선 부근에 설치한 4개의 진지를 설치하여 북한군과 대치하고 있었다. 6·25 전쟁 당시 치열한 전투가 벌어졌던 곳이기도 하다. 6·25 전쟁 후 4개의 진지 중 3개소는 훼손되었고 포천 방어 벙커만 유일하게 남아 있다. 남북 간의 대립과 갈등이 첨예화되던 1948년경 남북 대치국면에서 발생할 수 있는 만일의 사태에 대비하여 남측에서 구축한 시설물로 6·25 전쟁당시 교전 흔적이 남아 있는 등 역사적 가치가 높다.",
+                "youtube": "www.youtube.com/watch?v=9k0oP7P6gvI구",
+                "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/zuEu7Fa8q1bKHxOXG6MUY5GYZJ0L2yMBG5jncOSC.jpg"
+            },
+            {
+                "name": "구 포천성당",
+                "lat": 37.898623,
+                "lng": 127.197702,
+                "desc": "이 건물은 육군 6군단(군단장 이한림 장군)이 지은 성당이다. 1990년 화재로 목조 마루바닥과 지붕틀 등이 소실되긴 하였으나 한국전쟁 직후에 건축된 석조 성당의 전형적인 의장적 특징(종탑과 뾰족한 아치 창호)과 공간적 특징(단일 홀로 구성된 강당형 평면), 화강석 조적 구법의 특징을 잘 간직하고 있다. 한국전쟁 이후 많은 교회 건물을 석조로 세웠지만 포천성당은 군부대가 직접 세운 것 중 유일하게 남아 있는 건물이다.",
+                "youtube": "www.youtube.com/watch?v=M1E_hNkB0Ks허브아일랜드37.965624",
+                "img": "https://minio.nculture.org/amsweb-opt/multimedia_assets/159/12800/21013/c/12800-medium-size.jpg"
+            },
+            {
+                "name": "허브아일랜드",
+                "lat": 37.994481,
+                "lng": 127.131483,
+                "desc": "1998년 10월, 허브아일랜드는 세계 각지의 대표적인 허브를 수집하는 목적으로 야외정원과 실내정원 등이 조성되었다. 현재는 13만평의 부지위에 허브의 원산지인 지중해의 “생활속의 허브”를 테마로 운영하고 있다. 베네치아, 만들기체험장, 허브식물박물관(2000평의 내부에서 340종의 허브관람), 야외정원, 플라워정원, 허브갈비, 아테네홀, 향기가게, 베이커리, 허브힐링센터 등으로 이루어져 있다.",
+                "youtube": "www.youtube.com/watch?v=WUY7V8uJO4I포천아트밸리37.923267",
+                "img": "https://www.pcgoodnews.co.kr/data/photos/20230834/art_16927561419501_63625a.jpg"
+            },
+            {
+                "name": "포천아트밸리",
+                "lat": 37.940561,
+                "lng": 127.23637,
+                "desc": "포천 아트밸리는 옛날에 돌을 캐던 곳이었는데, 지금은 아름다운 호수와 절벽이 있는 특별한 곳이다. 이곳은 자연과 예술 작품을 함께 보면서 마음을 편안하게 할 수 있는 장소이다. 2014년에는 별과 우주를 관찰할 수 있는 천문과학관도 만들어진 곳이다. 그래서 어린이들의 공부 장소나 연인들의 나들이 장소로 많은 사람들이 찾아오는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=3rLOc-bg3280국립수목원37.753025",
+                "img": "https://contents-cdn.viewus.co.kr/image/2025/02/CP-2025-0009/image-a3bef247-764b-4c59-bb98-fd6f924abb85.jpeg"
+            },
+            {
+                "name": "국립수목원",
+                "lat": 37.759294,
+                "lng": 127.168677,
+                "desc": "국립수목원으로 알려진 생태계의 보고인 포천 국립수목원은 500만㎡에 조성된 산림박물관 뿐 아니라 3,344종의 식물, 15개의 전문 수목원으로 이루어진 인조림, 8km에 이르는 삼림욕장, 백두산 호랑이등 15종의 희귀동물 야생동물원까지 보유하고 있다. 세계적 희귀조인 크낙새 서식지이며 하늘 다람쥐, 장수하늘소 등 천연기념물 20종이 서식하고 있다.",
+                "youtube": "www.youtube.com/watch?v=FqF_cX_TZgY신북온천37.973549",
+                "img": "https://kna.forest.go.kr/kfsweb/cmm/fms/getImage.do?atchFileId=FILE_000000020039480&fileSn=1&thumbYn="
+            },
+            {
+                "name": "신북온천",
+                "lat": 37.989255,
+                "lng": 127.101994,
+                "desc": "신북온천이 사철 북적이는 이유는 ‘스프링폴(Spring Fall)’이라는 이름의 워터파크와 온천풀 덕분이다. 스프링폴의 여러 시설 가운데 우선 실내에 마련된 바데풀은 독일 바데하우스를 닮은 시설과 효능을 갖추고 있다. 중앙의 워터폴을 중심으로 목의 근육을 풀어주는 넥샤워, 기포욕 등을 바데풀 곳곳에서 즐기게 된다. 30~40℃의 적정한 수온으로 근육을 풀어줄 뿐만 아니라, 풀에 몸을 담그고 가벼운 운동을 하며 심신의 스트레스를 없애는데 그만이다.",
+                "youtube": "www.youtube.com/watch?v=sbHdaJO5I8o어메이징파크37.926428",
+                "img": "https://cdn.imweb.me/upload/S202306288aab8438fffbb/a2bfecf4865e5.jpg"
+            },
+            {
+                "name": "어메이징파크",
+                "lat": 38.070008,
+                "lng": 127.142329,
+                "desc": "어메이징파크는 포천에 있는 자연 속 과학 놀이터이다. 이곳에는 200개가 넘는 과학 기구들을 직접 만져보면서 과학 원리를 재미있게 배울 수 있는 곳이다. 자연 속에서 긴 나무다리나 흔들 다리를 걷거나 신기한 분수를 보면서 신나는 체험을 할 수 있는 곳이다. 어린이부터 어른까지 누구나 과학과 자연을 함께 즐길 수 있는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=riQampNlwE0평강랜드38.050864",
+                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtbrDyWjMSwjPhnM68MdnkMgauCGsIBsydyQ&s"
+            },
+            {
+                "name": "평강랜드",
+                "lat": 38.08316,
+                "lng": 127.302904,
+                "desc": "평강랜드는 경기도 포천에 있는 사계절 내내 재미있게 즐길 수 있는 넓은 공원이다. 이곳은 공원 전체에 반려견과 함께 다닐 수 있고, 1,000평이나 되는 아주 큰 애견 운동장에서 강아지들이 신나게 뛰어놀 수 있는 곳이다. 아이들이 자연 속에서 자유롭게 뛰어놀 수 있는 놀이터와 버려진 나무로 만든 커다란 거인 조형물을 찾아보는 재미있는 스탬프 투어도 즐길 수 있는 곳이다. 계절마다 아름다운 자연 속에서 예쁜 사진을 찍고 가족, 친구들과 행복한 추억을 만들 수 있는 곳이다.",
+                "youtube": "www.youtube.com/watch?v=1KKxz7yttNI서운동산37.771800",
+                "img": "https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_105617/20211117061006_8rpvi/jpg"
+            },
+            {
+                "name": "서운동산",
+                "lat": 37.797277,
+                "lng": 127.199141,
+                "desc": "서운동산은 경기도 포천에 있는 아주 넓고 아름다운 정원이다. 이곳에는 예쁜 꽃과 나무, 호수가 있어서 산책하거나 구경하기 좋은 곳이다. 어린이 동물원이나 물놀이장, 낚시터처럼 아이들이 재미있게 놀 수 있는 시설도 많은 곳이다. 드라마나 영화도 찍는 유명한 장소이며, 가족이나 회사 사람들이 와서 쉬고 함께 즐기기 좋은 곳이다.",
+                "youtube": "www.youtube.com/watch?v=E_F9d-TnmvA예술정원1999",
+                "img": "https://ggc.ggcf.kr/uploadimg/resize/543445e41540393208000.jpeg"
+            },
+            {
+                "name": "교동장독대마을 자연예술테마파크",
+                "lat": 37.924735,
+                "lng": 127.233699,
+                "desc": "아트밸리1999는 자연이 만든 신기한 모습과 예술 작품을 함께 볼 수 있는 특별한 공원이다. 여기서는 아주 커다란 조각 작품이나 수억 년 된 긴 나무 화석 같은 놀라운 것들을 볼 수 있는 곳이다. 보기 어려운 여러 가지 선인장들도 만날 수 있고 예쁜 카페도 있어서 쉬어가기 좋은 곳이다. 가족이나 연인들이 와서 신기한 자연과 예술을 보며 즐거운 시간을 보내는 인기 있는 장소이다.",
+                "youtube": "www.youtube.com/watch?v=9F_9OApbsmc코버월드",
+                "img": "https://tong.visitkorea.or.kr/cms/resource/76/3474376_image2_1.jpg"
+            },
+            {
+                "name": "코버월드 화폐박물관",
+                "lat": 37.899679,
+                "lng": 127.213547,
+                "desc": "코버월드 화폐 박물관은 경기도 포천에 있는 돈을 모아 놓은 박물관이다. 이곳에서는 여러 나라의 돈을 보면서 역사와 문화를 재미있게 배울 수 있는 곳이다. 악기나 옷 체험, 위조지폐 감별 같은 신기하고 다양한 활동도 해볼 수 있는 곳이다. 돈을 통해 전 세계와 친해지고 지식도 쌓을 수 있는 유익한 곳이다.",
+                "youtube": "www.youtube.com/watch?v=OcJz-lZaL-U의료법인",
+                "img": "https://cdn.nbntv.co.kr/news/photo/202407/3020945_231262_13.jpg"
+            },
+            {
+                "name": "일심의료재단 포천우리병원",
+                "lat": 37.827485,
+                "lng": 127.147914,
+                "desc": "포천시 소흘읍에 위치한 주요 종합병원입니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "경기도의료원 포천병원",
+                "lat": 37.905412,
+                "lng": 127.198766,
+                "desc": "포천시 신읍동에 위치한 공공병원입니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "국군포천병원",
+                "lat": 37.916621,
+                "lng": 127.311234,
+                "desc": "군 장병들을 위한 병원으로, 일반인도 일부 이용 가능한 시설이 있습니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "강병원",
+                "lat": 37.898321,
+                "lng": 127.204688,
+                "desc": "포천시 포천로에 위치한 병원입니다. (종합병원 아님, 규모는 다를 수 있음)",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "포천시청",
+                "lat": 37.894966,
+                "lng": 127.200162,
+                "desc": "포천시의 행정 업무를 총괄하는 시청입니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "포천시외버스터미널",
+                "lat": 37.897593,
+                "lng": 127.203669,
+                "desc": "포천시의 시외버스 운행의 주요 거점입니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "포천 반월아트홀",
+                "lat": 37.895906,
+                "lng": 127.212236,
+                "desc": "다양한 공연과 전시를 즐길 수 있는 포천시의 문화예술 공간입니다.",
+                "youtube": "", "img": ""
+            },
+            {
+                "name": "포천시립도서관",
+                "lat": 37.894574,
+                "lng": 127.201646,
+                "desc": "포천시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+                "youtube": "", "img": ""
+            }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
