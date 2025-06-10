@@ -21,17 +21,321 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+
+        // 2. 장소 데이터
         const places = [
-            // { name: "예시", lat: 37.74, lon: 127.03, desc: "설명", youtube: "", img: "" }
+  {
+    "name": "하천 - 부용천",
+    "lat": 37.745835,
+    "lng": 127.057054,
+    "desc": "부용천은 의정부를 대표하는 자연생태 공원으로 시민들이 자연속에서 여유롭게 휴식하고 다양한 문화공연 및 레포츠를 즐길 수 있는 의정부의 명소이다. 부용천은 시민들의 휴식공간과 문화생활을 함께 공유 할 수 있는 목재 테크식 수변무대가 조성되어 주말에는 가족과 함께 다양한 문화공연을 접할 수 있다. 또한 하천 내 징검다리, 자전거 및 보행자 도로를 설치하여 시민들이 더욱 편안하고 여유롭게 여가를 즐길 수 있다. 특히 부용천의 야간 분수쇼는 다양한 색상의 경관 조명을 설치하여 화려하고 아름다워서 하천의 경관을 한층 돋보이게 한다.",
+    "youtube": "https://www.youtube.com/watch?v=2ida1RCpYkE",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MDNfMjMg%2FMDAxNzIyNjkyMjU5MjE3.wRM548G_nQo2OX1PqQ_gAP0DD72yvZO66ezU2gqSE4Ig.EZtz0baNVusvVuoRpMjxnlcuCEckLXyJfcDoyYRP4p8g.JPEG%2F20240803_175347.jpg&type=sc960_832"
+  },
+  {
+    "name": "망월사",
+    "lat": 37.706871,
+    "lng": 127.022134,
+    "desc": "의정부 망월사는 경기도 의정부 도봉산에 있는 아주 오래된 절이다. 이 절은 신라 시대 선덕여왕 때 왕실이 잘 되기를 바라는 마음으로 지어진 곳이다. 절 이름 망월사는 옛날 신라의 수도(서라벌)에 있는 달을 바라보며 소원을 빌었다는 뜻을 담고 있는 이름이다. 옛날부터 많은 훌륭한 스님들이 와서 공부하고 수행했던 곳이다. 아름다운 산속에서 평화로운 분위기를 느낄 수 있는 소중한 절이다.",
+    "youtube": "https://www.youtube.com/watch?v=dI80X7XkVq0",
+    "img": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2018%2F10%2F29%2F08%2F31%2Fretina-month-company-3780626_1280.jpg&type=sc960_832"
+  },
+  {
+    "name": "원효사",
+    "lat": 37.709527,
+    "lng": 127.027984,
+    "desc": "원효사는 경기도 의정부에 있는 아주 오래된 절이다. 신라 시대에 불교를 널리 알렸던 원효대사님이 머물렀던 곳이라고 전해지는 절이다. 절 안에는 원효대사님의 동상도 세워져 있는 곳이다. 아주 옛날에 쓰여진 불경책(묘법연화경)도 보관하고 있는 곳이다. 경기도에서 중요한 전통 사찰로 보호하고 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=EV9aWyH9MYI",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20160615_282%2Fcws0108_1465948522975bDzF7_JPEG%2FIMG_1255-1111.jpg&type=sc960_832"
+  },
+  {
+    "name": "하천 - 백석천",
+    "lat": 37.733809,
+    "lng": 127.040578,
+    "desc": "백석천은 의정부 도심을 지나는 하천이다. 옛날에는 도시를 만들면서 하천 위를 덮어서 사람들이 가까이 갈 수 없었던 곳이다. 하지만 2016년에 다시 깨끗한 물이 흐르고 자연이 살아나는 하천으로 만들어졌다. 지금은 사람들이 하천 옆을 걸으며 자연을 느끼고 편안하게 쉴 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=GA-tEBz2l-8",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F021%2F2016%2F09%2F07%2F2016090701031227101001_b_99_20160907143318.jpg&type=sc960_832"
+  },
+  {
+    "name": "미술도서관",
+    "lat": 37.745215,
+    "lng": 127.106194,
+    "desc": "의정부 미술도서관은 경기도 의정부에 있는 미술에 대한 것을 배울 수 있는 특별한 도서관이다. 이곳은 책을 빌릴 수 있는 도서관과 그림이나 조각 같은 미술 작품을 볼 수 있는 미술관이 합쳐진 곳이다. 미술에 대한 여러 가지 전문 책들을 자유롭게 보고 빌릴 수 있는 곳이다. 전시회나 그림 그리기 같은 재미있는 미술 체험 프로그램도 많이 열리는 곳이다. 미술을 좋아하는 사람이나 배우고 싶은 사람들에게 아주 좋은 장소이다.",
+    "youtube": "https://www.youtube.com/watch?v=jXCkhlL0vZI",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEwMDRfMjc4%2FMDAxNjY0ODUzODU1ODI0.Bf1Y17W3rO0D10X0wx_s-MqzOuoMhRPMBAhAc032XX8g.g5uNzhiHwC2v_cwMUcI2Kd_MXN7m-qLVhD401ld_TwYg.JPEG.kcw960115%2FIMG_6359.jpg&type=sc960_832"
+  },
+  {
+    "name": "송산사지",
+    "lat": 37.747672,
+    "lng": 127.109578,
+    "desc": "송산사지는 의정부에 있는 옛날 사당 터이다. 조선이 세워졌을 때 새로운 나라에 벼슬하지 않고 옛 고려에 대한 충성심을 지켰던 여섯 분을 기리던 곳이다. 옛날에는 사당 건물이 있었지만 없어지고, 지금은 여섯 분의 이름을 새긴 비석과 위패를 모시고 있는 곳이다. 집터나 사당을 보통 남쪽으로 짓는데, 이곳은 북쪽으로 지어져 있는 특별한 유적이다.",
+    "youtube": "https://www.youtube.com/watch?v=lUrBp8ukxu0",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MjJfMTIw%2FMDAxNjUzMTc0NzgzOTIy.NGJfI2OVh0GKEF38H0Im2kqYjtoXhTWYLc-skIuwIDMg.9f4kCUKUPNMg96lvNnGxz9YJyTU4-n11pVYvVgLoGDcg.JPEG.senspace01%2F20220521%25A3%25DF164611.jpg&type=sc960_832"
+  },
+  {
+    "name": "산 - 수락산",
+    "lat": 37.71622,
+    "lng": 127.066323,
+    "desc": "수락산은 서울과 경기도 의정부, 남양주 사이에 있는 높이 638미터의 산이다. 이 산에는 위의 사진인 도정봉처럼 멋진 바위로 된 봉우리들이 많이 있는 곳이다. 도정봉은 높이가 526미터로 수락산의 주봉으로 올라가는 길 중 하나이다. 도정봉을 지나 기차바위, 철모바위 같은 재미있는 모양의 바위들도 볼 수 있는 곳이다. 산속에는 시원한 폭포와 옛날 절들도 있어서 구경할 거리가 많은 곳이다. 산을 오르면서 탁 트인 주변 경치를 시원하게 볼 수 있는 곳이다. 산길이 많이 험하지 않고 찾아가기 편해서 많은 사람들이 등산하러 오는 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=mBSFRuAUWCs",
+    "img": "https://i.namu.wiki/i/O4eQ6rE8dUHeD7QRyjR8m02iJ9bL76mp7GZjJ0-MNyMukwI2EUFAWnSrbloOofqeZhJ4HI0ICrfo2VLR2wNfYg.webp"
+  },
+  {
+    "name": "의정부 예술의 전당",
+    "lat": 37.734078,
+    "lng": 127.033975,
+    "desc": "의정부 예술의전당은 경기도 의정부시청 근처에 있는 큰 공연장과 전시장이다. 이곳은 의정부 사람들이 다양한 문화생활을 즐기도록 만들어진 곳이다. 큰 공연장과 작은 공연장이 있고, 그림이나 다른 작품들을 전시하는 공간도 있는 곳이다. 의정부 음악극 축제처럼 재미있는 공연과 행사들이 많이 열리는 곳이다. 의정부와 경기 북부 지역의 중요한 문화 공간이다.",
+    "youtube": "https://www.youtube.com/watch?v=Omrub_WJqns",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEyMDVfMTgx%2FMDAxNzMzMzgyMTY5MDM2.VPwat6z2mXr1dbE-J2CrDfRgmJpcOa6A12trzMa2nKUg.rM84Y6HSq33AFtQL2D9ZYq-sHnpPqkZFVVm1kaaQ3uIg.JPEG%2F900%25A3%25DF20241205%25A3%25DF143300.jpg&type=sc960_832"
+  },
+  {
+    "name": "회룡사",
+    "lat": 37.721391,
+    "lng": 127.027598,
+    "desc": "회룡사는 의정부 사패산 산속에 있는 아주 오래된 절이다. 이 절은 조선을 세운 이성계 임금님과 관련된 옛날이야기가 전해져 오는 곳이다. 이성계는 이 절에서 무학대사와 함께 창기도를 올렸다는 설화가 있으며, 이성계가 왕위에 오른 후 회룡사라고 이름을 지었다고 합니다. 또한 이방원은 아버지 이성계와 무학대사에게 회룡사를 찾아가 예의를 표했다고도 합니다. 절 안에는 오래된 돌탑이나 돌로 만든 물통 같은 문화재들이 있는 곳이다. 아름다운 산과 함께 옛날 역사와 불교 문화를 느낄 수 있는 소중한 절이다.",
+    "youtube": "https://www.youtube.com/watch?v=Q72ahzUyKkY",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzA4MTNfMzQg%2FMDAxNTAyNTkzMzQyMzcx.63hryDtaOgSuWYLomBF51fcA9PL5gNz3wOGUoyx1_y8g.PEFRH7ls35ljTNGrOWAWFYeD5XTS0t18ioM1jFHg75Yg.JPEG.fimm58%2FDSC_0050.JPG&type=sc960_832"
+  },
+  {
+    "name": "음악도서관",
+    "lat": 37.728558,
+    "lng": 127.053851,
+    "desc": "의정부 음악도서관은 경기도 의정부에 있는 음악을 배울 수 있는 특별한 도서관이다. 이곳은 책뿐만 아니라 음악 시디, 엘피판 같은 다양한 자료들을 모아 놓은 곳이다. 특히 재즈, 힙합 같은 블랙뮤직을 주제로 꾸며져 있는 특별한 공간이다. 음악을 듣고 책도 보면서 음악을 더 깊이 느끼고 즐길 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=rl2_LI_Y-AM",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMDVfMjIg%2FMDAxNzA5NjI2Mzg0MjQx.AJ_wP12s3eYDRAm_UO5y0ykZ0IB0GEI1OS8hPNvtflMg.vrjKJ3xAH6MMZF_EyMmWv5BgT-XNLGcUmFPzJWts4zYg.JPEG%2F_DSF3882.jpg&type=a340"
+  },
+  {
+    "name": "산 - 사패산",
+    "lat": 37.72402,
+    "lng": 127.009869,
+    "desc": "사패산은 의정부 서쪽에 있는 높이 552미터의 산이다. 이 산은 북한산 국립공원의 가장 북쪽에 있는 산이다. 옛날 조선 시대 임금님이 딸에게 주었던 산이라고 해서 사패산이라는 이름이 붙여졌다고 한다. 숲이 아주 울창하고 계곡물도 깨끗해서 자연 속에서 쉬기 좋은 산이다. 정상의 넓은 바위에서 주변 풍경을 시원하게 볼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=rzQ2ib_4Km0",
+    "img": "https://i.namu.wiki/i/W9PZ7BFoMpgG9aDaBpM-r0kHDHkyA1Ms5sYLQydgOlGVVBE3oZGJxQyiqlGL6TYPDuI6ErxuNmG_gI3ZnYIBGw.webp"
+  },
+  {
+    "name": "의정부 부대찌개 거리",
+    "lat": 37.74405,
+    "lng": 127.049567,
+    "desc": "의정부 부대찌개 거리는 맛있는 부대찌개 가게들이 모여 있는 특별한 곳이다. 부대찌개는 옛날 전쟁 후에 미국 군대에서 나온 햄과 소시지에 우리나라 김치와 고추장 같은 재료를 넣어 끓여 먹으면서 시작된 음식이다. 서양 재료와 우리나라 재료가 만나 만들어진 독특하고 맛있는 찌개이다. 많은 사람들이 이 맛있는 부대찌개를 먹으러 이 거리를 찾아오는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=t88S1-u-S74",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA2MDZfNDgg%2FMDAxNjIyOTg5MTc0Mjg4.HbJTIFd4enS05vtx72x5oXNuehiemwaYrLWXRJ5wCO8g.P6W2K-hxRfBQdiAHCUk5J4PozO71QPaM33JSndbJ6pMg.JPEG.guddn90%2FKakaoTalk_20210428_182628167_05.jpg&type=sc960_832"
+  },
+  {
+    "name": "의정부 제일시장",
+    "lat": 37.740045,
+    "lng": 127.05032,
+    "desc": "의정부 제일시장은 의정부에 있는 전통 시장이다. 1978년에 만들어져서 지금은 가게가 600개가 넘는 큰 시장이다. 옷, 신발, 음식처럼 여러 가지 물건들을 파는 가게들이 모여 있는 곳이다. 시장 가운데에서는 재미있는 공연도 볼 수 있고 사람들이 모여 이야기 나누는 장소이다. 경기 북부 지역에서 가장 큰 전통 시장으로, 옛날부터 지금까지 많은 사람들이 찾아오는 중요한 시장이다.",
+    "youtube": "https://www.youtube.com/watch?v=Tck6twKIBl0",
+    "img": "https://search.pstatic.net/sunny/?src=http%3A%2F%2Fbbsj.kr%2Fdata%2Feditor%2F2001%2F2ab23546829757572d24f9c1fe4d78d0_1577944110_6413.jpg&type=sc960_832"
+  },
+  {
+    "name": "하천 - 중랑천",
+    "lat": 37.725752,
+    "lng": 127.051899,
+    "desc": "중랑천은 경기도 의정부를 흐르는 중요한 하천이다. 이 하천은 사람들이 자연과 함께 편안하게 쉬고 생명을 배울 수 있는 공간으로 만들어지고 있다. 하천 옆에는 공연을 볼 수 있는 곳이나 산책로, 운동 시설 같은 다양한 시설을 만들 계획이다. 물도 깨끗하게 하고 주변을 예쁘게 꾸며서 시민들이 즐거운 시간을 보낼 수 있는 곳으로 만들고 있는 하천이다.",
+    "youtube": "https://www.youtube.com/watch?v=U3kYznTojxM",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA3MDhfMjQ1%2FMDAxNjI1NzU1NzY2ODA4.qbHKAshapfKHcMEjCvyG6ZjJOtStKEbHdo40aLdLAMgg.PE6eP7Sj_WaO1KeCjYcryoGxjKQSmnm_Z4xL2CHv6TMg.PNG.ccity_ujb%2Fimage11.png&type=sc960_832"
+  },
+  {
+    "name": "노강서원",
+    "lat": 37.70015,
+    "lng": 127.062969,
+    "desc": "노강서원은 경기도 의정부에 있는 옛날 학교이자 사당이다. 조선 시대 박태보라는 훌륭한 신하의 뜻을 기리기 위해 처음 만들어진 곳이다. 박태보는 잘못된 일에 대해 임금님께 바른말을 하다가 벌을 받았지만 충성심을 잃지 않았던 분이다. 원래 서울에 있었지만 전쟁 후에 의정부로 옮겨 다시 지은 곳이다. 박태보의 충성심과 학문을 배우고 기억하는 중요한 장소이다.",
+    "youtube": "https://www.youtube.com/watch?v=u5kYQkHVgDU",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMTlfMTQ1%2FMDAxNzEwODQxODQxNzYx.0b4YgaM2AVDXUdFrbE2hfvwUofpZK9ACiu_GwO46P5Ug.xioVG2516CmaFPBWMPfs0D7q-v-kcLXpSD-eo1_m_uUg.JPEG%2F240317_%25BC%25F6%25B6%25F4%25BB%25EA_%25C0%25C7%25C1%25A4%25BA%25CE_%252889%2529.jpg&type=sc960_832"
+  },
+  {
+    "name": "산 - 천보산",
+    "lat": 37.765392,
+    "lng": 127.066877,
+    "desc": "천보산은 경기도 의정부와 양주, 포천 경계에 걸쳐 있는 산이다. 높이가 336.8미터로 아주 높지는 않지만, 산등성이에 바위 봉우리와 소나무 숲이 멋있는 산이다. 옛날에는 이 주변에서 인삼을 많이 키웠다고 한다. 산 아래에는 아주 오래된 절터인 회암사지와 관련된 중요한 보물들이 많이 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=WNP7cOggq6g",
+    "img": "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P6086"
+  },
+  {
+    "name": "산 - 원도봉산",
+    "lat": 37.707103,
+    "lng": 127.03677,
+    "desc": "원도봉산은 서울 도봉구와 경기도 의정부, 양주 경계에 있는 높이 739.5미터의 산이다. 이 산은 북한산 국립공원에 속해 있으며, 자운봉, 선인봉처럼 멋진 바위 봉우리들이 많은 곳이다. 산 전체가 큰 바위로 이루어져 있어서 특별한 산이다. 산속에는 천축사, 망월사 같은 오래된 절들도 있는 곳이다. 아름다운 바위와 계곡, 그리고 절을 구경하며 등산하기 좋은 산이다.",
+    "youtube": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrjxeFoAuY2dyujMl4B328G9BAfTzLDrgUbQ&s"
+  },
+  {
+    "name": "산 - 부용산",
+    "lat": 37.73376,
+    "lng": 127.098769,
+    "desc": "부용산은 경기도 의정부에 있는 높이 210.6미터의 낮은 산이다. 이 산은 높지 않아서 산 정상까지 오르는 데 시간이 얼마 걸리지 않는 산이다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "산 - 홍복산",
+    "lat": 37.763698,
+    "lng": 127.00356,
+    "desc": "홍복산은 의정부에 있는 높이 463.3미터의 산이다. 이 산은 옛날에 황골산이라고도 불렸던 곳이다. 임진왜란 때 우리나라 군인이 왜군과 싸워 이겼다는 이야기가 전해져 내려오는 산이다. 싸움에서 크게 다쳤지만 살아남은 군인의 이야기 때문에 홍복산(큰 복을 받은 산)으로 이름이 바뀌었다는 이야기가 있다. 옛날 역사 이야기가 담겨 있는 산이다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "산 - 용암산",
+    "lat": 37.757446,
+    "lng": 127.147184,
+    "desc": "용암산은 경기도 포천, 남양주, 의정부의 경계에 있는 높이 475.4미터의 산이다. 산에 바위가 많고 산 모양이 용처럼 생겼다고 해서 용암산이라는 이름이 붙었다고 한다. 산 아래에는 광릉 수목원이 있어서 자연을 구경하기 좋은 곳이다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "성불사",
+    "lat": 37.72703,
+    "lng": 127.019647,
+    "desc": "성불사는 경기도 의정부에 있는 아주 오래된 절이다. 1894년에 처음 보덕암이라는 이름으로 시작되었다. 전쟁 때문에 부서지기도 했지만 1963년에 다시 지으면서 성불사라는 이름으로 불리게 된 곳이다. 절에서 나온 옛날 기와 조각에 용 그림이 있어서 임금님과 관련이 있었을 것으로 생각되는 곳이다. 우리나라에서 중요하게 여기는 전통 사찰이다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부시청소년수련관",
+    "lat": 37.73523,
+    "lng": 127.034003,
+    "desc": "청소년들을 위한 다양한 문화, 교육, 체험 프로그램을 제공하는 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부 소풍길",
+    "lat": 37.737166,
+    "lng": 127.092041,
+    "desc": "의정부 외곽을 따라 조성된 산책과 트레킹 코스입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "직동근린공원",
+    "lat": 37.739245,
+    "lng": 127.031897,
+    "desc": "의정부 시내에 위치한 넓은 근린공원으로, 시민들의 휴식 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "추동근린공원",
+    "lat": 37.744471,
+    "lng": 127.070966,
+    "desc": "의정부의 또 다른 주요 근린공원으로, 산책과 운동을 즐기기 좋습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부 경전철",
+    "lat": 37.729187,
+    "lng": 127.095455,
+    "desc": "의정부 시내를 연결하는 독특한 교통수단이자 도시를 구경하는 수단입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부을지대학교병원",
+    "lat": 37.751504,
+    "lng": 127.050917,
+    "desc": "의정부 금오동에 위치한 대형 대학병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부성모병원",
+    "lat": 37.758757,
+    "lng": 127.077746,
+    "desc": "의정부 호원동에 위치한 가톨릭계 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "경기도의료원 의정부병원",
+    "lat": 37.741147,
+    "lng": 127.042536,
+    "desc": "경기도에서 운영하는 공공병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부백병원",
+    "lat": 37.745338,
+    "lng": 127.062068,
+    "desc": "의정부시 금오동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "센트럴병원",
+    "lat": 37.336992,
+    "lng": 126.727979,
+    "desc": "의정부시에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부시청",
+    "lat": 37.73819,
+    "lng": 127.033861,
+    "desc": "의정부시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부역",
+    "lat": 37.738797,
+    "lng": 127.045869,
+    "desc": "수도권 전철 1호선과 의정부 경전철이 지나는 주요 환승역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "회룡역",
+    "lat": 37.724598,
+    "lng": 127.047225,
+    "desc": "수도권 전철 1호선과 의정부 경전철이 만나는 환승역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "망월사역",
+    "lat": 37.710668,
+    "lng": 127.047412,
+    "desc": "수도권 전철 1호선 망월사역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의정부종합버스터미널",
+    "lat": 37.74513,
+    "lng": 127.055159,
+    "desc": "의정부시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  }   
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
