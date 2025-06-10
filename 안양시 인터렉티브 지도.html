@@ -21,17 +21,296 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+        // 2. 장소 데이터
         const places = [
-            // { name: "예시", lat: 37.39, lon: 126.93, desc: "설명", youtube: "", img: "" }
+  {
+    "name": "안양천",
+    "lat": 37.398612,
+    "lng": 126.930334,
+    "desc": "안양천은 여러 가지 물풀과 물고기, 그리고 계절마다 오는 철새들이 함께 살고 있는 좋은 강이다. 강 옆으로는 자전거길과 산책길이 잘 만들어져 있어서 사람들이 쉬거나 자연을 배울 수 있는 도심 속의 특별한 장소이다.",
+    "youtube": "https://youtu.be/d6Mh26ypZqs?si=YQZi5AtrnYe9g660",
+    "img": "https://bing.com/th/id/OIP.1R-dKSMixy1DBGi4EzIu0AHaE8?cb=thvnextc2&rs=1&pid=ImgDetMain"
+  },
+  {
+    "name": "삼성산",
+    "lat": 37.425921,
+    "lng": 126.929338,
+    "desc": "삼성산은 안양시 근처에 있는 산으로, 관악산과 연결되어 있는 산이다. 이곳에는 안양사, 삼막사처럼 아주 오래된 옛날 절들이 있는 곳이다. 절을 구경하거나 산책하며 자연을 느낄 수 있는 산이다.",
+    "youtube": "https://youtu.be/ePzxcwiWJLE?si=wNTeLStDonpjQqMQ",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA3MTFfMTAg%2FMDAxNjg5MDgxMjU1MjAz.zKlb0arnuH1SAsP6lMlH6FfrLDH_cMGFC7P0Voi93zUg.Dbod4dwTNpp1WZBgX6OzAcKACzxMSOfaDi-59hU-dTIg.JPEG.sghj6717%2F20230522_163411.jpg&type=sc960_832"
+  },
+  {
+    "name": "관악산",
+    "lat": 37.436581,
+    "lng": 126.957689,
+    "desc": "관악산은 안양시와 서울, 과천시의 경계에 있는 높이가 632미터인 산이다. 옛날부터 경기도의 중요한 다섯 개의 산 중 하나로 알려진 산이다. 다른 중요한 산들이 북쪽에 있는 것과 달리, 관악산은 남쪽에 있는 산이다.",
+    "youtube": "https://youtu.be/S_XBZ-CNpXE?si=0HLNw926nM_T5J4X",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA0MTNfMjgg%2FMDAxNzEyOTc3NzU5MTE3.gfO1BQI-kuPlhqJCNS96p4M9pfdm7wQEKzLRlJmz9Jgg.A5glJYI2ma-rr8-f-rKZn-gHoRF0YVWlgFNbKhge32Ug.JPEG%2F20210714_163222.jpg&type=sc960_832"
+  },
+  {
+    "name": "망해암",
+    "lat": 37.411728,
+    "lng": 126.926701,
+    "desc": "망해암(望海庵)이란 바다를 볼 수 있는 암자라는 뜻으로, 신라 원효대사가 창건하고 조선 순조 3년 정조대왕의 모친인 혜경궁 홍씨가 중건했다고 알려진 유서 깊은 사찰이다. 절에는 경기도의 중요한 문화유산으로 지정된 아주 큰 부처님 돌상이 모셔져 있는 곳이다. 각박한 도시의 일상을 벗어나, 아름다운 서해바다 낙조를 감상하며 나만의 고즈넉한 시간을 가져볼 수 있다.",
+    "youtube": "https://youtu.be/lhyC_GmuHrg?si=chPl1dA82gwwYm34",
+    "img": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Ftong.visitkorea.or.kr%2Fcms%2Fresource%2F14%2F2671614_image2_1.jpg&type=sc960_832"
+  },
+  {
+    "name": "만안교",
+    "lat": 37.414222,
+    "lng": 126.911985,
+    "desc": "만안교(萬安橋, 경기도 유형문화유산)는 조선 정조대왕이 아버지(사도 세자)의 능을 참배하러 갈 때, 불편한 임시 다리를 없애고 평소 백성들도 편히 이용할 수 있도록 만든 석조 다리다. 조선 후기 대표적인 무지개(아치형)돌다리인 만안교를 거닐어 보면 나도 모르게‘만 년 동안의 편안함(萬安)’을 느낄 수 있다.",
+    "youtube": "https://youtu.be/GisEmY2cBKQ?si=OFbaB-f_9vbveNAG",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5026%2F2012%2F09%2F07%2F201209075856691_59_20120907152537.jpg&type=sc960_832"
+  },
+  {
+    "name": "삼막사",
+    "lat": 37.434676,
+    "lng": 126.936044,
+    "desc": "삼막사는 아주 먼 옛날 신라 시대에 세워진 오래된 절이다. 이곳에는 옛날에 만들어진 탑이나 부처님처럼 중요한 문화재가 많이 남아 있는 곳이다. 사람들이 남녀근석이라는 신기한 바위를 만지며 소원을 빌고, 주변에서는 등산이나 계곡 물놀이도 즐길 수 있는 곳이다.",
+    "youtube": "https://youtu.be/OuAJG4QyL1A?si=nZ_BLoUlFJchKlxC",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAyMDdfMTk5%2FMDAxNjQ0MjA2NjgxODQ2.uYW1UwJZPZDEZDWvTYYNfNeDC-mTfYdNOAHlLGalkuEg.TbmnuxZcV2qtmqMNeYtNSktWVYMpG8K_KPHHgLTHuUsg.JPEG.7lavender7%2F20220205%25A3%25DF145959.jpg&type=sc960_832"
+  },
+  {
+    "name": "안양사",
+    "lat": 37.422547,
+    "lng": 126.924081,
+    "desc": "안양사는 옛날 고려를 세운 왕건 임금님이 삼성산에서 신기한 오색 구름을 보고 스님의 말에 따라 세웠다는 이야기가 있는 절이다. 원래 절이 있던 자리는 지금 박물관이 되었고, 지금의 안양사는 옛날 절의 뜻을 기리며 다시 만든 곳이다.",
+    "youtube": "https://youtu.be/OuAJG4QyL1A?si=2XYrlfYBBjo_qKpW",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MTNfODAg%2FMDAxNzI2MjE3Mjc2ODE0.B_4VBH7Ktqiw6Xy5x4j9CceCwjjCZLvClOBk-WZJLiYg.vTXInY2UDWlZ0CdE65gLnZhWryY6AyQXrMuoH65O9Dsg.JPEG%2FJSK_4786.jpg&type=sc960_832"
+  },
+  {
+    "name": "안양예술공원",
+    "lat": 37.419154,
+    "lng": 126.919697,
+    "desc": "안양예술공원은 옛날 안양유원지였던 곳이 2005년에 여러 예술 작품들을 설치하면서 새롭게 바뀐 공원이다. 이곳에서는 야외에 놓인 신기하고 재미있는 예술 작품들과 옛날부터 있던 건물들을 보면서 즐겁게 산책하고 구경할 수 있는 곳이다.",
+    "youtube": "https://youtu.be/1vtCUIcUIcE?si=euGAmuttQbAfnnQz",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20140723_284%2Ftndnjs03_140611219894976Olj_JPEG%2FDSC00363.JPG&type=sc960_832"
+  },
+  {
+    "name": "평촌중앙공원",
+    "lat": 37.389719,
+    "lng": 126.959405,
+    "desc": "평촌중앙공원은 안양에서 가장 유명한 공원으로, 많은 나무와 예쁜 물 시설, 그리고 운동할 수 있는 곳과 예술 작품들이 함께 있는 넓은 공원이다. 이곳에서는 일년 내내 여러 가지 재미있는 행사와 큰 벼룩시장이 열려서 사람들이 자주 찾아와 편하게 쉬고 즐기는 곳이다.",
+    "youtube": "https://youtu.be/U5hsZugDNjU?si=658wrYyGCMIzLb_D",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20130724_188%2Fgeonak0219_1374659551025eUE9f_JPEG%2F201002271340468_L929H9TF.jpg&type=sc960_832"
+  },
+  {
+    "name": "병목안 시민공원",
+    "lat": 37.384526,
+    "lng": 126.908861,
+    "desc": "병목안시민공원은 일제강점기부터 1980년대까지 철도용 자갈 채취를 위한 채석장 부지를 친환경적 휴식공간으로 탄생시킨 곳으로 인공폭포, 사계절 정원, 잔디광장, 어린이놀이터 등을 갖추고 있다. 또한 인근에는 수도권 피크닉 명소로 각광받고 있는 캠핑장, 글램핑장과 수리산 트레킹 코스가 연계되어 있어 가족 나들이 장소로 안성맞춤이다.",
+    "youtube": "https://youtu.be/74PCHa7y_Mc?si=lr17bbffHPpPI1xL",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzA0MTBfMjA1%2FMDAxNDkxNzg0MzkwMDY1.RgodlY3Win8cp5SVmgoHtIPbqZRqLwZuFgwkwcRLwxwg.kc-riBd1ZOeMKbU211uQRtKNvu7wwUMUqlyMw2a-doYg.JPEG.so_moim%2FIMG_2729.jpg&type=sc960_832"
+  },
+  {
+    "name": "안양종합운동장",
+    "lat": 37.40533,
+    "lng": 126.946283,
+    "desc": "프로 축구팀 FC안양과 프로 농구팀 안양KGC의 경기를 관람할 수 있는 곳. 경기가 없는 날이라도 괜찮다. 배드민턴장, 탁구장, 수영장, 빙상장 등 다양한 체육시설을 저렴하게 이용할 수 있다.",
+    "youtube": "https://youtu.be/NtyS1mqis_4?si=Eb8JwMBnwK1uRd6k",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5154%2F2021%2F05%2F22%2F0000373409_001_20210522101407717.jpg&type=sc960_832"
+  },
+  {
+    "name": "김중업 건축박물관",
+    "lat": 37.418469,
+    "lng": 126.917746,
+    "desc": "건축가 김중업의 작품 세계를 엿볼 수 있는 박물관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양1번가",
+    "lat": 37.400471,
+    "lng": 126.922196,
+    "desc": "안양의 대표적인 번화가이자 쇼핑, 문화, 젊음의 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "인덕원사거리",
+    "lat": 37.402208,
+    "lng": 126.976756,
+    "desc": "안양과 의왕, 과천을 잇는 교통 요충지이자 상권이 발달한 지역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양새물공원",
+    "lat": 37.415692,
+    "lng": 126.890354,
+    "desc": "안양시 만안구에 위치한 시민들의 휴식 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양박물관",
+    "lat": 37.41838,
+    "lng": 126.918276,
+    "desc": "안양의 역사와 문화를 보여주는 유물들을 전시하고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양아트센터",
+    "lat": 37.38473,
+    "lng": 126.931298,
+    "desc": "다양한 공연과 전시를 즐길 수 있는 안양시의 문화예술 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양중앙시장",
+    "lat": 37.397615,
+    "lng": 126.919713,
+    "desc": "안양의 대표적인 전통시장 중 하나로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "만안아트홀",
+    "lat": 37.384692,
+    "lng": 126.93131,
+    "desc": "안양 만안구에 위치한 공연 및 전시 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한림대학교 성심병원",
+    "lat": 37.391605,
+    "lng": 126.961746,
+    "desc": "안양시 동안구에 위치한 주요 대학병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양샘병원",
+    "lat": 37.393488,
+    "lng": 126.924493,
+    "desc": "안양시 만안구에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "메트로병원",
+    "lat": 37.378407,
+    "lng": 126.935475,
+    "desc": "안양시 만안구에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "효산의료재단 안양샘병원",
+    "lat": 37.393488,
+    "lng": 126.924452,
+    "desc": "안양시 동안구에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평촌우리병원",
+    "lat": 37.401175,
+    "lng": 126.947594,
+    "desc": "안양시 동안구에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양시청",
+    "lat": 37.394446,
+    "lng": 126.956816,
+    "desc": "안양시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "만안구청",
+    "lat": 37.386721,
+    "lng": 126.932505,
+    "desc": "안양시 만안구의 행정 업무를 담당하는 구청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동안구청",
+    "lat": 37.392611,
+    "lng": 126.95138,
+    "desc": "안양시 동안구의 행정 업무를 담당하는 구청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양역",
+    "lat": 37.401223,
+    "lng": 126.922644,
+    "desc": "수도권 전철 1호선 안양역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "범계역",
+    "lat": 37.389873,
+    "lng": 126.950792,
+    "desc": "수도권 전철 4호선 범계역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평촌역",
+    "lat": 37.394271,
+    "lng": 126.963831,
+    "desc": "수도권 전철 4호선 평촌역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "인덕원역",
+    "lat": 37.401583,
+    "lng": 126.976695,
+    "desc": "수도권 전철 4호선 인덕원역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양역 시외버스 정류장",
+    "lat": 37.40123,
+    "lng": 126.921625,
+    "desc": "안양역 앞의 주요 버스 환승 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안양시립평촌도서관",
+    "lat": 37.396107,
+    "lng": 126.957741,
+    "desc": "평촌 지역의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
