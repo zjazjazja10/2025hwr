@@ -20,19 +20,249 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
-        const places = [
-            // { name: "예시", lat: 37.54, lon: 127.21, desc: "설명", youtube: "", img: "" }
+        // 2. 장소 데이터
+        const places =    
+          [
+  {
+    "name": "검단산",
+    "lat": 37.521835,
+    "lng": 127.247407,
+    "desc": "검단산(657m)은 하남시를 대표하는 명산으로, 수도권에 위치해 등산객의 발길이 끊이지 않는다. 한성백제 500년 도읍지였던 하남 위례성을 지키던 영산으로, '검단'은 거룩한 제단을 의미한다. 백제 시대 왕들이 제사를 올린 흔적이 곳곳에 남아 있으며, 현재도 산신제가 이어지고 있다. 정상은 넓고 시야가 탁 트인 공터로 전망이 뛰어나다.",
+    "youtube": "youtu.be/FXNMUovE3Zk?si=rw6QKD4rnsriZkiz한강생태공원37.581169",
+    "img": "https://www.hanam.go.kr/site/www/images/contents/cts3336_img1.jpg"
+  },
+  {
+    "name": "한강생태공원",
+    "lat": 37.575089,
+    "lng": 127.195991,
+    "desc": "한강생태공원은 미사경정공원 일대 하천변 991,000㎡에 위치한 자연 생태공원이다. 인위적인 요소를 최소화해 자연 그대로의 생태계를 보존하고 있으며, 시민들의 산책 코스로 인기다. 다양한 시설을 갖추어 여가 공간으로 활용되고 있다.",
+    "youtube": "youtu.be/EX49jDnq64g?si=onOaI7NfYIBZKzDc하남",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9nPYV6SVOX5uMpJOi5DROUCLP3uDLZpT_-w&s"
+  },
+  {
+    "name": "하남 동사지, 동사지 오층석탑, 삼층석탑",
+    "lat": 37.516994,
+    "lng": 127.185416,
+    "desc": "하남 동사지는 경기도 하남에 있는 아주 오래된 절터이다. 이 절터는 통일신라 시대부터 고려 시대에 걸쳐 절이 있었던 곳으로 생각되는 중요한 역사 유적이다. 절터에는 하남 동사지 오층석탑과 하남 동사지 삼층석탑이라는 두 개의 멋진 돌탑이 서 있다. 하남 동사지 오층석탑은 고려 시대에 만들어진 탑으로 나라의 보물로 지정되어 있다.",
+    "youtube": "youtu.be/NVFwFHvKgck?si=nTd7CWk52VpTsgSU선법사",
+    "img": "https://www.heritage.go.kr/unisearch/images/history_site/thumb/2021031515293402.JPG"
+  },
+  {
+    "name": "하남 선법사, 교산동 마애약사여래좌상",
+    "lat": 37.51798,
+    "lng": 127.208775,
+    "desc": "하남 선법사는 경기도 하남시에 있는 작은 절이다. 이곳에는 바위에 새겨진 하남 교산동 마애약사여래좌상이라는 높이가 93cm 정도 되는 부처님 그림이 있는데, 이 그림은 우리나라의 보물로 지정되어 있는 중요한 문화재이다.",
+    "youtube": "youtu.be/2olWjnaXyNg?si=o9LOos2hzqDPW8Bz하남",
+    "img": "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F265E534751F36FD30D"
+  },
+  {
+    "name": "하남 미사리 유적",
+    "lat": 37.578635,
+    "lng": 127.201935,
+    "desc": "미사리에 있는 선사시대 유적으로, 미사리는 원래 한강에 있는 섬이었으나 조정경기장이 만들어지면서 육지쪽과 연결되었다. 이곳에서는 신석기 시대부터 청동기 시대, 백제 시대까지 다양한 시대의 집터나 생활 도구들이 발견되어 옛날 사람들의 생활 모습을 알 수 있는 중요한 곳이다.",
+    "youtube": "youtu.be/e73lZICJ_6I?si=9YJSA4PKJt3cbVM8이성산성37.525299",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/TITw2zEeMwZSAut7jWJRdAxSefWZKVso3MKoDMYP.jpg"
+  },
+  {
+    "name": "이성산성",
+    "lat": 37.545618,
+    "lng": 127.185177,
+    "desc": "이성산성은 경기도 하남시에 있는 아주 오래된 산성으로, 옛날 삼국 시대인 신라 때 만들어진 곳이다. 이 성은 나라에서 중요한 역사 유적(사적 제422호)으로 정해졌고, 한강 근처에서 중요한 군사 기지 역할을 했던 곳이다.",
+    "youtube": "youtu.be/d_MmeIDWakM?si=ZtDyJxJBbQu72R8G구산성당37.576940",
+    "img": "https://www.heritage.go.kr/unisearch/images/history_site/thumb/2022040813452300.JPG"
+  },
+  {
+    "name": "구산성당",
+    "lat": 37.574673,
+    "lng": 127.190852,
+    "desc": "구산성당은 경기도 하남시 미사강변도시에 있는 아주 오래된 천주교 성당이다. 1836년에 작은 기도 모임(공소)으로 시작하여 옛날 천주교를 믿기 힘들었던 시기에도 신앙을 지켰고, 1956년에 공소건물이 세워지고 1979년 6월 30일 본당으로 승격했다.",
+    "youtube": "youtu.be/FroG5anflkU?si=4YVlUwKGsxFMwbog광주향교35.145836",
+    "img": "https://cdn.a-news.kr/news/photo/202312/12397_15184_4630.jpg"
+  },
+  {
+    "name": "광주향교",
+    "lat": 37.522295,
+    "lng": 127.249164,
+    "desc": "광주향교는 아주 오래전 조선 시대에 학생들이 공부하고 훌륭한 옛 성현들께 제사를 지내던 지방의 학교이다. 이 향교는 조선 태조 때쯤(1392년) 세워진 것으로 생각되며 경기도 하남시에 있어서 옛날 교육과 문화를 알 수 있는 중요한 곳이다.",
+    "youtube": "youtu.be/PeX9LPLztqg?si=uL5EifbA8mFhLKiL하남",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/sQdxZBcZ4blOENAWuegyEcQKHVatQeZg0kvClXCf.jpg"
+  },
+  {
+    "name": "하남 유니온타워 파크",
+    "lat": 37.546857,
+    "lng": 127.219428,
+    "desc": "하남 유니온파크는 쓰레기나 하수 처리 시설을 땅 아래에 잘 만들어 놓고, 그 위에는 사람들이 와서 놀고 쉴 수 있는 넓은 공원을 만든 곳이다. 이곳에는 물놀이 시설, 운동장 같은 재미있는 공간이 있고, 105미터 높이의 유니온타워에 올라가 하남의 아름다운 경치를 한눈에 볼 수 있는 곳이다.",
+    "youtube": "youtu.be/42UVBvX1W0c?si=4lTf63IhY1KkLheA나무고아원37.582250",
+    "img": "https://newsimg-hams.hankookilbo.com/2022/11/23/ff0c2dc0-feb2-4e4d-8a22-be79e1201c9e.jpg"
+  },
+  {
+    "name": "나무고아원",
+    "lat": 37.564773,
+    "lng": 127.196019,
+    "desc": "나무고아원은 도시를 만들 때 버려질 뻔한 나무들을 옮겨와서 잘 돌보고 키워 다시 좋은 나무로 만드는 곳이다. 이곳에는 소나무, 은행나무 등 46가지나 되는 다양한 나무들이 자라고 있어서, 자연을 배우고 편안하게 쉬어갈 수 있는 하남의 새로운 인기 장소이다.",
+    "youtube": "www.youtube.com/watch?v=FPS8LPT8AdI일가기념관37.558880",
+    "img": "https://www.hanam.go.kr/site/www/images/contents/cts3356_img1.jpg"
+  },
+  {
+    "name": "일가기념관",
+    "lat": 37.534243,
+    "lng": 127.183228,
+    "desc": "일가기념관은 우리나라 농촌과 사회 발전을 위해 지도자들을 길렀던 일가 김용기 선생님의 가르침을 기리고 배우기 위해 세워진 곳이다. 이곳에는 김용기 선생님과 관련된 옛날 물건들과 여러 자료들이 전시되어 있는 곳이다.",
+    "youtube": "youtu.be/SH4mJz2g8Ao?si=j6kcBRhxDNucwC1X하남역사박물관37.545530",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnj9qktzdTUqz4FQNG8EPmcCKAKe4tdDLvaQ&s"
+  },
+  {
+    "name": "하남역사박물관",
+    "lat": 37.534243,
+    "lng": 127.205945,
+    "desc": "하남은 선사시대부터 근현대에 이르기까지 유구한 역사와 풍부한 유적·유물을 지닌 역사문화의 도시이다. 하남역사박물관은 하남의 문화유산을 수집·보존·연구하며 전시와 교육을 통해 시민과 공유하고 있다.",
+    "youtube": "youtu.be/S7wGri4AW7E?si=uq1itSZJxfBBJRec하남시민청소년수련관37.553372",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/a7afeb041598635373847.jpeg"
+  },
+  {
+    "name": "하남시민청소년수련관",
+    "lat": 37.546193,
+    "lng": 127.190532,
+    "desc": "하남시민청소년수련관은 하남시에 사는 어린이와 청소년들이 이용하는 곳이다. 이곳은 여러 가지 재미있는 활동과 교육 프로그램을 배우고 체험할 수 있는 곳이다. 젊은 친구들이 배우고 놀면서 몸과 마음을 건강하게 키울 수 있도록 돕는 곳이다.",
+    "youtube": "www.youtube.com/watch?v=Ybyr-x4Rj2Y스타필드",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGV2kDpac0Yuq5xXfRoZRuMpz0FbxeKRVUrw&s"
+  },
+  {
+    "name": "스타필드 하남",
+    "lat": 37.545712,
+    "lng": 127.223847,
+    "desc": "대규모 복합 쇼핑몰로 쇼핑, 식사, 여가 활동을 한 번에 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남시 덕풍근린공원",
+    "lat": 37.536881,
+    "lng": 127.197676,
+    "desc": "도심 속에 위치한 휴식 공간으로, 산책과 운동을 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남문화예술회관",
+    "lat": 37.544615,
+    "lng": 127.207019,
+    "desc": "다양한 공연과 전시를 즐길 수 있는 하남시의 문화 예술 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남시청",
+    "lat": 37.539365,
+    "lng": 127.214614,
+    "desc": "하남시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남시청역",
+    "lat": 37.540486,
+    "lng": 127.214296,
+    "desc": "서울 지하철 5호선 하남시청역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남검단산역",
+    "lat": 37.539946,
+    "lng": 127.223057,
+    "desc": "서울 지하철 5호선 하남검단산역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "미사역",
+    "lat": 37.563226,
+    "lng": 127.192682,
+    "desc": "서울 지하철 5호선 미사역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남버스터미널",
+    "lat": 37.539068,
+    "lng": 127.23014,
+    "desc": "하남시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남종합운동장",
+    "lat": 37.56683,
+    "lng": 127.193959,
+    "desc": "다양한 체육 시설을 갖춘 하남시의 주요 스포츠 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남시 신장도서관",
+    "lat": 37.538046,
+    "lng": 127.2144,
+    "desc": "하남시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "미사도서관",
+    "lat": 37.567565,
+    "lng": 127.187379,
+    "desc": "미사지구에 위치한 지역 도서관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "신장시장",
+    "lat": 37.538152,
+    "lng": 127.206391,
+    "desc": "하남시의 주요 전통시장 중 하나입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "하남수산물시장",
+    "lat": 37.548876,
+    "lng": 127.184685,
+    "desc": "신선한 수산물을 구매할 수 있는 시장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한강유역환경청",
+    "lat": 37.569826,
+    "lng": 127.195547,
+    "desc": "한강 수계의 환경 관리를 담당하는 기관입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
-</html>
