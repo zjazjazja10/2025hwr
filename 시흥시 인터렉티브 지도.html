@@ -21,17 +21,256 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const places = [
-            // { name: "예시", lat: 37.38, lon: 126.81, desc: "설명", youtube: "", img: "" }
+        // 2. 장소 데이터
+        const places =[
+  {
+    "name": "소래산",
+    "lat": 37.45154,
+    "lng": 126.779081,
+    "desc": "소래라는 이름은 소라처럼 생겼거나 냇가에 숲이 많아서 불리게 되었다는 이야기가 있는 곳이다. 해발 299.4m의 소래산에는 운동 시설이나 독서의 숲 같은 쉴 곳이 있고, 산 중턱에는 보물로 지정된 큰 부처님 그림(마애보살입상)도 볼 수 있는 곳이다. 부천과 인천, 시흥의 경계에 있어 많은 사람들이 즐겨찾는 산이다.",
+    "youtube": "https://youtu.be/79TSR-HOS7Y?si=cxMBOxh0Bt14p4Mu",
+    "img": "https://siheung.grandculture.net/Image?localName=siheung&id=GC069P00963"
+  },
+  {
+    "name": "호조벌",
+    "lat": 37.403401,
+    "lng": 126.811788,
+    "desc": "호조벌은 조선시대 임진왜란, 병자호란 때문에 힘들었던 백성들을 위해 바다를 막아 농사지을 땅으로 만든 곳이다. 이곳에는 전 세계에 몇 마리 없는 희귀한 새(저어새)나 금개구리처럼 여러 귀한 생물들이 살고 있는 중요한 곳이다. 호조벌은 우리에게 맛있는 쌀을 주고 홍수도 막아주는 등 사람과 자연 모두에게 꼭 필요한 소중한 장소이다.",
+    "youtube": "https://youtu.be/rel6UTLSjxE?si=ze59VftZgLFvbuGb",
+    "img": "https://siheung.grandculture.net/Image?localName=siheung&id=GC069P01285"
+  },
+  {
+    "name": "월곶포구",
+    "lat": 37.388397,
+    "lng": 126.73738,
+    "desc": "시흥 월곶포구는 바다 옆에 있어서 신선한 해산물을 맛볼 수 있고, 특히 해가 질 때 멋진 풍경을 볼 수 있는 곳이다. 이곳은 옛날 기차가 다니던 철길 옆에 있고, 지하철(수인선 월곶역)을 타고 갈 수 있어서 친구나 가족과 함께 바다를 느끼며 쉬기 좋은 곳이다.",
+    "youtube": "https://youtu.be/dQdR5k0c1y8?si=1xwEcgNeLQd-Lc5S",
+    "img": "https://www.shtimes.kr/data/photos/20230831/art_16911167387312_209bfa.jpg"
+  },
+  {
+    "name": "은계호수공원",
+    "lat": 37.445965,
+    "lng": 126.806181,
+    "desc": "은계호수공원은 시흥시 은행동에 있는 큰 호수 공원으로, 2022년부터 사람들이 찾아와 편안하게 쉴 수 있도록 만들어진 곳이다. 이곳은 멋진 분수와 조명, 산책로가 있고 야외무대에서는 공연도 열려 많은 시민들이 좋아하는 시흥의 대표적인 휴식 공간이다.",
+    "youtube": "https://youtu.be/ql_Aot5VarI?si=qxSRZhSfL4ePbU_F",
+    "img": "https://i.namu.wiki/i/bgujEvVHJQ03eAk_cCvYeo9hAwfGiYTC83wZYZhgPhiGCF3vNHTQ7XPw8fGjQaB1WRi8lV4Lm06dA32elAxJ1g.webp"
+  },
+  {
+    "name": "군자봉",
+    "lat": 37.360653,
+    "lng": 126.795439,
+    "desc": "군자봉은 높지 않지만 산봉우리가 연꽃처럼 생겨서 군자봉이라는 이름이 붙여졌다는 이야기가 있는 산이다. 이곳에서는 마을과 주민들이 잘 지내기를 바라는 500년이 넘는 아주 오래된 성황제(경기도 무형문화재)가 매년 열리는 곳이다.",
+    "youtube": "https://youtu.be/xbYOz_VbWm0?si=uiYqPr3pXQcWi-SK",
+    "img": "https://siheung.grandculture.net/Image?localName=siheung&id=GC069P00877"
+  },
+  {
+    "name": "물왕호수",
+    "lat": 37.381638,
+    "lng": 126.835431,
+    "desc": "시흥시에서 가장 큰 호수인 물왕호수는 옛날에 시흥군과 부천군의 이름을 따 흥부저수지라고 불렸던 곳이다. 이곳은 호수 주변에 산책로가 있고 낮에는 예쁜 꽃과 나무를, 밤에는 아름다운 조명을 볼 수 있어서 사람들이 쉬어가기 좋은 시흥의 대표적인 명소이다.",
+    "youtube": "https://youtu.be/CFuYB3PZD94?si=i3kcs8FoOEkDxH8o",
+    "img": "https://ilyo.co.kr/contents/article/images/2024/0324/1711284087978277.jpg"
+  },
+  {
+    "name": "오이도 유적",
+    "lat": 37.342814,
+    "lng": 126.69548,
+    "desc": "오이도 유적은 오이도 섬 전체에 걸쳐 아주 오래전 신석기 시대부터 통일신라 시대까지 사람들이 계속 살았던 곳이다. 이곳에서는 옛날 집터나 조개껍데기 무덤, 돌도끼 같은 여러 유물들이 발견되어 바닷가 사람들이 어떻게 살았는지 알 수 있는 귀중한 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=KWhZ8KcRNys",
+    "img": "https://access.visitkorea.or.kr/bfvk_img/call?cmd=VIEW&id=278e7820-b998-4f93-96f1-d68490022475&"
+  },
+  {
+    "name": "방산동 청자와 백자요지",
+    "lat": 37.414728,
+    "lng": 126.774097,
+    "desc": "방산동 청자와 백자요지’는 통일신라 말기에 도입된 벽돌가마에서 고려 초기의 청자와 백자를 생산했던 흔적을 보여주는 중요한 문화재이다. 포리초교 후문에서 방산동가마터까지 조성된 약1km의 체험로를 따라 걸으면서 사철 아름다운 마을풍경과 도자 조형물을 볼 수 있다.",
+    "youtube": "https://youtu.be/gqPgyroMlMI?si=jWPnkQC7upirzd0z",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/fRWfTkqEEm2YGEwm6Cha3oUmE0Vipxzue5hyA9cu.jpg"
+  },
+  {
+    "name": "소래산 마애보살입상",
+    "lat": 37.454328,
+    "lng": 126.781378,
+    "desc": "시흥 소래산 마애보살입상은 소래산 중턱의 커다란 바위에 새겨진 높이 약 12.3미터의 아주 큰 부처님 그림이다. 이 그림은 보물로 지정될 만큼 중요한 역사적 가치를 가지고 있고, 얼굴 모습이나 옷 주름에서 옛날 고려 시대의 특징을 잘 보여주는 것이다.",
+    "youtube": "https://youtu.be/OOIBa5GfWtE?si=qMKf6w50b5PyIJYT",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/fLDh3FIOAKNkPZHEpg1xMVDJlJYNaSZX1QaQbZO1.jpg"
+  },
+  {
+    "name": "생금집",
+    "lat": 37.350513,
+    "lng": 126.758112,
+    "desc": "생금집은 시흥 죽율동에 있는 옛날 금녕 김씨 가족이 12대째 아주 오랫동안 살았던 전통적인 집이다. 이곳에는 황금 닭 등에 얽힌 재미있는 전설이 전해지고, 시흥의 옛 생활 모습을 볼 수 있는 중요한 곳(향토유적)이다.",
+    "youtube": "https://youtu.be/9CTR3yHURBY?si=Ut5u7b72Nb8doENz",
+    "img": "https://minio.nculture.org/amsweb-opt/multimedia_assets/61/85756/93022/c/%EC%8B%9C%ED%9D%A5-%EC%83%9D%EA%B8%88%EC%A7%91-%281%29_rev-medium-size.jpg"
+  },
+  {
+    "name": "능곡동 선사유적공원",
+    "lat": 37.375115,
+    "lng": 126.811789,
+    "desc": "시흥 능곡동 선사유적공원은 땅을 개발하다가 발견된 곳으로, 아주 오래전 신석기 시대부터 조선 시대까지 여러 시대 사람들이 살았던 집터나 무덤 같은 중요한 옛날 흔적들이 많이 남아있는 곳이다. 이곳은 옛날 집들을 다시 만들거나 유적을 볼 수 있게 꾸며 놓아서 직접 보고 체험하며 역사를 배울 수 있는 공원이다.",
+    "youtube": "https://youtu.be/QjN79LrHb0Y?si=PtHJe2vnO3CjXTcT",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0WHTDBXuMqL8xLHuCYBBaJu_EyEnjg1QHiA&s"
+  },
+  {
+    "name": "용도수목원",
+    "lat": 37.419302,
+    "lng": 126.826533,
+    "desc": "용도수목원은 아이들 눈높이에 맞춰 문화, 예술, 자연을 느끼고 즐길 수 있도록 꾸며진 곳이다. 이곳은 넓은 잔디밭과 300가지가 넘는 야생화처럼 다양한 식물과 동물을 보고 직접 체험할 수 있는 자연 생태 수목원이다.",
+    "youtube": "https://youtu.be/wPXOBYABzTw?si=gw9KqtuG-DinlS6L",
+    "img": "https://siheung.grandculture.net/Image?localName=siheung&id=GC069P00175"
+  },
+  {
+    "name": "오이도",
+    "lat": 37.346398,
+    "lng": 126.688113,
+    "desc": "오이도는 경기도 시흥시에 있는 곳으로, 옛날에는 섬이었지만 지금은 땅과 이어진 바닷가이다. 이곳은 빨간 등대가 유명하고 서울이나 주변에서 바다를 보러 많이 찾아오는 곳이다.",
+    "youtube": "https://youtu.be/wCALsEiaNsk?si=xYbNAQCSb_G2f4Wy",
+    "img": "https://cdn.tournews21.com/news/photo/202502/91326_201438_5732.jpg"
+  },
+  {
+    "name": "옥구공원",
+    "lat": 37.355754,
+    "lng": 126.711993,
+    "desc": "옥구도는 옛날에는 군사시설 등의 이유로 들어갈 수 없던 곳이었지만, 지금은 바닷가에 만들어진 자연과 어우러진 환경 친화적 공원이다. 이곳은 연꽃 단지나 습지원, 고향 동산 등 볼거리가 많고 멋진 바다 풍경을 감상하며 쉬어갈 수 있는 수도권 사람들의 인기 명소이다.",
+    "youtube": "https://youtu.be/MDdEyqp4nUc?si=13tnoCVEEu1A1hJ3",
+    "img": "https://i.namu.wiki/i/1QmesflLNvEk6IlTvlLKoDBCds68Pqui01SLbXIcQNydF2mF8OGlaYehn3YzHg2HrE-v_8E-c6RAm-bFFSZ_sg.webp"
+  },
+  {
+    "name": "배곧한울공원",
+    "lat": 37.353921,
+    "lng": 126.701405,
+    "desc": "배곧 한울공원은 월곶포구부터 오이도까지 바닷가를 따라 만들어진 곳으로, 자연 속에서 사람들이 편안하게 지낼 수 있도록 만들어진 곳이다. 이곳에서는 옛날 군사들이 지키던 곳이 재미있는 이야기와 놀이 시설로 바뀌었고, 아이들이 뛰어놀 수 있는 놀이터나 갯벌 체험장 같은 볼거리와 즐길 거리가 많은 곳이다.",
+    "youtube": "https://youtu.be/NaZdHlxZdPk?si=D0HgZuQIrZcYisXL",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6hvcRWrp8omJZy-ADEZu-NUUB_nbCcShu-Q&s"
+  },
+  {
+    "name": "갯골생태공원",
+    "lat": 37.391103,
+    "lng": 126.780899,
+    "desc": "시흥 갯골 생태공원은 옛날 일본이 우리나라에서 소금을 많이 가져가기 위해 만들었던 아픈 역사를 가진 소래 염전 자리에 만들어진 곳이다. 이곳은 우리나라 경기도에서 하나뿐인 특별한 갯골과 소금기 있는 땅에서도 잘 자라는 식물들, 그리고 여러 동물들이 살고 있어서 자연을 그대로 볼 수 있는 중요한 곳이다.",
+    "youtube": "https://youtu.be/uoIr7Oap-WQ?si=vRNcgNY7UVi671QR",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDrOMn5kDTLjiwhDAAT-5apmcUv8T15rqgaA&s"
+  },
+  {
+    "name": "연꽃테마파크(관곡지)",
+    "lat": 37.402592,
+    "lng": 126.805339,
+    "desc": "시흥 연꽃테마파크는 옛날 관곡지라는 중요한 연못 근처에 연꽃을 많이 심어서 시민들이 아름다운 연꽃을 보고 즐길 수 있도록 시흥시에서 만든 곳이다. 이곳은 아주 넓은 연꽃밭 옆으로 산책로나 자전거 도로가 잘 만들어져 있어서 사람들이 편안하게 꽃을 감상하고 산책하기 좋은 곳이다.",
+    "youtube": "https://youtu.be/2VE-NOitOuo?si=_0SD03Nmk3jJj0aA",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/706de22b1600704503182.jpeg"
+  },
+  {
+    "name": "웨이브파크",
+    "lat": 37.322828,
+    "lng": 126.680216,
+    "desc": "웨이브파크는 경기도 시흥에 있는 아주 큰 물놀이 공원이다. 인공 서핑 파크 중에서 가장 큰 곳 중 하나이다. 멋진 파도에서 서핑도 하고, 수영장이나 다이빙도 즐길 수 있는 곳이다. 어린 친구들을 위한 물놀이장도 따로 마련되어 있는 곳이다. 도시에서 물놀이와 서핑을 쉽게 즐길 수 있도록 만들어진 재미있는 곳이다.",
+    "youtube": "https://youtu.be/JnM9fgHgnOw?si=CBV4VIn1dPRAxD8b",
+    "img": "https://pimg.mk.co.kr/meet/neds/2021/12/image_readmed_2021_1127281_16390764674877730.jpg"
+  },
+  {
+    "name": "시흥 프리미엄 아울렛",
+    "lat": 37.379984,
+    "lng": 126.7374,
+    "desc": "신세계에서 운영하는 대형 프리미엄 아울렛으로, 다양한 브랜드와 편의시설을 갖추고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시화병원",
+    "lat": 37.350169,
+    "lng": 126.736864,
+    "desc": "시흥시 정왕동에 위치한 주요 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시화센트럴병원",
+    "lat": 37.336949,
+    "lng": 126.728065,
+    "desc": "시흥시 정왕동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시흥시청",
+    "lat": 37.380212,
+    "lng": 126.802827,
+    "desc": "시흥시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시흥시청역",
+    "lat": 37.38214,
+    "lng": 126.805824,
+    "desc": "서해선 시흥시청역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오이도역",
+    "lat": 37.362704,
+    "lng": 126.738841,
+    "desc": "수도권 전철 4호선과 수인분당선이 만나는 주요 환승역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "정왕역",
+    "lat": 37.351788,
+    "lng": 126.742592,
+    "desc": "수도권 전철 4호선 정왕역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "신천역",
+    "lat": 37.441793,
+    "lng": 126.78751,
+    "desc": "서해선 신천역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시흥종합버스터미널 (정왕동)",
+    "lat": 37.342706,
+    "lng": 126.735545,
+    "desc": "시흥시의 시외버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시흥시립중앙도서관",
+    "lat": 37.348324,
+    "lng": 126.735613,
+    "desc": "시흥시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
