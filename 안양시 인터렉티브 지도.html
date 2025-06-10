@@ -290,7 +290,7 @@
         ];
 
         // 3. 마커 생성 및 팝업 추가
-        places.forEach(place => {
+         places.forEach(place => {
             // 위도와 경도 값이 유효한지 확인
             if (place.lat && place.lng) {
                 // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
@@ -302,7 +302,7 @@
                     popupContent += `<p>${place.desc}</p>`;
                 }
                 if (place.img) {
-                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
                 }
                 if (place.youtube) {
                     popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
