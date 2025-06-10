@@ -21,18 +21,201 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const places = [
-            // { name: "예시", lat: 37.34, lon: 126.97, desc: "설명", youtube: "", img: "" }
+        // 2. 장소 데이터
+        const places =    
+     [
+  {
+    "name": "백운산",
+    "lat": 37.359837,
+    "lng": 127.010413,
+    "desc": "해발 567M의 백운산은 산봉우리가 항상 구름에 싸여 있다고 해서 붙여진 이름이다. 의왕시와 용인시, 수원시의 경계에 위치하고 있으며 산세가 깊고 험하여 관악산에 버금가는 등산코스로 알려져 있다.",
+    "youtube": "https://youtu.be/t5NW7-gvGYA?si=oTqfsc2HsCWeQU-6",
+    "img": "https://blog.kakaocdn.net/dn/s4FhD/btqDsPmCIix/nLzCy1fAU0OYBFDrjFc2Tk/img.jpg"
+  },
+  {
+    "name": "모락산",
+    "lat": 37.370052,
+    "lng": 126.981497,
+    "desc": "의왕시의 중심에 위치한 해발 385M의 산으로, 모락산 정상에 오르면 시내는 물론 안양, 군포, 과천, 서울이 한눈에 들어오는 조망이 좋은 곳이다. 정상이 암벽으로 이루어져 있어 상당히 독특한 분위기를 자아낸다.",
+    "youtube": "https://youtu.be/4Tnpri6u7cE?si=XV5C5XhRVxa9LzLK",
+    "img": "https://i.namu.wiki/i/MvHNDH3xdtt8UWfPr0a4CZ50aNOWNKaZEQtwcWvNrl6WKBHe0ogmM9iderBAA1lhP558dOBe7OQGbeBmhIy9Tg.webp"
+  },
+  {
+    "name": "청계산",
+    "lat": 37.41471,
+    "lng": 127.04145,
+    "desc": "경기도 의왕, 과천, 성남과 서울 양재동에 걸쳐진 청계산은 관악산과 함께 서울을 지키는 좌청룡 우백호로 알려진 명산이다. 사계절마다 풍경이 확연히 달라져 4계절 내내 산악인들에게 인기가 좋다.",
+    "youtube": "https://youtu.be/o8g5mOqD8Cc?si=bz50WoIZAVJyFoMx",
+    "img": "https://i.namu.wiki/i/RFw7akjBeuz9GwxvkLB5x_8T6F0QKgT_wSB5f2FHxvcfx8Q89G2632Gvzr_bWPmoLIRfjEjkrh5RE4Gw2VBnkQ.webp"
+  },
+  {
+    "name": "백운호수",
+    "lat": 37.380077,
+    "lng": 127.00219,
+    "desc": "백운호수는 1953년에 준공한 인공호수로, 원래 안양과 평촌지역의 농업용수를 공급하던 저수지였으나 지금은 호수가 되었다. 백운산과 청계산이 둘러싸고 이들 계곡의 물이 호수로 흘러들어 물이 맑고 풍경이 수려하다.\n수도권 관광객들에게 인기 있는 백운호수는 다양한 음식점, 카페와 더불어 계절별 즐길 거리가 풍부한 곳이다. 앞으로 문화와 상업이 결합된 백운지식문화밸리로 조성되어 시민과 방문객 모두에게 소중한 휴식 및 만남의 장소가 되고있다.",
+    "youtube": "https://youtu.be/4eClEv2wc4U?si=W1x1bivwGnftpPRG",
+    "img": "https://lh4.googleusercontent.com/proxy/_S2NuMyR8q4hf8yiNPcG4nS_jbAca3ZbVGfnVYkg5NmZPQ0fQMYsAaFAEj9ZVfLhS7igGTBorXwODnJC6ZQC9ylCFDSTbAnM_-F39TpOcA"
+  },
+  {
+    "name": "왕송호수",
+    "lat": 37.306909,
+    "lng": 126.94701,
+    "desc": "의왕시 남쪽 끝에 있는 왕송호수는 농업용 저수지에서 현재는 주민 휴식 공간 및 관광지로 변모한 곳이다. 이곳은 130여 종의 새가 관찰되는 수도권의 중요한 생태호수이다. 왕송호수에는 조류생태과학관이 운영되며, 자연학습공원과 인근 철도박물관을 연계한 관광이 이루어지고 있다.",
+    "youtube": "https://youtu.be/4rJ14B4cIJI?si=MxFPQxpFQl_nPTxL",
+    "img": "https://www.kctg.or.kr/common/attachFile/getAttachFileDownLoad.do?file_id=FILE_ID00022824"
+  },
+  {
+    "name": "하우현성당",
+    "lat": 37.396047,
+    "lng": 127.023412,
+    "desc": "하우현 성당은 옛날에 힘들게 신앙생활을 했던 천주교인들이 숨어서 살던 곳에 세워졌다는 이야기가 담겨 있는 곳이다. 이곳에 있는 신부님 집은 100년도 넘은 아주 오래된 집인데, 경기도에서 중요한 보물로 지정되어 잘 보호받고 있다.",
+    "youtube": "https://youtu.be/YQD_dNcOyew?si=gCFQ6vq72GAKBxAJ",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/4d00ed3e1521557791109.jpeg"
+  },
+  {
+    "name": "청계사",
+    "lat": 37.411721,
+    "lng": 127.035041,
+    "desc": "의왕시 청계산에는 아주 오래된 절인 청계사가 있는데, 이곳은 경기도에서 중요한 문화재로 소중하게 지키고 있는 곳이다. 이 절에는 옛날에 세워진 돌비석과 부처님을 모신 건물 등 신기하고 볼거리가 많이 있는 곳이다.",
+    "youtube": "https://youtu.be/cSp_sHkw2sQ?si=IUgVLomNsWDwadCs",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/O4Dby1t3TxlITtw3I49Q02Pqc4TiWqdJGhZaECXq.jpg"
+  },
+  {
+    "name": "철도박물관",
+    "lat": 37.314183,
+    "lng": 126.950755,
+    "desc": "철도박물관은 1988년 1월에 개관을 하여 우리나라 철도 100년의 역사를 한눈에 볼 수 있는 산교육장이며, 수도권의 대표적인 박물관으로 꼽힌다. 우리나라의 철도 역사를 다양한 전시물들을 통해 쉽고 재밌게 배울 수 있다.",
+    "youtube": "https://youtu.be/t-jrzWjeheI?si=2vQkzpOM_YxtoFMl",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjxNZLTWAm5Gy1OPR-f2rjJWOXTzsUOVfeOQ&s"
+  },
+  {
+    "name": "자연학습공원",
+    "lat": 37.307318,
+    "lng": 126.952976,
+    "desc": "공원 산책로가 있어 도심 속에 쉼터로 자리매김하고 있고, 주변에는 조류생태과학관, 왕송호수, 철도박물관 등 3곳을 연계하여 다채로운 프로그램으로 매년 어린이날을 전후해서 의왕 어린이 축제가 펼쳐진다.",
+    "youtube": "https://youtu.be/fpm54S0nCIo?si=zJJQCmJys-nTxx4f",
+    "img": "https://www.e-newsp.com/data/photos/20180519/art_15260039198337_eca236.jpg"
+  },
+  {
+    "name": "갈미한글공원",
+    "lat": 37.378278,
+    "lng": 126.98432,
+    "desc": "갈미 한글공원은 의왕시에서 태어난 국어학자 이희승 박사를 기념하여 만들어진 공원으로, 한글을 본떠 만든 조형물과 자연이 어우러져 있는 휴게 공간이다. 푸르른 자연으로 둘러싸여 있어 사계절별로 다른 풍경을 느낄 수 있고, 곳곳에 자연과 한글 디자인의 조형물들이 어우러져 있어 독특한 분위기를 자아낸다.",
+    "youtube": "https://www.youtube.com/watch?v=6Vy-Yx3JVNQ",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtUHy6DAesFosIXFvY3vb1yWY3rW_9UKM9KQ&s"
+  },
+  {
+    "name": "계원예술대학교",
+    "lat": 37.378891,
+    "lng": 126.977959,
+    "desc": "독특한 건축물과 예술적인 분위기가 특징인 대학교입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "바라산 자연휴양림",
+    "lat": 37.373103,
+    "lng": 127.019427,
+    "desc": "백운산과 바라산 자락에 위치한 자연휴양림입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕 조류생태과학관",
+    "lat": 37.310686,
+    "lng": 126.950221,
+    "desc": "왕송호수의 조류 생태를 관찰하고 학습할 수 있는 과학관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕 왕곡동 도깨비도로",
+    "lat": 37.394208,
+    "lng": 127.027399,
+    "desc": "착시 현상으로 오르막길이 내리막길처럼 보이는 신기한 도로입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕 고천체육공원",
+    "lat": 37.347147,
+    "lng": 126.982546,
+    "desc": "의왕시 고천동에 위치한 체육공원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕시 중앙도서관",
+    "lat": 37.342566,
+    "lng": 126.969719,
+    "desc": "의왕시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "롯데 프리미엄 아울렛 의왕점",
+    "lat": 37.375973,
+    "lng": 127.009402,
+    "desc": "백운호수 인근에 위치한 대형 프리미엄 아울렛입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "계요병원",
+    "lat": 37.347983,
+    "lng": 126.981355,
+    "desc": "의왕시 포일동에 위치한 정신건강의학과 전문병원입니다. (종합병원 아님)",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕시청",
+    "lat": 37.344783,
+    "lng": 126.968416,
+    "desc": "의왕시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의왕역",
+    "lat": 37.320537,
+    "lng": 126.947895,
+    "desc": "수도권 전철 1호선 의왕역입니다. (구 부곡역)",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한국교통대학교 의왕캠퍼스",
+    "lat": 37.315144,
+    "lng": 126.953515,
+    "desc": "국립한국교통대학교의 3개 캠퍼스 중 철도 특화 캠퍼스로, 철도 관련학과가 많다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
-</html>
