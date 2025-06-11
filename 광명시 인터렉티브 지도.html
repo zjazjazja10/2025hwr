@@ -20,18 +20,303 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
-        const places = [
-            // { name: "예시", lat: 37.48, lon: 126.86, desc: "설명", youtube: "", img: "" }
+        const places =[
+  {
+    "name": "도덕산",
+    "lat": 37.465549,
+    "lng": 126.857188,
+    "desc": "광명 시내 중심에 있는 산으로 출렁다리와 인공폭포가 있는 휴식 명소.",
+    "youtube": "https://youtu.be/x63S0JiJcY8?si=e5ZwGpYYiD9eZkaX",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MDdfMjI1%2FMDAxNzIzMDMxMDI2ODE3.dyNhWBbXM4jlMWoPlB1PnUgkbBypgh-833ls6qY2ScEg.N7dBFjAHTXaa1-et_AMu5Xe65qA_JGqzYg5-vl93WoAg.JPEG%2F%25B0%25E6%25B1%25E2_%25BC%25AD%25BA%25CE%25B1%25C7_%25B1%25A4%25BF%25AA%25BD%25C3%25C6%25BC%25C5%25F5%25BE%25EE3.jpg&type=a340"
+  },
+  {
+    "name": "구름산",
+    "lat": 37.446407,
+    "lng": 126.867842,
+    "desc": "광명시에서 가장 높은 산으로 산림욕장과 황톳길이 있어 힐링 장소로 적합.",
+    "youtube": "https://youtu.be/HtT1qUO5YFo?si=_NuQ9C2EhhjPTL-L",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MTJfMTM4%2FMDAxNzE1NTE1MTU5NDQ3.0-dFeHbzBYTlZ5OQhM7TDw5EKQ03BQfkuMNGYIYKDo0g.icOoZcgh8p6GYKqAZHM8aCE93RnQMlc0XVNAM5AZA08g.JPEG%2F20240512%25A3%25DF115712.jpg&type=a340"
+  },
+  {
+    "name": "서독산",
+    "lat": 37.406422,
+    "lng": 126.871334,
+    "desc": "공부하는 선비들의 산으로 자연이 살아있는 생태 보존 지역.",
+    "youtube": "https://youtu.be/5EUoShiU4Kc?si=KhJBG2kl62dfwHZ2",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMDFfMTc2%2FMDAxNjY3MjY5MTg1MDY0.-IHGoDhr7ryk087yWjLpk3icfqdaRejA39_2c_rrEKQg.9wGhA5nydpIM07JEiKXcHw-hsx_8nUM8KeQqAEZGBkIg.JPEG.choi3289%2F05.jpg&type=sc960_832"
+  },
+  {
+    "name": "광명 한내천(안양천)",
+    "lat": 37.44865,
+    "lng": 126.886278,
+    "desc": "자전거길과 산책길이 잘 정비된 도심 속 자연 공간.",
+    "youtube": "https://youtu.be/chL5heUmlWo?si=mUan3ht9hsmadEHR",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MDhfMjk3%2FMDAxNjQ5NDE0NDE3OTE5.3yP04cXO9HQsJKaeeZdj6r38gZqFXO16yL9aGtr0FUgg.DgRbH68BP32SiqOxZR3VIweBjmMYhseBtwd626m6ca0g.JPEG.dks6443%2FP4087596.JPG&type=a340"
+  },
+  {
+    "name": "호수 - 자경저류지(새빛공원)",
+    "lat": 37.414882,
+    "lng": 126.888134,
+    "desc": "하수처리장 부지를 공원으로 조성한 도심 속 자연 쉼터.",
+    "youtube": "https://youtu.be/Xbp7LYt2evA?si=_dykxLJPQ8QA3ZEq",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MTBfNTEg%2FMDAxNjU0ODM1MzIyMDI4.O5l7gjAgvVmIzRjMkTlum8jVMz1tk10tskyv6VpjGQ4g.jDfwPVbAYQ8EQyva00Z0B0_zmsb_F722ZM8rxUimn4Ug.JPEG.lss4989%2F%25C4%25AB%25C4%25AB%25BF%25C0%25BD%25BA%25C5%25E4%25B8%25AE%25A3%25DF2022%25A3%25DF06%25A3%25DF10_13%25A3%25DF15%25A3%25DF31.jpg&type=l340_165"
+  },
+  {
+    "name": "습지 - 안터생태공원",
+    "lat": 37.458914,
+    "lng": 126.869875,
+    "desc": "도심 속 복원된 습지로 다양한 생물과 생태 학습이 가능한 곳.",
+    "youtube": "https://youtu.be/3lsUK09afms?si=sR_XBkyHRhdKQJSY",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA0MjVfMjE2%2FMDAxNjE5MzI4NDUyMDg5.WHmMoLcDE4sOZ4I9L0GhQai1fgnZImEK1XUtH_T8LPcg.bPdUbzjG-mU0pe38o-3Ms_XHQk30It0lyUg1Hys4Z-gg.JPEG.gmcityhall%2F2.jpg&type=a340"
+  },
+  {
+    "name": "충현박물관",
+    "lat": 37.433654,
+    "lng": 126.878086,
+    "desc": "이원익 선생과 그의 가족들의 유물과 역사를 보여주는 국내 최초 사립 박물관.",
+    "youtube": "https://youtu.be/Qt3cUGwOQLQ?si=NQAe9peHkzz2ysvL",
+    "img": "https://search.pstatic.net/common/?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2644_000_15%2F20240628210702255_XZCDNV2GB.jpg%2Fb16576f8-2a33-4d.jpg%3Ftype%3Dm935_fst_nce&type=a340"
+  },
+  {
+    "name": "가학동 지석비",
+    "lat": 37.409199,
+    "lng": 126.856569,
+    "desc": "청동기 시대의 북방식 고인돌 유적으로 역사교육에 적합한 장소.",
+    "youtube": "https://www.youtube.com/watch?si=KWg3fc5LS3Dm-DeD&t=147&v=pCLf5IfOw_o&feature=youtu.be",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5165%2F2019%2F08%2F06%2F0000447494_001_20190806215740950.jpg&type=a340"
+  },
+  {
+    "name": "3.1운동 기념",
+    "lat": 37.442761,
+    "lng": 126.846276,
+    "desc": "3.1운동의 정신을 기리기 위한 기념비가 세워진 독립운동 역사 장소.",
+    "youtube": "https://youtu.be/pCLf5IfOw_o?si=JYsD2lFemGHbMX08&t=125",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F014%2F2019%2F03%2F01%2F0004185988_001_20190301220606498.jpg&type=a340"
+  },
+  {
+    "name": "영회원 (永懷園)",
+    "lat": 37.439804,
+    "lng": 126.861873,
+    "desc": "소현세자의 부인 민회빈의 무덤으로 복권 후 영회원이라 불림.",
+    "youtube": "https://youtu.be/pCLf5IfOw_o?si=ESt_vnrzdt9tSnyg&t=82",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2F20131018_246%2Fro425kr_1382100178544KFPey_JPEG%2FDSC07277.jpg&type=a340"
+  },
+  {
+    "name": "오영 이원익 선생의 생가(관감당)",
+    "lat": 37.434895,
+    "lng": 126.877923,
+    "desc": "인조가 지은 이원익 생가로 청렴한 삶을 되새기는 역사 교육지.",
+    "youtube": "https://youtu.be/pCLf5IfOw_o?si=Fc45nikGKamrj96t&t=27",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20110414_42%2Fgold8082_1302764569491NQLJ5_JPEG%2FIMG_5390.JPG&type=a340"
+  },
+  {
+    "name": "광명동굴",
+    "lat": 37.425329,
+    "lng": 126.864792,
+    "desc": "일제 강점기 금속광산이 문화예술 공간으로 재탄생한 관광 명소.",
+    "youtube": "https://www.youtube.com/watch?v=Ft03G_AX4l0",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDExMTlfOTkg%2FMDAxNzMyMDE4NDk1MTg3.ebRuwTSti0zN_U5oaRSFb_ldeKdxD_7IlG61vtLmf3Eg.3sCvv_8fFSmIr7PNPsanELuw4n7YUaioT-1GVmZqU0Ag.JPEG%2F%25BA%25ED%25B7%25CE%25B1%25D7_%25B9%25CC%25B5%25F0%25BE%25EE4.jpg&type=a340"
+  },
+  {
+    "name": "한내은하수길",
+    "lat": 37.448523,
+    "lng": 126.886235,
+    "desc": "도심 속 공원에 조성된 친환경 빛 조형물 산책로.",
+    "youtube": "https://youtu.be/G8kTNvAabOo?si=rPJJC74mup9t1bTk",
+    "img": "https://search.pstatic.net/sunny/?src=http%3A%2F%2Fwww.gm.go.kr%2Fresources%2Ftour%2Fimages%2Fsub04%2Fmt6_img_01.jpg&type=a340"
+  },
+  {
+    "name": "기형도 문학관",
+    "lat": 37.426595,
+    "lng": 126.881587,
+    "desc": "시인 기형도의 유품과 작품을 전시한 복합문화공간.",
+    "youtube": "https://youtu.be/Qu1rkNk9Vlw?si=M343qRjnHo984kPz",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5181%2F2017%2F11%2F06%2F0000876500_001_20171106134650211.jpg&type=a340"
+  },
+  {
+    "name": "광명시장",
+    "lat": 37.481105,
+    "lng": 126.856625,
+    "desc": "문화관광형 전통시장으로 다양한 상점과 먹거리 골목이 있는 곳.",
+    "youtube": "https://youtu.be/y3hkdGKL8E8?si=wLkFXlFIoFZW1d0L",
+    "img": "https://search.pstatic.net/sunny/?src=http%3A%2F%2Fwww.gm.go.kr%2Fresources%2Ftour%2Fimages%2Fsub04%2Fmt3_img_01.jpg&type=a340"
+  },
+  {
+    "name": "광명동굴",
+    "lat": 37.425329,
+    "lng": 126.864792,
+    "desc": "폐광을 활용하여 조성된 테마파크로, 동굴 테마파크, 와인 동굴 등이 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명전통시장",
+    "lat": 37.481105,
+    "lng": 126.856625,
+    "desc": "광명시의 대표적인 전통시장으로, 다양한 먹거리와 활기찬 분위기를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명 스피돔 (경륜장)",
+    "lat": 37.467091,
+    "lng": 126.845267,
+    "desc": "경륜 경기가 열리는 돔 경기장으로, 다양한 문화 행사도 진행됩니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "밤일마을",
+    "lat": 37.455274,
+    "lng": 126.862737,
+    "desc": "이국적인 분위기의 레스토랑과 카페들이 모여 있는 음식 문화 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "코스트코 광명점",
+    "lat": 37.421078,
+    "lng": 126.885867,
+    "desc": "대규모 창고형 할인매장으로, 다양한 상품을 구매할 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "롯데아울렛 광명점",
+    "lat": 37.424731,
+    "lng": 126.884223,
+    "desc": "KTX 광명역 인근에 위치한 대형 아울렛입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이케아 광명점",
+    "lat": 37.424388,
+    "lng": 126.882911,
+    "desc": "스웨덴 가구 및 생활용품 전문점으로, 국내 최대 규모를 자랑합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명 업사이클아트센터",
+    "lat": 37.424832,
+    "lng": 126.863376,
+    "desc": "재활용품을 활용한 예술 작품을 전시하고 체험할 수 있는 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "철산 로데오거리",
+    "lat": 37.475626,
+    "lng": 126.869501,
+    "desc": "철산역 인근의 대표적인 번화가이자 쇼핑, 외식의 중심지입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명시민회관",
+    "lat": 37.483159,
+    "lng": 126.864147,
+    "desc": "다양한 공연과 행사가 열리는 광명시의 문화 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "중앙대학교광명병원",
+    "lat": 37.42469,
+    "lng": 126.885892,
+    "desc": "광명시 일직동에 위치한 대형 대학병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "성애병원",
+    "lat": 37.472533,
+    "lng": 126.871232,
+    "desc": "광명시 철산동에 위치한 주요 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명성애병원",
+    "lat": 37.472533,
+    "lng": 126.871232,
+    "desc": "광명시 철산동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명시청",
+    "lat": 37.478667,
+    "lng": 126.864556,
+    "desc": "광명시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명역 (KTX)",
+    "lat": 37.416683,
+    "lng": 126.884739,
+    "desc": "고속철도 KTX의 주요 정차역이자 수도권 서남부의 교통 허브입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "철산역",
+    "lat": 37.476091,
+    "lng": 126.86839,
+    "desc": "서울 지하철 7호선 철산역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명사거리역",
+    "lat": 37.479416,
+    "lng": 126.854973,
+    "desc": "서울 지하철 7호선 광명사거리역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명종합터미널",
+    "lat": 37.418684,
+    "lng": 126.886448,
+    "desc": "광명역 인근에 위치한 시외버스 및 고속버스 터미널입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "광명시립철산도서관",
+    "lat": 37.477191,
+    "lng": 126.872392,
+    "desc": "철산동에 위치한 광명시의 주요 도서관입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
