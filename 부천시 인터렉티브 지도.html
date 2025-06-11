@@ -20,18 +20,375 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
         const places = [
-            // { name: "예시", lat: 37.50, lon: 126.80, desc: "설명", youtube: "", img: "" }
+  {
+    "name": "웅진플레이도시",
+    "lat": 37.500016,
+    "lng": 126.74426,
+    "desc": "다양한 레저와 스포츠를 즐길 수 있는 가족형 테마파크로 '워터파크&온천스파'와 '플레이아쿠아리움'이 있다.",
+    "youtube": "https://youtu.be/08GEHETkHnc?si=JB6C2BEjG-6GNdIN",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA3MDNfMzAw%2FMDAxNTMwNTgxNzAxMjU0.Bqqd1JPOTLBqCfy9RoAJtYUuBnW-oB_EdArwkD5jL_cg.KpTCYLLTOtRpb0-v_fXmjqgP1PuzM0TUqQL6jU03Olkg.JPEG.zzins21%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25C0%25BD-2.jpg&type=a340"
+  },
+  {
+    "name": "부천 둘레길",
+    "lat": 37.498227,
+    "lng": 126.808477,
+    "desc": "부천시 외곽의 산과 공원, 들판과 하천을 하나의 길로 연결하여 테마길을 조성한 곳으로 6개 코스, 총 48㎞로 이루어져 있다.",
+    "youtube": "https://youtu.be/A-Fie6qhcKI?si=apyMBeuAZh0Dgcs2",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxODEwMjBfMTkz%2FMDAxNTQwMDIwOTgyMjQ2.zsQdXJu3Xm62pVjsBiZXmM5z2vD3mejziA_RXNcWJv0g.NQtvvFnV3W1D8YdWvg73tWECAKQCyriERGBDDCMhqVQg.PNG.hanulgkdnwld%2F%25BA%25CE%25C3%25B5%25B5%25D1%25B7%25B9%25B1%25E6.PNG&type=a340"
+  },
+  {
+    "name": "산 - 원미산",
+    "lat": 37.49537,
+    "lng": 126.799924,
+    "desc": "산길이 어렵지 않고 지하철을 타고 가기 편해서 많은 사람들이 산책이나 가볍게 등산을 하는 산이다. 매년 봄이면 진달래꽃이 만개한 원미산을 배경으로 진달래 축제가 열린다. 7호선 부천종합운동장과 인접하여 대중교통을 이용한 봄꽃 관광을 즐길 수 있다.",
+    "youtube": "https://youtu.be/c33Ga44MVlA?si=FyvE9NR4n_GXdjLz",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA0MTFfOTcg%2FMDAxNzQ0MzMwNjgzMDk1.HFWmcjujqTKM6pRbre6yr-PFFQvfBniQ95ykst6JRYMg.XTZumM1kE-9WAHucpUIjNHsEIwom6O6fBbZgNgybyXMg.JPEG%2F%25BF%25F8%25B9%25CC%25BB%25EA_%25C1%25F8%25B4%25DE%25B7%25A100102a.JPG&type=a340"
+  },
+  {
+    "name": "부천자연생태공원",
+    "lat": 37.505052,
+    "lng": 126.816178,
+    "desc": "부천자연생태공원은 식물원, 박물관, 수목원처럼 자연을 배우고 구경할 수 있는 여러 시설이 있는 곳이다. 이곳은 지하철을 타고 쉽게 갈 수 있고, 봄에는 예쁜 꽃을 많이 볼 수 있으며, 가족들과 함께 자연 속에서 편하게 쉴 수 있는 곳이다.",
+    "youtube": "https://youtu.be/dGMWO-QHJCc?si=238ri0VZtp8aH059",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA0MTlfMjE3%2FMDAxNzEzNTIyNzQ2MjIx.nz6lNI2WYiRTlVZ1DcblQVMotb3JrXysdUENo26hqfcg.onmL9YURf8IdaNoud3hvPmu6Pm-BQNy1lbbZZ1tnryQg.JPEG%2F20240419_140334.jpg&type=a340"
+  },
+  {
+    "name": "백만송이장미원",
+    "lat": 37.516588,
+    "lng": 126.792289,
+    "desc": "1998년부터 2만여 평 부지에 불법 경작 및 잡목으로 방치된 산림을 IMF 외환위기 대책 일환으로 공공근로사업으로 장미원을 조성하여 오늘에 이르렀다. 장미 151종, 25,830본이 식재되어 있어 다양한 빛깔의 장미가 피어나는 매년 5월~6월 절경을 이룬다.",
+    "youtube": "https://youtu.be/DRXCAfXWNnI?si=3tVYE_1p0aNRpfVX",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA1MTVfNTUg%2FMDAxNjg0MDk3NTU0NjEz.m0LMF42TWbJVz8OOk6SV3Yn3aW-AeDG3-PIHYjfh_1sg.at7kydETzfkm7qcsOqBbafyAEoYcEpLDETU2_iTLf_sg.JPEG.yjchoi59%2FBandPhoto_2023_05_15_05_51_06_10.jpg&type=a340"
+  },
+  {
+    "name": "한국만화박물관",
+    "lat": 37.508907,
+    "lng": 126.74218,
+    "desc": "한국만화박물관은 ‘만화도시 부천’을 대표하는 관광지로 한국만화 110년의 역사를 돌아보고 체험할 수 있는 장소이다. 옛날 만화방, 입체상영관, 웹툰 체험 전시, 포토존 등 다양한 즐길거리가 있다. 특히, 만화박물관 내 만화도서관은 국내 최대 규모이자, 우리나라를 대표하는 만화전문도서관으로 만화역사 아카이브, 도서관, 문화공간으로서의 역할을 수행하고 있다. 만화박물관에서는 매년 가을 부천을 대표하는 국제축제(부천국제만화축제, 부천국제애니메이션페스티벌)가 개최되어 더욱 풍성한 볼거리를 제공한다.",
+    "youtube": "https://youtu.be/g8gFgdNBDXw?si=GaWpb08pvd0JUAcI",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MDFfMjk4%2FMDAxNzI1MTYxNjgwMDYz.JS9sYU-PfTEkJEUZF7wlNqArH-T8E-Cs2niBwJuYzgsg.I7julW-BIBd73QUzubwgZrro-RpOIyKCrV91iNt73K4g.JPEG%2FScreenshot%25A3%25DF20240901%25A3%25DF100157%25A3%25DFNAVER.jpg&type=a340"
+  },
+  {
+    "name": "부천아트벙커B39",
+    "lat": 37.521552,
+    "lng": 126.767446,
+    "desc": "과거 폐 소각장(삼정동 쓰레기 소각장)이었던 공간을 재생하여 도시의 문화복합공간으로 재탄생한 특별한 공간이다. 기존의 소각장의 시설을 그대로 살려 인더스트리얼 감성의 독특한 분위기로 각종 영화, 광고 장소로 사용되고 있으며, 기술과 예술이 결합된 융복합 전시가 열린다. 2023년에는 문화관광체육부 지역문화매력 100선(로컬100)에 선정된 곳으로 특별한 장소에서 문화 감성을 충전할 수 있다.",
+    "youtube": "https://youtu.be/lE3g5ssYnsA?si=IHum5xTc7tRdNAwt",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTAyMjNfMjA4%2FMDAxNzQwMzIxMTkwNzE1.pwP2BIJN2bU32hdoTyWErMSbxRzkGR9ZFoRAl6ThhNog.xVLfI1DUhN1Zwv9Qv1dNBKIF33Lnip1Kjhb0h0HuiVwg.PNG%2F04.png&type=a340"
+  },
+  {
+    "name": "고강동 선사유적지",
+    "lat": 37.524458,
+    "lng": 126.817648,
+    "desc": "부천 고강동 선사유적지는 아주 옛날 청동기 시대 사람들이 살았던 마을 터이다. 이곳에서는 옛날 사람들이 살던 집터와 마을 제사를 지내던 특별한 장소가 발견되어, 그 시대 사람들의 생활과 생각들을 알 수 있는 중요한 곳이다.",
+    "youtube": "https://youtu.be/squrGKg8abU?si=i-kAVSXtzVCP7Izl",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20140905_294%2Fohvisions_1409901022365ehyC2_PNG%2F%25BC%25B1%25BB%25E7%25C0%25AF%25C0%25FB%25C1%25F6%25B0%25F8%25BF%25F8_%25C0%25D4%25B1%25B8.png&type=a340"
+  },
+  {
+    "name": "원미동 사람들의 거리",
+    "lat": 37.493877,
+    "lng": 126.790028,
+    "desc": "소설가 양귀자의 대표작 ‘원미동 사람들’의 배경이 되었던 장소이다. 양귀자는 원미동에 거주하면서 소설을 집필하였고, 원미동은 1980년대 보통 사람들이 사는 동네의 상징이 되었다. 원미동 사람들의 거리에는 작품 속 인물들의 특징을 살린 동상과 부조, 기둥 조형물을 세워져 있다.",
+    "youtube": "https://youtu.be/tQ_bYNOVE14?si=3aBUlT7p8YBND3wz",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120603_290%2Frlaxogml8472_13386709017071Kbjv_JPEG%2F20120528_131737.jpg&type=a340"
+  },
+  {
+    "name": "호수 - 상동호수(상동호수공원)",
+    "lat": 37.504279,
+    "lng": 126.745089,
+    "desc": "상동호수공원은 부천에서 가장 넓은 공원으로, 사람이 인공호수와 그 주변을 걷는 길이 있는 곳이다. 이곳에는 수피아라는 식물원도 있어서 다양한 식물들을 보며 도시 속에서 자연을 느낄 수 있는 곳이다.",
+    "youtube": "https://youtu.be/xduKNvxOa88?si=lzCoI2xq0tmnnDKb",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MDJfMTkg%2FMDAxNjU5NDIzMjc0ODE0.p_N7hRae3BN49NwEsAsPfBLtmm9RswZmYfdKKJWGEhQg.T8N3mGWX7UsiTUhtEuMav10r8ssGDUfvspCVPqCH_7cg.JPEG.nasongki%2FIMG_1931.jpg&type=a340"
+  },
+  {
+    "name": "하천 - 굴포천",
+    "lat": 37.512772,
+    "lng": 126.735915,
+    "desc": "굴포천은 인천 철마산에서 시작해서 부평, 부천을 지나 김포를 거쳐 한강으로 흐르는 하천이다. 이 하천 이름은 옛날에 배로 곡식을 나르기 위해 땅을 파서 길을 만들려고 했던 것에서 유래한 이름이다. 도시가 커지고 공장이 많아지면서 공장 물과 집에서 나오는 물 때문에 아주 더러워졌던 곳이다. 지금은 하천을 깨끗하게 만들고 자연이 살아나도록 노력하고 있는 곳이다.",
+    "youtube": "",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5090%2F2017%2F04%2F07%2F0001441324_001_20170407102114101.jpg&type=a340"
+  },
+  {
+    "name": "하천 - 역곡천",
+    "lat": 37.479455,
+    "lng": 126.820869,
+    "desc": "역곡천은 경기도 부천 옥길동에 있는 하천이다. 사람들이 산책하기 좋도록 길이 잘 만들어져 있는 곳이다. 저녁에는 길에 불이 켜져서 밤에도 안전하게 걸을 수 있는 곳이다. 왜가리, 백로 같은 새들과 잉어 같은 물고기들도 살고 있는 곳이다.",
+    "youtube": "",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA5MDFfMjE0%2FMDAxNjMwNDQyNDE4NTk0.GxlB6s1SIpF3aAczbYCrtZg1QcOsxYTSQ_djxl2FijYg.LcGwxa8WywCkmCA9VvxNkI8NEjYWzQJDt3yrJkHPqpEg.JPEG.necromance%2FKakaoTalk_20210901_050200782_09.jpg&type=l340_165"
+  },
+  {
+    "name": "하천 - 상동시민의 강",
+    "lat": 37.49456,
+    "lng": 126.746644,
+    "desc": "시민의 강은 길이 5.5km, 폭 3~5m, 수심 20~30cm로 도심에 꾸며진 인공하천으로는 전국에서 최초이자 최대 규모이고 또한 전국 최초로 하수처리장 방류수를 재활용한 물이 흐르는 환경친화적인 하천이다.",
+    "youtube": "",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA0MDFfMjg3%2FMDAxNjgwMjc1ODg2NTY2.GDZuL1ujx3ZiUgfyT8RMdUYjNVUokCX5SqHGJAHRr-kg.L3MvjehzK-PKlvdgmYJ6WLFfRj4jLJ7lMyxkAccYd4Yg.JPEG.350cm%2FIMG_5834.jpg&type=a340"
+  },
+  {
+    "name": "하천 - 베르네천",
+    "lat": 37.521433,
+    "lng": 126.801649,
+    "desc": "베르네천은 경기도 부천에 있는 하천이다. 옛날에는 깨끗하지 않았지만 지금은 자연 하천으로 바뀌었다. 사람들이 이곳에서 산책하며 살아있는 자연을 볼 수 있는 곳이다. 이 하천 이름은 옛날 '벼랑내'라는 말에서 바뀌었다고 한다.",
+    "youtube": "",
+    "img": "https://www.grandculture.net/Image?localName=bucheon&id=GC016P5067&t=middle"
+  },
+  {
+    "name": "하천 - 심곡천",
+    "lat": 37.490023,
+    "lng": 126.789359,
+    "desc": "부천 심곡천은 경기도 부천의 소사역 근처에서 굴포천으로 이어지는 하천이다. 옛날에는 도시가 만들어지면서 하천 위를 콘크리트로 덮어서 사람들이 볼 수 없었던 곳이다. 하지만 2017년에 다시 깨끗한 물이 흐르는 자연 하천으로 잘 복원된 곳이다. 하천 옆에는 산책로와 예쁜 식물들이 있어서 사람들이 편안하게 쉬고 자연을 볼 수 있는 곳이다. 물고기나 새들도 다시 찾아오는 곳으로, 부천 시민들이 아주 좋아하는 소중한 휴식 공간이다.",
+    "youtube": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgl3GeaZv3lrJR5tL9Tmw3KwKmwbyH_Af9aA&s"
+  },
+  {
+    "name": "산 - 도당산",
+    "lat": 37.668881,
+    "lng": 126.67804,
+    "desc": "도당산은 부천시에 위치한 산으로, 벚꽃과 장미꽃으로 유명하며, 원미산과 함께 부천시 내에서 솟아 있는 산입니다. 도당산은 공원으로 조성되어 인근 주민들의 휴식처로 이용됩니다. 4월부터 5월까지 아름다운 벚꽃을 감상할 수 있습니다.",
+    "youtube": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYXJEqs6HkPuNSCXZ6_fyjD7b8KrIYpmtVQA&s"
+  },
+  {
+    "name": "석왕사",
+    "lat": 37.491279,
+    "lng": 126.793673,
+    "desc": "석왕사는 경기도 부천시 원미구 소사로 367(원미동 산29-30) 원미산 중턱에 자리 잡은 유서 깊은 전통사찰이다. 최초 중창(재창건) 당시 대한불교조계종 직할교구(1978년 10월 20일)로 있다가 2022년 3월 2일 대한불교조계종 제13교구 본사 쌍계사의 말사로 등록되었다.",
+    "youtube": "",
+    "img": "https://www.seokwangsa.com/theme/basic/images/about_01.jpg"
+  },
+  {
+    "name": "부천 한미재단 소사 4-H 훈련농장 사일로",
+    "lat": 37.470574,
+    "lng": 126.790605,
+    "desc": "사일로란 시멘트, 곡물, 사료 등의 고체 벌크 화물의 저장고를 말한다. 싸이로라고 부르기도 한다. 주로 세로로 긴 원통 형태를 띄며 실제로도 거대한 통의 일종이다. 부천 사일로는 경기도 부천에 있는 아주 오래된 창고 건물이다. 이 건물은 한국 전쟁 후에 우리나라 농업을 돕기 위해 만들어진 곳이다. 옛날에 '한미재단'이라는 곳에서 농사 기술을 가르치던 훈련장에 있었던 곳이다. 이곳은 훈련장에서 키우던 동물들에게 줄 사료를 저장했던 건물이다. 우리나라 근현대 농업의 중요한 역사를 보여주는 소중한 유적이다.",
+    "youtube": "",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqCfyDfwDK5v0RxXfPWTjrxOn_tHkzMu6nYQ&s"
+  },
+  {
+    "name": "부천 중앙공원",
+    "lat": 37.503042,
+    "lng": 126.764273,
+    "desc": "부천시의 중심에 위치한 대규모 공원으로, 시민들의 휴식 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "상동 호수공원",
+    "lat": 37.504279,
+    "lng": 126.745089,
+    "desc": "상동 지구에 위치한 아름다운 호수공원으로, 산책과 운동을 즐기기 좋습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "아인스월드",
+    "lat": 37.511852,
+    "lng": 126.744736,
+    "desc": "세계 유명 건축물들을 미니어처로 재현해 놓은 테마파크입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천시립박물관",
+    "lat": 37.512753,
+    "lng": 126.802768,
+    "desc": "부천의 역사와 문화를 보여주는 유물들을 전시하고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천아트센터",
+    "lat": 37.50232,
+    "lng": 126.766576,
+    "desc": "클래식 음악 전문 공연장으로, 최고 수준의 음향 시설을 자랑합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천로데오거리",
+    "lat": 37.49047,
+    "lng": 126.752877,
+    "desc": "부천역 인근의 대표적인 번화가이자 젊음의 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "상동시장",
+    "lat": 37.492723,
+    "lng": 126.76404,
+    "desc": "부천 상동 지역의 주요 전통시장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "자유시장",
+    "lat": 37.483639,
+    "lng": 126.780194,
+    "desc": "부천의 오래된 전통시장 중 하나로, 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천펄벅기념관",
+    "lat": 37.475734,
+    "lng": 126.781589,
+    "desc": "노벨문학상 수상자 펄 벅 여사의 업적을 기리는 기념관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천도시농업한마당 (오정대공원)",
+    "lat": 37.530698,
+    "lng": 126.795001,
+    "desc": "도시농업의 중요성을 알리는 행사와 체험이 열리는 공원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천활박물관",
+    "lat": 37.501038,
+    "lng": 126.797519,
+    "desc": "한국의 전통 활 문화를 전시하고 체험할 수 있는 박물관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "순천향대학교 부천병원",
+    "lat": 37.498551,
+    "lng": 126.762825,
+    "desc": "부천시 원미구에 위치한 주요 대학병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가톨릭대학교 부천성모병원",
+    "lat": 37.487175,
+    "lng": 126.792411,
+    "desc": "부천시 원미구에 위치한 가톨릭계 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "뉴대성병원",
+    "lat": 37.491999,
+    "lng": 126.784285,
+    "desc": "부천시 오정구에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천세종병원",
+    "lat": 37.481352,
+    "lng": 126.791425,
+    "desc": "심장병 전문병원으로 유명한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천시청",
+    "lat": 37.503666,
+    "lng": 126.76583,
+    "desc": "부천시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "소사구청",
+    "lat": 37.480249,
+    "lng": 126.799946,
+    "desc": "부천시 소사구의 행정 업무를 담당하는 구청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "원미구청",
+    "lat": 37.496759,
+    "lng": 126.787069,
+    "desc": "부천시 원미구의 행정 업무를 담당하는 구청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오정구청",
+    "lat": 37.527472,
+    "lng": 126.796869,
+    "desc": "부천시 오정구의 행정 업무를 담당하는 구청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천역",
+    "lat": 37.486514,
+    "lng": 126.78565,
+    "desc": "수도권 전철 1호선 부천역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "송내역",
+    "lat": 37.487789,
+    "lng": 126.753025,
+    "desc": "수도권 전철 1호선 송내역으로, 환승센터와 연결됩니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천시청역",
+    "lat": 37.504834,
+    "lng": 126.763639,
+    "desc": "서울 지하철 7호선 부천시청역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "소사역",
+    "lat": 37.4829,
+    "lng": 126.795708,
+    "desc": "수도권 전철 1호선과 서해선이 만나는 환승역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천종합터미널",
+    "lat": 37.503911,
+    "lng": 126.756399,
+    "desc": "부천시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부천시립원미도서관",
+    "lat": 37.49913,
+    "lng": 126.798047,
+    "desc": "부천시의 대표 도서관 중 하나입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
