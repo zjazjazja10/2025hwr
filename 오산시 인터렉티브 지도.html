@@ -20,18 +20,245 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
-        const places = [
-            // { name: "예시", lat: 37.15, lon: 127.08, desc: "설명", youtube: "", img: "" }
+        const places =
+[
+  {
+    "name": "독산성과 세마대지 + 보적사",
+    "lat": 37.183336,
+    "lng": 127.018951,
+    "desc": "독산성은 옛날 백제 시대에 처음 만들어진 것으로 생각되는 오래된 성이다. 이 성은 오산과 수원, 화성 평야 중간에 높이 솟아 있어서 주변을 잘 살필 수 있는 중요한 곳에 있다. 옛날 임진왜란이 일어났을 때 권율 장군님이 이 성을 지키며 수많은 왜군을 물리치는 큰 승리를 거두었다. 그 덕분에 우리 군사들이 북쪽으로 갈 수 있었고, 서울을 지키는 데도 아주 중요한 역할을 한 곳이다. 성 안에는 '세마대지'라는 곳이 있는데, 권율 장군님이 물이 부족한 척 적군을 속이기 위해 쌀로 말을 씻겼다는 재미있는 이야기가 전해져 오는 곳이다. 독산성 동문안에는 보적사라는 절 또한 존재한다. '보적사'라는 명칭에는 재미난 유래가 전해지는데 옛날 삶이 궁핍한 노부부가 쌀 두되만 남게 되자 구차하게 굶어 죽느니 부처님께 공양하기로 마음먹고 공양 후 집에 돌아오니 곡간에 쌀이 가득 차 있었다고 한다. 이후 열심히 공양하면 보화가 쌓이는 사찰이라 하여 보적사라는 이름이 붙여졌다고 한다.",
+    "youtube": "https://www.youtube.com/watch?v=XwcDGrRIc1g",
+    "img": "https://i.namu.wiki/i/D6tTF8M_bq580xXpA1gd8vktEjBWux1P8gsC6OjTLLFScaO-ssr-W99Wi-b0Y21TadleqCGlvlzxVaGkH4IrVA.webp"
+  },
+  {
+    "name": "궐리사",
+    "lat": 37.159352,
+    "lng": 127.062321,
+    "desc": "오산 궐리사는 조선시대 정조 임금이 인 공자를 기리기 위해 만든 곳으로, 우리나라에 두 개밖에 없는 중요한 곳 중 하나이다. 이곳은 원래 공자님의 후손인 공서린 선생님이 제자들을 가르치던 곳이었고, 지금은 공자의 그림과 공부하던 곳, 그리고 관련된 여러 건물들을 볼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/MUdNr5aVpqc?si=DuU85J_H8yEBUpWq",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD4GjdbVoysUqlV9IQR0v_9RgMhmeKm4Fvvg&s"
+  },
+  {
+    "name": "금암리 지석묘군(9기) 고일돌공원",
+    "lat": 37.173244,
+    "lng": 127.048532,
+    "desc": "금암리 지석묘군은 금암동 172-1번지 일대와 주변 지역에 분포하고 있는 고인돌 군으로 총11기가 확인되는데, 현재9기가 경기도 기념물 제112호(1988년12월2일)로 지정되었으며 그 외 2기는 추정 고인돌이다.",
+    "youtube": "https://youtu.be/qBBD4dQfYPM?si=LZkdsfnk1IMfb1S9",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/81ae90c31542122781553.jpeg"
+  },
+  {
+    "name": "외삼미동 고인돌(2기)",
+    "lat": 37.188872,
+    "lng": 127.054128,
+    "desc": "외삼미동 지석묘는 외삼미동 384번지 일대 완만한 구릉에 2기가 위치한 것으로 경기도 기념물 제211호(2006년1월23일)로 지정 되어 있다. 한신대학교 박물관 조사에 의하면 북쪽의 것이 1호, 남쪽의 것이 2호이고 1호 고인돌의 경우 탁자식으로 덮개돌과 받침돌이 온전하게 잘 남아 있는 형태이다.",
+    "youtube": "https://youtu.be/atGgXARDVB0?si=cy0OUosMqgLRufjq",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/cd41e5161543530731171.jpeg"
+  },
+  {
+    "name": "오산 유엔군초전기념비와 옛 동판·KSC안내판",
+    "lat": 37.184313,
+    "lng": 127.049538,
+    "desc": "오산 유엔군 초전기념비는 6.25 전쟁 때 유엔군이 우리나라에서 북한군과 처음으로 싸운 곳을 기억하기 위해 세워진 기념비이다. 이때 전쟁 물자를 나르며 유엔군을 도왔던 우리나라 사람들(한국노무단)이 기념비를 보수하고 남긴 안내판은 지금은 경기도의 중요한 문화유산이 된 것이다.",
+    "youtube": "https://youtu.be/7H7Pkc1DhdE?si=gslOJzym80h0pKBG",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2024/07/24/QPba0ZgzHp52eQDkFKDEDs9gSJOrZgmxH3ztA4fr.jpg"
+  },
+  {
+    "name": "더킹:영원의 군주 드라마세트장",
+    "lat": 37.178819,
+    "lng": 127.061956,
+    "desc": "오산에 있는 드라마 세트장은 '더 킹: 영원의 군주'라는 드라마를 찍었던 곳이다. 이곳은 옛날 대한제국 황실 정원처럼 꾸며져 있고, 지금은 사람들이 와서 구경하고 사진도 찍을 수 있는 관광 명소이다.",
+    "youtube": "https://youtu.be/B7vik8bvz28?si=taalVVFGUOKIMiNu",
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAyMjExMDlfMjU4/MDAxNjY3OTY0MTYxMzQ4.qa88Am9DAuW455EPeeV4AZETlYKNjqjnvFOMH31iTusg.oIsftcaeFvZrnSrp19wN9LRX4PW1qjtfvxq05xeJQdYg.JPEG.realtorgirl/%EB%8D%94%ED%82%B9004.jpg?type=w800"
+  },
+  {
+    "name": "물향기수목원",
+    "lat": 37.167149,
+    "lng": 127.059694,
+    "desc": "경기도 오산에 있는 물향기수목원은 물과 식물이 어우러진 아름다운 수목원이다. 이곳은 1700종이 넘는 다양한 식물을 볼 수 있고, 숲 해설이나 목공예 같은 재미있는 체험 프로그램도 즐길 수 있는 곳이다.",
+    "youtube": "https://youtu.be/KqWJAegXT44?si=96edVPjmSqCz5vrh",
+    "img": "https://wsnews.co.kr/data/wsnews_co_kr/cheditor4/1506/3475f45784aaf93b543ccb13f4bbc0e9_1433638571.4023.jpg"
+  },
+  {
+    "name": "맑음터공원",
+    "lat": 37.138398,
+    "lng": 127.064094,
+    "desc": "맑음터공원은 하수처리장과 쓰레기 매립장이었던 부지를 시민들의 휴식과 놀이 공간으로 탈바꿈시킨 대규모 생태공원이다. 공원 내에는 생태체험학습관인 ‘오산에코리움’, 캠핑장, 물놀이장 등이 있다. 공원 옆에는 동물농장 테마파크가 있어 반려동물을 데리고 오기 좋은 곳이다.",
+    "youtube": "https://youtu.be/9-iil2xnAQc?si=uqZ5cqm4SEYdtR2c",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRug1RvpRjUM8SdAesG3KVx0zpjZa8qTKt9Cw&s"
+  },
+  {
+    "name": "수청근린공원",
+    "lat": 37.162714,
+    "lng": 127.068226,
+    "desc": "수청근린공원은 1번 국도변에 위치해 접근성이 뛰어나며, 여름철에는 인공폭포를 감상할 수 있다. 공원 위에는 16미터 높이의 기도하는 두 손 모양의 현충탑이 있어 순국선열을 기리는 공간으로도 활용된다.",
+    "youtube": "https://youtu.be/C0isHDt1Zwk?si=zzSwFNLjibpJuzAi",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjlO5t4I9j6Lp4-o7OXW9w_GLP_n9apI2wPg&s"
+  },
+  {
+    "name": "오산 미니어처빌리지",
+    "lat": 37.177269,
+    "lng": 127.062977,
+    "desc": "오산 미니어처빌리지는 우리나라에서 처음으로 공공기관이 만든 실내 미니어처 전시관이다. 이곳은 세상의 다양한 장소들을 아주 작게 만들어 놓은 것을 볼 수 있고, 미리 예약해야 들어갈 수 있는 곳이다.",
+    "youtube": "https://youtu.be/z5WeERdVWr8?si=W1rW-ElEu9itoVbD",
+    "img": "https://www.kgnews.co.kr/data/photos/20220936/art_16623534971509_84ea39.jpg"
+  },
+  {
+    "name": "오산 죽미령 평화공원",
+    "lat": 37.185222,
+    "lng": 127.050321,
+    "desc": "오산 죽미령 평화공원은 옛날 6.25 전쟁 때 우리나라를 도우러 온 유엔군과 북한군이 처음으로 싸웠던 곳에 만들어진 역사 공원이다. 이곳은 전쟁에서 돌아가신 분들을 기억하고 평화를 생각하며, 기념관과 넓은 공원에서 여러 가지 시설을 이용하며 쉬어갈 수 있는 곳이다.",
+    "youtube": "https://youtu.be/5rUhGctRS-M?si=df5L-tXsvHC8xRX9",
+    "img": "https://oscc.or.kr/files/attach/images/181/438/002/5a8101e829b721e39c6ce761da1d9de6.png"
+  },
+  {
+    "name": "오산천",
+    "lat": 37.26826,
+    "lng": 127.128482,
+    "desc": "오산천은 사람과 자연을 연결하며 흐르는 자연 친화형 생태하천이다. 봄에는 각종 야생화가 피고 가을이면 코스모스와 억새가 장관을 이룬다. 오산천 길을 따라 자전거 전용도로가 만들어져 있어 시민들의 휴식 공간으로 자리했다",
+    "youtube": "https://www.youtube.com/watch?v=xlBHIb_yfNo",
+    "img": "https://www.newspeak.kr/news/photo/201712/132019_53583_1539.jpg"
+  },
+  {
+    "name": "소리울도서관",
+    "lat": 37.132668,
+    "lng": 127.074932,
+    "desc": "악기와 도서로 소통하는 전국 최초의 악기 전문 도서관인 소리울 도서관은 1,400여 대의 악기와 다양한 음악자료를 구비하고 있으며 악기전시, 체험, 대여관, 음악 창작 배움터, 공연장을 운영하고 있다",
+    "youtube": "https://www.youtube.com/watch?v=hoIA2OAiy1c",
+    "img": "https://osanlibrary.go.kr/include/images/contents/img_lib_view_soriul1.png"
+  },
+  {
+    "name": "오색시장",
+    "lat": 37.151323,
+    "lng": 127.07005,
+    "desc": "볼거리, 먹을거리뿐만 아니라 체험 등이 풍성한 전통시장. 매월 끝자리 3일과 8일에는 오일장이 크게 열리며 색색의 바닥 길을 따라 테마화된 길을 걷는 재미가 있다. 야맥 축제 등 시즌축제를 통해 더욱 더 즐겁게 즐길 수 있다",
+    "youtube": "https://www.youtube.com/watch?v=8JVvlGxrslQ",
+    "img": "https://lh3.googleusercontent.com/proxy/nLKbh8PrxvEgAGDaLIcYZdt5DcOGAhihMHMVzm4XJ-ra0a42p7k_5yKAOwgWRcrzLjVWkxiV0YxWKKESdUTBf6BAE0bjoLDT-2lHxgf_VmOvncrmfKByNF_LY9QvpKxZXOnBHUPy1Q"
+  },
+  {
+    "name": "오산버드파크",
+    "lat": 37.149652,
+    "lng": 127.076919,
+    "desc": "오산시청에 위치한 실내 생태 체험 학습장으로, 다양한 새들을 가까이에서 만날 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산 에코리움",
+    "lat": 37.138397,
+    "lng": 127.063559,
+    "desc": "오산천의 생태를 체험하고 환경 교육을 받을 수 있는 복합 환경 교육 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산 문화예술회관",
+    "lat": 37.159593,
+    "lng": 127.076627,
+    "desc": "다양한 공연과 전시를 즐길 수 있는 오산시의 대표적인 문화예술 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산시립미술관",
+    "lat": 37.160379,
+    "lng": 127.077034,
+    "desc": "오산시의 예술 문화를 선도하는 미술관으로, 다양한 기획 전시를 개최합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산 스포츠센터",
+    "lat": 37.158936,
+    "lng": 127.075486,
+    "desc": "다양한 실내 스포츠 시설을 갖춘 오산시의 주요 체육 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산한국병원",
+    "lat": 37.141655,
+    "lng": 127.075083,
+    "desc": "오산시 원동에 위치한 주요 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산세종병원",
+    "lat": 37.128039,
+    "lng": 127.066875,
+    "desc": "오산시 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "조은오산병원",
+    "lat": 37.154321,
+    "lng": 127.068086,
+    "desc": "오산시 궐동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산시청",
+    "lat": 37.151272,
+    "lng": 127.070296,
+    "desc": "오산시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산역",
+    "lat": 37.145921,
+    "lng": 127.067318,
+    "desc": "수도권 전철 1호선 오산역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산대역",
+    "lat": 37.170356,
+    "lng": 127.060187,
+    "desc": "수도권 전철 1호선 오산대역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "세마역",
+    "lat": 37.187486,
+    "lng": 127.043248,
+    "desc": "수도권 전철 1호선 세마역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오산종합버스터미널",
+    "lat": 37.146204,
+    "lng": 127.066942,
+    "desc": "오산시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
