@@ -21,17 +21,421 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const places = [
-            // { name: "예시", lat: 36.99, lon: 127.08, desc: "설명", youtube: "", img: "" }
+        const places =
+[
+  {
+    "name": "호수 - 평택호",
+    "lat": 36.946694,
+    "lng": 126.985481,
+    "desc": "평택호는 720만 평 규모의 인공 호수로, 수변 데크와 문화공간, 편의시설이 있어 대표적인 관광지로 꼽힌다. 한국소리 터, 평택호 예술관 등에서 예술작품 전시와 음악회가 열리며, 카이트보딩과 윈드서핑 등 수사스포츠을 즐길 수 있다.",
+    "youtube": "https://youtu.be/8eKdfcVC5TE?si=ekADSqiidtDykdx7",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MjVfMyAg%2FMDAxNjUzNDYyOTA0NzY5.4jGhvCBcfBQF1eVG0mcbmt_M3DbfCTNx9vJTlithJ-4g.Bf2kIr1T9iBFJ66JCJeH0e7ZKDKKmxhBhBHwgaQQmFIg.JPEG.cyj767611%2F%25C6%25F2%25C5%25C3%25C8%25A3.jpg&type=l340_165"
+  },
+  {
+    "name": "습지 - 원평나루 갈대숲",
+    "lat": 36.984175,
+    "lng": 127.081565,
+    "desc": "진위천 유원지는 진위천이라는 강 옆에 넓게 만들어진 곳으로, 자연 속에서 편하게 쉬고 즐길 수 있는 곳이다. 이곳에는 수영장, 캠핑장, 레일바이크처럼 여러 가지 재미있는 시설이 있어서 가족들이나 친구들과 함께 신나게 놀 수 있는 곳이다.",
+    "youtube": "https://youtu.be/_qJyDRXmLpw?si=WZP6NI_XvasGPc9O",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA3MjBfMjUx%2FMDAxNjU4Mjg4MzEwNTY1.XqWhevvlbwWS2fxkGlihbJafMI_YzFLn8ujMEhhbkY8g.fc8Nsw2W3DFaqDyQ30dIJGLgkU_V_Adr_aqAXYXbdogg.JPEG.seo8587%2F%25BF%25F8%25C6%25F2%25B0%25A5%25B4%25EB%25BD%25A3.jpg&type=a340"
+  },
+  {
+    "name": "수도사",
+    "lat": 37.002792,
+    "lng": 126.822095,
+    "desc": "이곳은 신라 시대에 염거화상이라는 스님이 처음 지은 절로 알려져 있고, 나중에는 원효대사님께서 깨달음을 얻었다는 중요한 이야기가 전해지는 곳이다. 지금은 원효대사 깨달음 체험관이 있어서 해골물 이야기 같은 것을 배우고 사찰 음식도 맛보는 등 다양한 체험을 할 수 있는 곳이다.",
+    "youtube": "https://youtu.be/zQu9clrrzzY?si=O7jX5b9yYqZydcCd",
+    "img": "https://search.pstatic.net/common/?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2818_000_32%2F20210707163727100_CTZA5KY7W.jpg%2F2724414_image2_1.jpg%3Ftype%3Dm4500_4500_fst&type=a340"
+  },
+  {
+    "name": "팽성읍객사",
+    "lat": 36.964927,
+    "lng": 127.063414,
+    "desc": "팽성객사는 아주 옛날 조선 시대에 다른 지역에서 온 관리들이 머물고 임금님을 상징하는 것을 모셨던 중요한 건물이다. 일제시대에는 양조장으로 사용되기도 했다. 하지만 지금은 옛날의 모습을 잘 고쳐서 우리가 볼 수 있게 해주는 곳이다. 이곳은 조선 시대 객사가 어떻게 생겼는지 보여주는 귀중한 옛 건물이다.",
+    "youtube": "https://youtu.be/A1ScC1Mwvsg?si=8kTy-kx8gbSr0mw6",
+    "img": "https://search.pstatic.net/common/?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2644_000_16%2F20240708211834281_EHANHRKCZ.jpg%2F87d6316b-1d20-49.jpg%3Ftype%3Dm935_fst_nce&type=a340"
+  },
+  {
+    "name": "평택 만기사 철조여래좌상",
+    "lat": 37.108339,
+    "lng": 127.100955,
+    "desc": "고려시대 태조 25년에 지어진 만기사에는 보물 제567호로 지정된 철조여래좌상을 비롯한 다양한 문화유산이 보관되어있다. 철조여래좌상은 고려시대의 불상양식을 알 수 있는 중요한 문화유산이다. 어정이라고 불리는 우물은 세조가 이곳을 지나다가 마시게 되었는데 물맛이 특이하였으므로 샘 이름을 감로천이라 명명하였다.",
+    "youtube": "https://youtu.be/sQu3LF6hbRg?si=tdb6uFyIgyQl_6z9",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTAxMTBfMjI5%2FMDAxNzM2NDkxOTg1MjI5.qRoSuUd7iHCJcW26e713RFOFLtRpq2TZLHXN7mZEb2kg.E4GxJ9puXsYyF0YhBfzlXx6lM74y0ZWHIQ7F0rc00TYg.JPEG%2F20210509_131520.jpg&type=a340"
+  },
+  {
+    "name": "소풍정원",
+    "lat": 37.011959,
+    "lng": 127.020602,
+    "desc": "소풍정원은 자연과 사람이 함께 쉬어갈 수 있도록 예쁜 섬들과 산책길을 잘 꾸며 놓은 공원이다. 이곳은 재미있는 조형물과 놀이터, 캠핑장 같은 즐길 거리도 있어서 가족들이나 친구들과 함께 소풍 와서 좋은 시간을 보내기 좋은 곳이다.",
+    "youtube": "https://youtu.be/z_Ar9Nq5zOw?si=gA6pTSMzrhnlW7dc",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMTFfMTg1%2FMDAxNjk5NjM3MjEzMTEw.wwfc-ME7D_Ps_FA7l22fJi1mqrPKGuwXmCFqrBe4Xqsg.Uziaf9URW9H6tvWPjVFKXM7GsY6aEpGTEGIysDT9Tsog.JPEG.toaxj38%2FIMG_7720.JPG&type=a340"
+  },
+  {
+    "name": "농업생태원",
+    "lat": 37.013268,
+    "lng": 126.983665,
+    "desc": "농업 생태원은 매년 4월 중하순에 대규모 꽃 나들이 축제를 개최하며, 튤립 동산과 다양한 봄꽃을 배경으로 인생 사진을 남길 수 있다. 동물 관람과 텐트존 등 휴게공간이 마련되어 있고, 주말 및 공휴일에는 버스킹 공연도 열린다. 가족이 함께 봄의 아름다움을 즐길 수 있는 장소이다.",
+    "youtube": "https://youtu.be/ZEPEQ_n1U0o?si=QkAXXhXC2t-l9SQv",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA0MTVfMTQw%2FMDAxNjgxNDg2NzY5Mzg4.kiX1MDwIQDSHx9fbckdGUmU_bpzW7meDjcyNZl2PWk8g.lNP90y5t6GthwVxsJ1NXcwwWTbLvVfVgRrE0I3Z9HAsg.JPEG.dottori7%2F20230414%25A3%25DF161742.jpg&type=a340"
+  },
+  {
+    "name": "오성강변",
+    "lat": 36.992765,
+    "lng": 126.982308,
+    "desc": "오성강변 자전거길은 평택 서부와 동부를 잇는 유명한 자전거 코스로, 평지형이라 누구나 편안하게 즐길 수 있다. 봄에는 유채꽃, 가을에는 코스모스가 피어나 아름다운 수변경관을 자랑한다. 또한, 평택시 대표축제인 유채꽃 축제도 이곳에서 열린다.",
+    "youtube": "https://youtu.be/k_U0iLhRbyc?si=mRtrviCMI2PvD3JL",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA5MjhfMjk1%2FMDAxNjY0MzM1Nzg0ODU2.hAmqyYbW6GkQsKK7mKsm4q9EcunYnMT0cRXL-hRPie0g._itve2JEhn-Y9ZOdpIDQOeuOpExergsea4RNgA5nK3Eg.JPEG.seo8587%2F%25BF%25C0%25BC%25BA%25B0%25AD%25BA%25AF_%25C3%25E0%25C1%25A6.JPG&type=a340"
+  },
+  {
+    "name": "배다리 생태공원",
+    "lat": 37.00045,
+    "lng": 127.118142,
+    "desc": "배다리 저수지 주변에 조성된 둘레길은 가벼운 산책과 운동을 즐기기에 좋은 장소로, 시민들에게 사랑받고 있다. 저녁에는 야간조명이 밝혀지고 분수명이 화려하게 빛난다. 봄에는 벚꽃나무가 아름다워 벚꽃 명소로 유명하다. 공원 옆 배다리 도서관에서는 책과 자연을 함께 즐길 수 있다.",
+    "youtube": "https://youtu.be/oaU9IUaraUI?si=Wzjz8y1lmKsE06m-",
+    "img": "https://search.pstatic.net/sunny/?src=http%3A%2F%2Fbbsj.kr%2Fdata%2Feditor%2F2008%2F676d0ed63763efa3bdf756fb9ec50e2a_1598408801_3172.JPG&type=a340"
+  },
+  {
+    "name": "송탄관광특구",
+    "lat": 37.083827,
+    "lng": 127.049167,
+    "desc": "평택 송탄관광특구는 미군 부대 근처에 있어서 우리나라 사람들과 외국에서 온 사람들이 함께 어울리며 쇼핑이나 맛있는 음식을 즐기는 특별한 거리이다. 이곳에서는 다양한 가게들을 구경하고 맛있는 것을 먹을 수 있으며, 여러 나라 사람들이 함께 즐기는 축제도 열려서 활기찬 분위기를 느낄 수 있는 곳이다.",
+    "youtube": "https://youtu.be/5X6R9LX78Go?si=KD9D7EkO69fKW6Mb",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA0MTdfNzAg%2FMDAxNzQ0ODY2Mjk3MTY2.7ThEc2Iec2wvodOiYQlzqTSHfQpeiLHnUozeU4z9Y2wg.NIaJ5UE0gVmuIOuXO5Io3L7W7QZ8OehPMFYyYAqjQcIg.JPEG%2F900%25A3%25DF20250321%25A3%25DF153157.jpg&type=a340"
+  },
+  {
+    "name": "안정리 로데오거리",
+    "lat": 36.971205,
+    "lng": 127.043562,
+    "desc": "평택에는 미군 부대인 K-6가 있어서 외국 군인들과 외국에서 온 사람들이 많이 찾는 식당이나 옷가게들이 모여 있는 곳이다. 이곳에는 그림이나 만들기 같은 예술 활동을 하는 팽성예술창작공간도 있고 미군 가족과 우리 동네 사람들이 함께 어울려 즐기는 마토축제도 열리는 곳이다.",
+    "youtube": "https://youtu.be/CZmu7Ig5pNc?si=H2alQ7f4rP_ebtJP",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F001%2F2022%2F01%2F16%2FPYH2022011606670006100_P4_20220116151808961.jpg&type=a340"
+  },
+  {
+    "name": "통복시장",
+    "lat": 36.997361,
+    "lng": 127.083911,
+    "desc": "평택 통복시장은 경기도 평택에 있는 아주 크고 오래된 시장이다. 이곳에서는 신선한 채소, 과일, 고기처럼 여러 가지 물건들을 살 수 있는 곳이다. 맛있는 음식들도 많이 팔고 사람들이 활기차게 오가는 곳이다. 옛날부터 지금까지 많은 사람들이 찾아오는 평택의 중요한 시장이다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "진위천 유원지",
+    "lat": 37.098239,
+    "lng": 127.085699,
+    "desc": "물놀이, 캠핑, 피크닉 등 가족 단위 나들이에 적합한 자연 휴양지입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "서정리 전통시장 거리",
+    "lat": 37.072072,
+    "lng": 127.054762,
+    "desc": "먹거리와 특산물, 지역 정서를 느낄 수 있는 전통 시장 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택호 예술관",
+    "lat": 36.924383,
+    "lng": 126.923224,
+    "desc": "평택호 주변에 위치한 문화 전시 및 공연 예술 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택호 횡단 출렁다리",
+    "lat": 36.941541,
+    "lng": 126.978853,
+    "desc": "드넓은 호수를 한눈에 보며 걷는 출렁다리 체험 명소입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "송탄관광특구",
+    "lat": 37.083827,
+    "lng": 127.049167,
+    "desc": "미군 기지 주변에 형성된 이국적인 분위기의 거리와 맛집 명소입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이충문화체육센터",
+    "lat": 37.066264,
+    "lng": 127.070761,
+    "desc": "시민 문화생활과 스포츠 활동이 어우러지는 복합 문화공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "배다리생태공원",
+    "lat": 37.00045,
+    "lng": 127.118142,
+    "desc": "습지와 연꽃단지, 산책로가 조성된 자연 친화적 도심공원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "경기도 농업기술원 화훼연구소",
+    "lat": 37.06689,
+    "lng": 126.964911,
+    "desc": "계절별 아름다운 꽃을 감상할 수 있는 연구·전시 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택시립도서관 숲속책마루",
+    "lat": 36.969355,
+    "lng": 127.052341,
+    "desc": "숲속에 자리한 독서 및 쉼터 공간으로 가족 나들이 장소로 인기입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "진위천 벚꽃길",
+    "lat": 37.098239,
+    "lng": 127.085699,
+    "desc": "봄철 벚꽃이 만개하는 아름다운 벚꽃 산책로입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성천 평택구간 자전거도로",
+    "lat": 36.981835,
+    "lng": 127.020305,
+    "desc": "강변을 따라 시원하게 달릴 수 있는 자전거 도로 코스입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택 중앙시장 문화의 거리",
+    "lat": 37.08525,
+    "lng": 127.053622,
+    "desc": "재래시장과 함께 문화공연도 즐길 수 있는 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부락산 자연휴양림",
+    "lat": 37.075332,
+    "lng": 127.074907,
+    "desc": "산림욕과 힐링을 동시에 즐길 수 있는 숲속 휴식처입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "진위향교",
+    "lat": 37.09872,
+    "lng": 127.094982,
+    "desc": "\"항교는 조선 초기에 창건된 국가에서 운영하는 지방교육기관으로 지방의 교육을 담당했다. 향교에서는 교육 뿐만 아니라 훌륭한 조상이나 현인들을 기리는 곳이기도 하다.  평택에는 진위향교와 평택항교가 있다.\n\n\"",
+    "youtube": "https://www.youtube.com/watch?v=iroCCXCgU-0",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG86RI-ynqXUuCGt7UzplhY-oh3uw8tPklug&s"
+  },
+  {
+    "name": "평택향교",
+    "lat": 36.965452,
+    "lng": 127.056053,
+    "desc": "\"항교는 조선 초기에 창건된 국가에서 운영하는 지방교육기관으로 지방의 교육을 담당했다. 향교에서는 교육 뿐만 아니라 훌륭한 조상이나 현인들을 기리는 곳이기도 하다.  평택에는 진위향교와 평택항교가 있다.,\n\n\"",
+    "youtube": "https://www.youtube.com/watch?v=iroCCXCgU-0",
+    "img": "https://www.heritage.go.kr/unisearch/images/cultural_material/thumb/1659826.jpg?time=1749605257989"
+  },
+  {
+    "name": "평택항 국제여객터미널",
+    "lat": 36.957989,
+    "lng": 126.845175,
+    "desc": "중국 등 해외와 연결되는 국제여객터미널로, 평택의 관문 역할을 합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한국소리터",
+    "lat": 36.921463,
+    "lng": 126.920992,
+    "desc": "국악과 전통 문화를 체험하고 공연을 관람할 수 있는 복합 문화 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택 국제중앙시장 (송탄시장)",
+    "lat": 37.080623,
+    "lng": 127.052141,
+    "desc": "미군 부대 인근에 위치하여 이국적인 분위기와 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "통복시장",
+    "lat": 36.997361,
+    "lng": 127.083911,
+    "desc": "평택의 대표적인 전통시장 중 하나로, 활기찬 분위기와 먹거리가 풍부합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "바람새마을",
+    "lat": 37.017028,
+    "lng": 127.020586,
+    "desc": "농촌 체험과 자연 학습을 할 수 있는 체험 마을입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "웃다리문화촌",
+    "lat": 37.068964,
+    "lng": 127.008639,
+    "desc": "폐교를 활용하여 조성된 복합 문화 공간으로, 예술 체험 및 전시를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "덕목리 폐철교",
+    "lat": 36.95101,
+    "lng": 126.956258,
+    "desc": "평택의 숨겨진 명소로, 아름다운 풍경을 자랑하는 폐철교입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "오성 강변코스",
+    "lat": 36.992714,
+    "lng": 126.982372,
+    "desc": "아산호 강변을 따라 조성된 아름다운 자전거길 및 산책로입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "농업생물자원관",
+    "lat": 37.021514,
+    "lng": 126.974646,
+    "desc": "다양한 농업 생물 자원을 전시하고 학습할 수 있는 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택박물관",
+    "lat": 36.986736,
+    "lng": 126.933635,
+    "desc": "평택의 역사와 문화를 보여주는 유물들을 전시하고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "박애병원",
+    "lat": 36.993168,
+    "lng": 127.08897,
+    "desc": "평택시 평택동에 위치한 주요 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "굿모닝병원",
+    "lat": 36.99087,
+    "lng": 127.120561,
+    "desc": "평택시 비전동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택성모병원",
+    "lat": 37.008536,
+    "lng": 127.074033,
+    "desc": "평택시 평택동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "송탄제일병원",
+    "lat": 37.080033,
+    "lng": 127.062544,
+    "desc": "평택시 송탄동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택시청",
+    "lat": 36.992492,
+    "lng": 127.112727,
+    "desc": "평택시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "송탄출장소",
+    "lat": 37.067495,
+    "lng": 127.064051,
+    "desc": "평택시 북부 지역의 행정 업무를 담당하는 출장소입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안중출장소",
+    "lat": 36.990029,
+    "lng": 126.919622,
+    "desc": "평택시 서부 지역의 행정 업무를 담당하는 출장소입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택역",
+    "lat": 36.991294,
+    "lng": 127.084993,
+    "desc": "수도권 전철 1호선과 SRT가 지나는 평택의 주요 교통 허브입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "지제역",
+    "lat": 37.019029,
+    "lng": 127.070204,
+    "desc": "SRT와 수도권 전철 1호선이 만나는 주요 환승역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "송탄역",
+    "lat": 37.075754,
+    "lng": 127.054412,
+    "desc": "수도권 전철 1호선 송탄역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평택공용버스터미널",
+    "lat": 36.991238,
+    "lng": 127.086916,
+    "desc": "평택시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "주한미군 오산공군기지 (K-55)",
+    "lat": 37.079303,
+    "lng": 127.05079,
+    "desc": "평택에 위치한 주한미군 공군 기지로, 지역 경제에 큰 영향을 미칩니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
