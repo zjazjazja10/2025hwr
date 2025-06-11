@@ -21,17 +21,255 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const places = [
-            // { name: "예시", lat: 37.90, lon: 127.06, desc: "설명", youtube: "", img: "" }
+        const places =[
+  {
+    "name": "산 - 소요산",
+    "lat": 37.943507,
+    "lng": 127.087953,
+    "desc": "소요산은 경기도 동두천에 있는 아름다운 산으로, 봄에는 예쁜 꽃이 피고 가을에는 단풍이 아주 멋져서 많은 사람들이 찾아오는 곳이다. 이곳에는 옛날 원효대사 이야기가 전해지는 자재암과 폭포 같은 볼거리가 많고, 박물관이나 맛있는 음식점도 있어서 편하게 와서 구경하고 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/V9tru93ppUY?si=ncm0VRFg5qUOp4uy",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MDZfMjI3%2FMDAxNjkxMzIxNjIwMzc1.5ubUQHm-pti_Argl8r3-c84KVsZClKw1wOFr-pSNmRkg.g5Sjgpow2JvZblwj9XXwLEp_ITHf9Yro-pjpEYonN34g.JPEG.moco3661%2FIMG_0573.jpg&type=a340"
+  },
+  {
+    "name": "산 - 마차산",
+    "lat": 37.944002,
+    "lng": 127.026495,
+    "desc": "마차산은 동두천과 연천 사이에 있는 산으로, 높이는 587m이다. 정상에서는 사방이 잘 보여서 예전에는 군사기지와 봉화대가 있었던 곳이다. 옛날 이야기로는 설인귀 장군이 이 산에 비석을 세웠고, 황소가 그 비석을 감악산으로 옮겼다고 한다. 이후 마을 사람들은 그 비석에 매년 정성을 드리며 기도해 왔다고 한다.",
+    "youtube": "https://youtu.be/P0x_vLkylYA?si=AmZFNN0fwn1OOTOh",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA5MjdfMTAg%2FMDAxNTM3OTc1OTM3Mjc3.V4fERSHDY19c19dZNBYH3FCHxn1rlnaPpjTkyGaKHSAg.wUijubRBVtfg255Jg1L96qQihWEHHvTU4kOAa0rNumwg.JPEG.podonger%2FIMG_6988.jpg&type=a340"
+  },
+  {
+    "name": "산 - 칠봉산",
+    "lat": 37.871932,
+    "lng": 127.09323,
+    "desc": "칠봉산은 높이가 506미터이고, 봉우리가 일곱 개 있어서 이름이 붙여진 산이다. 옛날 임금님이 올랐다고 어등산이라고도 하고 가을 단풍이 아름답다고 금병산이라고도 불리며, 주변에 옛날 볼거리도 있는 산이다.",
+    "youtube": "https://youtu.be/Wpqkh9BBfkI?si=E8IihR4Oe9ToRGL6",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA1MjNfMjEz%2FMDAxNTI3MDI5MzY2NzYx.wJrgZzraMgArrsl_bAb9sKF5MrS_gngw4cTRFShMOYEg.oluxPtHpUIchGxT2dZic7NF3oAl0Kxn1MDV5n75QJi8g.JPEG.bjbj21%2FIMG_5803.JPG&type=a340"
+  },
+  {
+    "name": "산 - 해룡산",
+    "lat": 37.875812,
+    "lng": 127.128225,
+    "desc": "해룡산은 높이가 약 661미터 정도 되는 산으로, 동두천의 다른 산들과 이어져 있는 곳이다. 옛날에는 산꼭대기에 신기한 연못이 있어서 비가 오기를 빌면 소원이 이루어졌다는 재미있는 이야기가 전해지는 곳이다.",
+    "youtube": "https://youtu.be/kMjOqf94Pxc?si=yg5qvZv7520jZ4cp",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20100926_30%2Fpiero6437_1285491202124AKLNC_jpg%2F%25BA%25F1%25B4%25DC%25BB%25EA_122_piero6437.jpg&type=a340"
+  },
+  {
+    "name": "산 - 왕방산(국사봉)",
+    "lat": 37.915526,
+    "lng": 127.146773,
+    "desc": "왕방산은 높이가 737미터인 산이다. 이 산의 이름에는 옛날 신라 임금님이 찾아왔다는 이야기와 조선을 세운 태조 임금님이 머물렀다는 두 가지 이야기가 전해지는 곳이다. 도로 옆에 있어서 찾기 쉽고, 여름에는 시원한 계곡도 있는 아름다운 산이다.",
+    "youtube": "https://youtu.be/aI6ouVAZBeY?si=JIXWIXVQJ6AsLlu8",
+    "img": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.san.chosun.com%2Fnews%2Fphoto%2F200708%2F2915_4320_579.jpg&type=a340"
+  },
+  {
+    "name": "계곡 - 탑동계곡",
+    "lat": 37.892661,
+    "lng": 127.109369,
+    "desc": "탑동계곡은 천보산, 해룡산, 칠봉산 사이에 있는 계곡으로, 맑은 물과 바위들이 예쁘게 어울리는 곳이다. 이곳은 봄, 여름, 가을, 겨울 사계절 내내 아름다운 풍경을 보며 쉬어갈 수 있는 좋은 곳이다.",
+    "youtube": "https://youtu.be/Ha7Si203Mt0?si=c7S6bbap2P3ozhec",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120904_279%2Fswk12341_1346719532839kdNXQ_JPEG%2F073.JPG&type=a340"
+  },
+  {
+    "name": "자재암",
+    "lat": 37.944621,
+    "lng": 127.08725,
+    "desc": "잠정적으로 소요사(逍遙寺), 소요암(逍遙庵)이라고도 불리기도 하나 원효대사가 세운 곳이자 그가 소요산에서 득도하던 중에 여성의 모습으로 유혹하여 나타났다는 관세음보살을 설법으로 물리치고 스스로 소요산에서 득도하는 의미를 통하여서 자재암으로 부르고 있다. 이 곳에는 두 개의 폭포를 볼 수 있고, 전쟁 등으로 여러 번 부서졌다가 다시 지어져서 지금의 모습을 갖춘 절이다. 이 곳에는 반야바라밀다심경약소라는 국가지정 보물이 보관되어 있는데 이 책은 옛날 반야심경이라는 부처님 가르침을 법장 스님이라는 분이 더 잘 알 수 있도록 설명해 놓은 책이다.",
+    "youtube": "https://youtu.be/E-f_pcoW6QI?si=6K6NnOLj1lxOBont",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20141110_245%2Fdoheenp_141558117257055ypS_JPEG%2FPB090736.JPG&type=a340"
+  },
+  {
+    "name": "노르웨이 이동외과 병원",
+    "lat": null,
+    "lng": null,
+    "desc": "동두천 노르웨이 이동외과 병원은 옛날 6.25 전쟁 때 노르웨이 군인들이 동두천에 병원을 만들어 우리나라 군인과 다른 나라 군인, 다친 사람들을 9만 명 넘게 치료했던 곳이다. 전쟁이 끝난 뒤에도 돌아가지 않고 우리나라에 큰 병원인 국립의료원을 만드는 데 도움을 준 중요한 곳이다.",
+    "youtube": "https://youtu.be/onfb4OGv2d4?si=Rdu4fQdYiABvKiKZ",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F018%2F2024%2F04%2F05%2F0005708101_001_20240405155401088.jpg&type=a340"
+  },
+  {
+    "name": "생연음식문화거리",
+    "lat": 37.927637,
+    "lng": 127.058979,
+    "desc": "동두천 생연음식문화거리는 옛날 생골과 연동 마을에서 이름이 왔고, 맛있는 설렁탕이나 떡갈비처럼 여러 가지 음식을 파는 가게가 많이 모여 있는 곳이다 이곳은 동두천의 오래된 역사와 문화를 느낄 수 있고, 단풍으로 유명한 소요산 근처에 있어서 많은 사람들이 와서 맛있는 음식을 맛보는 곳이다.",
+    "youtube": "https://youtu.be/ZTKx6eSqEtc?si=M6_9AzsY29KIVXMk",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA4MjBfMjQ1%2FMDAxNTk3ODUwNjE1NTMx.NZGHKAUwx5k9oxCr8SwtqHnsfx7ncTHUicWjP3hlf2Ug.7vNOCGNFPYOd_unfC_SDG--R_2rlGqw90peyf1YbjJsg.JPEG.cafeinfofam%2F23005.JPG&type=a340"
+  },
+  {
+    "name": "보산동 외국인 관광특구",
+    "lat": 37.913168,
+    "lng": 127.056047,
+    "desc": "동두천 보산동 관광특구는 옛날 미군 부대가 있어서 우리나라와 여러 나라의 문화가 섞여 있는 특별한 곳이다. 이곳에는 다양한 가게들과 함께 재미있는 공연이나 축제가 자주 열려서 많은 사람들이 찾아와 구경하고 즐기는 곳이다. 관광특구 안에는 월드 푸드 스트리트라는 거리가 있다. 이곳에서는 여러 나라의 다양한 음식을 맛보고 구경하며 이국적인 재미를 느낄 수 있는 특별한 거리이다.",
+    "youtube": "https://youtu.be/B0cgG0v1I4w?si=kfxiPrVO_ZTzVu7C",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5364%2F2020%2F03%2F26%2F0000380532_001_20200326172511547.jpg&type=a340"
+  },
+  {
+    "name": "자유수호평화박물관",
+    "lat": 37.942544,
+    "lng": 127.066144,
+    "desc": "동두천 자유수호평화박물관은 옛날 6.25 전쟁 때 우리나라와 평화를 위해 싸우다 돌아가신 분들을 기억하고 전쟁의 아픔과 평화의 소중함을 배우는 곳이다. 이곳에서는 전쟁 때 사용했던 비행기나 탱크 같은 물건들과 우리나라를 도왔던 여러 나라에 대한 전시를 보며 많은 것을 느낄 수 있는 곳이다.",
+    "youtube": "https://youtu.be/dNi9M9-0tVY?si=YAyZwg03mcuOX6Cg",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTAzMDVfMjEw%2FMDAxNjE0ODc2MTEwMDEw.uSfqsk4GsL3u6YVS7krPMuWuw8PmzJbok0dx8JvKyGAg.-pWVV1bVrdyqGeGyxufgJmHnw-7v6qEDabeojFZFR18g.JPEG.bleu0823%2F20210221%25A3%25DF154440%25A3%25AD01.jpeg&type=a340"
+  },
+  {
+    "name": "경기북부어린이박물관",
+    "lat": 37.945007,
+    "lng": 127.064444,
+    "desc": "경기북부어린이박물관은 경기도 동두천에 있는 어린이들이 상상하고 용기를 키우는 재미있는 박물관이다. 이곳은 '숲에서 꿈꾸는 어린이'를 주제로 자연 속에서 몸으로 체험하고 배우며 가족과 함께 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/G9PJi25lRNA?si=11CZi28-7xuKCxgR",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MDVfMjE3%2FMDAxNzE0ODc0NzQ4NDcz.pbCsLNqdCKtHJV44Mj7UyJMEaK16bh7eEwpUrCyxBcEg.4n7UHaEjzF8SkdG9sZvP3juEgTVigcqt2tkHvmPIBakg.PNG%2FScreenshot_2024-05-05_at_11.04.56%2BAM.png&type=a340"
+  },
+  {
+    "name": "동두천 큰시장",
+    "lat": 37.901402,
+    "lng": 127.05268,
+    "desc": "큰시장은 1960년부터 인근지역 농민들이 직접 생산한 식품을 물물교환을 하면서 자연스럽게 개설된 시장으로 농·축산물의 도소매 및 물물교환이 현재까지 이루어지는 경기북부의 최대5일장이 운영되고 있다.",
+    "youtube": "https://youtu.be/wRF55c7L4v8?si=PCC9qZruIjLncu7e",
+    "img": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.visitkorea.or.kr%2Fimg%2Fcall%3Fcmd%3DVIEW%26id%3Dd9d054f4-ccc2-4309-901b-a23f22f0926b&type=l340_165"
+  },
+  {
+    "name": "동두천자연휴양림",
+    "lat": 37.892392,
+    "lng": 127.135327,
+    "desc": "숲 속에서 휴식과 레저 활동을 즐길 수 있는 자연 휴양림입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천 중앙시장",
+    "lat": 37.907135,
+    "lng": 127.054341,
+    "desc": "동두천의 대표적인 전통시장으로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천향교",
+    "lat": null,
+    "lng": null,
+    "desc": "조선시대 교육기관으로, 지역의 유교 문화를 엿볼 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "캠프보산 예술거리",
+    "lat": 37.918432,
+    "lng": 127.057582,
+    "desc": "미군부대 인근의 거리에 조성된 예술과 문화를 즐길 수 있는 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천종합운동장",
+    "lat": 37.900839,
+    "lng": 127.071307,
+    "desc": "다양한 체육 시설을 갖춘 동두천시의 주요 스포츠 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천 생활문화센터",
+    "lat": 37.898966,
+    "lng": 127.05912,
+    "desc": "시민들의 문화 활동을 위한 공간으로, 동아리 활동 및 강좌가 열립니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "니지모리스튜디오",
+    "lat": 37.879932,
+    "lng": 127.091646,
+    "desc": "일본풍의 건축물과 정원으로 조성된 촬영 세트장 겸 관광지입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천드림파크",
+    "lat": null,
+    "lng": null,
+    "desc": "(가칭) 동두천에 조성 예정이거나 계획 중인 여가 공간입니다. (확인 필요)",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천중앙성모병원",
+    "lat": 37.909075,
+    "lng": 127.053847,
+    "desc": "동두천시 생연동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천성모병원",
+    "lat": 37.90695,
+    "lng": 127.051004,
+    "desc": "동두천시 생연동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천시청",
+    "lat": 37.903709,
+    "lng": 127.061113,
+    "desc": "동두천시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천역",
+    "lat": 37.927603,
+    "lng": 127.054895,
+    "desc": "수도권 전철 1호선 동두천역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "소요산역",
+    "lat": 37.947322,
+    "lng": 127.060673,
+    "desc": "수도권 전철 1호선 소요산역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "지행역",
+    "lat": 37.892425,
+    "lng": 127.05584,
+    "desc": "수도권 전철 1호선 지행역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "동두천시외버스터미널",
+    "lat": 37.880768,
+    "lng": 127.05216,
+    "desc": "동두천시의 시외버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
