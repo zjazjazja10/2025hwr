@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>남양주 인터랙티브 지도</title>
+    <title>남양주시 인터랙티브 지도</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        body { margin: 0; padding: 0; }
         #map { height: 100vh; }
-        .popup-img { width: 100px; height: auto; }
+        .popup-content h3 { margin: 0 0 10px; padding-bottom: 5px; border-bottom: 1px solid #ccc; }
+        .popup-content p { margin: 5px 0; }
+        .popup-img { max-width: 250px; width: 100%; height: auto; border-radius: 5px; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -15,23 +18,362 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         // 남양주시청 중심 좌표
-        const map = L.map('map').setView([37.6361, 127.2165], 12);
+        const map = L.map('map').setView([37.636, 127.216], 11);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const places = [
-            // { name: "예시", lat: 37.63, lon: 127.21, desc: "설명", youtube: "", img: "" }
+        const places =[
+  {
+    "name": "천마산",
+    "lat": 37.681505,
+    "lng": 127.27252,
+    "desc": "남양주에 있는 천마산은 높이가 812미터이고, 조선을 건국한 태조 이성계가 하늘을 만질 수 있을 것 같다고 해서 이름이 붙여진 아름다운 산이다. 이 산에는 옛날 도적 임꺽정 이야기가 전해지고 약물바위라는 샘물도 있으며, 멋진 풍경 때문에 사람들이 많이 찾는 유명한 곳이다.",
+    "youtube": "https://youtu.be/l6qQr_-66UA?si=EvN_-w9PZk7upAL1",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMzFfNSAg%2FMDAxNzMwMzA3NTc4NDcy.52FoG1Vvy1azAY4WtJdglgAJMLtHmUSP0GVPbXzd6IQg.HIL3KCyXnxybxD2-j-_3zIN3etnvumcnDdsniFquUacg.JPEG%2F%25B4%25D9%25BF%25B8%25B7%25CE%25B5%25E5.jpg&type=sc960_832"
+  },
+  {
+    "name": "예봉산",
+    "lat": 37.561322,
+    "lng": 127.260665,
+    "desc": "예봉산은 옛날에 '예빈산'이나 '사랑산'이라고 불렸는데, 산에게 제사를 지낸다는 뜻에서 이름이 붙여진 산이다. 이곳은 하늘을 나는 패러글라이딩을 하거나 멋진 경치를 볼 수 있고, 근처에 팔당댐과 맛있는 음식점도 있어서 많은 사람들이 찾아오는 곳이다.",
+    "youtube": "https://youtu.be/Pajokb1BV9s?si=vx_tKalcLU2-v7LJ",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5675%2F2025%2F02%2F14%2F0000039677_001_20250214121613002.jpg&type=sc960_832"
+  },
+  {
+    "name": "운길산",
+    "lat": 37.57299,
+    "lng": 127.29536,
+    "desc": "남양주에 있는 운길산은 구름이 가다가 산에 걸려 멈춘다고 이름이 붙여진 아름다운 산이다. 이 산은 북한강과 남한강이 만나는 멋진 두물머리를 내려다볼 수 있고, 운길산역 근처에는 물의 정원처럼 가볼 만한 곳이 많은 산이다.",
+    "youtube": "https://youtu.be/jySFONlhCJE?si=ZcsC7RGFJMtSpZto",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20120408_56%2F10gurum_1333862609072GcxYV_JPEG%2Fungil_20120407_199.jpg&type=sc960_832"
+  },
+  {
+    "name": "팔당호(팔당댐)",
+    "lat": 37.515339,
+    "lng": 127.301109,
+    "desc": "팔당댐은 경기도 하남시와 남양주시를 잇는 한강에 있는 아주 크고 중요한 댐이다. 높이가 29미터이고 1973년에 완성된 큰 댐이다. 이 댐은 서울과 주변 도시에 우리가 사용하는 물을 많이 보내주는 곳이다. 여기서 전기도 만들고, 비가 많이 올 때 강물이 넘쳐서 홍수가 나는 것도 막아주는 역할을 한다. 팔당댐이 만들어지면서 물이 고여 인위적으로 만들어진 호수가 바로 팔당호수이다.",
+    "youtube": "https://www.youtube.com/watch?v=D2a-qhm6loQ",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMjFfMTMx%2FMDAxNjY5MDExNjE5MjM0.4-n1AB3ouk7D1c4k3YiyCnn_A25ebNQViMlL1OfWTCAg.7FSL5HZSv1onTovfKQJMUtJ69D4MqJNnlvu2eb_LgZYg.JPEG.kw8756%2F20221120_130744.jpg&type=sc960_832"
+  },
+  {
+    "name": "불암산",
+    "lat": 37.664282,
+    "lng": 127.095257,
+    "desc": "불암산은 서울과 남양주 사이에 있는 높이 509.7미터 정도의 산으로, 산봉우리의 바위 모습이 부처님이 쓰는 모자 같다고 해서 불암산이라고 불리는 곳이다. 이 산은 바위가 많지만 봄에는 예쁜 철쭉이 피고 서울 근교에 위치해 교통이 좋아 가기 편해서 등산을 좋아하는 사람들이 많이 찾아오는 산이다.",
+    "youtube": "https://youtu.be/ETR2PuXK_c8?si=Fr92dw0pJEbOxf40",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA0MThfMzIg%2FMDAxNjE4NzM3MTg1ODU1.sm8xsOxD09XC8UacBJkQHyTCx1ztSp7RRmlwHIGFVIEg.uOBNN_7FeVTwE3A-o4KmZnVWJ7YSRnmjsqJ2Hyb0ep4g.JPEG.jazzhappy%2FIMG_7580.jpg&type=sc960_832"
+  },
+  {
+    "name": "수락산",
+    "lat": 37.697645,
+    "lng": 127.08292,
+    "desc": "수락산은 서울과 남양주 근처에 있는 산으로, 물이 바위에서 떨어지는 모습이 아름답다고 해서 이름이 붙여진 곳이다. 이 산은 바위가 많지만 산행하기에 아주 힘들지 않고, 폭포나 봄에 피는 예쁜 철쭉을 볼 수 있어서 사람들이 많이 찾아가는 산이다.",
+    "youtube": "https://youtu.be/m3Q6HWU7PZc?si=PR_F7EDjOjsS0RpO",
+    "img": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.namu.wiki%2Fi%2FO4eQ6rE8dUHeD7QRyjR8m02iJ9bL76mp7GZjJ0-MNyMukwI2EUFAWnSrbloOofqeZhJ4HI0ICrfo2VLR2wNfYg.webp&type=a340"
+  },
+  {
+    "name": "백봉산",
+    "lat": 37.63943,
+    "lng": 127.258207,
+    "desc": "남양주에 있는 백봉산은 천마산 근처에 있는 아름다운 산으로, 경치가 뛰어나고 사람들이 찾아가기 좋은 곳이다. 이 산에는 옛날 원효대사님이 처음 지었다는 묘적사라는 절이 있는데, 임진왜란 때 사명대사님이 스님들을 훈련시켰던 역사적인 장소이다.",
+    "youtube": "https://youtu.be/XPPXLbXeK98?si=8RgCzxeoFyMelZh7",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMjhfMTYy%2FMDAxNjY5NTgzNDI3MjY1.lQimHAms4APVXjtHNSNEbPBEDB3OlUC-WTEYrbyFf9Mg.8fWBuCUtABHtbpeczCFzM6hOMxGCjFdgGlpK1k4DGKEg.JPEG.jo44on%2F20221127%25A3%25DF120426.jpg&type=sc960_832"
+  },
+  {
+    "name": "철마산",
+    "lat": 37.72125,
+    "lng": 127.246999,
+    "desc": "철마산은 옛날에 장군이 쇠로 만든 말을 타고 나왔다는 전설이 전해지는 특별한 산이다. 이 산은 깨끗한 자연 속에서 재미있게 산책하고 옛날 성터도 볼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/-C2b1d0cBik?si=4NOzrHiFiLdE2847",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20131229_241%2Fymc0216_1388302210611dSRg0_JPEG%2F%25C3%25B6%25B8%25B6%25BB%25EA_102.JPG&type=sc960_832"
+  },
+  {
+    "name": "축령산",
+    "lat": 37.752522,
+    "lng": 127.329327,
+    "desc": "축령산은 조선을 건국한 태조 이성계 임금님이 산신께 제사를 지내고 멧돼지를 잡았다는 이야기 때문에 이름이 붙여진 산이다. 이 산은 숲이 우거지고 계곡이 아름다우며, 멋진 자연휴양림도 있어서 사람들이 쉬어가기 좋은 곳이다.",
+    "youtube": "https://youtu.be/jKxyQz6AUEY?si=iWeOZQpxuVa4FbIn",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150622_144%2Fjeonmieun_14349720084317DQOR_JPEG%2FDSC07643.JPG&type=sc960_832"
+  },
+  {
+    "name": "북한강",
+    "lat": 37.53887,
+    "lng": 127.307692,
+    "desc": "북한강은 우리나라 북쪽에서 시작해서 강원도와 경기도를 지나 남쪽으로 길게 흘러오는 강이다. 남한강과 만나 커다란 한강을 이루고, 물이 많아서 댐도 만들고 예쁜 호수들도 생긴 아주 중요한 강이다.",
+    "youtube": "https://youtu.be/d5fOa2TO3TM?si=s7JXEPNyVIe0BRGN",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMDRfMjA3%2FMDAxNjk2Mzc0NTE4NDcz.MS4DA8y3IliTuPRiMvJD4Tbnz8XBLvdq7vIBki3umSMg.SUmlMHNat0hflsFKZ6dp0FXowIe6Vd3uTHB8k2rJWVwg.JPEG.ekdnsl0316%2FIMG_3671.jpg&type=sc960_832"
+  },
+  {
+    "name": "오남호수공원",
+    "lat": 37.694179,
+    "lng": 127.225004,
+    "desc": "남양주에 있는 오남호수공원은 옛날에 농사짓는 데 필요한 물을 모아두던 곳이었는데, 지금은 사람들이 편하게 쉬고 산책하는 공원이다. 이곳에는 호수 주변을 걷는 예쁜 길과 음악과 함께 나오는 멋진 분수도 있어서 가족들이나 친구들과 함께 즐거운 시간을 보내기 좋은 곳이다.",
+    "youtube": "https://youtu.be/56JKqobSxCI?si=kLpVJaSzwrDhDqbu",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxOTA3MzBfMzcg%2FMDAxNTY0NDYwOTc1OTU0.VNmG91KA7UeFKTopCLqrMHrrpxnmVH4wiFB72VMr4dgg.JtyjiuXCo4nJRRBB7iW4h-uyu7DmxECnD3MJafEblI8g.JPEG.nyjloving%2FAD905197.jpg&type=sc960_832"
+  },
+  {
+    "name": "부평생태습지공원",
+    "lat": 37.74496,
+    "lng": 127.196706,
+    "desc": "남양주 진접읍에 있는 부평생태습지원은 여러 강물이 모여 한강으로 흘러가는 길목에 만들어진 남양주를 대표하는 습지이다. 유네스코 지정 광릉숲 생물권보전지역 내 위치하였다. 이곳은 아름다운 야생화와 다양한 생물들을 만날 수 있고, 사람들이 자연 속에서 편안하게 쉬고 산책하며 반딧불이도 볼 수 있는 자연 친화적인 공원이다.",
+    "youtube": "https://youtu.be/67SjAKIOaJ0?si=_TtLFYmiPvJonWUm",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjAzMTBfMjMz%2FMDAxNjQ2ODg1OTk3MDUx.j7pJ4EOiijPGi5qe_JCf173xVw-wOH41JV8DXNLB8V0g.tzforaUD3hLPimn8zt71vavPKRkVCFUpEgKA8yKLyYgg.JPEG.nyjloving%2F10.JPG&type=sc960_832"
+  },
+  {
+    "name": "정약용 유적지",
+    "lat": 37.516619,
+    "lng": 127.299256,
+    "desc": "남양주시 조안면 일대에는 조선 후기의 위대한 학자이자 실학자인 정약용 선생님의 삶과 업적을 기리는 중요한 유적들이 모여 있는 곳이다. 남양주는 선생님께서 태어나시고 말년을 보내신 고향이기에 그의 생가, 묘소, 사당 등이 보전되어있으며, 기념관, 문화관 등이 조성되어있다.",
+    "youtube": "https://youtu.be/RTxaqCcotdc?si=VlXEkqtv89-RvtSU",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDAyMDNfNTMg%2FMDAxNTgwNzA0NzE3NTUw.qvzhMJKFCiKjD8XyMipLs1bsEFMVbK07XFFQcEpECMog.rIzWExCmC0yEDumquww4uYuOKiwnrT1cpYl5i-ElFlYg.JPEG.seikei77%2Fdasan_main1.jpg&type=sc960_832"
+  },
+  {
+    "name": "수종사",
+    "lat": 37.571191,
+    "lng": 127.302802,
+    "desc": "조선 초 세조 떄 창건한 수종사는 남양주 운길산에 있는 옛날 절로, 물 떨어지는 소리가 종소리 같다고 해서 이름이 붙여진 곳이다. 우리 나라 명승 109호로 사계절마다 다양한 경치를 즐길 있고, 국가지정 보물인 팔각오층석탑, 사리탑, 500살이 넘은 은행나무 등이 있다. 정약용을 비롯해 추사 김정희, 초의선사 등 많은 문인, 예술가들이 즐겨 찾아 그림과 시 등을 남긴 곳이기도 하다.",
+    "youtube": "https://youtu.be/o_7SkhIAmZU?si=TFVBj_mLxL9HCGe5",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTAzMDRfNyAg%2FMDAxNzQxMDM1MzAwOTcy.kLIOyKUO5jz0gqtrg-glYMgiOEyvhad-LA8quqKu-18g.IL42oOfG7T6UoRwS3kJHcG2voiiNOSd1aTnM2CHkFSwg.JPEG%2F900%25A3%25DF20250303%25A3%25DF145634.jpg&type=sc960_832"
+  },
+  {
+    "name": "세계문화유산 조선왕릉",
+    "lat": 37.631086,
+    "lng": 127.208419,
+    "desc": "남양주에는 역대 조선의 왕과 왕비의 무덤이 많은 곳이다. 광릉 : 세조, 사릉 : 정숭왕후 송씨(단종의 왕후), 홍유릉 : 고종과 순종 황제(한국의 유일한 황제릉), 광해군묘, 흥원 : 흥성대원군의 무덤, 순강원 : 인빈김씨(선조의 후궁), 휘경원 : 수빈박씨(정조의 후궁이자 순조의 친어머니), 성묘 : 공민김씨(선조의 후궁), 안빈묘 : 효종의 후궁(안빈이씨), 영빈묘 : 영빈김씨(숙종의 후궁)",
+    "youtube": "https://youtu.be/9cXPxt5rhHg?si=DCJQb6cjIoWveFkJ",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20141030_153%2Fham1887_1414657138605XPfco_JPEG%2FSAM_0077.jpg&type=a340"
+  },
+  {
+    "name": "봉선사",
+    "lat": 37.747511,
+    "lng": 127.183581,
+    "desc": "봉선사는 옛날 고려 시대에 처음 지어졌고, 조선 시대에 왕비가 다시 크게 만들면서 봉선사라는 이름이 붙여진 절이다. 이 절은 불교를 공부하는 중요한 곳이었지만, 전쟁으로 여러 번 불에 탔다가 다시 지어진 역사를 가진 곳이다. 봉선사에는 보물 제397호인 봉선사 동종과 보물 1792호인 비로자나삼신괘불도가 보관되어있다.",
+    "youtube": "https://youtu.be/7saZOcamYJk?si=FBaJsqK9Ji2nbmkB",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAzMTRfMjYg%2FMDAxNzEwNDE4MDQwNDE0.i7BXN9EYjgIaYOl_Dv5D2siWM5iGhLO5qPo9Nupquggg.PNhTg-JBbQomUJGx3mXcBDGF9ilk1GZ7dP_yi6UegxMg.JPEG%2F%25BA%25C0%25BC%25B1%25BB%25E704%2528%25BF%25B1%25BC%25AD%2529.jpg&type=sc960_832"
+  },
+  {
+    "name": "남양주 궁집",
+    "lat": 37.644719,
+    "lng": 127.230705,
+    "desc": "남양주 궁집은 옛날 조선 시대 영조 임금님이 아주 사랑했던 막내딸 화길옹주에게 나라에서 직접 지어준 집이다. 이 집은 옛날 양반들이 살던 모습과 그 시대 집 짓는 방법을 알 수 있는 중요한 곳이다.",
+    "youtube": "https://youtu.be/hQWHaCulQgY?si=KvDsdK6vu4qT754f",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjBfMjQ3%2FMDAxNzI5MzY4MTAzMTMx.A3KrlTz-jjCbb3q6nk4G9dnWcdspFXFWCoD3DopjZHQg.ESNhVEXfD-UoEn_28_W3U0oFNSYYfbik-vM9UbVMp7Ig.JPEG%2FBandPhoto%25A3%25DF2024%25A3%25DF10%25A3%25DF20%25A3%25DF02%25A3%25DF32%25A3%25DF45.jpg&type=sc960_832"
+  },
+  {
+    "name": "불암사",
+    "lat": 37.658937,
+    "lng": 127.098754,
+    "desc": "불암사는 불암산에 있는 아주 오래된 절로, 부처님 이야기를 나무판에 새긴 보물인 석씨원류 목판으로 유명한 곳이다. 이 절은 아주 오래전 신라 시대에 처음 지어졌고, 지금은 중요한 문화재나 부처님 사리탑 같은 볼거리가 많은 곳이다.",
+    "youtube": "https://youtu.be/hpe1Evjeqtk?si=XkT21GUn-DXAkhuP",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150224_133%2Fshepro1_1424787790489A2quT_JPEG%2FSAM_5707.JPG&type=sc960_832"
+  },
+  {
+    "name": "흥국사",
+    "lat": 37.684604,
+    "lng": 127.098496,
+    "desc": "흥국사(興國寺)는 경기도 남양주시에 있는 사찰이다. 조선 중기 이후 왕실의 원당이었다. 원당은 죽은 사람의 명복을 빌던 법당이라는 뜻이다. 1790년(정조 14년)에는 오규정소로 선정되었다. 오규정소는 관리들이 사찰에 머물면서 왕실의 무사함을 빌던 곳이다.",
+    "youtube": "https://youtu.be/XeKvGLvPgOg?si=H7ZzqOGR4qRMRiMs",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150207_105%2Fkwank99_14232852578409VB1t_JPEG%2F%25C8%25EF%25B1%25B9%25BB%25E7%25281%2529%2528%25B4%25EB%25B9%25E6%2529.jpg&type=sc960_832"
+  },
+  {
+    "name": "다산 생태공원",
+    "lat": 37.514484,
+    "lng": 127.298314,
+    "desc": "다산생태공원은 옛날 정약용 선생님이 살았던 곳 근처에 만들어진 공원으로, 자연과 역사, 문화가 함께 있는 아름다운 물환경 공원이다. 이곳에서는 호수 옆을 산책하며 예쁜 꽃과 식물을 보고, 계절마다 다른 멋진 풍경을 감상하며 편안하게 쉴 수 있는 곳이다.",
+    "youtube": "https://youtu.be/f7I0GtPWfS4?si=dWlDgCWOC-O94yII",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MjBfMTky%2FMDAxNzI0MTE3NzM1Mjg2.qlOQWlz0qTcoTb4ATavLgo2_xt8V-NYdHBItt9Y08Uwg.0TehBF9ipTq64VlBQnlvGvtVoXmGitzo4Pq9zZPGY4kg.JPEG%2F20240820%25A3%25DF102727.jpg&type=sc960_832"
+  },
+  {
+    "name": "물의 정원",
+    "lat": 37.557053,
+    "lng": 127.315117,
+    "desc": "남양주에 있는 물의정원은 북한강 옆에 만들어진 곳으로, 아름다운 강 풍경을 보며 자전거 여행객이나 사람들이 편하게 쉬고 산책할 수 있는 곳이다. 이곳은 계절마다 예쁜 꽃들이 피고 멋진 다리와 사진 찍는 곳도 있어서 도시를 벗어나 여유로운 시간을 보내기 좋은 곳이다.",
+    "youtube": "https://youtu.be/4BubHbOUNkA?si=6mKNP-NLMWPYNFvr",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTA0MjRfNDEg%2FMDAxNjE5MjM3NzE4Mjc2.X5_XZI7sYyYu_mW7N-iZsCxdV8vFwV5Eqiy8MTS1Uv0g.XtVdr1MqbJoFTTIohsxpNOrnmXC5031vp930BmFMYIwg.JPEG.miry79%2F20210420_131632.jpg&type=sc960_832"
+  },
+  {
+    "name": "청학천문화공원",
+    "lat": 37.703078,
+    "lng": 127.105234,
+    "desc": "청학계곡은 옛날에 불법 시설 때문에 사람들이 이용하기 불편했는데, 남양주시가 이것을 깨끗하게 만들어서 청학밸리 리조트라는 이름으로 다시 돌아온 곳이다. 이곳에는 마치 바닷가에 온 것 같은 넓은 모래사장(총면적 1,760㎡)도 있어서 사람들이 물놀이도 하고 자연 속에서 편안하게 쉬어갈 수 있는 곳이다.",
+    "youtube": "https://youtu.be/eD3YgkzKQZs?si=4zaDyHthEH4y-iQB",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F001%2F2022%2F04%2F01%2FPYH2022040110780006000_P4_20220401152417376.jpg&type=sc960_832"
+  },
+  {
+    "name": "한강시민공원 삼패지구",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주 한강시민공원 삼패지구는 남양주시에서 한강 옆에 만들어진 공원 중에 가장 넓은 곳으로, 축구장 33개보다 큰 곳이다. 이곳에는 야구장 같은 운동하는 곳과 자작나무 숲, 물놀이장, 예쁜 꽃밭 등 사람들이 와서 재미있게 놀고 편하게 쉴 수 있는 여러 가지 시설이 있는 곳이다.",
+    "youtube": "https://youtu.be/i4EyClG5Y4Y?si=Uw6IG9wkj6dBIjtG",
+    "img": ""
+  },
+  {
+    "name": "능내역사문화공원",
+    "lat": null,
+    "lng": null,
+    "desc": "능내역은 기차가 다니지 않게 된 옛날 역을 예쁘게 꾸며서 만든 문화공원이다. 이곳은 옛 모습을 그대로 간직하고 있어서 사진 찍기 좋고, 자전거 길 옆에 있어서 많은 사람들이 찾아오는 곳이다.",
+    "youtube": "https://youtu.be/YWzcDpqW8LA?si=eF7I5WuE9rAdeQ-U",
+    "img": ""
+  },
+  {
+    "name": "피아노 폭포",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주 피아노폭포는 쓰인 물을 깨끗하게 만든 다음 높은 곳에서 시원하게 떨어지게 만든 인공 폭포이다. 이곳은 물이 깨끗해지는 과정을 배우거나 피아노처럼 생긴 화장실, 여름에 즐길 수 있는 물놀이장 등을 이용하며 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/CMZgT7-VNTY?si=LQHta-VprZo5ViZL",
+    "img": ""
+  },
+  {
+    "name": "정약용 펀그라운드",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주에 있는 정약용 펀그라운드는 자연 속에서 청소년들이 재미있게 놀고 꿈을 키울 수 있도록 만들어진 곳이다. 이곳은 편하게 잠을 자는 곳도 있고, 춤이나 가상 스포츠 같은 여러 가지 재미있는 활동들을 친구들과 함께 즐길 수 있는 곳이다.",
+    "youtube": "https://youtu.be/qBMHLlcyEm4?si=a-vyt-idmI7lL7c6",
+    "img": ""
+  },
+  {
+    "name": "물맑음수목원",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주 물맑음수목원은 남양주시 수동면에 있는 곳으로, 깨끗한 자연 속에서 여러 가지 예쁜 식물들을 보고 사계절의 아름다움을 느낄 수 있는 곳이다. 이곳에서는 숲 체험이나 나무 만들기 같은 재미있는 활동도 하고, 멋진 풍경을 배경으로 사진도 찍으며 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/D7VyYoOjwI8?si=Qd3eLex3w8HTKinx",
+    "img": ""
+  },
+  {
+    "name": "사가연 문화거리",
+    "lat": null,
+    "lng": null,
+    "desc": "사가연 문화거리는 경기도 남양주 호평동에 있는 특별한 거리이다. 이곳 이름은 '사랑하는 가족과 연인'의 줄임말이다. 2010년부터 마을 사람들이 함께 노력해서 만든 곳이다. 맛있는 음식점이나 물놀이장도 있고, 가을에는 축제도 열려서 가족이나 친구와 함께 즐거운 시간을 보내기 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=iSbnDmMMy7k",
+    "img": ""
+  },
+  {
+    "name": "미음나루 음식문화거리",
+    "lat": null,
+    "lng": null,
+    "desc": "미음나루는 예부터 한강을 오고 가던 배들이 쉬던 쉼터였다. 배와 함께 뱃사공이 사라지고 미음나루터만 덩그러니 남았지만, 그 때 머물렀던 바람과 햇살은 사람들을 지금도 반기고 있다. 미음나루 주변에는 맛집들이 들어서 경기도에서 '미음나루 음식문화 특화거리'를 지정했다.",
+    "youtube": "https://www.youtube.com/watch?v=RB6bzVLh8yI",
+    "img": ""
+  },
+  {
+    "name": "코코팜 빌리지",
+    "lat": null,
+    "lng": null,
+    "desc": "코코몽팜빌리지는 경기도 남양주에 있는 재미있는 체험 학습장이다. 이곳은 인기 캐릭터 코코몽과 함께 농부가 되어보는 특별한 곳이다. 요리 교실에 참여하거나 미니 동물 친구들을 만나고, 기차도 탈 수 있는 곳이다. 흙 놀이나 여름철 물놀이처럼 다양한 활동을 하며 유기농에 대해서도 배울 수 있는 곳이다. 어린이들과 가족, 친구들이 함께 즐거운 시간을 보내고 좋은 추억을 만들 수 있는 장소이다.",
+    "youtube": "https://www.youtube.com/watch?v=y6S38XhJGqQ",
+    "img": ""
+  },
+  {
+    "name": "남양주한양병원",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주시 진접읍에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "현대병원",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주시 평내동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "남양주우리병원",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주시 진접읍에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "남양주시청",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "도농역",
+    "lat": null,
+    "lng": null,
+    "desc": "경의중앙선 도농역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "별내역",
+    "lat": null,
+    "lng": null,
+    "desc": "서울 지하철 4호선과 별내선(예정)이 지나는 역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "마석역",
+    "lat": null,
+    "lng": null,
+    "desc": "경춘선 마석역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "금곡역",
+    "lat": null,
+    "lng": null,
+    "desc": "경춘선 금곡역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "평내호평역",
+    "lat": null,
+    "lng": null,
+    "desc": "경춘선 평내호평역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "남양주 시외/고속버스 터미널 (각 지역별)",
+    "lat": null,
+    "lng": null,
+    "desc": "남양주는 지역별로 분산된 터미널 및 정류장이 많습니다 (예: 마석터미널, 호평동터미널 등).",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "남양주종합운동장",
+    "lat": null,
+    "lng": null,
+    "desc": "다양한 체육 시설을 갖춘 남양주시의 주요 스포츠 시설입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
