@@ -20,18 +20,263 @@
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
-        const places = [
-            // { name: "예시", lat: 37.59, lon: 127.14, desc: "설명", youtube: "", img: "" }
+        const places =[
+  {
+    "name": "이문안 호수공원",
+    "lat": 37.595081,
+    "lng": 127.131485,
+    "desc": "이문안 호수공원은 옛날 안골 저수지였던 곳을 사람들이 편하게 쉬고 걸을 수 있도록 새로 만든 공원이다. 이곳은 호수 둘레길을 따라 걸으며 아름다운 자연을 보고 시도 읽을 수 있는 좋은 곳이다.",
+    "youtube": "https://youtu.be/YM2LuQc7woM?si=rCkOHq0HwAiuenCY",
+    "img": "https://search.pstatic.net/common/?src=https%3A%2F%2Fdbscthumb-phinf.pstatic.net%2F2765_000_15%2F20180822183558552_ZNJE6XWQQ.jpg%2F9765216.jpg%3Ftype%3Dm4500_4500_fst&type=a340"
+  },
+  {
+    "name": "장자호수공원",
+    "lat": 37.58523,
+    "lng": 127.141926,
+    "desc": "구리 장자호수공원은 옛날에 깨끗하지 않았던 연못을 구리시에서 물을 깨끗하게 만들어서 사람들이 편하게 쉬는 공원이다. 이곳에는 걷는 길, 자전거 타는 길, 자연을 배우는 곳처럼 여러 가지 시설이 잘 만들어져 있어서 많은 사람들이 와서 재미있는 시간을 보내는 곳이다.",
+    "youtube": "https://youtu.be/oQnbZGwBzAA?si=sccMkUkwfiMVrbvh",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMDJfMjI3%2FMDAxNzI3ODM5MDg3MzU4.mPiR81H2cIRKFk28bQfR06Fn468esNTkR633vsfpjBAg.2GC3XG6hj2sJfdK4MBEGYhPKpR3VDATVYJTf5dwmr18g.JPEG%2F240928_%25B1%25B8%25B8%25AE%25C7%25D1%25B0%25AD%25BD%25C3%25B9%25CE%25B0%25F8%25BF%25F8_%25286%2529.jpg&type=sc960_832"
+  },
+  {
+    "name": "왕숙천 생태습지",
+    "lat": 37.600728,
+    "lng": 127.149989,
+    "desc": "왕숙천 생태습지는 경기도 구리시에 있는 공원으로, 왕숙천의 물을 깨끗하게 하고 사람들이 자연을 느끼며 편안하게 쉴 수 있도록 만든 곳이다. 이곳은 2009년에 만들어졌으며, 도심 가까이에서 다양한 식물과 동물들을 보며 자연을 배우고 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/6DRybcUz-Ao?si=78qYQ2_BVzlw2ucT",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjFfMjc1%2FMDAxNzI5NDkzNTc4MDE0.V7ur4zzD7jiq_lBpQeCyYlj2dgKIwNMx_geB1D7mDZkg.6ATCw9_xir9jqI4YGuRmEOfcWEZSm9uF3cygJmSQCh0g.PNG%2F%25BF%25D5%25BC%25F7%25C3%25B5%25BB%25FD%25C5%25C2%25BD%25C0%25C1%25F6-22.png&type=sc960_832"
+  },
+  {
+    "name": "동구릉",
+    "lat": 37.621761,
+    "lng": 127.127452,
+    "desc": "동구릉은 옛날 조선 시대 임금님과 왕비님 아홉 분의 무덤이 모여 있는 곳이다. 서울의 동쪽에 있어서 동구릉이라고 불리게 된 것이다. 처음에는 무덤이 다섯 개일 때는 동오릉, 일곱 개일 때는 동칠릉처럼 무덤 수에 따라 이름이 바뀌었다. 마지막으로 효명세자님의 무덤이 들어선 뒤에는 더 이상 무덤이 생기지 않아서 동구릉이라는 이름이 굳어진 것이다. 주변 산은 동구릉의 이름을 따와 구릉산이라고 명명하였다. 사적 제193호로 지정되어 있으며 2009년 2월 27일 유네스코의 세계 문화 유산으로 공식 등재되었다.",
+    "youtube": "https://youtu.be/mgw9rfPFdLY?si=RNZloV8F4Lrk1AoK",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MTFfMTYz%2FMDAxNzIzMzc3ODE4NjY3.h_6yCLGuPc2P856YF-bRAQ2Q78BFNyIVa4WfgIxlpn0g.-gY9YSSwTnxmqMz8iBVc321IV17KHSGPGrerdj6D4H4g.JPEG%2F8Z8A4985.JPG&type=sc960_832"
+  },
+  {
+    "name": "아차산 일대 보루군",
+    "lat": 37.57445,
+    "lng": 127.103037,
+    "desc": "아차산 일대 보루군은 서울과 구리에 있는 옛날 삼국 시대 고구려가 만든 작은 성들이다. 이곳은 고구려가 한강 주변 땅을 지키기 위해 쌓았던 곳으로, 우리나라에 남은 고구려의 중요한 역사 흔적이다.",
+    "youtube": "https://youtu.be/epdfUQaH3vw?si=LHr34raN9VNQO0iq",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNjEyMTlfMjYy%2FMDAxNDgyMTI3NDEwMDM5.bybQvWGqgmUQ0cnu6dYMJhvD-OZSkeAQ-fns2PbBFuwg.EGk3Lf3D1Bj3pMPEGZz6JM3k1D1T0nWI3VhVpp4JkZMg.JPEG.domi2014%2FIMGP6962.JPG&type=sc960_832"
+  },
+  {
+    "name": "망우역사문화공원",
+    "lat": 37.598679,
+    "lng": 127.114521,
+    "desc": "망우역사문화공원은 서울과 구리 사이에 있는 곳으로, 옛날 우리나라를 위해 힘쓴 많은 훌륭한 사람들이 잠들어 있는 곳이다. 이곳은 원래 공동묘지였지만 지금은 공원으로 바뀌어, 사람들이 산책하며 우리의 역사와 문화를 배우고 위인들을 기리는 곳이다. 한용운, 방정환, 문일평, 오세창 등 일제강점기 독립운동가와 박인환, 이중섭, 이인성, 조봉암 등 대한민국 근현대사에 커다란 발자취를 남긴 유명인사들이 이곳에 묻혀있으며 그 역사적 가치를 인정받아 2013년 서울미래유산으로 지정되었다.",
+    "youtube": "https://youtu.be/a4jQHQh_HTA?si=q2ad77PPyD__hocH",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNTA2MDRfMjYy%2FMDAxNzQ5MDIzNTA2NzQx.-CE9lQcW1YL2CbOesWxucrVoM7UXLq9pbe_UXxOuGBkg.QhtSKRMY--B1aS5TxQIPJFGzuqz0S8dmwTFgKISeoZog.JPEG%2FKakaoTalk_20250604_145420962_13.jpg&type=sc960_832"
+  },
+  {
+    "name": "구리아차산3층석탑",
+    "lat": 37.566117,
+    "lng": 127.106683,
+    "desc": "구리 아차산 삼층 석탑은 아차산 높은 곳에 있는 세 층으로 된 돌탑으로, 1952년에 부서졌다가 1996년에 다시 만들어진 탑이다. 이 탑은 절 옆이 아닌 곳에 세워져 산의 좋은 기운을 돕기 위해 만들어졌으며, 옛날 백제 시대 탑의 모습과 고려 시대 탑의 특징을 함께 보여주는 귀한 탑이다.",
+    "youtube": "https://youtu.be/T6yeMGhoIZ4?si=muvllSJXmJI6Ur0W",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA0MjNfMjkg%2FMDAxNTg3NjQ3Mjc5NDEw.DDnlxNcYfBvJxVE4vggk9h9Fx6mW5e_AWYXaWHWZziog.-6rDhw6oE3PPPSsDU0jVPtyQl1xZGQusoSFMpsjhBq0g.JPEG.mical59%2F1587647278702.jpg&type=sc960_832"
+  },
+  {
+    "name": "한강시민공원",
+    "lat": 37.574724,
+    "lng": 127.136279,
+    "desc": "구리한강시민공원에 조성된 꽃단지는 시민들이 즐거운 시간을 함께 나눌 수 있는 곳이다. 시원한 강바람이 초록의 싱그러움을 더하는 구리한강시민공원에서 어린이는 자연의 소중함을 배우고, 어른은 도심을 벗어나 휴식을 취할 수 있다.",
+    "youtube": "https://youtu.be/g9D1N2l3EDM?si=BYYBnFhO21w8nalU",
+    "img": "https://search.pstatic.net/sunny/?src=http%3A%2F%2Fggtour.or.kr%2Fwp-content%2Fuploads%2F2013%2F10%2Fgu10.jpg&type=sc960_832"
+  },
+  {
+    "name": "고구려대장간마을",
+    "lat": 37.560745,
+    "lng": 127.111016,
+    "desc": "구리 고구려대장간마을은 아차산 근처에 있는 옛날 고구려 사람들이 철을 다루고 생활했던 모습을 보여주는 곳이다.이곳은 고구려 시의 역사와 문화를 직접 보고 느끼며 배울 수 있는 곳이다.",
+    "youtube": "https://youtu.be/dq9VOB-31HE?si=M6VOwau6wBAiWhlD",
+    "img": "https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_226%2F1441053764543OXyTi_JPEG%2F106078583949614_0.jpg&type=sc960_832"
+  },
+  {
+    "name": "갈매구릉산자락길",
+    "lat": 37.627202,
+    "lng": 127.121324,
+    "desc": "갈매구릉산자락길은 경기도 구리에 있는 구릉산에, 몸이 불편하거나 어린 친구들도 편하게 걸을 수 있도록 만들어진 길이다. 이 길은 1.4km 길이로 나무로 된 길과 쉬는 곳이 잘 되어 있어서 누구나 자연을 편안하게 즐기기 좋은 곳이다.",
+    "youtube": "https://youtu.be/9e0m05vn_Kw?si=0IERzxogQjRhV8nY",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA2MjhfMjM5%2FMDAxNjU2MzgwNTAwOTcy.pBQAYQUKYpDiyfKIpFMsMw_aRymKvIHTrw457cv27Bgg.Qq_iL_LpdKVRA0UAyGdrUEgpxj7LNQADaTXwew_7BR4g.JPEG.guri9279%2F%25B0%25A5%25B8%25C5%25B1%25B8%25B8%25AA%25BB%25EA%25C0%25DA%25B6%25F4%25B1%25E6_%25BD%25E6%25B3%25D7%25C0%25CF.jpg&type=sc960_832"
+  },
+  {
+    "name": "구리타워&곤충생태관",
+    "lat": 37.590527,
+    "lng": 127.162037,
+    "desc": "갈매구릉산자락길은 경기도 구리에 있는 구릉산에, 몸이 불편하거나 어린 친구들도 편하게 걸을 수 있도록 만들어진 길이다. 이 길은 1.4km 길이로 나무로 된 길과 쉬는 곳이 잘 되어 있어서 누구나 자연을 편안하게 즐기기 좋은 곳이다. 곤충생태관은 구리 하수처리장 안에 있는 곳으로, 여러 가지 곤충들과 식물, 물고기들을 가까이에서 만날 수 있는 곳이다. 나비가 사는 유리 온실도 있고 야외 공원도 있어서 자연을 배우고 관찰하기 좋은 곳이다.",
+    "youtube": "https://youtu.be/iT0vm4bUMr4?si=JLzp_PYQctLGUl_Y",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MjlfMTMx%2FMDAxNjYxNzY3OTk1NjA3.2giHDYSsFVcbJtH1_aASEjI1iteQbNv5YK1KBaAStDgg.kOdXW822eIY7h4f_2dudxo_51xqvUm4CIEgEhkt-fW0g.JPEG.tex17%2F1661767908880.jpg&type=sc960_832"
+  },
+  {
+    "name": "구리농수산도매시장",
+    "lat": 37.61333,
+    "lng": 127.144786,
+    "desc": "구리농수산물도매시장은 1997년에 문을 연 큰 시장으로, 신선한 채소나 생선 등을 사람들이 편하게 사고파는 곳이다. 이곳은 필요한 여러 가지 물건을 한곳에서 살 수 있도록 잘 갖춰져 있어서 많은 사람들이 찾아오는 중요한 시장이다.",
+    "youtube": "https://youtu.be/LenlozSg-Do?si=C33VtoZ2OAb0br2u",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODAyMTVfMTYy%2FMDAxNTE4NzAzMzQxMDA0.GhwPi12sjbUP6PYLeU27OTyJJ96rJy0zoKkSUUf0OJwg.xwQyZIsrtMppBQCguxWeaR8nyrl-dkteshXfGhSSeBcg.JPEG.hongnyangi%2F1518702062229.jpg&type=sc960_832"
+  },
+  {
+    "name": "구리전통시장",
+    "lat": 37.599677,
+    "lng": 127.13988,
+    "desc": "구리전통시장 인근에 위치한 곱창 골목은 1998년부터 청소년들이 즐겨 먹는 곱창집이 들어서기 시작하여 지금은 50여 개의 분식집이 밀집되어 먹거리 골목으로 각광받고 있다. 곱창은 저렴한 가격과 전통적인 맛으로 미식가들의 발길이 끊이지 않으며, 현대적이고 편안한 실내 분위기로 가족 단위 뿐만 아니라 10대에서부터 장년층에 이르기까지 많은 사랑을 받고 있다.",
+    "youtube": "https://youtu.be/_TkCnFNmoxM?si=lde9zB2v7hbjzBAk",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5329%2F2024%2F01%2F30%2F0000179634_003_20240130154401823.jpg&type=sc960_832"
+  },
+  {
+    "name": "광개토대왕비&동상",
+    "lat": 37.587248,
+    "lng": 127.130801,
+    "desc": "광개토태왕비는 옛날 고구려의 아주 훌륭한 왕이었던 광개토태왕을 기리기 위해 아들인 장수왕이 414년에 세운 아주 크고 중요한 돌비석이다. 이 비석에는 태왕의 업적이 글자로 새겨져 있어서 옛날 고구려 역사를 아는 데 큰 도움을 주는 보물과 같은 것이다.",
+    "youtube": "https://youtu.be/0tR-tkwyeXo?si=lwBXNKdDaDyWDcUf",
+    "img": "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F119%2F2007%2F07%2F26%2Fnews1185436833_75552_1_m.jpg&type=sc960_832"
+  },
+  {
+    "name": "구리문화원",
+    "lat": 37.611897,
+    "lng": 127.139444,
+    "desc": "지역 문화유산 보존과 전통문화 체험이 가능한 기관",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "장자호수공원",
+    "lat": 37.585238,
+    "lng": 127.141893,
+    "desc": "구리시 내에 위치한 아름다운 호수공원으로, 산책과 휴식을 즐기기 좋습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리시립도서관",
+    "lat": 37.60536,
+    "lng": 127.145782,
+    "desc": "구리시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "롯데백화점 구리점",
+    "lat": 37.602875,
+    "lng": 127.143772,
+    "desc": "구리의 주요 백화점으로 쇼핑과 문화생활을 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리 아트홀",
+    "lat": 37.595681,
+    "lng": 127.130057,
+    "desc": "다양한 공연과 전시를 즐길 수 있는 구리시의 문화예술 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한양대학교구리병원",
+    "lat": 37.601319,
+    "lng": 127.132392,
+    "desc": "구리시 교문동에 위치한 대형 대학병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리윤서병원",
+    "lat": 37.605194,
+    "lng": 127.139516,
+    "desc": "구리시 인창동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리한양병원",
+    "lat": 37.60137,
+    "lng": 127.132445,
+    "desc": "구리시 인창동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "돌다리병원",
+    "lat": 37.601167,
+    "lng": 127.14062,
+    "desc": "구리시 교문동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리시청",
+    "lat": 37.594361,
+    "lng": 127.129721,
+    "desc": "구리시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리역",
+    "lat": 37.603321,
+    "lng": 127.14331,
+    "desc": "경의중앙선 구리역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "도농역 (남양주 인접)",
+    "lat": 37.609063,
+    "lng": 127.160949,
+    "desc": "경의중앙선 도농역으로, 구리 시민들도 많이 이용합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "갈매역 (남양주 인접)",
+    "lat": 37.63492,
+    "lng": 127.11562,
+    "desc": "경춘선 갈매역으로, 구리시 갈매동과 인접합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리시외버스정류장",
+    "lat": 37.602029,
+    "lng": 127.1428,
+    "desc": "구리시의 시외버스 이용을 위한 주요 정류장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구리시 보건소",
+    "lat": 37.604816,
+    "lng": 127.14507,
+    "desc": "시민들의 건강 증진 및 질병 예방을 위한 공공 보건 기관입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
+        // 3. 마커 생성 및 팝업 추가
+        places.forEach(place => {
+            // 위도와 경도 값이 유효한지 확인
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                // 팝업에 표시할 내용 구성
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
