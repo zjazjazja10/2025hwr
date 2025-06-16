@@ -13,16 +13,16 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 성남시청 중심 좌표
-        const map = L.map('map').setView([37.4202, 127.1265], 12);
+   <script>
+    // 성남시청 중심 좌표
+    const map = L.map('map').setView([37.420168, 127.126665], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        const places = 
-            [
+        const places =
+[
   {
     "name": "제2로 직봉 – 성남 천림산 봉수 유적",
     "lat": 37.422844,
@@ -119,23 +119,7 @@
     "youtube": "",
     "img": ""
   },
-  {
-    "name": "금광호수공원",
-    "lat": 36.995126,
-    "lng": 127.333271,
-    "desc": "호수와 녹지가 어우러진 쾌적한 공원",
-    "youtube": "",
-    "img": ""
-  },
-  {
-    "name": "무봉산",
-    "lat": 37.207725,
-    "lng": 127.157449,
-    "desc": "도심 인근의 자연 등산로와 휴식 공간",
-    "youtube": "",
-    "img": ""
-  },
-  {
+    {
     "name": "백현동 카페거리",
     "lat": 37.384791,
     "lng": 127.111306,
@@ -351,15 +335,12 @@
     "youtube": "",
     "img": ""
   }
-];
-        // 3. 마커 생성 및 팝업 추가
-         places.forEach(place => {
-            // 위도와 경도 값이 유효한지 확인
+      ];
+   places.forEach(place => {
             if (place.lat && place.lng) {
-                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
                 const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-                // 팝업에 표시할 내용 구성
                 let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
                 if(place.desc) {
                     popupContent += `<p>${place.desc}</p>`;
