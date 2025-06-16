@@ -21,241 +21,252 @@
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-        const places = [
-            {
-name: "호수 - 청평호수",
-lat: 37.698372,
-lng: 127.513842,
-desc: "청평호수는 경기도 가평에 있는 아주 넓고 아름다운 호수이다. 이 호수는 1944년에 청평댐을 만들면서 생겨난 인공 호수이다. 호수 주변으로 산이 있어서 자연 풍경이 매우 아름다운 곳이다. 이곳에서는 물 위에서 즐기는 수상스키나 다른 놀이기구를 타거나 물고기를 잡는 낚시를 할 수 있는 곳이다. 아름다운 호수 옆길을 따라 차를 타고 천천히 구경하며 드라이브하기 좋은 곳이다.",
-youtube: "https://www.youtube.com/watch?v=Ust9FSFYLNo호수",
-img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Chungpyeong_lake_on_August_4th%2C_2018.jpg"
-},
-{
-name: "호수 - 호명호수",
-lat: 37.748752,
-lng: 127.475793,
-desc: "가평 호명호수는 호명산 높은 곳에 만들어진 인공 호수이다. 이 호수는 전기를 만드는 데 필요한 물을 모아두기 위해 만들어진 곳이다. 산 꼭대기에 있지만 경치가 아주 아름다워서 백두산 천지처럼 예쁘다고 알려져 있는 곳이다. 호수 주변을 산책하고 다른 곳도 내려다보며 즐거운 시간을 보낼 수 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=grXuDcsuaH4계곡",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF4nw9fII9eLQnoRA-UxevWM6PM8lHsUI2Rw&s"
-},
-{
-name: "계곡 - 용추계곡",
-lat: 37.85839,
-lng: 127.46649,
-desc: "용추계곡은 경기도 가평에 있는 아주 시원하고 아름다운 계곡이다. 칼봉산에서 시작되어 맑은 물이 흐르고 곳곳에 멋진 바위와 작은 폭포가 있는 곳이다. 특히 용추폭포와 함께 아홉 군데의 아주 예쁜 경치가 있다고 해서 '용추 9곡'이라고도 불리는 곳이다. 용이 하늘로 올라갔다는 옛날 이야기도 전해져 오는 곳으로, 산책이나 등산, 물놀이를 즐기기 좋은 곳이다.",
-youtube: "https://www.youtube.com/watch?v=2HOiqGWJiho산",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSAshxiRoPx4sbWSguEr9kKXqTmlXEVcsKyg&s"
-},
-{
-name: "산 - 명지산",
-lat: 37.942376,
-lng: 127.431816,
-desc: "명지산은 경기도에서 두 번째로 높은 산으로, 높이가 1,267미터나 되는 큰 산이다. 산속에 아름다운 폭포와 울창한 숲이 있어서 경치가 아주 멋있는 곳이다. 가을에는 단풍이 예쁘게 물들고 곳곳에 신기한 바위들이 있어서 등산하는 재미가 있는 산이다. 이곳은 희귀한 식물과 곤충들이 많이 살고 있어서 자연을 배우고 체험하기에도 좋은 산이다.",
-youtube: "https://www.youtube.com/watch?v=m2TYmtKMHlc계곡",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGVE_GSXQfGry6bNb1IFUBcYuM26I9N_xtjw&s"
-},
-{
-name: "계곡 - 도마치계곡",
-lat: 38.051821,
-lng: 127.389498,
-desc: "도마치 계곡은 경기도 최북단 계곡이라 일컫는 곳으로 알려져있다. 환경청이 고시한 경기도내 유일의 청정 지역으로 천연기념물인 열목어가 서식하고 있다. 계곡을 거슬러 올라가면 적목용소라는 깊고 맑은 물웅덩이가 있는데, 용이 승천하다가 떨어졌다는 옛날이야기가 전해지고 있다. 용소를 지나 1시간 정도 계속 올라가면 무주채폭포라는 폭포가 있는데, 물이 시원하게 떨어지고 주변 경치가 아름다워서 옛날 군인들이 와서 놀았다는 이야기가 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=OKdVm5eAcGQ산",
-img: "https://www.gptour.go.kr/multi/uploadFile/20100723202526.jpg"
-},
-{
-name: "산 - 운악산",
-lat: 37.878476,
-lng: 127.324684,
-desc: "운악산은 경기도 가평에 있는 높이 935미터의 산이다. 이 산은 이름처럼 구름을 뚫을 것 같은 멋진 바위 봉우리들이 아름다운 곳이다. 산속에는 오래된 절인 현등사와 백년폭포 같은 멋진 경치가 있는 곳이다. 산 꼭대기에 올라가면 주변의 넓은 풍경을 시원하게 내려다볼 수 있는 산이다.",
-youtube: "https://www.youtube.com/watch?v=2GWuGRsr0yQ산",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rWx4pLyf34-uikEh-zsYxaRKa8l01f9WwQ&s"
-},
-{
-name: "산 - 축령산, 잣향기푸른숲",
-lat: 37.753795,
-lng: 127.333427,
-desc: "축령산은 경기도 가평에 있는 높이 886미터의 산이다. 이 산에는 아주 오래되고 잘 가꾸어진 잣나무 숲이 넓게 펼쳐져 있는 곳이다. 경기도 잣향기푸른숲은 축령산 해발 450~600m에 위치하고 있으며 수령(樹齡) 80년 이상의 잣나무림이 국내 최대로 분포하고 있다. 인체의 면역력을 높이고 건강을 증진하기 위하여 향기, 경관 등 산림의 다양한 요소를 활용할 수 있도록 조성된 치유의 숲으로, 숲체험, 산림치유프로그램, 목공체험 등 다양한 산림복지서비스를 누릴 수 있다. 잣나무 숲에서 깨끗한 공기를 마시며 산책하고 맑은 계곡물 소리도 들을 수 있는 힐링산이다.",
-youtube: "https://www.youtube.com/watch?v=EHDmXK7qhaM산",
-img: "https://i.namu.wiki/i/nZslczZnQAlEfUiBiLi4gJsv19luPGUr3OQfYLFGTSshzmLt1IpMRIn-QHU1GU_gj8TUMUUYgKMhlWAv7UftxQ.webp"
-},
-{
-name: "산 - 유명산",
-lat: 37.584229,
-lng: 127.484619,
-desc: "유명산은 경기도 가평에 있는 높이 864미터의 산이다. 이 산은 멋진 바위들과 맑은 물이 흐르는 계곡이 아름다운 곳이다. 박쥐소, 용소처럼 유리알처럼 맑은 물웅덩이(소)들도 볼 수 있는 곳이다. 산 옆에는 자연휴양림도 있어서 캠핑하고 산책하기 좋은 곳이다.",
-youtube: "https://www.youtube.com/watch?v=F2vjf4EdwhQ섬",
-img: "https://gapyeong.grandculture.net/Image?localName=gapyeong&id=GC079P00639"
-},
-{
-name: "섬 - 자라섬",
-lat: 37.817672,
-lng: 127.52833,
-desc: "자라섬은 경기도 가평에 있는 네 개의 작은 섬들로 이루어진 곳이다. 이곳은 사람들이 와서 쉬고 자연을 즐길 수 있도록 공원과 시설들이 잘 만들어져 있는 곳이다. 캠핑장이나 넓은 잔디밭, 예쁜 식물원 같은 다양한 볼거리와 즐길 거리가 있는 곳이다. 매년 가을 자라섬에서는 유명한 국제 재즈 축제가 열려서 음악을 좋아하는 많은 사람들이 찾아오는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=MbHS8-cdokI현등사37.870704",
-img: "https://www.gptour.go.kr/multi/uploadFile/20180226122559.jpg"
-},
-{
-name: "현등사",
-lat: 37.870704,
-lng: 127.331016,
-desc: "현등사는 경기도 가평 운악산에 있는 아주 오래된 절이다. 신라 시대에 처음 지어졌다가 나중에 다시 크게 만들어진 곳이다. 절 안에는 옛날 부처님 조각상이나 오래된 돌탑 같은 보물들이 있는 곳이다. 조선 시대에 만들어진 종도 남아있는 곳이다. 아름다운 산속 자연과 함께 옛날 불교 문화를 느낄 수 있는 소중한 절이다.",
-youtube: "https://www.youtube.com/watch?v=lJ9iuR4Shpk중종대왕태봉37.804578",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAP_LZc5glgWFX53il-fXHaIV0hkuiIHlufw&s"
-},
-{
-name: "중종대왕태봉",
-lat: 37.804578,
-lng: 127.478463,
-desc: "중종대왕 태봉은 경기도 가평에 있는 조선 시대 임금님 중종의 태(胎)를 묻었던 곳이다. 태는 아기가 태어났을 때 나오는 것인데, 옛날에는 중요하게 생각하여 좋은 곳에 묻었다. 이곳에서는 땅속에서 태를 담았던 돌 항아리가 발견되면서 알려지게 된 곳이다. 태를 기념하는 돌비석 같은 시설들이 만들어져 있는 곳이다. 태봉이 만들어졌을 때 가평군은 임금의 태가 있는 곳이 https://upload.wikimedia.org/wikipedia/commons/e/e2/%EA%B0%80%ED%8F%89_%EC%A4%91%EC%A2%85%EB%8C%80%EC%99%95%ED%83%9C%EB%B4%893_%40a.t.a.b.3.3.5.jpg라 해서 가평현에서 가평군으로 승격되어 오늘날까지 이어져 왔다.",
-youtube: "https://www.youtube.com/watch?v=tTU80FV2_EE연하리",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4Iiy_HApZsv1XjRnJeeO9Z0HIMFghWZkUw&s"
-},
-{
-name: "연하리 향나무",
-lat: 37.79874,
-lng: 127.348138,
-desc: "연하리 향나무는 경기도 가평에 있는 아주 오래된 큰 나무이다. 이 나무는 옛날 조선 시대 영의정을 지낸 이천보 할아버지가 살던 집 마당에 있는 나무이다. 나무의 나이가 약 300년이나 된 아주 오래된 나무이다. 키도 크고 줄기도 아주 굵은 멋진 향나무이다. 지금은 집 일부와 이 나무만 남아있지만 옛날 모습을 느낄 수 있는 곳이다.",
-youtube: "https://youtu.be/I2n-fNsoW9U?si=6KwKVYaDGq25HWXc&t=115가평향교37.829943",
-img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/6JlACnn3yD2KP1FKckBkr7IfKmukzvNC67PtdCxk.jpg"
-},
-{
-name: "가평향교",
-lat: 37.829943,
-lng: 127.507519,
-desc: "가평향교는 경기도 가평에 있는 아주 오래된 옛날 학교이다. 이곳은 1398년에 처음 세워졌고, 옛날 훌륭한 학자들을 모시고 학생들을 가르쳤던 곳이다. 전쟁 때문에 건물이 여러 번 부서졌지만 다시 잘 지어서 지금의 모습을 갖추고 있는 곳이다. 공자를 비롯한 여러 훌륭한 분들의 위패를 모시고 제사를 지내는 곳이다. 옛날 학교의 모습과 전통을 배울 수 있는 소중한 문화재이다.",
-youtube: "https://www.youtube.com/watch?v=FsWVcx86YhI아침고요수목원37.744163",
-img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/%EA%B0%80%ED%8F%89%ED%96%A5%EA%B5%90.jpg/640px-%EA%B0%80%ED%8F%89%ED%96%A5%EA%B5%90.jpg"
-},
-{
-name: "아침고요수목원",
-lat: 37.744163,
-lng: 127.352529,
-desc: "아침고요수목원은 경기도 가평에 있는 아주 아름답고 특별한 정원이다. 축령산 아래 멋진 자연 속에 우리나라의 아름다움을 담아 여러 가지 정원들을 예쁘게 꾸며놓은 곳이다. 한반도 모양으로 만들어진 정원이나 백두산 식물들, 다양한 종류의 꽃과 나무들을 만날 수 있는 곳이다. 울창한 잣나무 숲에서 깨끗한 공기를 마시며 편안하게 쉴 수 있는 곳이다. 영화나 드라마 촬영지로도 유명해서 많은 사람들이 찾아오는 인기 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=WKXfg4wnnvg쁘띠프랑스",
-img: "https://i.namu.wiki/i/rLVLCqzMl8LdATocQsOXyFOLgUASgznbOQbK4SkPNpO5ZpVZfHFW7So-U8w4P94WFm7SGd16xzypYYPcNyqGKw.webp"
-},
-{
-name: "쁘띠프랑스, 이탈리아마을(피노키오와다빈치)",
-lat: 37.715053,
-lng: 127.490495,
-desc: "쁘띠프랑스와, 이탈리아마을은 붙어있다. 가평 쁘띠프랑스 쁘띠프랑스는 경기도 가평에 있는 프랑스 작은 마을처럼 꾸며놓은 곳이다. 프랑스의 아름다운 집들과 거리를 걸으며 유럽 분위기를 느낄 수 있는 곳이다. 어린 왕자 이야기에 나오는 모습들도 있고, 재미있는 공연도 볼 수 있는 곳이다. 프랑스 문화를 배우고 예쁜 사진을 찍으며 즐거운 시간을 보낼 수 있는 곳이다. 가평 이탈리아 마을 이탈리아 마을은 가평에 있는 이탈리아 문화를 체험할 수 있는 곳이다. 이탈리아의 옛날 이야기인 피노키오와 관련된 재미있는 볼거리가 있는 곳이다. 이탈리아 분위기가 나는 예쁜 건물들과 공간에서 사진도 찍고 구경할 수 있는 곳이다. 이탈리아의 다양한 예술과 문화를 느끼고 즐길 수 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=2EgMd5GYv8A자연과별가평천문대37.912971",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgMbJa2aCVpyuLj-9rRhAPpm-6M_y1lrvMIQ&s"
-},
-{
-name: "자연과별가평천문대",
-lat: 37.912971,
-lng: 127.474177,
-desc: "자연과별 천문대는 경기도 가평에 있는 밤하늘의 별을 관찰하기 아주 좋은 곳이다. 이곳에는 별과 행성, 별자리를 자세히 볼 수 있는 여러 가지 종류의 큰 망원경이 많이 있는 곳이다. 어린이부터 어른까지 누구나 별을 배우고 직접 망원경으로 밤하늘을 보는 체험을 할 수 있는 곳이다. 별을 보고 나서 편안하게 쉬어갈 수 있는 잠잘 곳이나 다른 시설들도 함께 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=dsDjcHbe9ok에델바이스",
-img: "https://gapyeong.grandculture.net/Image?localName=gapyeong&id=GC079P03223"
-},
-{
-name: "에델바이스 스위스 테마파크",
-lat: 37.667982,
-lng: 127.447392,
-desc: "에델바이스 스위스 테마파크는 경기도 가평에 있는 스위스 작은 마을처럼 꾸며놓은 곳이다. 이곳은 스위스의 예쁜 집들과 거리를 걸으며 유럽의 분위기를 느낄 수 있는 곳이다. 여러 가지 박물관이나 전시관이 있어서 스위스 문화를 배우고 구경할 수 있는 곳이다. 예쁜 풍경과 신기한 그림 앞에서 사진도 찍고 자연 속에서 즐거운 시간을 보낼 수 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=dTtL1tPbuPc꿈의동산",
-img: "https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/gD1q/image/Kx_IF26MVofbeSUQKtxevjgAWzc.jpg"
-},
-{
-name: "꿈의동산 놀이동산",
-lat: 37.783828,
-lng: 127.48627,
-desc: "꿈의동산 놀이공원은 경기도 가평 청평에 있는 어린이들을 위한 놀이공원이다. 산속에 있어서 꿈속에 온 것 같은 특별한 분위기를 느낄 수 있는 곳이다. 이곳은 아이들이 마음껏 뛰어놀 수 있는 공간과 놀이기구가 있는 곳이다. 입장료가 없어서 가족 모두가 부담 없이 와서 즐거운 시간을 보낼 수 있는 곳이다.",
-youtube: "https://www.youtube.com/watch?v=7JJrSumNaFA음악역1939(가평뮤직빌리지)37.824375",
-img: "https://cdn.gijn.kr/news/photo/202204/411907_316680_3056.jpg"
-},
-{
-name: "음악역1939(가평뮤직빌리지)",
-lat: 37.824375,
-lng: 127.513121,
-desc: "이곳은 옛날 기차역 자리에 공연장이나 음악 연습실 같은 시설을 만들어 놓은 곳이다. 다양한 음악 관련 프로그램을 진행함으ㄴ로써 개인에게는 음악과 함께하는 휴식을 통한 활력을, 음악인에게는 영감 충만한 창작의 활력을 제공하고자 한다.",
-youtube: "https://www.youtube.com/watch?v=5uloaAn1NDA가평역37.814651",
-img: "https://ggc.ggcf.kr/uploadimg/2023/resize/e0284b981681791525314.jpeg"
-},
-{
-name: "가평역",
-lat: 37.814651,
-lng: 127.510682,
-desc: "경춘선 가평역입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "가평군청",
-lat: 37.831314,
-lng: 127.509651,
-desc: "가평군의 행정 업무를 총괄하는 군청입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "가평잣향기푸른숲",
-lat: 37.772258,
-lng: 127.338876,
-desc: "잣나무 숲에서 피톤치드를 마시며 힐링할 수 있는 산림욕장입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "가평잣고을시장",
-lat: 37.829764,
-lng: 127.514778,
-desc: "5일장으로 운영되다가 2015년 ‘가평잣고을시장’으로 새롭게 문을 열면서 상설시장도 겸하고 있다. 푸드박스인 청춘88열차와 두네토 마켓 등이 열리린다.",
-youtube: "",
-img: ""
-},
-{
-name: "나인포레스트 이화원",
-lat: 37.818177,
-lng: 127.518657,
-desc: "나비를 테마로 한 전시관과 아름다운 정원이 어우러진 공간입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "가평양떼목장",
-lat: 37.643141,
-lng: 127.473903,
-desc: "넓은 초원에서 양들과 교감할 수 있는 목장입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "연인산",
-lat: 37.899136,
-lng: 127.418568,
-desc: "사랑하는 사람과 함께 가면 좋다는 설화가 있는 산으로, 아름다운 자연과 등산 코스를 제공합니다.",
-youtube: "",
-img: ""
-},
-{
-name: "가평 레일파크",
-lat: 37.829034,
-lng: 127.515684,
-desc: "폐철로를 활용한 레일바이크 체험으로, 북한강의 아름다운 풍경을 감상할 수 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "칼봉산 자연휴양림",
-lat: 37.838767,
-lng: 127.465181,
-desc: "숲 속에서 휴식과 레저 활동을 즐길 수 있는 자연 휴양림입니다.",
-youtube: "",
-img: ""
-}
-            // { name: "예시", lat: 37.83, lon: 127.51, desc: "설명", youtube: "", img: "" }
+        const places =
+[
+  {
+    "name": "호수 - 청평호수",
+    "lat": 37.698372,
+    "lng": 127.513842,
+    "desc": "청평호수는 경기도 가평에 있는 아주 넓고 아름다운 호수이다. 이 호수는 1944년에 청평댐을 만들면서 생겨난 인공 호수이다. 호수 주변으로 산이 있어서 자연 풍경이 매우 아름다운 곳이다. 이곳에서는 물 위에서 즐기는 수상스키나 다른 놀이기구를 타거나 물고기를 잡는 낚시를 할 수 있는 곳이다. 아름다운 호수 옆길을 따라 차를 타고 천천히 구경하며 드라이브하기 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=Ust9FSFYLNo",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Chungpyeong_lake_on_August_4th%2C_2018.jpg"
+  },
+  {
+    "name": "호수 - 호명호수",
+    "lat": 37.748752,
+    "lng": 127.475793,
+    "desc": "가평 호명호수는 호명산 높은 곳에 만들어진 인공 호수이다. 이 호수는 전기를 만드는 데 필요한 물을 모아두기 위해 만들어진 곳이다. 산 꼭대기에 있지만 경치가 아주 아름다워서 백두산 천지처럼 예쁘다고 알려져 있는 곳이다. 호수 주변을 산책하고 다른 곳도 내려다보며 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=grXuDcsuaH4",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF4nw9fII9eLQnoRA-UxevWM6PM8lHsUI2Rw&s"
+  },
+  {
+    "name": "계곡 - 용추계곡",
+    "lat": 37.85839,
+    "lng": 127.46649,
+    "desc": "용추계곡은 경기도 가평에 있는 아주 시원하고 아름다운 계곡이다. 칼봉산에서 시작되어 맑은 물이 흐르고 곳곳에 멋진 바위와 작은 폭포가 있는 곳이다. 특히 용추폭포와 함께 아홉 군데의 아주 예쁜 경치가 있다고 해서 '용추 9곡'이라고도 불리는 곳이다. 용이 하늘로 올라갔다는 옛날 이야기도 전해져 오는 곳으로, 산책이나 등산, 물놀이를 즐기기 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=2HOiqGWJiho",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSAshxiRoPx4sbWSguEr9kKXqTmlXEVcsKyg&s"
+  },
+  {
+    "name": "산 - 명지산",
+    "lat": 37.942376,
+    "lng": 127.431816,
+    "desc": "명지산은 경기도에서 두 번째로 높은 산으로, 높이가 1,267미터나 되는 큰 산이다. 산속에 아름다운 폭포와 울창한 숲이 있어서 경치가 아주 멋있는 곳이다. 가을에는 단풍이 예쁘게 물들고 곳곳에 신기한 바위들이 있어서 등산하는 재미가 있는 산이다. 이곳은 희귀한 식물과 곤충들이 많이 살고 있어서 자연을 배우고 체험하기에도 좋은 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=m2TYmtKMHlc",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGVE_GSXQfGry6bNb1IFUBcYuM26I9N_xtjw&s"
+  },
+  {
+    "name": "계곡 - 도마치계곡",
+    "lat": 38.051821,
+    "lng": 127.389498,
+    "desc": "도마치 계곡은 경기도 최북단 계곡이라 일컫는 곳으로 알려져있다. 환경청이 고시한 경기도내 유일의 청정 지역으로 천연기념물인 열목어가 서식하고 있다. 계곡을 거슬러 올라가면 적목용소라는 깊고 맑은 물웅덩이가 있는데, 용이 승천하다가 떨어졌다는 옛날이야기가 전해지고 있다. 용소를 지나 1시간 정도 계속 올라가면 무주채폭포라는 폭포가 있는데, 물이 시원하게 떨어지고 주변 경치가 아름다워서 옛날 군인들이 와서 놀았다는 이야기가 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=OKdVm5eAcGQ",
+    "img": "https://www.gptour.go.kr/multi/uploadFile/20100723202526.jpg"
+  },
+  {
+    "name": "산 - 운악산",
+    "lat": 37.878476,
+    "lng": 127.324684,
+    "desc": "운악산은 경기도 가평에 있는 높이 935미터의 산이다. 이 산은 이름처럼 구름을 뚫을 것 같은 멋진 바위 봉우리들이 아름다운 곳이다. 산속에는 오래된 절인 현등사와 백년폭포 같은 멋진 경치가 있는 곳이다. 산 꼭대기에 올라가면 주변의 넓은 풍경을 시원하게 내려다볼 수 있는 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=2GWuGRsr0yQ",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_rWx4pLyf34-uikEh-zsYxaRKa8l01f9WwQ&s"
+  },
+  {
+    "name": "산 - 축령산, 잣향기푸른숲",
+    "lat": 37.753795,
+    "lng": 127.333427,
+    "desc": "축령산은 경기도 가평에 있는 높이 886미터의 산이다. 이 산에는 아주 오래되고 잘 가꾸어진 잣나무 숲이 넓게 펼쳐져 있는 곳이다. 경기도 잣향기푸른숲은 축령산 해발 450~600m에 위치하고 있으며 수령(樹齡) 80년 이상의 잣나무림이 국내 최대로 분포하고 있다. 인체의 면역력을 높이고 건강을 증진하기 위하여 향기, 경관 등 산림의 다양한 요소를 활용할 수 있도록 조성된 치유의 숲으로, 숲체험, 산림치유프로그램, 목공체험 등 다양한 산림복지서비스를 누릴 수 있다. 잣나무 숲에서 깨끗한 공기를 마시며 산책하고 맑은 계곡물 소리도 들을 수 있는 힐링산이다.",
+    "youtube": "https://www.youtube.com/watch?v=EHDmXK7qhaM",
+    "img": "https://i.namu.wiki/i/nZslczZnQAlEfUiBiLi4gJsv19luPGUr3OQfYLFGTSshzmLt1IpMRIn-QHU1GU_gj8TUMUUYgKMhlWAv7UftxQ.webp"
+  },
+  {
+    "name": "산 - 유명산",
+    "lat": 37.584229,
+    "lng": 127.484619,
+    "desc": "유명산은 경기도 가평에 있는 높이 864미터의 산이다. 이 산은 멋진 바위들과 맑은 물이 흐르는 계곡이 아름다운 곳이다. 박쥐소, 용소처럼 유리알처럼 맑은 물웅덩이(소)들도 볼 수 있는 곳이다. 산 옆에는 자연휴양림도 있어서 캠핑하고 산책하기 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=F2vjf4EdwhQ",
+    "img": "https://gapyeong.grandculture.net/Image?localName=gapyeong&id=GC079P00639"
+  },
+  {
+    "name": "섬 - 자라섬",
+    "lat": 37.817672,
+    "lng": 127.52833,
+    "desc": "자라섬은 경기도 가평에 있는 네 개의 작은 섬들로 이루어진 곳이다. 이곳은 사람들이 와서 쉬고 자연을 즐길 수 있도록 공원과 시설들이 잘 만들어져 있는 곳이다. 캠핑장이나 넓은 잔디밭, 예쁜 식물원 같은 다양한 볼거리와 즐길 거리가 있는 곳이다. 매년 가을 자라섬에서는 유명한 국제 재즈 축제가 열려서 음악을 좋아하는 많은 사람들이 찾아오는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=MbHS8-cdokI",
+    "img": "https://www.gptour.go.kr/multi/uploadFile/20180226122559.jpg"
+  },
+  {
+    "name": "현등사",
+    "lat": 37.870704,
+    "lng": 127.331016,
+    "desc": "현등사는 경기도 가평 운악산에 있는 아주 오래된 절이다. 신라 시대에 처음 지어졌다가 나중에 다시 크게 만들어진 곳이다. 절 안에는 옛날 부처님 조각상이나 오래된 돌탑 같은 보물들이 있는 곳이다. 조선 시대에 만들어진 종도 남아있는 곳이다. 아름다운 산속 자연과 함께 옛날 불교 문화를 느낄 수 있는 소중한 절이다.",
+    "youtube": "https://www.youtube.com/watch?v=lJ9iuR4Shpk",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAP_LZc5glgWFX53il-fXHaIV0hkuiIHlufw&s"
+  },
+  {
+    "name": "중종대왕태봉",
+    "lat": 37.804578,
+    "lng": 127.478463,
+    "desc": "중종대왕 태봉은 경기도 가평에 있는 조선 시대 임금님 중종의 태(胎)를 묻었던 곳이다. 태는 아기가 태어났을 때 나오는 것인데, 옛날에는 중요하게 생각하여 좋은 곳에 묻었다. 이곳에서는 땅속에서 태를 담았던 돌 항아리가 발견되면서 알려지게 된 곳이다. 태를 기념하는 돌비석 같은 시설들이 만들어져 있는 곳이다. 태봉이 만들어졌을 때 가평군은 임금의 태가 있는 곳이 라 해서 가평현에서 가평군으로 승격되어 오늘날까지 이어져 왔다.",
+    "youtube": "https://www.youtube.com/watch?v=tTU80FV2_EE",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4Iiy_HApZsv1XjRnJeeO9Z0HIMFghWZkUw&s"
+  },
+  {
+    "name": "연하리 향나무",
+    "lat": 37.79874,
+    "lng": 127.348138,
+    "desc": "연하리 향나무는 경기도 가평에 있는 아주 오래된 큰 나무이다. 이 나무는 옛날 조선 시대 영의정을 지낸 이천보 할아버지가 살던 집 마당에 있는 나무이다. 나무의 나이가 약 300년이나 된 아주 오래된 나무이다. 키도 크고 줄기도 아주 굵은 멋진 향나무이다. 지금은 집 일부와 이 나무만 남아있지만 옛날 모습을 느낄 수 있는 곳이다.",
+    "youtube": "https://youtu.be/I2n-fNsoW9U?si=6KwKVYaDGq25HWXc&t=115",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/6JlACnn3yD2KP1FKckBkr7IfKmukzvNC67PtdCxk.jpg"
+  },
+  {
+    "name": "가평향교",
+    "lat": 37.829943,
+    "lng": 127.507519,
+    "desc": "가평향교는 경기도 가평에 있는 아주 오래된 옛날 학교이다. 이곳은 1398년에 처음 세워졌고, 옛날 훌륭한 학자들을 모시고 학생들을 가르쳤던 곳이다. 전쟁 때문에 건물이 여러 번 부서졌지만 다시 잘 지어서 지금의 모습을 갖추고 있는 곳이다. 공자를 비롯한 여러 훌륭한 분들의 위패를 모시고 제사를 지내는 곳이다. 옛날 학교의 모습과 전통을 배울 수 있는 소중한 문화재이다.",
+    "youtube": "https://www.youtube.com/watch?v=FsWVcx86YhI",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/%EA%B0%80%ED%8F%89%ED%96%A5%EA%B5%90.jpg/640px-%EA%B0%80%ED%8F%89%ED%96%A5%EA%B5%90.jpg"
+  },
+  {
+    "name": "아침고요수목원",
+    "lat": 37.744163,
+    "lng": 127.352529,
+    "desc": "아침고요수목원은 경기도 가평에 있는 아주 아름답고 특별한 정원이다. 축령산 아래 멋진 자연 속에 우리나라의 아름다움을 담아 여러 가지 정원들을 예쁘게 꾸며놓은 곳이다. 한반도 모양으로 만들어진 정원이나 백두산 식물들, 다양한 종류의 꽃과 나무들을 만날 수 있는 곳이다. 울창한 잣나무 숲에서 깨끗한 공기를 마시며 편안하게 쉴 수 있는 곳이다. 영화나 드라마 촬영지로도 유명해서 많은 사람들이 찾아오는 인기 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=WKXfg4wnnvg",
+    "img": "https://i.namu.wiki/i/rLVLCqzMl8LdATocQsOXyFOLgUASgznbOQbK4SkPNpO5ZpVZfHFW7So-U8w4P94WFm7SGd16xzypYYPcNyqGKw.webp"
+  },
+  {
+    "name": "쁘띠프랑스, 이탈리아마을(피노키오와다빈치)",
+    "lat": 37.715053,
+    "lng": 127.490495,
+    "desc": "쁘띠프랑스와, 이탈리아마을은 붙어있다. 가평 쁘띠프랑스 쁘띠프랑스는 경기도 가평에 있는 프랑스 작은 마을처럼 꾸며놓은 곳이다. 프랑스의 아름다운 집들과 거리를 걸으며 유럽 분위기를 느낄 수 있는 곳이다. 어린 왕자 이야기에 나오는 모습들도 있고, 재미있는 공연도 볼 수 있는 곳이다. 프랑스 문화를 배우고 예쁜 사진을 찍으며 즐거운 시간을 보낼 수 있는 곳이다. 가평 이탈리아 마을 이탈리아 마을은 가평에 있는 이탈리아 문화를 체험할 수 있는 곳이다. 이탈리아의 옛날 이야기인 피노키오와 관련된 재미있는 볼거리가 있는 곳이다. 이탈리아 분위기가 나는 예쁜 건물들과 공간에서 사진도 찍고 구경할 수 있는 곳이다. 이탈리아의 다양한 예술과 문화를 느끼고 즐길 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=2EgMd5GYv8A",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgMbJa2aCVpyuLj-9rRhAPpm-6M_y1lrvMIQ&s"
+  },
+  {
+    "name": "자연과별가평천문대",
+    "lat": 37.912971,
+    "lng": 127.474177,
+    "desc": "자연과별 천문대는 경기도 가평에 있는 밤하늘의 별을 관찰하기 아주 좋은 곳이다. 이곳에는 별과 행성, 별자리를 자세히 볼 수 있는 여러 가지 종류의 큰 망원경이 많이 있는 곳이다. 어린이부터 어른까지 누구나 별을 배우고 직접 망원경으로 밤하늘을 보는 체험을 할 수 있는 곳이다. 별을 보고 나서 편안하게 쉬어갈 수 있는 잠잘 곳이나 다른 시설들도 함께 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=dsDjcHbe9ok",
+    "img": "https://gapyeong.grandculture.net/Image?localName=gapyeong&id=GC079P03223"
+  },
+  {
+    "name": "에델바이스 스위스 테마파크",
+    "lat": 37.667982,
+    "lng": 127.447392,
+    "desc": "에델바이스 스위스 테마파크는 경기도 가평에 있는 스위스 작은 마을처럼 꾸며놓은 곳이다. 이곳은 스위스의 예쁜 집들과 거리를 걸으며 유럽의 분위기를 느낄 수 있는 곳이다. 여러 가지 박물관이나 전시관이 있어서 스위스 문화를 배우고 구경할 수 있는 곳이다. 예쁜 풍경과 신기한 그림 앞에서 사진도 찍고 자연 속에서 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=dTtL1tPbuPc",
+    "img": "https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/gD1q/image/Kx_IF26MVofbeSUQKtxevjgAWzc.jpg"
+  },
+  {
+    "name": "꿈의동산 놀이동산",
+    "lat": 37.783828,
+    "lng": 127.48627,
+    "desc": "꿈의동산 놀이공원은 경기도 가평 청평에 있는 어린이들을 위한 놀이공원이다. 산속에 있어서 꿈속에 온 것 같은 특별한 분위기를 느낄 수 있는 곳이다. 이곳은 아이들이 마음껏 뛰어놀 수 있는 공간과 놀이기구가 있는 곳이다. 입장료가 없어서 가족 모두가 부담 없이 와서 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=7JJrSumNaFA",
+    "img": "https://cdn.gijn.kr/news/photo/202204/411907_316680_3056.jpg"
+  },
+  {
+    "name": "음악역1939(가평뮤직빌리지)",
+    "lat": 37.824375,
+    "lng": 127.513121,
+    "desc": "이곳은 옛날 기차역 자리에 공연장이나 음악 연습실 같은 시설을 만들어 놓은 곳이다. 다양한 음악 관련 프로그램을 진행함으ㄴ로써 개인에게는 음악과 함께하는 휴식을 통한 활력을, 음악인에게는 영감 충만한 창작의 활력을 제공하고자 한다.",
+    "youtube": "https://www.youtube.com/watch?v=5uloaAn1NDA",
+    "img": "https://ggc.ggcf.kr/uploadimg/2023/resize/e0284b981681791525314.jpeg"
+  },
+  {
+    "name": "가평역",
+    "lat": 37.814651,
+    "lng": 127.510682,
+    "desc": "경춘선 가평역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가평군청",
+    "lat": 37.831314,
+    "lng": 127.509651,
+    "desc": "가평군의 행정 업무를 총괄하는 군청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가평잣향기푸른숲",
+    "lat": 37.772258,
+    "lng": 127.338876,
+    "desc": "잣나무 숲에서 피톤치드를 마시며 힐링할 수 있는 산림욕장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가평잣고을시장",
+    "lat": 37.829764,
+    "lng": 127.514778,
+    "desc": "5일장으로 운영되다가 2015년 ‘가평잣고을시장’으로 새롭게 문을 열면서 상설시장도 겸하고 있다. 푸드박스인 청춘88열차와 두네토 마켓 등이 열리린다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "나인포레스트 이화원",
+    "lat": 37.818177,
+    "lng": 127.518657,
+    "desc": "나비를 테마로 한 전시관과 아름다운 정원이 어우러진 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가평양떼목장",
+    "lat": 37.643141,
+    "lng": 127.473903,
+    "desc": "넓은 초원에서 양들과 교감할 수 있는 목장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "연인산",
+    "lat": 37.899136,
+    "lng": 127.418568,
+    "desc": "사랑하는 사람과 함께 가면 좋다는 설화가 있는 산으로, 아름다운 자연과 등산 코스를 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "가평 레일파크",
+    "lat": 37.829034,
+    "lng": 127.515684,
+    "desc": "폐철로를 활용한 레일바이크 체험으로, 북한강의 아름다운 풍경을 감상할 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "칼봉산 자연휴양림",
+    "lat": 37.838767,
+    "lng": 127.465181,
+    "desc": "숲 속에서 휴식과 레저 활동을 즐길 수 있는 자연 휴양림입니다.",
+    "youtube": "",
+    "img": ""
+  }
         ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lng]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
