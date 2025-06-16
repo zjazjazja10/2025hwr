@@ -13,56 +13,292 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 이천시 중심으로
-        const map = L.map('map').setView([37.2726, 127.4350], 12);
+   <script>
+    // 양평군청 중심 좌표
+    const map = L.map('map').setView([37.272450, 127.435163], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        const places = [
-            { name: "호수 - 설봉호", lat: 37.2839, lon: 127.4238, desc: "이천 설봉호는 경기도 이천에 있는 커다란 저수지로, 설봉공원 안에 있어서 아름다운 곳이다. 이곳에는 높이 솟는 분수와 세계 유명작가들의 멋진 조각 작품들이 전시되어있다. 주변을 따라 산책하기도 좋아서 이천의 대표적인 관광지이다", youtube: "https://youtu.be/4tQhL9qoqNk?si=aaWLAwbGhPjNMbgs", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGEsLggD9EejooSgREJxkQVoWl5eSPnXtvTA&s" },
-            { name: "산 - 노성산", lat: 37.127664, lon: 127.503941, desc: "노성산은 이천과 안성의 경계를 이루는 310m정도의 높이인 높지 않은 산이다. 노성산에 가면 말머리처럼 생긴 커다란 바위가 있다. 이 바위는 옛날 용맹한 말을 차지하려고 장수들이 싸웠다는 재미있는 전설이 전해지는 곳이다. 노성산 말머리바위는 이천에서 아름다운 풍경 여덟 가지 중 하나로 꼽히며, 신기한 모양의 다른 바위들도 볼 수 있는 곳이다.", youtube: "https://youtu.be/dcx5SJmI8RM?si=zmfnUD_7tUMdBhh_", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO3P0tnh-MGx-sX9McvgJzyY_WuTqRtLE1Aw&s" },
-            { name: "산 - 설봉산", lat: 37.279698, lon: 127.419321, desc: "이천 설봉산은 이천시가지를 서쪽으로 둘러싼 산이며 산 중턱에 나란히 서 있는 커다란 바위 세 개를 볼 수 있는 곳이다. 이 바위들을 설봉산 삼형제바위라고 부르는데, 이천에서 아름다운 경치 아홉 가지 중 세 번째로 꼽히는 곳이다. 이 바위에는 옛날 어머니를 아주 사랑했던 세 형제의 슬픈 이야기가 전해지고 있는 곳이다.", youtube: "https://youtu.be/Ag8WIEXXTF0?si=rO-leTFCzZx7R_JG", img: "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DD3EC35A400E197AE6910B87113F136C9&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height=" },
-            { name: "산 - 도드람산", lat: 37.266833, lon: 127.391895, desc: "도드람산은 전체가 바위로 되어있어 등산객들에게는 산타는 재미가 있는 산이다. 도드람산은 한자 이름으로 저명(돼지울음)산이라고 불리는데 옛날 효자가 위험에 빠졌을 때 산돼지 울음소리 덕분에 목숨을 구했다는 이야기가 전해져 이름이 붙여졌다고 한한다. 산 정상 부근에 있는 세 개의 봉우리는 도드람산 상봉으로 이천의 아름다운 풍경으로 손꼽히는 곳이다.", youtube: "https://youtu.be/SIJnRoHt2Bg?si=7VJLHj9nh9LCUzh_", img: "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DC6B5AB6DE6168ACE2BBBC42AF127A9A7&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height=" },
-            { name: "이천 설봉산성", lat: 37.288333, lon: 127.419722, desc: "이천 설봉산성은 경기도 이천에 있는 아주 오래된 산성이다. 이 성은 백제 시대에 처음 만들어졌고, 삼국 시대에 나라를 지키는 데 중요한 역할을 했던 곳이다. 산 위에 있어서 주변이 잘 보이고, 옛날에 사용했던 그릇이나 물건들이 많이 발견된 곳이다. 설봉산성은 우리나라의 중요한 역사 유적(사적 제423호)으로 지정되어 있는 곳이다.", youtube: "https://youtu.be/3O8dH_6Iwag?si=rw-o6cD9NrQOkXOr", img: "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DD3EC35A400E197AE6910B87113F136C9&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height=" },
-            { name: "영월암 마래여래입상", lat: 37.281, lon: 127.415, desc: "이천 영월암 마애여래입상은 경기도 이천에 있는 아주 크고 높은 바위에 새겨진 부처님 모습이다. 이 부처님은 고려 시대 초에 만들어진 것으로 보이며, 바위 가득히 크고 힘찬 모습으로 조각되어 있다. 둥글고 부드러운 얼굴과 가르침을 전하는 듯한 손 모양이 특징이다. 이 불상은 옛날 스님(나옹선사)과 관련된 이야기도 전해지며, 우리나라의 중요한 보물(보물 제822호)로 지정된 문화재이다.", youtube: "https://youtu.be/-qiBKV1BNkA?si=mSfhshnngMY15P0j", img: "https://www.heritage.go.kr/unisearch/images/treasure/thumb/1615857.jpg" },
-            { name: "장암리 마애보살반가상", lat: 37.271944, lon: 127.400833, desc: "이천 장암리 마애보살반가상은 경기도 이천에 있는 아주 커다란 바위에 부처님 모습을 새겨 놓은 것이다 . 이 부처님은 고려 시대인 981년에 만들어졌다고 바위에 글자(명문)가 새겨져 있는 것이 특징이다. 높은 모자를 쓰고 연꽃을 들고 한쪽 다리를 올리고 앉아 있는 모습이며, 키가 3.2미터로 아주 큰 부처님이다. 이 이천 장암리 마애보살반가상은 우리나라의 중요한 보물(보물 제982호)로 지정되어 있는 귀한 문화유산이다.", youtube: "https://youtu.be/nWnAO2tCaU0?si=6xqUeR4SrRDLhBO1", img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/e0npPqrXATTUzHWKE6yc8caX5Y6ROGDuSxMZ42rm.jpg" },
-            { name: "반룡송", lat: 37.341667, lon: 127.475833, desc: "이천 도립리 반룡송은 경기도 이천에 있는 아주 오래되고 특별한 소나무이다. 이 나무는 하늘로 올라가기 전 땅에 몸을 틀고 있는 용처럼 신기한 모습을 하고 있어서 우리나라의 중요한 나무(천연기념물)로 보호받고 있는 나무이다.", youtube: "https://youtu.be/G78tAQaFdsI?si=B2vn5mNgXdVhUbuF", img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/aLaV3n4R19L9tV1Asm86UeFrVDqsUPwrvPo4TBbo.jpg" },
-            { name: "이천 애련정", lat: 37.277222, lon: 127.450278, desc: "이천 애련정은 경기도 이천에 있는 안흥지라는 이름의 연못 옆에 지어진 예쁜 정자이다. 이 정자는 조선 시대에 이천을 관리하던 이세보가 만들었고, 당시 높은 관리였던 신숙주에게 부탁해서 이름도 지었다고 전해지는 곳이다. 세종대왕 무덤에 다녀오는 임금님들이 이곳에 들르기도 했던 역사적으로 중요한 장소이다. 지금은 아름다운 연못 주변 경치와 잘 어울려서 이천 시민들이 편안하게 쉬고 구경하는 좋은 곳이다.", youtube: "https://youtu.be/Ip2e_Luk4zw?si=JEHdZMr74JPyaOyN", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2mzve3PSg9bmXEsLciCeB67nOw-Oz7F8Bg&s" },
-            { name: "이천 도예촌 (한국도자관)", lat: 37.293976, lon: 127.412066, desc: "이천 도예촌은 경기도 이천시 사음동과 신둔면 일대에 있으며, 이천을 대표하는 도자기를 만드는 마을이다 이곳의 도예가들은 옛날 사라졌던 우리나라 전통 도자기 만드는 기술을 다시 찾아서 아름다운 도자기를 만드는 데 성공한 곳이다. 이러한 노력 덕분에 이천 도예촌은 우리나라 전통 도자기 예술의 아주 중요한 중심지가 된 곳이다. 도예촌 안에는 여러 도자기 가게와 도자기를 굽는 가마들이 있어서 다양한 도자기를 보고 경험할 수 있는 곳이다.", youtube: "https://youtu.be/YihuvAW48Pk?si=0Ag5LwDqkSlzNfBY", img: "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=15ED02EFE8762DA1ED3099A282B30B3D42C0874CE6025A0B6A8F3DF5A37DB741&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height=" },
-            { name: "이천 산수유마을", lat: 37.337, lon: 127.4685, desc: "산수유마을은 봄에는 노란 산수유꽃이, 가을에는 빨간 열매가 가득해서 아주 아름다운 곳이다. 이곳에서는 산수유로 초콜릿이나 비누를 만들거나 옛날 놀이를 하는 등 여러 가지 재미있는 체험을 할 수 있는 곳이다. 마을에는 편하게 묵을 수 있는 한옥집과 넓은 주차장, 그리고 자연 속을 걷기 좋은 산책길이 있어서 가족이나 친구들과 함께 놀러 오기 좋은 곳이다.", youtube: "https://youtu.be/TIkBtHaogsI?si=BrVSnPPrvpERXg0S", img: "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=15ED02EFE8762DA1ED3099A282B30B3D1056D8A2EC73A09CF56F79D8D688A7C3&fileSn=F1877974FB248B77C7B5C819ED9962A3&width=&height=" },
-            { name: "서희테마파크 (서희역사관)", lat: 37.278428, lon: 127.480609, desc: "경기도 이천시 부발읍에 있는 고려 시대 서희를 주제로 한 테마공원이다. 청소년들이 할 수 있는 역사 체험과 전시관, 체험관, 영상관, 추모관으로 구성한 복합문화공간이다. 서희 역사 산책로에는 국내 유명 조각가들이 인연의 시작, 서희의 성장, 여요전쟁, 영웅의 활약 4단계의 이야기로 나누어 제작하여 설치한 조형 작품이 있어 산책로를 거닐며 감상할 수 있다.", youtube: "https://www.youtube.com/watch?v=4efsGYlrlpM", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ9W5xqlWcULITRP93vw0PrJS10ZRyWzQpkw&s" },
-            { name: "이천시립박물관", lat: 37.274984, lon: 127.427209, desc: "이천의 역사와 문화를 보여주는 유물들을 전시하고 있습니다.", youtube: "", img: "" },
-            { name: "이천아트홀", lat: 37.272017, lon: 127.434743, desc: "다양한 문화 공연과 전시가 열리는 이천시의 대표적인 공연장입니다.", youtube: "", img: "" },
-            { name: "자채방아마을", lat: 37.191443, lon: 127.487792, desc: "농촌 체험과 전통 문화 체험을 할 수 있는 마을입니다.", youtube: "", img: "" },
-            { name: "이천 온천공원", lat: 37.280314, lon: 127.452818, desc: "온천수를 활용한 공원으로, 족욕 체험 등을 할 수 있습니다.", youtube: "", img: "" },
-            { name: "경기도의료원 이천병원", lat: 37.282995, lon: 127.432783, desc: "경기도에서 운영하는 공공병원입니다.", youtube: "", img: "" },
-            { name: "이천파티마병원", lat: 37.274945, lon: 127.449043, desc: "이천시 대월면에 위치한 종합병원입니다.", youtube: "", img: "" },
-            { name: "이천시청", lat: 37.272459, lon: 127.434926, desc: "이천시의 행정 업무를 총괄하는 시청입니다.", youtube: "", img: "" },
-            { name: "이천역", lat: 37.264417, lon: 127.442045, desc: "경강선 이천역입니다.", youtube: "", img: "" },
-            { name: "부발역", lat: 37.260092, lon: 127.490373, desc: "경강선 부발역입니다.", youtube: "", img: "" },
-            { name: "신둔도예촌역", lat: 37.315493, lon: 127.405249, desc: "경강선 신둔도예촌역입니다.", youtube: "", img: "" },
-            { name: "이천종합터미널", lat: 37.277336, lon: 127.447092, desc: "이천시의 시외 및 고속버스 운행의 주요 거점입니다.", youtube: "", img: "" },
-            { name: "이천 중앙로 문화의 거리", lat: 37.251946, lon: 127.358014, desc: "이천시의 중심 상업 및 문화 거리입니다.", youtube: "", img: "" },
-            { name: "이천시립도서관", lat: 37.286974, lon: 127.436913, desc: "이천시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.", youtube: "", img: "" },
-            { name: "이천 종합운동장", lat: 37.286301, lon: 127.496616, desc: "다양한 체육 시설을 갖춘 이천시의 주요 스포츠 시설입니다.", youtube: "", img: "" },
-            { name: "이천테르메덴", lat: 37.195061, lon: 127.445718, desc: "숲 속에서 즐기는 독일식 온천 리조트로, 다양한 스파와 물놀이 시설을 갖추고 있습니다.", youtube: "", img: "" },
-            { name: "시몬스 테라스 이천", lat: 37.197842, lon: 127.446412, desc: "침대 브랜드 시몬스가 운영하는 복합 문화 공간으로, 전시와 카페가 있습니다.", youtube: "", img: "" },
-            { name: "한국도자재단 (경기도자미술관)", lat: 37.277015, lon: 127.423421, desc: "도자 예술의 발전과 홍보를 위한 기관으로, 전시와 체험 프로그램을 운영합니다.", youtube: "", img: "" },
-            { name: "이천 별빛정원 우주", lat: 37.242426, lon: 127.391088, desc: "빛과 자연이 어우러진 야간 테마파크로, 아름다운 조명과 예술 작품을 감상할 수 있습니다.", youtube: "", img: "" },
-            { name: "이천시립월전미술관", lat: 37.279645, lon: 127.424540, desc: "한국화의 대가 월전 장우성 화백의 작품을 소장한 미술관입니다.", youtube: "", img: "" },
-            { name: "덕평공룡수목원", lat: 37.232553, lon: 127.338278, desc: "공룡 조형물과 다양한 식물들이 어우러진 이색적인 수목원입니다.", youtube: "", img: "" }
-        ];
+        const places =
+[
+  {
+    "name": "호수 - 설봉호",
+    "lat": 37.2839,
+    "lng": 127.4238,
+    "desc": "이천 설봉호는 경기도 이천에 있는 커다란 저수지로, 설봉공원 안에 있어서 아름다운 곳이다. 이곳에는 높이 솟는 분수와 세계 유명작가들의 멋진 조각 작품들이 전시되어있다. 주변을 따라 산책하기도 좋아서 이천의 대표적인 관광지이다",
+    "youtube": "https://youtu.be/4tQhL9qoqNk?si=aaWLAwbGhPjNMbgs",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGEsLggD9EejooSgREJxkQVoWl5eSPnXtvTA&s"
+  },
+  {
+    "name": "산 - 노성산",
+    "lat": 37.127664,
+    "lng": 127.503941,
+    "desc": "노성산은 이천과 안성의 경계를 이루는 310m정도의 높이인 높지 않은 산이다. 노성산에 가면 말머리처럼 생긴 커다란 바위가 있다. 이 바위는 옛날 용맹한 말을 차지하려고 장수들이 싸웠다는 재미있는 전설이 전해지는 곳이다. 노성산 말머리바위는 이천에서 아름다운 풍경 여덟 가지 중 하나로 꼽히며, 신기한 모양의 다른 바위들도 볼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/dcx5SJmI8RM?si=zmfnUD_7tUMdBhh_",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO3P0tnh-MGx-sX9McvgJzyY_WuTqRtLE1Aw&s"
+  },
+  {
+    "name": "산 - 설봉산",
+    "lat": 37.279698,
+    "lng": 127.419321,
+    "desc": "이천 설봉산은 이천시가지를 서쪽으로 둘러싼 산이며 산 중턱에 나란히 서 있는 커다란 바위 세 개를 볼 수 있는 곳이다. 이 바위들을 설봉산 삼형제바위라고 부르는데, 이천에서 아름다운 경치 아홉 가지 중 세 번째로 꼽히는 곳이다. 이 바위에는 옛날 어머니를 아주 사랑했던 세 형제의 슬픈 이야기가 전해지고 있는 곳이다.",
+    "youtube": "https://youtu.be/Ag8WIEXXTF0?si=rO-leTFCzZx7R_JG",
+    "img": "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DD3EC35A400E197AE6910B87113F136C9&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height="
+  },
+  {
+    "name": "산 - 도드람산",
+    "lat": 37.266833,
+    "lng": 127.391895,
+    "desc": "도드람산은 전체가 바위로 되어있어 등산객들에게는 산타는 재미가 있는 산이다. 도드람산은 한자 이름으로 저명(돼지울음)산이라고 불리는데 옛날 효자가 위험에 빠졌을 때 산돼지 울음소리 덕분에 목숨을 구했다는 이야기가 전해져 이름이 붙여졌다고 한한다. 산 정상 부근에 있는 세 개의 봉우리는 도드람산 상봉으로 이천의 아름다운 풍경으로 손꼽히는 곳이다.",
+    "youtube": "https://youtu.be/SIJnRoHt2Bg?si=7VJLHj9nh9LCUzh_",
+    "img": "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DC6B5AB6DE6168ACE2BBBC42AF127A9A7&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height="
+  },
+  {
+    "name": "이천 설봉산성",
+    "lat": 37.288333,
+    "lng": 127.419722,
+    "desc": "이천 설봉산성은 경기도 이천에 있는 아주 오래된 산성이다. 이 성은 백제 시대에 처음 만들어졌고, 삼국 시대에 나라를 지키는 데 중요한 역할을 했던 곳이다. 산 위에 있어서 주변이 잘 보이고, 옛날에 사용했던 그릇이나 물건들이 많이 발견된 곳이다. 설봉산성은 우리나라의 중요한 역사 유적(사적 제423호)으로 지정되어 있는 곳이다.",
+    "youtube": "https://youtu.be/3O8dH_6Iwag?si=rw-o6cD9NrQOkXOr",
+    "img": "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=8BC30BB6D3CFEFB105A5698146B5792DD3EC35A400E197AE6910B87113F136C9&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height="
+  },
+  {
+    "name": "영월암 마래여래입상",
+    "lat": 37.281,
+    "lng": 127.415,
+    "desc": "이천 영월암 마애여래입상은 경기도 이천에 있는 아주 크고 높은 바위에 새겨진 부처님 모습이다. 이 부처님은 고려 시대 초에 만들어진 것으로 보이며, 바위 가득히 크고 힘찬 모습으로 조각되어 있다. 둥글고 부드러운 얼굴과 가르침을 전하는 듯한 손 모양이 특징이다. 이 불상은 옛날 스님(나옹선사)과 관련된 이야기도 전해지며, 우리나라의 중요한 보물(보물 제822호)로 지정된 문화재이다.",
+    "youtube": "https://youtu.be/-qiBKV1BNkA?si=mSfhshnngMY15P0j",
+    "img": "https://www.heritage.go.kr/unisearch/images/treasure/thumb/1615857.jpg"
+  },
+  {
+    "name": "장암리 마애보살반가상",
+    "lat": 37.271944,
+    "lng": 127.400833,
+    "desc": "이천 장암리 마애보살반가상은 경기도 이천에 있는 아주 커다란 바위에 부처님 모습을 새겨 놓은 것이다 . 이 부처님은 고려 시대인 981년에 만들어졌다고 바위에 글자(명문)가 새겨져 있는 것이 특징이다. 높은 모자를 쓰고 연꽃을 들고 한쪽 다리를 올리고 앉아 있는 모습이며, 키가 3.2미터로 아주 큰 부처님이다. 이 이천 장암리 마애보살반가상은 우리나라의 중요한 보물(보물 제982호)로 지정되어 있는 귀한 문화유산이다.",
+    "youtube": "https://youtu.be/nWnAO2tCaU0?si=6xqUeR4SrRDLhBO1",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/e0npPqrXATTUzHWKE6yc8caX5Y6ROGDuSxMZ42rm.jpg"
+  },
+  {
+    "name": "반룡송",
+    "lat": 37.341667,
+    "lng": 127.475833,
+    "desc": "이천 도립리 반룡송은 경기도 이천에 있는 아주 오래되고 특별한 소나무이다. 이 나무는 하늘로 올라가기 전 땅에 몸을 틀고 있는 용처럼 신기한 모습을 하고 있어서 우리나라의 중요한 나무(천연기념물)로 보호받고 있는 나무이다.",
+    "youtube": "https://youtu.be/G78tAQaFdsI?si=B2vn5mNgXdVhUbuF",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/aLaV3n4R19L9tV1Asm86UeFrVDqsUPwrvPo4TBbo.jpg"
+  },
+  {
+    "name": "이천 애련정",
+    "lat": 37.277222,
+    "lng": 127.450278,
+    "desc": "이천 애련정은 경기도 이천에 있는 안흥지라는 이름의 연못 옆에 지어진 예쁜 정자이다. 이 정자는 조선 시대에 이천을 관리하던 이세보가 만들었고, 당시 높은 관리였던 신숙주에게 부탁해서 이름도 지었다고 전해지는 곳이다. 세종대왕 무덤에 다녀오는 임금님들이 이곳에 들르기도 했던 역사적으로 중요한 장소이다. 지금은 아름다운 연못 주변 경치와 잘 어울려서 이천 시민들이 편안하게 쉬고 구경하는 좋은 곳이다.",
+    "youtube": "https://youtu.be/Ip2e_Luk4zw?si=JEHdZMr74JPyaOyN",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI2mzve3PSg9bmXEsLciCeB67nOw-Oz7F8Bg&s"
+  },
+  {
+    "name": "이천 도예촌 (한국도자관)",
+    "lat": 37.293976,
+    "lng": 127.412066,
+    "desc": "이천 도예촌은 경기도 이천시 사음동과 신둔면 일대에 있으며, 이천을 대표하는 도자기를 만드는 마을이다 이곳의 도예가들은 옛날 사라졌던 우리나라 전통 도자기 만드는 기술을 다시 찾아서 아름다운 도자기를 만드는 데 성공한 곳이다. 이러한 노력 덕분에 이천 도예촌은 우리나라 전통 도자기 예술의 아주 중요한 중심지가 된 곳이다. 도예촌 안에는 여러 도자기 가게와 도자기를 굽는 가마들이 있어서 다양한 도자기를 보고 경험할 수 있는 곳이다.",
+    "youtube": "https://youtu.be/YihuvAW48Pk?si=0Ag5LwDqkSlzNfBY",
+    "img": "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=15ED02EFE8762DA1ED3099A282B30B3D42C0874CE6025A0B6A8F3DF5A37DB741&fileSn=125EB0AE64ED2AE7001CFD6CFA9E31E8&width=&height="
+  },
+  {
+    "name": "이천 산수유마을",
+    "lat": 37.337,
+    "lng": 127.4685,
+    "desc": "산수유마을은 봄에는 노란 산수유꽃이, 가을에는 빨간 열매가 가득해서 아주 아름다운 곳이다. 이곳에서는 산수유로 초콜릿이나 비누를 만들거나 옛날 놀이를 하는 등 여러 가지 재미있는 체험을 할 수 있는 곳이다. 마을에는 편하게 묵을 수 있는 한옥집과 넓은 주차장, 그리고 자연 속을 걷기 좋은 산책길이 있어서 가족이나 친구들과 함께 놀러 오기 좋은 곳이다.",
+    "youtube": "https://youtu.be/TIkBtHaogsI?si=BrVSnPPrvpERXg0S",
+    "img": "https://www.icheon.go.kr/common/file/img/view.do?atchFileId=15ED02EFE8762DA1ED3099A282B30B3D1056D8A2EC73A09CF56F79D8D688A7C3&fileSn=F1877974FB248B77C7B5C819ED9962A3&width=&height="
+  },
+  {
+    "name": "서희테마파크 (서희역사관)",
+    "lat": 37.278428,
+    "lng": 127.480609,
+    "desc": "경기도 이천시 부발읍에 있는 고려 시대 서희를 주제로 한 테마공원이다. 청소년들이 할 수 있는 역사 체험과 전시관, 체험관, 영상관, 추모관으로 구성한 복합문화공간이다. 서희 역사 산책로에는 국내 유명 조각가들이 인연의 시작, 서희의 성장, 여요전쟁, 영웅의 활약 4단계의 이야기로 나누어 제작하여 설치한 조형 작품이 있어 산책로를 거닐며 감상할 수 있다.",
+    "youtube": "https://www.youtube.com/watch?v=4efsGYlrlpM",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ9W5xqlWcULITRP93vw0PrJS10ZRyWzQpkw&s"
+  },
+  {
+    "name": "이천시립박물관",
+    "lat": 37.274984,
+    "lng": 127.427209,
+    "desc": "이천의 역사와 문화를 보여주는 유물들을 전시하고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천아트홀",
+    "lat": 37.272017,
+    "lng": 127.434743,
+    "desc": "다양한 문화 공연과 전시가 열리는 이천시의 대표적인 공연장입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "자채방아마을",
+    "lat": 37.191443,
+    "lng": 127.487792,
+    "desc": "농촌 체험과 전통 문화 체험을 할 수 있는 마을입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천 온천공원",
+    "lat": 37.280314,
+    "lng": 127.452818,
+    "desc": "온천수를 활용한 공원으로, 족욕 체험 등을 할 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "경기도의료원 이천병원",
+    "lat": 37.282995,
+    "lng": 127.432783,
+    "desc": "경기도에서 운영하는 공공병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천파티마병원",
+    "lat": 37.274945,
+    "lng": 127.449043,
+    "desc": "이천시 대월면에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천시청",
+    "lat": 37.272459,
+    "lng": 127.434926,
+    "desc": "이천시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천역",
+    "lat": 37.264417,
+    "lng": 127.442045,
+    "desc": "경강선 이천역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "부발역",
+    "lat": 37.260092,
+    "lng": 127.490373,
+    "desc": "경강선 부발역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "신둔도예촌역",
+    "lat": 37.315493,
+    "lng": 127.405249,
+    "desc": "경강선 신둔도예촌역입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천종합터미널",
+    "lat": 37.277336,
+    "lng": 127.447092,
+    "desc": "이천시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천 중앙로 문화의 거리",
+    "lat": 37.251946,
+    "lng": 127.358014,
+    "desc": "이천시의 중심 상업 및 문화 거리입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천시립도서관",
+    "lat": 37.286974,
+    "lng": 127.436913,
+    "desc": "이천시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천 종합운동장",
+    "lat": 37.286301,
+    "lng": 127.496616,
+    "desc": "다양한 체육 시설을 갖춘 이천시의 주요 스포츠 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천테르메덴",
+    "lat": 37.195061,
+    "lng": 127.445718,
+    "desc": "숲 속에서 즐기는 독일식 온천 리조트로, 다양한 스파와 물놀이 시설을 갖추고 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "시몬스 테라스 이천",
+    "lat": 37.197842,
+    "lng": 127.446412,
+    "desc": "침대 브랜드 시몬스가 운영하는 복합 문화 공간으로, 전시와 카페가 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한국도자재단 (경기도자미술관)",
+    "lat": 37.277015,
+    "lng": 127.423421,
+    "desc": "도자 예술의 발전과 홍보를 위한 기관으로, 전시와 체험 프로그램을 운영합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천 별빛정원 우주",
+    "lat": 37.242426,
+    "lng": 127.391088,
+    "desc": "빛과 자연이 어우러진 야간 테마파크로, 아름다운 조명과 예술 작품을 감상할 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "이천시립월전미술관",
+    "lat": 37.279645,
+    "lng": 127.42454,
+    "desc": "한국화의 대가 월전 장우성 화백의 작품을 소장한 미술관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "덕평공룡수목원",
+    "lat": 37.232553,
+    "lng": 127.338278,
+    "desc": "공룡 조형물과 다양한 식물들이 어우러진 이색적인 수목원입니다.",
+    "youtube": "",
+    "img": ""
+  }
+      ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
