@@ -13,233 +13,244 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 김포시 중심 좌표 (약 37.6154, 126.7158)
-        const map = L.map('map').setView([37.6154, 126.7158], 12);
+   <script>
+    // 김포시청 중심 좌표
+    const map = L.map('map').setView([37.615578, 126.715505], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        // ⬇️ 여기에 places 데이터 넣어주시면 됩니다!
-        const places = [
-{
-name: "강 - 한강중앙공원",
-lat: 37.642509,
-lon: 126.674509,
-desc: "김포중앙공원은 넓은 잔디광장에 이어 라베니체 수변공원으로 이어지는 주민의 쉼터로 나무와 꽃, 수변을 따라 이어지는 산책로는 최고의 힐링 장소다.",
-youtube: "https://youtu.be/QPhD5_cL9G8?si=4Q2RP6cI-TPH60zo",
-img: "https://cdn.welfarehello.com/naver-blog/production/gimpo2010/2024-01/223297369212/gimpo2010_223297369212_0.jpg"
-},
-{
-name: "하천 - 금빛수로(라베니체)",
-lat: 37.642162,
-lon: 126.678278,
-desc: "금빛수로는 인공으로 만든 물길. 라베니체라는 곳과 공원, 산책로가 있어 관광객들이 많이 찾는 명소.",
-youtube: "https://youtu.be/Inrt3h2jL0M?si=hpKDyI1lAieboMu8",
-img: "https://cdn.latimes.kr/news/photo/202311/51291_62947_1117.jpg"
-},
-{
-name: "하천 - 아라뱃길 광장",
-lat: 37.599848,
-lon: 126.788234,
-desc: "사방이 트인 큰 광장과 야외무대 공연장, 휴식 공간이 있는 광장. 수상레저시설과 각종 행사가 열리는 곳.",
-youtube: "https://youtu.be/DD5AWJ5a-90?si=12RHmZqvCEfuoDFe",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKKrDFpazCl2-N3spgtxQ_HNJbuXd6NxPvVA&s"
-},
-{
-name: "산 - 문수산",
-lat: 37.739807,
-lon: 126.538424,
-desc: "김포의 금강산'이라 불리며 등산, 산림욕, 문수산성과 함께 역사와 자연을 모두 즐길 수 있는 명산.",
-youtube: "https://youtu.be/Hq4vac_NL4k?si=DmrBH6-sGWrRybT0",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHdMJyaru9zoht2xnm83EIaovLk11zGh5oWA&s"
-},
-{
-name: "산 - 가현산",
-lat: 37.631043,
-lon: 126.646808,
-desc: "코끼리머리, 칡 등 다양한 유래가 있는 산. 정상에서 북한 개성 송악산까지도 조망 가능. 봄에는 진달래가 아름다움.",
-youtube: "https://youtu.be/HfyvvxE1JWM?si=t2K0dIzZViFDqRdN",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJNp-tFvUQQQUd_sNGC4-1F-7lLJOHIekkg&s"
-},
-{
-name: "한강하류재두루미래지",
-lat: 37.753624,
-lon: 126.602109,
-desc: "임진강과 한강이 만나는 넓은 땅, 재두루미 겨울 도래지로 천연기념물 보호 지역. 겨울철 새 관찰 명소.",
-youtube: "https://youtu.be/BRcWQlkkpVY?si=ZCV02SCIcRqrOUn_",
-img: "https://tour.paju.go.kr/upload/tour/2017/5/22/04df5bda-1acc-46fc-88a6-93dd8a27bfe0.jpg"
-},
-{
-name: "산 - 수안산",
-lat: 37.639802,
-lon: 126.598495,
-desc: "반딧불이 서식, 깨끗한 자연과 환경체험, 가족 산책로와 체험학습이 인기.",
-youtube: "https://youtu.be/x_w7QSkw5lU?si=shDgEFLQ4qcWDMEH",
-img: "https://modo-phinf.pstatic.net/20150617_284/14345366587069O1cJ_JPEG/mosapU2Lvp.jpeg?type=w720"
-},
-{
-name: "문수산성",
-lat: 37.742295,
-lon: 126.531117,
-desc: "1694년 축성된 조선시대 돌성. 프랑스군과 치열하게 싸웠던 역사 현장. 옛 성문 복원, 산행과 역사학습 가능.",
-youtube: "https://www.youtube.com/watch?v=KmHHGQwOT4M",
-img: "https://i.namu.wiki/i/41IXKsz-v89eNeapxAnDGdCyU6dYFx1DwqPbSadTM824c6P3LEXDhCJsfYyQ1V9qiT-b3gSF10Uc-_9EtRNd1g.webp"
-},
-{
-name: "장릉",
-lat: 37.613533,
-lon: 126.709451,
-desc: "조선 인조의 부모인 원종과 인헌왕후의 무덤. 영조·정조도 제사지냈으며, 조선 중기의 무덤 양식이 남아있는 공원형 능역.",
-youtube: "https://youtu.be/J5UPixeCeRs?si=Oet5GVPns_nPf9Kl",
-img: "https://i.namu.wiki/i/gHVM9bw7qqvW0fUHgy_3K5NDy4jAaT4I6Y2dr4tI7BkDGSXbPO4shkhb7RilqDLRjQkVD-Uf3T4HKCecwoIfTA.jpg"
-},
-{
-name: "김포성당",
-lat: 37.629748,
-lon: 126.708021,
-desc: "1950년대 돌로 지은 성당 건물. 한국전쟁 후 세워진 역사적 가치가 큰 곳.",
-youtube: "https://youtu.be/IpkZTa4LkNg?si=7Kdf3bcRY-stzzrt",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdzKXzXoyZ1np7NufOoYLtlYhTBYjN9mNiQ&s"
-},
-{
-name: "덕포진",
-lat: 37.650446,
-lon: 126.537135,
-desc: "조선시대 군사기지, 서양 군대와 싸운 역사 현장. 손돌아저씨 무덤도 유명한 충절의 상징.",
-youtube: "https://youtu.be/BXfLBeLxGPs?si=mBBE_KMQBX3HnV-3",
-img: "https://gjicp.ggcf.kr/mediaObjects/168"
-},
-{
-name: "김포향교",
-lat: 37.624736,
-lon: 126.709816,
-desc: "조선시대 교육기관. 공자 등 성현의 제사를 지내고, 옛 건축물과 전통교육 문화를 알 수 있는 장소.",
-youtube: "https://youtu.be/C-pUQDZZIec?si=7nWtpJ9O5mMvh6Pl",
-img: "https://ggc.ggcf.kr/uploadimg/resize/0a86d40a1545862033750.jpeg"
-},
-{
-name: "우저서원",
-lat: 37.627019,
-lon: 126.69392,
-desc: "학자·군인 조헌을 기리는 서원, 교육·제례 공간. 옛날 책과 문화재 다수 보관.",
-youtube: "https://youtu.be/C-pUQDZZIec?si=ZYhy85uauqaeJppI",
-img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/SjDkZwOrlGGBQOHkJOlhWdnoimuS65E8iActWeK5.jpg"
-},
-{
-name: "애기봉평화생태공원",
-lat: 37.753246,
-lon: 126.594405,
-desc: "북한 땅을 가까이 볼 수 있는 전망공원, 전시관, 흔들다리 등 평화와 생태 학습시설이 있음.",
-youtube: "https://youtu.be/VHv4IEhh9mY?si=mXhJTa7U7px7MHaG",
-img: "https://aegibong.or.kr/assets/front/img/new0101_3.png"
-},
-{
-name: "김포국제조각공원",
-lat: 37.721465,
-lon: 126.554299,
-desc: "평화와 통일을 주제로 다양한 조각작품을 전시, 산책과 예술감상이 가능한 가족 공원.",
-youtube: "https://youtu.be/mVQYSBoycj4?si=UIaILNuMzzz6zYAL",
-img: "https://www.gcf.or.kr/main/images/subpage/sub1414_top_image1.jpg"
-},
-{
-name: "김포아트빌리지 & 한옥마을",
-lat: 37.646763,
-lon: 126.696311,
-desc: "한옥과 예술작품이 어우러진 복합문화공간, 다양한 체험활동과 전시, 한옥건축의 아름다움을 만날 수 있음.",
-youtube: "https://youtu.be/ieQ5aqteLt0?si=QO6hVPvqvsEP6p3T",
-img: "https://www.gcf.or.kr/main/images/subpage/sub1412_space1_slide1.jpg"
-},
-{
-name: "김포함상공원",
-lat: 37.640688,
-lon: 126.540002,
-desc: "실제 군함을 전시해 내부를 관람, 해군 전시와 바다 산책로가 있는 체험형 공원.",
-youtube: "https://youtu.be/IeiwMTCwbfE?si=SunNr4xyhx_4vWQu",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjprWxrg4wvJ8hykUjfU2_3QhudxlCPydaMg&s"
-},
-{
-name: "야생조류생태공원",
-lat: 37.658280,
-lon: 126.690540,
-desc: "한강 야생조류와 자연을 가까이에서 관찰하며 산책할 수 있는 넓은 자연생태공원.",
-youtube: "https://youtu.be/1NZX1uLbFms?si=NczVAtWhCl8waYlv",
-img: "https://i.namu.wiki/i/hmDBOcNNI-bnLGH-CxQVjHk2o1bmAz3cHfeKoqiKNIqpKidH5h-l5FM1aFUxHQ8E7dxAYZVdvb-oErYb7M9P0Q.webp"
-},
-{
-name: "김포 3.1독립만세운동 기념관",
-lat: 37.653400,
-lon: 126.629320,
-desc: "일제강점기 독립운동의 역사와 체험, 만세운동의 정신을 배우는 전시관.",
-youtube: "https://www.youtube.com/watch?v=pHa5Kobi2EM",
-img: "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202302/20230227014201844817196.jpg"
-},
-{
-name: "대명항",
-lat: 37.639348,
-lon: 126.541775,
-desc: "서해안의 작은 어항으로, 싱싱한 해산물과 어촌 풍경을 즐길 수 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "김포상설시장",
-lat: 37.627530,
-lon: 126.710589,
-desc: "김포의 대표적인 전통시장으로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "김포우리병원",
-lat: 37.632562,
-lon: 126.710985,
-desc: "김포시 풍무동에 위치한 주요 종합병원입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "뉴고려병원",
-lat: 37.641008,
-lon: 126.660235,
-desc: "김포시 장기동에 위치한 종합병원입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "김포시청",
-lat: 37.615680,
-lon: 126.715312,
-desc: "김포시의 행정 업무를 총괄하는 시청입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "걸포북변역",
-lat: 37.631837,
-lon: 126.705721,
-desc: "",
-youtube: "",
-img: ""
-},
-{
-name: "구래역",
-lat: 37.645507,
-lon: 126.628713,
-desc: "",
-youtube: "",
-img: ""
-}
-];
+        const places =
+[
+  {
+    "name": "강 - 한강중앙공원",
+    "lat": 37.642509,
+    "lng": 126.674509,
+    "desc": "김포중앙공원은 넓은 잔디광장에 이어 라베니체 수변공원으로 이어지는 주민의 쉼터로 나무와 꽃, 수변을 따라 이어지는 산책로는 최고의 힐링 장소다.",
+    "youtube": "https://youtu.be/QPhD5_cL9G8?si=4Q2RP6cI-TPH60zo",
+    "img": "https://cdn.welfarehello.com/naver-blog/production/gimpo2010/2024-01/223297369212/gimpo2010_223297369212_0.jpg"
+  },
+  {
+    "name": "하천 - 금빛수로(라베니체)",
+    "lat": 37.642162,
+    "lng": 126.678278,
+    "desc": "금빛수로는 인공으로 만든 물길. 라베니체라는 곳과 공원, 산책로가 있어 관광객들이 많이 찾는 명소.",
+    "youtube": "https://youtu.be/Inrt3h2jL0M?si=hpKDyI1lAieboMu8",
+    "img": "https://cdn.latimes.kr/news/photo/202311/51291_62947_1117.jpg"
+  },
+  {
+    "name": "하천 - 아라뱃길 광장",
+    "lat": 37.599848,
+    "lng": 126.788234,
+    "desc": "사방이 트인 큰 광장과 야외무대 공연장, 휴식 공간이 있는 광장. 수상레저시설과 각종 행사가 열리는 곳.",
+    "youtube": "https://youtu.be/DD5AWJ5a-90?si=12RHmZqvCEfuoDFe",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKKrDFpazCl2-N3spgtxQ_HNJbuXd6NxPvVA&s"
+  },
+  {
+    "name": "산 - 문수산",
+    "lat": 37.739807,
+    "lng": 126.538424,
+    "desc": "김포의 금강산'이라 불리며 등산, 산림욕, 문수산성과 함께 역사와 자연을 모두 즐길 수 있는 명산.",
+    "youtube": "https://youtu.be/Hq4vac_NL4k?si=DmrBH6-sGWrRybT0",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHdMJyaru9zoht2xnm83EIaovLk11zGh5oWA&s"
+  },
+  {
+    "name": "산 - 가현산",
+    "lat": 37.631043,
+    "lng": 126.646808,
+    "desc": "코끼리머리, 칡 등 다양한 유래가 있는 산. 정상에서 북한 개성 송악산까지도 조망 가능. 봄에는 진달래가 아름다움.",
+    "youtube": "https://youtu.be/HfyvvxE1JWM?si=t2K0dIzZViFDqRdN",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtJNp-tFvUQQQUd_sNGC4-1F-7lLJOHIekkg&s"
+  },
+  {
+    "name": "한강하류재두루미래지",
+    "lat": 37.753624,
+    "lng": 126.602109,
+    "desc": "임진강과 한강이 만나는 넓은 땅, 재두루미 겨울 도래지로 천연기념물 보호 지역. 겨울철 새 관찰 명소.",
+    "youtube": "https://youtu.be/BRcWQlkkpVY?si=ZCV02SCIcRqrOUn_",
+    "img": "https://tour.paju.go.kr/upload/tour/2017/5/22/04df5bda-1acc-46fc-88a6-93dd8a27bfe0.jpg"
+  },
+  {
+    "name": "산 - 수안산",
+    "lat": 37.639802,
+    "lng": 126.598495,
+    "desc": "반딧불이 서식, 깨끗한 자연과 환경체험, 가족 산책로와 체험학습이 인기.",
+    "youtube": "https://youtu.be/x_w7QSkw5lU?si=shDgEFLQ4qcWDMEH",
+    "img": "https://modo-phinf.pstatic.net/20150617_284/14345366587069O1cJ_JPEG/mosapU2Lvp.jpeg?type=w720"
+  },
+  {
+    "name": "문수산성",
+    "lat": 37.742295,
+    "lng": 126.531117,
+    "desc": "1694년 축성된 조선시대 돌성. 프랑스군과 치열하게 싸웠던 역사 현장. 옛 성문 복원, 산행과 역사학습 가능.",
+    "youtube": "https://www.youtube.com/watch?v=KmHHGQwOT4M",
+    "img": "https://i.namu.wiki/i/41IXKsz-v89eNeapxAnDGdCyU6dYFx1DwqPbSadTM824c6P3LEXDhCJsfYyQ1V9qiT-b3gSF10Uc-_9EtRNd1g.webp"
+  },
+  {
+    "name": "장릉",
+    "lat": 37.613533,
+    "lng": 126.709451,
+    "desc": "조선 인조의 부모인 원종과 인헌왕후의 무덤. 영조·정조도 제사지냈으며, 조선 중기의 무덤 양식이 남아있는 공원형 능역.",
+    "youtube": "https://youtu.be/J5UPixeCeRs?si=Oet5GVPns_nPf9Kl",
+    "img": "https://i.namu.wiki/i/gHVM9bw7qqvW0fUHgy_3K5NDy4jAaT4I6Y2dr4tI7BkDGSXbPO4shkhb7RilqDLRjQkVD-Uf3T4HKCecwoIfTA.jpg"
+  },
+  {
+    "name": "김포성당",
+    "lat": 37.629748,
+    "lng": 126.708021,
+    "desc": "1950년대 돌로 지은 성당 건물. 한국전쟁 후 세워진 역사적 가치가 큰 곳.",
+    "youtube": "https://youtu.be/IpkZTa4LkNg?si=7Kdf3bcRY-stzzrt",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdzKXzXoyZ1np7NufOoYLtlYhTBYjN9mNiQ&s"
+  },
+  {
+    "name": "덕포진",
+    "lat": 37.650446,
+    "lng": 126.537135,
+    "desc": "조선시대 군사기지, 서양 군대와 싸운 역사 현장. 손돌아저씨 무덤도 유명한 충절의 상징.",
+    "youtube": "https://youtu.be/BXfLBeLxGPs?si=mBBE_KMQBX3HnV-3",
+    "img": "https://gjicp.ggcf.kr/mediaObjects/168"
+  },
+  {
+    "name": "김포향교",
+    "lat": 37.624736,
+    "lng": 126.709816,
+    "desc": "조선시대 교육기관. 공자 등 성현의 제사를 지내고, 옛 건축물과 전통교육 문화를 알 수 있는 장소.",
+    "youtube": "https://youtu.be/C-pUQDZZIec?si=7nWtpJ9O5mMvh6Pl",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/0a86d40a1545862033750.jpeg"
+  },
+  {
+    "name": "우저서원",
+    "lat": 37.627019,
+    "lng": 126.69392,
+    "desc": "학자·군인 조헌을 기리는 서원, 교육·제례 공간. 옛날 책과 문화재 다수 보관.",
+    "youtube": "https://youtu.be/C-pUQDZZIec?si=ZYhy85uauqaeJppI",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/SjDkZwOrlGGBQOHkJOlhWdnoimuS65E8iActWeK5.jpg"
+  },
+  {
+    "name": "애기봉평화생태공원",
+    "lat": 37.753246,
+    "lng": 126.594405,
+    "desc": "북한 땅을 가까이 볼 수 있는 전망공원, 전시관, 흔들다리 등 평화와 생태 학습시설이 있음.",
+    "youtube": "https://youtu.be/VHv4IEhh9mY?si=mXhJTa7U7px7MHaG",
+    "img": "https://aegibong.or.kr/assets/front/img/new0101_3.png"
+  },
+  {
+    "name": "김포국제조각공원",
+    "lat": 37.721465,
+    "lng": 126.554299,
+    "desc": "평화와 통일을 주제로 다양한 조각작품을 전시, 산책과 예술감상이 가능한 가족 공원.",
+    "youtube": "https://youtu.be/mVQYSBoycj4?si=UIaILNuMzzz6zYAL",
+    "img": "https://www.gcf.or.kr/main/images/subpage/sub1414_top_image1.jpg"
+  },
+  {
+    "name": "김포아트빌리지 & 한옥마을",
+    "lat": 37.646763,
+    "lng": 126.696311,
+    "desc": "한옥과 예술작품이 어우러진 복합문화공간, 다양한 체험활동과 전시, 한옥건축의 아름다움을 만날 수 있음.",
+    "youtube": "https://youtu.be/ieQ5aqteLt0?si=QO6hVPvqvsEP6p3T",
+    "img": "https://www.gcf.or.kr/main/images/subpage/sub1412_space1_slide1.jpg"
+  },
+  {
+    "name": "김포함상공원",
+    "lat": 37.640688,
+    "lng": 126.540002,
+    "desc": "실제 군함을 전시해 내부를 관람, 해군 전시와 바다 산책로가 있는 체험형 공원.",
+    "youtube": "https://youtu.be/IeiwMTCwbfE?si=SunNr4xyhx_4vWQu",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjprWxrg4wvJ8hykUjfU2_3QhudxlCPydaMg&s"
+  },
+  {
+    "name": "야생조류생태공원",
+    "lat": 37.65828,
+    "lng": 126.69054,
+    "desc": "한강 야생조류와 자연을 가까이에서 관찰하며 산책할 수 있는 넓은 자연생태공원.",
+    "youtube": "https://youtu.be/1NZX1uLbFms?si=NczVAtWhCl8waYlv",
+    "img": "https://i.namu.wiki/i/hmDBOcNNI-bnLGH-CxQVjHk2o1bmAz3cHfeKoqiKNIqpKidH5h-l5FM1aFUxHQ8E7dxAYZVdvb-oErYb7M9P0Q.webp"
+  },
+  {
+    "name": "김포 3.1독립만세운동 기념관",
+    "lat": 37.6534,
+    "lng": 126.62932,
+    "desc": "일제강점기 독립운동의 역사와 체험, 만세운동의 정신을 배우는 전시관.",
+    "youtube": "https://www.youtube.com/watch?v=pHa5Kobi2EM",
+    "img": "https://gnews.gg.go.kr/OP_UPDATA/UP_DATA/_FILEZ/202302/20230227014201844817196.jpg"
+  },
+  {
+    "name": "대명항",
+    "lat": 37.639348,
+    "lng": 126.541775,
+    "desc": "서해안의 작은 어항으로, 싱싱한 해산물과 어촌 풍경을 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "김포상설시장",
+    "lat": 37.62753,
+    "lng": 126.710589,
+    "desc": "김포의 대표적인 전통시장으로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "김포우리병원",
+    "lat": 37.632562,
+    "lng": 126.710985,
+    "desc": "김포시 풍무동에 위치한 주요 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "뉴고려병원",
+    "lat": 37.641008,
+    "lng": 126.660235,
+    "desc": "김포시 장기동에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "김포시청",
+    "lat": 37.61568,
+    "lng": 126.715312,
+    "desc": "김포시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "걸포북변역",
+    "lat": 37.631837,
+    "lng": 126.705721,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "구래역",
+    "lat": 37.645507,
+    "lng": 126.628713,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  }
+      ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
