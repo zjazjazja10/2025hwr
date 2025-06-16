@@ -3,319 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안산시 인터랙티브 지도</title>
+    <title>안산 인터랙티브 지도</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; }
         #map { height: 100vh; }
-        .popup-content { font-family: Arial, sans-serif; font-size: 14px; line-height: 1.5; }
-        .popup-content h3 { margin: 0 0 5px 0; font-size: 16px; }
-        .popup-content img { width: 100%; max-width: 200px; height: auto; border-radius: 5px; margin-top: 10px; }
+        .popup-img { width: 100px; height: auto; }
     </style>
 </head>
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 1. 지도 초기화 (안산시청 중심)
-        const map = L.map('map').setView([37.3220, 126.8312], 11);
+   <script>
+    // 안산시청 중심 좌표
+    const map = L.map('map').setView([37.322211, 126.831142], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        // 2. 장소 데이터
-        const places = [
-            {
-                "name": "안산시청",
-                "lat": 37.322031,
-                "lng": 126.831217,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "단원구청",
-                "lat": 37.321143,
-                "lng": 126.815303,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "상록구청",
-                "lat": 37.300935,
-                "lng": 126.846433,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "단원미술관",
-                "lat": 37.316264,
-                "lng": 126.851343,
-                "desc": "안산의 대표적인 미술관으로, 다양한 현대미술 작품을 전시하고 문화 예술 활동을 지원하는 공간입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "안산어촌민속박물관",
-                "lat": 37.192651,
-                "lng": 126.64606,
-                "desc": "어촌 생활과 관련된 전통 문화를 전시하는 박물관으로, 어업의 역사와 문화를 배울 수 있는 곳입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "안산환경에너지센터 전시관",
-                "lat": 37.294876,
-                "lng": 126.780555,
-                "desc": "환경과 에너지 문제에 대해 교육하고, 지속 가능한 에너지 사용에 대한 정보를 제공하는 전시관입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "성호박물관",
-                "lat": 37.315297,
-                "lng": 126.859499,
-                "desc": "성호 이익 선생의 업적을 기리고, 조선 시대 문화를 배우는 박물관입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "상록수역",
-                "lat": 37.302998,
-                "lng": 126.866512,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "한대앞역",
-                "lat": 37.309633,
-                "lng": 126.853888,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "중앙역",
-                "lat": 37.316156,
-                "lng": 126.838946,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "고잔역",
-                "lat": 37.316955,
-                "lng": 126.82293,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "초지역",
-                "lat": 37.320568,
-                "lng": 126.806258,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "안산역",
-                "lat": 37.327142,
-                "lng": 126.788747,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "안산버스터미널",
-                "lat": 37.316955,
-                "lng": 126.846546,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "고려대학교 안산병원",
-                "lat": 37.318382,
-                "lng": 126.824847,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "롯데백화점 안산점",
-                "lat": 37.318175,
-                "lng": 126.834451,
-                "desc": "", "youtube": "", "img": ""
-            },
-            {
-                "name": "안산와~스타디움",
-                "lat": 37.319482,
-                "lng": 126.818607,
-                "desc": "다양한 스포츠와 문화 행사가 열리는 복합 스포츠 시설로, 안산시민들의 대표적인 여가 공간입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "안산올림픽기념생활체육관",
-                "lat": 37.326512,
-                "lng": 126.827453,
-                "desc": "체육시설과 운동을 즐길 수 있는 공간으로, 다양한 체육 활동을 지원하는 생활체육관입니다.",
-                "youtube": "", "img": ""
-            },
-            {
-                "name": "화랑유원지",
-                "lat": 37.326419,
-                "lng": 126.814331,
-                "desc": "화랑유원지는 아름다운 자연 속에서 편안하게 쉬고 다양한 활동을 할 수 있는 곳이다. 이곳에는 화랑호수와 산책로, 미술관, 그리고 인라인스케이트장이나 운동장 같은 시설들이 있어서 문화생활이나 운동을 즐기기도 좋은 곳이다. 특히 호수에는 여러 식물과 새들이 살아서 자연을 가까이에서 배우고 관찰하기에 좋은 곳이다.",
-                "youtube": "www.youtube.com/watch?v=cfsQ9f1KhIE안산호수공원37.297868126.827467호수공원은",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-2-2.jpg"
-            },
-            {
-                "name": "안산호수공원",
-                "lat": 37.305118,
-                "lng": 126.823901,
-                "desc": "안산시 고잔 신도시에 위치한 20만 평 크기의 근린공원으로, 고잔 저수지를 보존하며 신도시 개발에 따른 주민편의를 도모하기 위해 조성되었다. 다양한 동식물이 서식하며, 안산천과 화정천이 흐르는 지점에서는 여러 종류의 물고기와 철새를 관찰할 수 있다.",
-                "youtube": "youtu.be/IXNXQwuots4?si=Aj2UmWGBwx2vBWwN수리산(수암봉)37.367609126.892779수리산은",
-                "img": "https://i.namu.wiki/i/00xyXCREsdJwR5dN_pHKhJkgyLvZ6Noo6OTHrMY4d0LaukPq37bcZmKLVFIpYLfYPdqoPSutJz7O1bOWlNfiOA.webp"
-            },
-            {
-                "name": "수리산(수암봉)",
-                "lat": 37.348639,
-                "lng": 126.882119,
-                "desc": "안산시, 군포시, 안양시, 시흥시 등 4개 시에 걸쳐 있는 경기도를 대표하는 산으로 산세가 수려하여 수리산이라 불린다. 수리산의 일부인 수암봉은 경기도 안산시에 위치한 해발 398m의 산으로, 초보자도 쉽게 등산할 수 있는 코스가 마련되어 있어 가족 단위 방문객에게 적합한 장소이다. 아름다운 자연경관과 다양한 등산로가 특징이다. 산 정상에 오르면 안산시뿐만 아니라 시흥시까지 보이는 탁 트인 전망이 장관을 이룬다. 곳곳에 정자, 벤치, 체육시설 등이 설치되어 있고 약수터가 있어 등반객들의 발길이 끊이지 않는 곳이다.",
-                "youtube": "https://www.youtube.com/watch?v=38zQTE2RzSc풍도37.108399126.388447경기도의",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-1-3.jpg"
-            },
-            {
-                "name": "1경 - 풍도",
-                "lat": 37.113056,
-                "lng": 126.4025,
-                "desc": "최서단에 위치해 있다. 조선시대에는 단풍이 아름답다고 하여 풍도(楓島)로 불리었으나, 해산물이 풍족한 섬이라는 뜻으로 1895년 풍도(豊島)로 바뀌었다.# 그러나 이후에 발간된 일부 지리 자료에 여전히 楓島로 기록되었고, 2021년 3월 29일에 일제 잔재라 하여 다시 楓島로 바꾸었다. 섬 인구는 현재 약 120명. 한창때인 1960~1970년대에 1천여명이 거주했다고 하지만 줄어들어 2020년 기준으로 약 90여명까지 줄었다 다시 늘었다.",
-                "youtube": "https://youtu.be/UHZisVsPS1c?si=0A36JP6npwsf0Yqk시화호37.314367126.6106691987년",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-5.jpg"
-            },
-            {
-                "name": "시화호",
-                "lat": 37.266367,
-                "lng": 126.74586,
-                "desc": "시화방조제가 착공되고 1994년 완공되면서 만들어진 인공 인공 호수이다. 경기도 시흥시, 안산시, 화성시에 둘러싸여 있다.",
-                "youtube": "https://www.youtube.com/watch?v=kUrSgvwqoaU&t=110s사세충렬문37.33743126.830612사세충렬문은",
-                "img": "https://i.namu.wiki/i/vSEHWzq2OBjN3hO80RkGwNnGo3-VZKaQwB8NzpI1-QXQCA2bfXjAxf3LpTlkTgewWsOCjaMVAxJh7DH9-G-YGg.webp"
-            },
-            {
-                "name": "김여물 장군 묘 및 정려문",
-                "lat": 37.351336,
-                "lng": 126.884179,
-                "desc": "임진왜란 때 순국한 김여물의 애국충정과 병자호란 때 스스로 목숨을 던져 열녀 정신을 지킨 여인들을 기리기 위해 조정에서 하사한 문이다. 현재의 건물은 1971년에 고쳐 지었으며, 1983년에 보수공사를 했다. 김여물 장군은 임진왜란 중 전사하였고, 그의 후실과 가족들은 적군으로부터 순결을 지키기 위해 바다에 몸을 던졌다.",
-                "youtube": "youtu.be/tWZgbqZNVVg?si=P1SIYmAF1wtSAxs9안산읍성및관아지37.3653126.880899읍성이란",
-                "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/o4ZGM4ONtXSHHKay8XcBGulTEQAl1qHkOFly3tuB.jpg"
-            },
-            {
-                "name": "안산읍성 및 관아지",
-                "lat": 37.348625,
-                "lng": 126.882119,
-                "desc": "군이나 현의 주민을 보호하고 군사적·행정적인 기능을 함께하는 성을 일컫는다. 경기도 안산시 수암동에 있는 안산읍성과 관아지는 고려시대 후기에 만들어진 전형적인 평지산성으로, 자연지세를 이용하여 직사각형 모양으로 쌓였으며, 성의 둘레는 772m이다. 관아터는 조선 현종 10년(1669)에 이곳으로 옮겨졌으나 현재는 시설이 파괴되어 주춧돌과 기와조각들이 발견되고 있다.",
-                "youtube": "youtu.be/FljbLvzNMOA?si=I0eGGlk7vab_y_4u별망성지37.299882126.7979조선",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-4-2-6.jpg"
-            },
-            {
-                "name": "별망성지",
-                "lat": 37.319403,
-                "lng": 126.787602,
-                "desc": "초기에 지어진 것으로 추정되는 별망성은 해안으로 침입하는 외적을 막기 위해 해안선을 따라 양쪽 골짜기 사이를 돌로 쌓아 만든 해안산성이다. 한국전쟁 당시 성벽 대부분이 파괴되어 그 일부만 남았는데, 안산시에서 현재의 모습으로 복원하였다.",
-                "youtube": "youtu.be/oSxmA_kf7es?si=OmmfzyE-wl0izrTR쌍계사35.232711127.650581쌍계사는",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnA0ZxipRARM2148ZEsnUeRRZDGLaIeDqKfA&s"
-            },
-            {
-                "name": "쌍계사",
-                "lat": 37.234324,
-                "lng": 126.634027,
-                "desc": "단원구 대부북동 쌍계산(雙溪山)에 있는 사찰이다. 1689년에 창건되었으나 1576년에 이미 창건되었을 것으로 추정된다. 이 절은 1641년에 파괴되었고, 1869년에 중창되었으며, 극락보전과 요사채 2동이 있으며, 쌍계사 목조여래좌상과 「쌍계사 현왕도」, 「쌍계사 아미타 회상도」등의 문화재가 소장되어 있다.",
-                "youtube": "youtu.be/I8rUxMiLmmY?si=H9PbMZSauWRTxk09잿머리",
-                "img": "https://cdn.banwol.net/news/photo/202101/50076_21604_4013.jpg"
-            },
-            {
-                "name": "잿머리 성황당",
-                "lat": 37.309191,
-                "lng": 126.751606,
-                "desc": "잿머리성황당은 고려 제6대 성종 때 내부시랑 서희가 송나라 사신으로 가기 전 장도를 비는 제를 지내기 위해 세운 신당이다. 이곳은 서희가 송나라로 가기 전 폭풍우 속에서 꿈에 나타난 두 여인의 부탁을 받고 작은 성을 쌓고 사당을 지은 후 위령제를 지내면서 외교 임무를 완수한 역사적 의미를 지니고 있으며, 현재도 마을의 안녕을 기원하는 제사가 매년 진행되고 있다.",
-                "youtube": "youtu.be/440m8gCy5dI?si=TOlYY8DizbzVRzPf청문당37.33952126.872753청문당은",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvl1Rb1B7hXjsLC-fvewgSrWIMQkxwXuetwg&s"
-            },
-            {
-                "name": "청문당",
-                "lat": 37.345842,
-                "lng": 126.883712,
-                "desc": "안산에서 가장 오래된 전통가옥으로, 진주 유씨의 16대 손인 유시회가 지었다. 청문당은 조선후기 시,서,화의 삼절로 추앙받은 표암 강세황과 단원 김홍도의 그림이 태생하고 성장한 곳으로, 조선시대 4대 서고 중 하나인 만권서적이 보관된 서고가 있었으며, 문인들의 교류장으로도 사용되었다.",
-                "youtube": "youtu.be/wUIYMXh3LK0?si=ax9qMXGINYPQgZ5n팔곡리향나무37.314806126.891396팔곡리향나무는",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJIR5VrsuC-E3LI-bcCzROpnwEN45nqOxQdQ&s"
-            },
-            {
-                "name": "향나무",
-                "lat": 37.345719,
-                "lng": 126.883601,
-                "desc": "높이 9m, 가슴 높이의 줄기 둘레가 3m에 이르는 향나무로, 나이는 약 600살로 추정된다. 이 나무는 본래 23m까지 자라며, 가지가 위와 아래로 뻗는 특징이 있고, 7~8년생 이상의 향나무는 주로 비늘모양의 잎이 달리며, 수형이 아름답고 수세가 왕성한 것이 특징이다.",
-                "youtube": "youtu.be/FT4U6uqz99o?si=bs0a_Hz8QDTA3WsV시화호조력발전소37.313104126.610376시화호조력발전소는",
-                "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/90lU0ZPyHh0iDASH12eBl1oZm9egjCSUbxzQcZJR.jpg"
-            },
-            {
-                "name": "시화호조력발전소",
-                "lat": 37.234674,
-                "lng": 126.611989,
-                "desc": "수차발전기 10기와 수문 8문, 254MW의 시설용량을 갖춘 세계 최대 규모의 조력발전소로, 연간 552GWh의 전기를 생산하여 인구 50만 명이 사용할 수 있는 전력량을 제공한다. 이 발전소는 조수간만의 차를 이용하여 효율적으로 전기를 생산하며, 연간 942억 원의 비용 절감과 31만 5천 톤의 이산화탄소 발생량 감소 효과를 내고 있다.",
-                "youtube": "youtu.be/nDxr0UGbJJM?si=OdCvqewwg7r1R8i6안산9경",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-1.jpg"
-            },
-            {
-                "name": "2경 - 대부해솔길",
-                "lat": 37.289497,
-                "lng": 126.577633,
-                "desc": "대부해솔길은 해안선을 따라 대부도를 한 바퀴 둘러볼 수 있는 산책길로, 91km에 이르는 총 10개 코스를 통해 안산 대부도의 아름다운 자연 경관을 즐길 수 있다. 이 길은 방아머리 선착장에서 시작하여 구봉도, 대부남동, 선감도, 탄도항을 거쳐 대송단지까지 연결되며, 다양한 풍경과 갯벌 체험을 제공한다.",
-                "youtube": "youtu.be/Ty0566UWUwQ?si=1v-UxP1ySHJ_9-oT안산9경",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-1-1_1.jpg"
-            },
-            {
-                "name": "3경 - 구봉도 낙조",
-                "lat": 37.288509,
-                "lng": 126.533205,
-                "desc": "대부도의 북단에 위치한 작은 섬 구봉도는 봉우리가 아홉 개 있다는 의미로 이름 지어졌으며, 구봉도 앞 바다에는 '할배바위'와 '할매바위'라는 두 개의 바위가 있다. 이곳의 석양은 서해안 최고의 절경으로 손꼽히며, 관광객들이 가장 많이 찾는 장소는 낙조전망대로, 아름다운 낙조와 대부도의 비경을 감상할 수 있는 최고의 포토존이다.",
-                "youtube": "youtu.be/Xl1SycUncjg?si=W97tgixxIBmvIdXH안산9경",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-3.jpg"
-            },
-            {
-                "name": "4경 - 탄도 바닷길",
-                "lat": 37.191502,
-                "lng": 126.640661,
-                "desc": "탄도는 대부도 본섬과 선감도, 불도에 이어 네 번째 큰 섬으로, 1.2km 떨어진 곳에 누에섬이라는 작은 무인도를 거느리고 있다. 탄도와 누에섬 사이에는 하루 두 번 썰물 때 4시간씩 갯벌이 드러나 도보로 탐험할 수 있으며, 이 길을 '탄도바닷길'이라고 부르며 '탄도바닷길 모세의 기적'이라고도 일컫는다.",
-                "youtube": "https://youtu.be/vt89hcvw3Os?si=yUWqc1WJkmY4-i6X안산9경",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-4.jpg"
-            },
-            {
-                "name": "6경 - 동주염전",
-                "lat": 37.233696,
-                "lng": 126.600878,
-                "desc": "동주염전은 1953년에 개설된 대부도의 대표적인 염전으로, 38만 평의 염전에서 전통방식을 고수하며 소금을 채취하고 있다. 동주염전 소금은 옹기조각을 깔아 만든 염전에서 생산되는 '깸파리소금'으로, 맛과 품질이 우수하여 천일염으로 거래되며, 관광객들에게 소금 채취 체험 학습 프로그램도 제공하고 있다.",
-                "youtube": "youtu.be/MllECu0abNg?si=S9mbhxyMbjnzGISy안산9경",
-                "img": "https://www.ansan.go.kr/cmsdata/web_upload/temp/20220923/1663899712892Q07XBIJD2G0734K6LQNJ8GRSP.jpg"
-            },
-            {
-                "name": "7경 - 안산갈대습지",
-                "lat": 37.273276,
-                "lng": 126.839025,
-                "desc": "안산갈대습지는 시화호의 수질을 개선하기 위해 조성한 대규모 인공습지로, 수생 식물들과 갈대가 자연적인 정화 처리를 하고 있다. 2002년 5월에 개장한 이곳은 고유의 생태계를 이루며 시민과 관광객이 함께하는 공원으로 거듭나고 있으며, 조류관찰대에서는 다양한 조류를 관찰할 수 있는 기회를 제공한다.",
-                "youtube": "youtu.be/rHvMI-O230Y?si=UZ_FSbGB0HIENJL3안산",
-                "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVtROPrYU_NcOwlU_kNY2B_VEdUzpS2IisUA&s"
-            },
-            {
-                "name": "9경 8경 - 다문화거리",
-                "lat": 37.329274,
-                "lng": 126.790053,
-                "desc": "안산시는 우리나라에서 외국인이 가장 많이 사는 고장 중 하나로, 2020년 12월 기준으로 105개국의 8만 명이 넘는 외국인이 거주하고 있다. 단원구 원곡동 일대는 2009년에 다문화마을특구로 지정되어, 다양한 음식을 맛볼 수 있는 음식거리와 현지 음식재료를 판매하는 슈퍼가 있어 외국인들의 향수를 달래주는 명소가 되었다.",
-                "youtube": "youtu.be/sYyniM44FTc?si=vqsfdOcC6FVif9IM안산9경",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-8.jpg"
-            },
-            {
-                "name": "9경 - 노적봉공원",
-                "lat": 37.316602,
-                "lng": 126.855,
-                "desc": "노적봉공원은 안산 시내로 진입하는 관문에 위치한 도시자연공원으로, 정상에서 안산시의 전경과 서해 낙조를 감상할 수 있다. 공원 면적은 64만 3,128m²이며, 2.6km의 순환로와 인공폭포, 장미원, 철쭉원 등의 시설을 갖추고 있어 시민들의 여가 공간으로 각광받고 있다.",
-                "youtube": "youtu.be/IcBFc3xEbGQ?si=0VNYgJEN6VJfKh3q",
-                "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-2-5.jpg"
-            }
-        ];
-
-        // 3. 마커 생성 및 팝업 추가
-        places.forEach(place => {
-            // 위도와 경도 값이 유효한지 확인
+        const places =
+[
+  {
+    "name": "안산시청",
+    "lat": 37.322031,
+    "lng": 126.831217,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "단원구청",
+    "lat": 37.321143,
+    "lng": 126.815303,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "상록구청",
+    "lat": 37.300935,
+    "lng": 126.846433,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "단원미술관",
+    "lat": 37.316264,
+    "lng": 126.851343,
+    "desc": "안산의 대표적인 미술관으로, 다양한 현대미술 작품을 전시하고 문화 예술 활동을 지원하는 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산어촌민속박물관",
+    "lat": 37.192651,
+    "lng": 126.64606,
+    "desc": "어촌 생활과 관련된 전통 문화를 전시하는 박물관으로, 어업의 역사와 문화를 배울 수 있는 곳입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산환경에너지센터 전시관",
+    "lat": 37.294876,
+    "lng": 126.780555,
+    "desc": "환경과 에너지 문제에 대해 교육하고, 지속 가능한 에너지 사용에 대한 정보를 제공하는 전시관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "성호박물관",
+    "lat": 37.315297,
+    "lng": 126.859499,
+    "desc": "성호 이익 선생의 업적을 기리고, 조선 시대 문화를 배우는 박물관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "상록수역",
+    "lat": 37.302998,
+    "lng": 126.866512,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한대앞역",
+    "lat": 37.309633,
+    "lng": 126.853888,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "중앙역",
+    "lat": 37.316156,
+    "lng": 126.838946,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "고잔역",
+    "lat": 37.316955,
+    "lng": 126.82293,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "초지역",
+    "lat": 37.320568,
+    "lng": 126.806258,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산역",
+    "lat": 37.327142,
+    "lng": 126.788747,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산버스터미널",
+    "lat": 37.316955,
+    "lng": 126.846546,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "고려대학교 안산병원",
+    "lat": 37.318382,
+    "lng": 126.824847,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "롯데백화점 안산점",
+    "lat": 37.318175,
+    "lng": 126.834451,
+    "desc": "",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산와~스타디움",
+    "lat": 37.319482,
+    "lng": 126.818607,
+    "desc": "다양한 스포츠와 문화 행사가 열리는 복합 스포츠 시설로, 안산시민들의 대표적인 여가 공간입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안산올림픽기념생활체육관",
+    "lat": 37.326512,
+    "lng": 126.827453,
+    "desc": "체육시설과 운동을 즐길 수 있는 공간으로, 다양한 체육 활동을 지원하는 생활체육관입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "화랑유원지",
+    "lat": 37.326419,
+    "lng": 126.814331,
+    "desc": "화랑유원지는 아름다운 자연 속에서 편안하게 쉬고 다양한 활동을 할 수 있는 곳이다. 이곳에는 화랑호수와 산책로, 미술관, 그리고 인라인스케이트장이나 운동장 같은 시설들이 있어서 문화생활이나 운동을 즐기기도 좋은 곳이다. 특히 호수에는 여러 식물과 새들이 살아서 자연을 가까이에서 배우고 관찰하기에 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=cfsQ9f1KhIE",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-2-2.jpg"
+  },
+  {
+    "name": "안산호수공원",
+    "lat": 37.297868,
+    "lng": 126.827467,
+    "desc": "호수공원은 안산시 고잔 신도시에 위치한 20만 평 크기의 근린공원으로, 고잔 저수지를 보존하며 신도시 개발에 따른 주민편의를 도모하기 위해 조성되었다. 다양한 동식물이 서식하며, 안산천과 화정천이 흐르는 지점에서는 여러 종류의 물고기와 철새를 관찰할 수 있다.",
+    "youtube": "https://youtu.be/IXNXQwuots4?si=Aj2UmWGBwx2vBWwN",
+    "img": "https://i.namu.wiki/i/00xyXCREsdJwR5dN_pHKhJkgyLvZ6Noo6OTHrMY4d0LaukPq37bcZmKLVFIpYLfYPdqoPSutJz7O1bOWlNfiOA.webp"
+  },
+  {
+    "name": "수리산(수암봉)",
+    "lat": 37.367609,
+    "lng": 126.892779,
+    "desc": "수리산은 안산시, 군포시, 안양시, 시흥시 등 4개 시에 걸쳐 있는 경기도를 대표하는 산으로 산세가 수려하여 수리산이라 불린다. 수리산의 일부인 수암봉은 경기도 안산시에 위치한 해발 398m의 산으로, 초보자도 쉽게 등산할 수 있는 코스가 마련되어 있어 가족 단위 방문객에게 적합한 장소이다. 아름다운 자연경관과 다양한 등산로가 특징이다. 산 정상에 오르면 안산시뿐만 아니라 시흥시까지 보이는 탁 트인 전망이 장관을 이룬다. 곳곳에 정자, 벤치, 체육시설 등이 설치되어 있고 약수터가 있어 등반객들의 발길이 끊이지 않는 곳이다. 수암봉 경치 보기",
+    "youtube": "https://www.youtube.com/watch?v=38zQTE2RzSc",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-1-3.jpg"
+  },
+  {
+    "name": "풍도",
+    "lat": 37.108399,
+    "lng": 126.388447,
+    "desc": "경기도의 최서단에 위치해 있다. 조선시대에는 단풍이 아름답다고 하여 풍도(楓島)로 불리었으나, 해산물이 풍족한 섬이라는 뜻으로 1895년 풍도(豊島)로 바뀌었다.# 그러나 이후에 발간된 일부 지리 자료에 여전히 楓島로 기록되었고, 2021년 3월 29일에 일제 잔재라 하여 다시 楓島로 바꾸었다. 섬 인구는 현재 약 120명. 한창때인 1960~1970년대에 1천여명이 거주했다고 하지만 줄어들어 2020년 기준으로 약 90여명까지 줄었다 다시 늘었다. 풍도 둘러보기",
+    "youtube": "https://youtu.be/UHZisVsPS1c?si=0A36JP6npwsf0Yqk",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-5.jpg"
+  },
+  {
+    "name": "시화호",
+    "lat": 37.314367,
+    "lng": 126.610669,
+    "desc": "1987년 시화방조제가 착공되고 1994년 완공되면서 만들어진 인공 인공 호수이다. 경기도 시흥시, 안산시, 화성시에 둘러싸여 있다. 시화방조제의 역사",
+    "youtube": "https://www.youtube.com/watch?v=kUrSgvwqoaU&t=110s",
+    "img": "https://i.namu.wiki/i/vSEHWzq2OBjN3hO80RkGwNnGo3-VZKaQwB8NzpI1-QXQCA2bfXjAxf3LpTlkTgewWsOCjaMVAxJh7DH9-G-YGg.webp"
+  },
+  {
+    "name": "사세충렬문",
+    "lat": 37.33743,
+    "lng": 126.830612,
+    "desc": "사세충렬문은 임진왜란 때 순국한 김여물의 애국충정과 병자호란 때 스스로 목숨을 던져 열녀 정신을 지킨 여인들을 기리기 위해 조정에서 하사한 문이다. 현재의 건물은 1971년에 고쳐 지었으며, 1983년에 보수공사를 했다. 김여물 장군은 임진왜란 중 전사하였고, 그의 후실과 가족들은 적군으로부터 순결을 지키기 위해 바다에 몸을 던졌다.",
+    "youtube": "https://youtu.be/tWZgbqZNVVg?si=P1SIYmAF1wtSAxs9",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/o4ZGM4ONtXSHHKay8XcBGulTEQAl1qHkOFly3tuB.jpg"
+  },
+  {
+    "name": "안산읍성및관아지",
+    "lat": 37.3653,
+    "lng": 126.880899,
+    "desc": "읍성이란 군이나 현의 주민을 보호하고 군사적·행정적인 기능을 함께하는 성을 일컫는다. 경기도 안산시 수암동에 있는 안산읍성과 관아지는 고려시대 후기에 만들어진 전형적인 평지산성으로, 자연지세를 이용하여 직사각형 모양으로 쌓였으며, 성의 둘레는 772m이다. 관아터는 조선 현종 10년(1669)에 이곳으로 옮겨졌으나 현재는 시설이 파괴되어 주춧돌과 기와조각들이 발견되고 있다.",
+    "youtube": "https://youtu.be/FljbLvzNMOA?si=I0eGGlk7vab_y_4u",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-4-2-6.jpg"
+  },
+  {
+    "name": "별망성지",
+    "lat": 37.299882,
+    "lng": 126.7979,
+    "desc": "조선 초기에 지어진 것으로 추정되는 별망성은 해안으로 침입하는 외적을 막기 위해 해안선을 따라 양쪽 골짜기 사이를 돌로 쌓아 만든 해안산성이다. 한국전쟁 당시 성벽 대부분이 파괴되어 그 일부만 남았는데, 안산시에서 현재의 모습으로 복원하였다.",
+    "youtube": "https://youtu.be/oSxmA_kf7es?si=OmmfzyE-wl0izrTR",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnA0ZxipRARM2148ZEsnUeRRZDGLaIeDqKfA&s"
+  },
+  {
+    "name": "쌍계사",
+    "lat": 35.232711,
+    "lng": 127.650581,
+    "desc": "쌍계사는 단원구 대부북동 쌍계산(雙溪山)에 있는 사찰이다. 1689년에 창건되었으나 1576년에 이미 창건되었을 것으로 추정된다. 이 절은 1641년에 파괴되었고, 1869년에 중창되었으며, 극락보전과 요사채 2동이 있으며, 쌍계사 목조여래좌상과 「쌍계사 현왕도」, 「쌍계사 아미타 회상도」등의 문화재가 소장되어 있다.",
+    "youtube": "https://youtu.be/I8rUxMiLmmY?si=H9PbMZSauWRTxk09",
+    "img": "https://cdn.banwol.net/news/photo/202101/50076_21604_4013.jpg"
+  },
+  {
+    "name": "잿머리 성황당",
+    "lat": 37.309191,
+    "lng": 126.751606,
+    "desc": "잿머리성황당은 고려 제6대 성종 때 내부시랑 서희가 송나라 사신으로 가기 전 장도를 비는 제를 지내기 위해 세운 신당이다. 이곳은 서희가 송나라로 가기 전 폭풍우 속에서 꿈에 나타난 두 여인의 부탁을 받고 작은 성을 쌓고 사당을 지은 후 위령제를 지내면서 외교 임무를 완수한 역사적 의미를 지니고 있으며, 현재도 마을의 안녕을 기원하는 제사가 매년 진행되고 있다.",
+    "youtube": "https://youtu.be/440m8gCy5dI?si=TOlYY8DizbzVRzPf",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvl1Rb1B7hXjsLC-fvewgSrWIMQkxwXuetwg&s"
+  },
+  {
+    "name": "청문당",
+    "lat": 37.33952,
+    "lng": 126.872753,
+    "desc": "청문당은 안산에서 가장 오래된 전통가옥으로, 진주 유씨의 16대 손인 유시회가 지었다. 청문당은 조선후기 시,서,화의 삼절로 추앙받은 표암 강세황과 단원 김홍도의 그림이 태생하고 성장한 곳으로, 조선시대 4대 서고 중 하나인 만권서적이 보관된 서고가 있었으며, 문인들의 교류장으로도 사용되었다.",
+    "youtube": "https://youtu.be/wUIYMXh3LK0?si=ax9qMXGINYPQgZ5n",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJIR5VrsuC-E3LI-bcCzROpnwEN45nqOxQdQ&s"
+  },
+  {
+    "name": "팔곡리향나무",
+    "lat": 37.314806,
+    "lng": 126.891396,
+    "desc": "팔곡리향나무는 높이 9m, 가슴 높이의 줄기 둘레가 3m에 이르는 향나무로, 나이는 약 600살로 추정된다. 이 나무는 본래 23m까지 자라며, 가지가 위와 아래로 뻗는 특징이 있고, 7~8년생 이상의 향나무는 주로 비늘모양의 잎이 달리며, 수형이 아름답고 수세가 왕성한 것이 특징이다.",
+    "youtube": "https://youtu.be/FT4U6uqz99o?si=bs0a_Hz8QDTA3WsV",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/90lU0ZPyHh0iDASH12eBl1oZm9egjCSUbxzQcZJR.jpg"
+  },
+  {
+    "name": "시화호조력발전소",
+    "lat": 37.313104,
+    "lng": 126.610376,
+    "desc": "시화호조력발전소는 수차발전기 10기와 수문 8문, 254MW의 시설용량을 갖춘 세계 최대 규모의 조력발전소로, 연간 552GWh의 전기를 생산하여 인구 50만 명이 사용할 수 있는 전력량을 제공한다. 이 발전소는 조수간만의 차를 이용하여 효율적으로 전기를 생산하며, 연간 942억 원의 비용 절감과 31만 5천 톤의 이산화탄소 발생량 감소 효과를 내고 있다.",
+    "youtube": "https://youtu.be/nDxr0UGbJJM?si=OdCvqewwg7r1R8i6",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-1.jpg"
+  },
+  {
+    "name": "안산9경 2경 - 대부해솔길",
+    "lat": 37.289497,
+    "lng": 126.577633,
+    "desc": "대부해솔길은 해안선을 따라 대부도를 한 바퀴 둘러볼 수 있는 산책길로, 91km에 이르는 총 10개 코스를 통해 안산 대부도의 아름다운 자연 경관을 즐길 수 있다. 이 길은 방아머리 선착장에서 시작하여 구봉도, 대부남동, 선감도, 탄도항을 거쳐 대송단지까지 연결되며, 다양한 풍경과 갯벌 체험을 제공한다.",
+    "youtube": "https://youtu.be/Ty0566UWUwQ?si=1v-UxP1ySHJ_9-oT",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-1-1_1.jpg"
+  },
+  {
+    "name": "안산9경 3경 - 구봉도 낙조",
+    "lat": 37.288509,
+    "lng": 126.533205,
+    "desc": "대부도의 북단에 위치한 작은 섬 구봉도는 봉우리가 아홉 개 있다는 의미로 이름 지어졌으며, 구봉도 앞 바다에는 '할배바위'와 '할매바위'라는 두 개의 바위가 있다. 이곳의 석양은 서해안 최고의 절경으로 손꼽히며, 관광객들이 가장 많이 찾는 장소는 낙조전망대로, 아름다운 낙조와 대부도의 비경을 감상할 수 있는 최고의 포토존이다.",
+    "youtube": "https://youtu.be/Xl1SycUncjg?si=W97tgixxIBmvIdXH",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-3.jpg"
+  },
+  {
+    "name": "안산9경 4경 - 탄도 바닷길",
+    "lat": 37.191502,
+    "lng": 126.640661,
+    "desc": "탄도는 대부도 본섬과 선감도, 불도에 이어 네 번째 큰 섬으로, 1.2km 떨어진 곳에 누에섬이라는 작은 무인도를 거느리고 있다. 탄도와 누에섬 사이에는 하루 두 번 썰물 때 4시간씩 갯벌이 드러나 도보로 탐험할 수 있으며, 이 길을 '탄도바닷길'이라고 부르며 '탄도바닷길 모세의 기적'이라고도 일컫는다. 탄도바닷길 드론영상",
+    "youtube": "https://youtu.be/vt89hcvw3Os?si=yUWqc1WJkmY4-i6X",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-4.jpg"
+  },
+  {
+    "name": "안산9경 6경 - 동주염전",
+    "lat": 37.233696,
+    "lng": 126.600878,
+    "desc": "동주염전은 1953년에 개설된 대부도의 대표적인 염전으로, 38만 평의 염전에서 전통방식을 고수하며 소금을 채취하고 있다. 동주염전 소금은 옹기조각을 깔아 만든 염전에서 생산되는 '깸파리소금'으로, 맛과 품질이 우수하여 천일염으로 거래되며, 관광객들에게 소금 채취 체험 학습 프로그램도 제공하고 있다.",
+    "youtube": "https://youtu.be/MllECu0abNg?si=S9mbhxyMbjnzGISy",
+    "img": "https://www.ansan.go.kr/cmsdata/web_upload/temp/20220923/1663899712892Q07XBIJD2G0734K6LQNJ8GRSP.jpg"
+  },
+  {
+    "name": "안산9경 7경 - 안산갈대습지",
+    "lat": 37.273276,
+    "lng": 126.839025,
+    "desc": "안산갈대습지는 시화호의 수질을 개선하기 위해 조성한 대규모 인공습지로, 수생 식물들과 갈대가 자연적인 정화 처리를 하고 있다. 2002년 5월에 개장한 이곳은 고유의 생태계를 이루며 시민과 관광객이 함께하는 공원으로 거듭나고 있으며, 조류관찰대에서는 다양한 조류를 관찰할 수 있는 기회를 제공한다.",
+    "youtube": "https://youtu.be/rHvMI-O230Y?si=UZ_FSbGB0HIENJL3",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVtROPrYU_NcOwlU_kNY2B_VEdUzpS2IisUA&s"
+  },
+  {
+    "name": "안산 9경 8경 - 다문화거리",
+    "lat": 37.329274,
+    "lng": 126.790053,
+    "desc": "안산시는 우리나라에서 외국인이 가장 많이 사는 고장 중 하나로, 2020년 12월 기준으로 105개국의 8만 명이 넘는 외국인이 거주하고 있다. 단원구 원곡동 일대는 2009년에 다문화마을특구로 지정되어, 다양한 음식을 맛볼 수 있는 음식거리와 현지 음식재료를 판매하는 슈퍼가 있어 외국인들의 향수를 달래주는 명소가 되었다.",
+    "youtube": "https://youtu.be/sYyniM44FTc?si=vqsfdOcC6FVif9IM",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-1-8.jpg"
+  },
+  {
+    "name": "안산9경 9경 - 노적봉공원",
+    "lat": 37.316602,
+    "lng": 126.855,
+    "desc": "노적봉공원은 안산 시내로 진입하는 관문에 위치한 도시자연공원으로, 정상에서 안산시의 전경과 서해 낙조를 감상할 수 있다. 공원 면적은 64만 3,128m²이며, 2.6km의 순환로와 인공폭포, 장미원, 철쭉원 등의 시설을 갖추고 있어 시민들의 여가 공간으로 각광받고 있다.",
+    "youtube": "https://youtu.be/IcBFc3xEbGQ?si=0VNYgJEN6VJfKh3q",
+    "img": "https://www.ansan.go.kr/site/tourinfo/images/contents/1-3-2-5.jpg"
+  }
+      ];
+   places.forEach(place => {
             if (place.lat && place.lng) {
-                // ✨ 이 부분의 오타를 수정했습니다: place.lon -> place.lng ✨
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
                 const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-                // 팝업에 표시할 내용 구성
                 let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
                 if(place.desc) {
                     popupContent += `<p>${place.desc}</p>`;
                 }
                 if (place.img) {
-                    popupContent += `<img src="${place.img}" alt="${place.name}">`;
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
                 }
                 if (place.youtube) {
                     popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
