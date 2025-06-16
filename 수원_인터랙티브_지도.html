@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,18 +13,20 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        const map = L.map('map').setView([37.2830, 127.0195], 13);
+   <script>
+    // 수원시청 중심 좌표
+    const map = L.map('map').setView([37.263619, 127.028578], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        const places = [
+        const places =
+[
   {
     "name": "산-칠보산",
     "lat": 37.27023511,
-    "lon": 126.9370081,
+    "lng": 126.9370081,
     "desc": "수원 지역의 중요한 자연 공간인 칠보산은 울창한 수림과 완만한 능선으로 가족 단위 등산에 적합한 곳이다. 골짜기마다 맑은 물이 흐르고 자연 학습장으로도 알려져 있어 최근 더 많은 시민들이 방문하는 곳이다.",
     "youtube": "https://youtu.be/IGXj0mMf7IA?si=SPqp9UFXdDvMFLl4",
     "img": "https://i.namu.wiki/i/119BV-iYm1E9CtmldrLylCwngxu0JdMMLGCTNkgJ9q-MzMc5EIcPWhewofTvva6RYzUyAc84wjSw-mjagkJy6Q.webp"
@@ -33,7 +34,7 @@
   {
     "name": "산-팔달산",
     "lat": 37.2773967,
-    "lon": 127.0104762,
+    "lng": 127.0104762,
     "desc": "팔달산은 예전에는 탑산으로 불렸으나, 조선 태조 임금이 아름답고 사방으로 통한다고 하여 지금의 이름이 붙여진 산이다. 성곽을 따라 산책할 수 있으며, 정상에서는 수원 시내와 화성행궁의 모습을 한눈에 볼 수 있는 곳이다.",
     "youtube": "https://youtu.be/O8R3Q9dDngY?si=4BufVZSE0mb4i7x7",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh-b0zTBulmC8e_eAOHtuImukC_7515Pdq6w&s"
@@ -41,7 +42,7 @@
   {
     "name": "산-광교산",
     "lat": 37.329833,
-    "lon": 127.014656,
+    "lng": 127.014656,
     "desc": "청정지역의 지표인 반딧불이가 살고 있는 광교산은 수원과 용인의 경계에 위치한 곳이다. 도심에서 가까운 이곳은 공원, 저수지, 산책길, 등산로 등이 잘 갖춰져 있어 가벼운 산행과 나들이를 즐기기에 좋은 곳이다.",
     "youtube": "https://youtu.be/SWtGZkisfP8?si=ysqDD6pwx789qEW-",
     "img": "https://i.namu.wiki/i/lihHyeojrRrWTWqELJcDAUtclcQA1482t5ZUu6mL-t3Fjxdsoii-5XOIcGQoTMoR64Le26LKXio5aXyduHUjXw.jpg"
@@ -49,7 +50,7 @@
   {
     "name": "호수-광교호수공원(원천저수지, 신대저수지)",
     "lat": 37.290749,
-    "lon": 127.060125,
+    "lng": 127.060125,
     "desc": "광교호수공원은 원천저수지 및 신대저수지의 자연을 최대한 보존하며 아름다운 수변공간인 어반레비와 함께 6개의 테마를 가진 둠벙으로 어우러져 여러 가지 새로운 문화를 담은 국내 최대의 도심 속 호수공원이다.",
     "youtube": "https://youtu.be/2zxOKG39YXk?si=Q0_w_8G-h5vV5UrW",
     "img": "https://www.suwon.go.kr/common-upload/upload/visitsuwon/2018/6/1/ce135282-8f09-4953-8cc2-03fdb60f377b.png"
@@ -57,7 +58,7 @@
   {
     "name": "호수-일왕저수지(만석공원)",
     "lat": 37.306585,
-    "lon": 127.002246,
+    "lng": 127.002246,
     "desc": "수원의 대표적인 시민공원인 만석공원은 주변의 문화 시설들과 함께 즐기기 좋은 곳이다. 아름다운 저수지 경관과 산책로, 다양한 볼거리가 있어 시민들의 나들이 장소로 사랑받는 곳이다.",
     "youtube": "https://youtu.be/i0VJ0tMZqO0?si=DVJlbDqL5lpjDjN-",
     "img": "https://mblogthumb-phinf.pstatic.net/MjAyMDA0MjBfMjky/MDAxNTg3MzQ4MzI1NzUy.XaTVZ67fFBbI68G6B-pbwq6s-gwefrLy7EcC-R6ky2wg.esTS6JqOUcHlkuG62267O5kgmCIYIi70Jcltvdvxui4g.JPEG.ubouno/1587348324098.JPG?type=w800"
@@ -65,7 +66,7 @@
   {
     "name": "호수-광교저수지(광교공원)",
     "lat": 37.312778,
-    "lon": 127.018333,
+    "lng": 127.018333,
     "desc": "물과 숲을 테마로 조성된 광교공원은 넓은 잔디밭과 산책로, 음악분수, 생태하천으로 거듭난 수원천 등 시민들이 여가를 즐길 수 있도록 조성된 도심 속 녹지공원이다. 언제 찾아도 계절의 정취를 만끽할 수 있다.",
     "youtube": "https://youtu.be/Xp-S0SnXKF4?si=TQqf0HOTzSURAZr9",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCiatRm_uB-aA4wAY02q7rNg0xAXu3cHBviQ&s"
@@ -73,7 +74,7 @@
   {
     "name": "수원화성",
     "lat": 37.2869619,
-    "lon": 127.011801,
+    "lng": 127.011801,
     "desc": "수원화성은 아주 옛날 정조 임금님이 백성을 사랑하는 마음으로 만든 멋진 성이다. 이 성은 높고 튼튼한 담장으로 둘러싸여 있고, 그 위를 걸으며 수원 시내를 구경할 수 있는 곳이다.",
     "youtube": "https://youtu.be/3WukxpcFKUA?si=RfDJnfMUBlV5JqUT",
     "img": "https://heritage.unesco.or.kr/wp-content/uploads/2019/04/hd6_394_i1.jpg"
@@ -81,7 +82,7 @@
   {
     "name": "화성행궁",
     "lat": 37.281088,
-    "lon": 127.014167,
+    "lng": 127.014167,
     "desc": "화성행궁은 옛날 정조 임금님이 수원화성에 오셨을 때 잠시 머물렀던 궁궐이다. 임금님은 이곳에서 쉬기도 하고 백성들을 만나기도 하셨다고 한다. 수원화성과 함께 우리 역사를 배우고 느낄 수 있는 중요한 장소이다.",
     "youtube": "https://youtu.be/5ZeVfjg6vt8?si=3JF_b3Zhbs7B2FED",
     "img": "https://www.swcf.or.kr/inc/img/sub/page62_visual01.jpg"
@@ -89,7 +90,7 @@
   {
     "name": "수원향교",
     "lat": 37.273111,
-    "lon": 127.009528,
+    "lng": 127.009528,
     "desc": "수원향교는 공자를 비롯한 현명한 위인을 모시고 공부를 하던 곳이다. 이 향교는 옛날 정조 임금님이 아버님의 무덤 때문에 수원을 옮기면서 같이 옮겨졌고, 임금님이 수원에 오셨을 때 다시 크게 고치도록 한 곳이다.",
     "youtube": "https://youtu.be/mrw-yXSigpY?si=ZEIkGp0BxvE3jioO",
     "img": "https://i.namu.wiki/i/FCDjPWJVeGa1HHc-oNtHBgs5Rya9mOHqB6P9gIDLfJLruV0tLlwqast-K0k0NxY-Cgtv3ulr2zKIAncOk2G8iQ.webp"
@@ -97,7 +98,7 @@
   {
     "name": "봉녕사",
     "lat": 37.29139,
-    "lon": 127.03722,
+    "lng": 127.03722,
     "desc": "수원에서 가장 오래된 전통사찰로 고려 희종 4년(1208)에 원각국사가 창건한 후 조선 예종 원년(1469) 혜각국사가 중수하고 봉녕사라 하였다.",
     "youtube": "https://youtu.be/Vmznv_BLPOg?si=kZ77vI7swqZ2LqWR",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStq8_GGwQN0SI0Y2LX-4NNlweMRlhyPDXzNg&s"
@@ -105,7 +106,7 @@
   {
     "name": "수원박물관",
     "lat": 37.296733,
-    "lon": 127.04309,
+    "lng": 127.04309,
     "desc": "수원박물관은 수원의 유구한 역사와 문화를 다양하게 보여주는 '수원역사박물관', 한국 서예사의 흐름을 한 눈에 파악할 수 있는 '한국서예박물관' 으로 구성되어 있다.",
     "youtube": "https://youtu.be/svvmMRxIsOM?si=JnafXZFAHZFal0TT",
     "img": "https://ggc.ggcf.kr/uploadimg/resize/00f0e1481598630765827.png"
@@ -113,7 +114,7 @@
   {
     "name": "수원화성박물관",
     "lat": 37.28278,
-    "lon": 127.01889,
+    "lng": 127.01889,
     "desc": "수원화성박물관은 세계문화유산 수원화성의 중심부에 자리잡아 접근성이 용이하고 모형과 관련 유물의 전시를 통해 화성 축성에 대한 전반을 이해할 수 있게 건립되었다.",
     "youtube": "https://youtu.be/OxTtZ9BqdCY?si=DPAolgiJT6eka4Ey",
     "img": "https://www.swcf.or.kr/_File/swcfContent/16/files_1569561803_0.jpg"
@@ -121,7 +122,7 @@
   {
     "name": "수원월드컵경기장 & 축구박물관",
     "lat": 37.28658222,
-    "lon": 127.0369291,
+    "lng": 127.0369291,
     "desc": "수원월드컵경기장은 지구촌 최대 축제 2002 한일 월드컵을 성공적으로 치룬 역사적인 장소이다. 이후에도 수원삼성블루윙즈 홈 경기장으로 활용됨으로써 많은 시민이 모이고 즐기는 축구 수도의 상징이다.",
     "youtube": "https://youtu.be/8bcpqV2gcco?si=0-fXS1vFAE7P-36i",
     "img": "https://i.namu.wiki/i/azk1YxuK7bNDOS0DD5aKJoWourstRI2f8UDmp_fJyzqB5aax421mmCOuQ2Z3KmRAel5qjsgTRKkfikFHe3w-FA.webp"
@@ -129,7 +130,7 @@
   {
     "name": "노을빛전망대",
     "lat": 37.278452,
-    "lon": 127.0192,
+    "lng": 127.0192,
     "desc": "노을빛전망대는 화성성곽은 물론 지동 골목길 벽화사업과 지동주변 전통시장이 연계되는 관광코스이다. 13층 옥외전망대는 화성성곽과 수원 전체 시가지는 물론 수원천, 광교산, 칠보산을 모두 바라볼 수 있다.",
     "youtube": "https://youtu.be/CGgLDmstCBs?si=05KmLENEAwTYqGCz",
     "img": "https://mblogthumb-phinf.pstatic.net/MjAyMzA0MzBfMjIg/MDAxNjgyODU3MDQ1NTk3.gT75GzlI8TjkVpNOj6XvfiwsJwwWoGPYaz_1qPY6QLAg.5wG4P4nXvitQM3uLe4s5YGiIO8smNh7QK2mlKnviNQcg.JPEG.rotcblue/1.jpg?type=w800"
@@ -137,7 +138,7 @@
   {
     "name": "해우재",
     "lat": 37.319196,
-    "lon": 126.977977,
+    "lng": 126.977977,
     "desc": "해우재는 근심을 푸는 집이라는 뜻으로 화장실에 관련된 역사와 이야기를 다양한 전시 및 체험으로 만날 수 있는 화장실 문화 전시관이다.",
     "youtube": "https://www.youtube.com/watch?v=P-LiHR05bpE",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcYcrU14WRz6VFS2pUr0c1unr7r3IZ-JgUuQ&s"
@@ -145,7 +146,7 @@
   {
     "name": "지동 벽화마을",
     "lat": 37.281219,
-    "lon": 127.024,
+    "lng": 127.024,
     "desc": "화성 성벽 아래에 조성된 벽화마을로, 아름다운 그림과 골목길이 인상적입니다.",
     "youtube": "",
     "img": ""
@@ -153,7 +154,7 @@
   {
     "name": "수원시립아이파크미술관",
     "lat": 37.28279165,
-    "lon": 127.0157242,
+    "lng": 127.0157242,
     "desc": "팔달구에 위치한 현대 미술 전문 미술관입니다.",
     "youtube": "",
     "img": ""
@@ -161,7 +162,7 @@
   {
     "name": "효원공원 (월화원)",
     "lat": 37.264987,
-    "lon": 127.036972,
+    "lng": 127.036972,
     "desc": "수원 시내에 위치한 공원으로, 중국 전통 정원인 월화원이 특히 아름답습니다.",
     "youtube": "",
     "img": ""
@@ -169,7 +170,7 @@
   {
     "name": "삼성 이노베이션 뮤지엄",
     "lat": 37.2576528,
-    "lon": 127.052925,
+    "lng": 127.052925,
     "desc": "삼성전자의 역사와 기술 혁신을 한눈에 볼 수 있는 기업 박물관입니다.",
     "youtube": "",
     "img": ""
@@ -177,7 +178,7 @@
   {
     "name": "광교 앨리웨이",
     "lat": 37.285111,
-    "lon": 127.059139,
+    "lng": 127.059139,
     "desc": "광교 호수공원 인근의 복합 문화 공간으로, 다양한 상점과 맛집이 있습니다.",
     "youtube": "",
     "img": ""
@@ -185,7 +186,7 @@
   {
     "name": "AK플라자 수원점",
     "lat": 37.26583,
-    "lon": 126.99972,
+    "lng": 126.99972,
     "desc": "수원역과 연결된 대형 백화점으로 쇼핑과 문화생활을 즐길 수 있습니다.",
     "youtube": "",
     "img": ""
@@ -193,7 +194,7 @@
   {
     "name": "롯데백화점 수원점",
     "lat": 37.265108,
-    "lon": 126.997099,
+    "lng": 126.997099,
     "desc": "수원역 인근에 위치한 또 다른 대형 백화점입니다.",
     "youtube": "",
     "img": ""
@@ -201,7 +202,7 @@
   {
     "name": "만석공원",
     "lat": 37.306585,
-    "lon": 127.002246,
+    "lng": 127.002246,
     "desc": "장안구에 위치한 넓은 공원으로, 호수와 산책로가 잘 조성되어 있습니다.",
     "youtube": "",
     "img": ""
@@ -209,7 +210,7 @@
   {
     "name": "수원 KT 위즈 파크",
     "lat": 37.3002178,
-    "lon": 127.0097112,
+    "lng": 127.0097112,
     "desc": "프로야구 KT 위즈의 홈구장입니다.",
     "youtube": "",
     "img": ""
@@ -217,7 +218,7 @@
   {
     "name": "아주대학교병원",
     "lat": 37.280114,
-    "lon": 127.0475211,
+    "lng": 127.0475211,
     "desc": "수원시 영통구에 위치한 대형 대학병원입니다.",
     "youtube": "",
     "img": ""
@@ -225,7 +226,7 @@
   {
     "name": "성빈센트병원",
     "lat": 37.27792352,
-    "lon": 127.0274498,
+    "lng": 127.0274498,
     "desc": "수원시 팔달구에 위치한 가톨릭계 종합병원입니다.",
     "youtube": "",
     "img": ""
@@ -233,7 +234,7 @@
   {
     "name": "동수원병원",
     "lat": 37.278454,
-    "lon": 127.034322,
+    "lng": 127.034322,
     "desc": "수원시 팔달구에 위치한 종합병원입니다.",
     "youtube": "",
     "img": ""
@@ -241,7 +242,7 @@
   {
     "name": "경기도의료원 수원병원",
     "lat": 37.294536,
-    "lon": 126.990749,
+    "lng": 126.990749,
     "desc": "수원시 팔달구에 위치한 경기도 공공병원입니다.",
     "youtube": "",
     "img": ""
@@ -249,7 +250,7 @@
   {
     "name": "수원시청",
     "lat": 37.261511,
-    "lon": 127.028703,
+    "lng": 127.028703,
     "desc": "수원시의 행정 업무를 총괄하는 시청입니다.",
     "youtube": "",
     "img": ""
@@ -257,7 +258,7 @@
   {
     "name": "팔달구청",
     "lat": 37.282528,
-    "lon": 127.020139,
+    "lng": 127.020139,
     "desc": "수원시 팔달구의 행정 업무를 담당하는 구청입니다.",
     "youtube": "",
     "img": ""
@@ -265,7 +266,7 @@
   {
     "name": "권선구청",
     "lat": 37.263012,
-    "lon": 126.96761,
+    "lng": 126.96761,
     "desc": "수원시 권선구의 행정 업무를 담당하는 구청입니다.",
     "youtube": "",
     "img": ""
@@ -273,7 +274,7 @@
   {
     "name": "장안구청",
     "lat": 37.3062283,
-    "lon": 127.0006674,
+    "lng": 127.0006674,
     "desc": "수원시 장안구의 행정 업무를 담당하는 구청입니다.",
     "youtube": "",
     "img": ""
@@ -281,7 +282,7 @@
   {
     "name": "영통구청",
     "lat": 37.257639,
-    "lon": 127.047139,
+    "lng": 127.047139,
     "desc": "수원시 영통구의 행정 업무를 담당하는 구청입니다.",
     "youtube": "",
     "img": ""
@@ -289,7 +290,7 @@
   {
     "name": "수원역",
     "lat": 37.26583,
-    "lon": 126.99972,
+    "lng": 126.99972,
     "desc": "수도권 전철 1호선, 수인분당선, KTX, ITX-새마을 등 주요 철도 교통 허브입니다.",
     "youtube": "",
     "img": ""
@@ -297,7 +298,7 @@
   {
     "name": "수원시외버스터미널",
     "lat": 37.251944,
-    "lon": 127.021389,
+    "lng": 127.021389,
     "desc": "수원시의 시외 및 고속버스 운행의 주요 거점입니다.",
     "youtube": "",
     "img": ""
@@ -305,20 +306,31 @@
   {
     "name": "수원컨벤션센터",
     "lat": 37.293389,
-    "lon": 127.056056,
+    "lng": 127.056056,
     "desc": "마이스(MICE) 산업의 중심지 역할을 하는 국제 컨벤션 센터입니다.",
     "youtube": "",
     "img": ""
   }
-];
+      ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
