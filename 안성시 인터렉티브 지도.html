@@ -13,225 +13,236 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 안성시청 중심 좌표
-        const map = L.map('map').setView([37.0073, 127.2716], 12);
+   <script>
+    // 안성시청 중심 좌표
+    const map = L.map('map').setView([37.008026, 127.279877], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        // 여기에 안성시 장소 데이터 입력!
-        const places = [
-{
-name: "산 - 서운산",
-lat: 36.966566,
-lon: 127.295638,
-desc: "서운산은 경기도 안성에 있는 높이 547미터의 산이다. 이 산은 바위가 많지 않고 길이 편해서 가족들과 함께 가볍게 오르기 좋은 산이다. 산의 북쪽으로는 석남사, 남쪽으로는 청룡사가 있는데 둘 다 유명한 절이어서 역사공부도 할 수 있는 곳이다. 주변에는 청룡호수도 있고 멋진 풍경을 볼 수 있어서 즐겁게 산행할 수 있는 곳이다. 안성의 주요 관광지 8경중 5경이다.",
-youtube: "https://youtu.be/1uRDlbOmOds?si=ijivSUIlXRjE1yat",
-img: "https://i.namu.wiki/i/AmeF9DI5IpjF9f_V6tfH8WYyCosPfNpKyk_hklFMEFxWZVG-QNm1l4-7kyl9v2YiymJ0Kbhwg3Oxvxn7igqUQQ.jpg"
-},
-{
-name: "호수 - 고삼호수",
-lat: 37.082939,
-lon: 127.280770,
-desc: "경기도 안성에 자리한 고삼호수는 60년에 준공한 94만평 규모로, 몽환적이고 서정적인 신비감을 간직한 천혜의 장소, 김기덕 감독의 영화 [섬]의 주무대인 고삼호수는 푸른 물과 그위에 떠있는 좌대의 풍경이 인상적이다. 고삼호수는 서울에서도 멀지 않아 낚시꾼들이 자주 찾는 장소이며, 주변에 음식점도 많아 관광지로서 인기가 많다. 안성의 주요 관광지 8경 중 7경이다.",
-youtube: "https://youtu.be/YIR2cT6ML3w?si=2NCgal70NQfJnQeI",
-img: "https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=57b1a308-16e6-4991-a29f-1a278f160cd1"
-},
-{
-name: "호수 - 금광호수",
-lat: 36.996842,
-lon: 127.331037,
-desc: "금광호수는 V자 계곡형 호수로서 물낚시와 얼음낚시가 잘 돼 겨울철 빙어 낚시터로 많이 찾는 곳이다. 도로에 인접해 교통이 편리하고,좌대, 연안 낚시 모두 좋다. 봄철 산란기에는 최상류 수초밭에 떡붕어월척이 대량으로 낚이고, 여름철에는 최상류보다는 중ㆍ하류에서 호황을 보이며 포인트 이동이 쉽다. 주변의 둘레길이 잘 조성되어있어, 편안하게 산책하기도 좋은 안성의 명소이다. 안성의 주요 관광지 8경 중 6경이다.",
-youtube: "https://youtu.be/BMeHv4RrEQE?si=pTbIXTTEMsmMH0vR",
-img: "https://mblogthumb-phinf.pstatic.net/MjAyNDEwMDdfMTM2/MDAxNzI4MjgzOTAwNDY3.BkchwYEAJzVtFjK93jiZuTYviwJOyd1gyuMDPaliZFcg.g8ZhheE1hte5oPl_O-n5jfmlNEq5H6p8icF1oTpFcxYg.JPEG/1.jpg?type=w800"
-},
-{
-name: "칠장사",
-lat: 37.026595,
-lon: 127.397673,
-desc: "칠장사는 신라시대 선덕여왕 때 자장법사가 세웠다고 추측되는데 그 후 고려시대 혜소국사가 7명의 악인을 현인으로 만들었다는 이야기가 전해져 산의 이름은 칠현산, 절은 칠장사라고 불려졌다. 또한 칠장사와 관련된 이야기도 많이 전래되어온다. 칠장사에는 대웅전 건물이나 부처님상, 커다란 철기둥처럼 귀한 국보 및 보물들이 많이 있는 곳이다. 조용하고 아름다운 자연 속에서 옛날 절의 모습과 보물들을 보며 마음을 편안하게 할 수 있는 곳이다. 안성의 대표 관광지 8경 중 1경이다.",
-youtube: "https://youtu.be/y9UAqiSaurI?si=izkTvMT24KcPGqwT",
-img: "https://ggc.ggcf.kr/uploadimg/resize/a790764e1545860673375.jpeg"
-},
-{
-name: "청룡사",
-lat: 36.914587,
-lon: 127.288810,
-desc: "청룡사는 경기도 안성에 있는 서운산 아래에 있는 아주 오래된 절이다. 이 절은 고려 시대에 나옹화상이라는 스님이 청룡을 보고 이름을 지었다는 이야기가 있는 곳이다. 절 안에는 오래된 대웅전 건물(보물 824호)과 종처럼 귀한 옛날 물건들이 있고, 옛날 남사당패 사람들이 겨울에 연습했던 곳으로도 알려져 있는 곳이다. 아름다운 자연 속에 있어서 편안하게 쉬고 옛날 절의 모습과 역사를 볼 수 있는 곳이다.",
-youtube: "https://youtu.be/ajM0ujY9ZSI?si=K5iBOJHHy9Y-KIt5",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4zYJvwQyfkiWaeGbHR6etHikyN-zpqfWPQ&s"
-},
-{
-name: "석남사",
-lat: 36.939805,
-lon: 127.307081,
-desc: "석남사는 경기도 안성에 있는 서운산 아래에 있어서 아름다운 자연 속에 있는 아주 오래된 절이다. 이 절은 신라 시대에 처음 만들어졌고, 옛날에 많은 스님들이 공부하고 마음을 닦았던 중요한 절이다. 절 안에는 오래된 대웅전 건물이나 부처님상처럼 귀한 옛날 물건들이 많이 있는 곳이다. 특히 이 절은 멋진 풍경 때문에 드라마를 찍기도 했던 아름다운 곳이다. 안성의 주요 관광지 8경 중 3경이다.",
-youtube: "https://youtu.be/rGW8Vt3IIAY?si=SIPa_WlaDMLttOWK",
-img: "https://i.namu.wiki/i/c2IT2RBmRXuq79Bb6SxhDr7_wWpLqvIAm_FfNewlVu3_A8A3aeVlx358jBpID6mp7RQYPqdmHJhw2i4kQ9TQvA.webp"
-},
-{
-name: "안성향교",
-lat: 37.013946,
-lon: 127.276391,
-desc: "향교는 아주 옛날 고려 시대와 조선 시대에 나라에서 만든 지방 학교이다. 이곳은 옛날 훌륭한 성현들께 제사를 지내고 마을 사람들을 가르치던 중요한 교육 기관이었다. 죽산향교는 학교 건물이 앞에 있고 제사 지내는 곳은 뒤에 있는 독특한 형태를 가진 향교이다. 오래된 건물들과 옛날 기록들이 잘 보존되어 있어서 우리나라 옛날 교육의 모습을 잘 보여주는 곳이다.",
-youtube: "https://youtu.be/O8JBeMkUBFI?si=LeDZpUA1rdrtejNJ",
-img: "https://ggc.ggcf.kr/uploadimg/resize/cfff01f81545861408836.jpeg"
-},
-{
-name: "안성객사",
-lat: 37.015171,
-lon: 127.323245,
-desc: "객사는 옛날 고려 시대와 조선 시대에 나라에서 온 관리나 중요한 손님들이 머물렀던 숙소이다. 안성 객사는 가운데 가장 중요한 건물과 그 양쪽에 날개처럼 붙어 있는 건물이 함께 있는 모습이다. 이 건물은 아주 옛날 고려 시대에 지어졌던 주심포 양식이라는 특별한 건축 방식을 잘 보여주는 귀한 문화유산이다.",
-youtube: "https://youtu.be/ekVGtyYmbAU?si=iDO4kcOFZMBrG6--",
-img: "https://www.heritage.go.kr/unisearch/images/tangible_cult_prop/thumb/1637667.jpg"
-},
-{
-name: "죽주산성",
-lat: 37.088891,
-lon: 127.430122,
-desc: "죽주산성은 죽산면에 있는 오래된 산성으로 신라 시대 때부터 나라를 지키는 중요한 역할을 했던 곳이다. 안성의 경기도 입구 쪽 중요한 교통의 요충지였는데, 군사전략적인 요새로서 죽주산성은 높은 가치가 있었으며, 주요 격전장소이기도 하였다. 송문주 장군이 여기서 몽골군을 막아냈으며 임진왜란 때도 횡징 장군이 기습작전으로 이곳을 탈환하자 왜군은 더이상 용인과 이천을 넘보지 못하였다. 죽주산성은 경기도 기념물 제69호로 지정되어 있다.",
-youtube: "https://youtu.be/1gSSvTihz4Q?si=XBwVKIdxVBvvwtom",
-img: "https://ggc.ggcf.kr/uploadimg/resize/a48a83ba1542027676275.jpeg"
-},
-{
-name: "안성팜랜드",
-lat: 36.992297,
-lon: 127.193385,
-desc: "아름다운 농촌경관 속에서 가축들을 직접 만지고 먹이주며 함께 즐기는 레저와 휴식·교육 기능이 복합된 국내최대 규모의 체험형 놀이목장이다. 39만평의 광활한 초원을 트랙타 마차를 타고 호밀, 유채꽃, 코스모스 등 사계절 다양하게 꽃을 구경하며 여유를 만끽할 수 있다. 안성의 주요 관광지 8경 중 8경이다.",
-youtube: "https://youtu.be/OPkS0TadhyY?si=XG3g1yf7L7T_kJG2",
-img: "https://lh6.googleusercontent.com/proxy/A0N2gzsGpEb2su_E0L5RxAbdpcYnjnwtewvJwhANsBB7pfo84GDyWZJ-qK_nR_UIiXYxmPP6frmDgz--TgiMw86HE7DW09wUW3EqvRoswXLXyw"
-},
-{
-name: "안성맞춤랜드",
-lat: 37.032082,
-lon: 127.310134,
-desc: "안성 맞춤랜드는 계절별로 자연의 변화를 체험할 수 있는 시민휴식공간으로서, 가족단위 여가 및 레크리에이션 활동이 가능하고 전통문화예술과 체험 학습을 함께 즐길 수 있는 곳이다. 안성시립남사당바우덕이풍물단의 전통체험과 공연이 남사당공연장에서 펼쳐지며, 안성맞춤천문과학관, 공예문화센터, 썰매장, 캠핑장, 야생화단지, 잔디광장, 수변공원, 유아숲 체험원 등 다양한 볼거리와 즐길거리가 있다. 2012년 안성세계민속축전이 열린 곳이며, 매년 9~10월에는 5일간 안성맞춤바우덕이축제가 개최된다. 안성의 주요 관광지 8경 중 4경이다.",
-youtube: "https://youtu.be/eU4rBvLuStw?si=2yCzLKPz37IZUbun",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmrucd9c_2T5FM6MgJHTWvKpZW6w_R76abA&s"
-},
-{
-name: "미리내성지",
-lat: 37.146822,
-lon: 127.259492,
-desc: "미리내 성지에는 옛날에 천주교를 믿는 사람들이 힘들게 숨어 살았던 곳이며, 우리나라 최초의 천주교 신부님인 김대건 신부님의 묘가 있는 한국 천주교의 대표적인 성지순례 장소이다. 이 성지에 '미리내'라는 이름이 붙게 된 이유는 천주교 신자들이 밝힌 호롱 불빛이 깊은 밤중에 보면 은하수처럼 보였기 때문이라고 한다. 현재는 드라마 촬영장소로도 유명해졌다. 안성의 주요 관광지 8경 중 2경이다.",
-youtube: "https://youtu.be/ildfYv1jJ00?si=YGXm-Bbn1LQMAJLD",
-img: "https://i.namu.wiki/i/GCdzuq-fgj09Rr0qY9UTOiaD1ftPdDkufeY0BNKBHyJaly9yIKh2jEYFt2_GN0S71pxoAkyvGMQxe1SSJDkHkA.webp"
-},
-{
-name: "3.1운동기념관",
-lat: 37.062147,
-lon: 127.174157,
-desc: "안성 만세로에 있는 안성3·1운동 기념관은 안성지역의 만세운동과 관련한 유물과 기록들이 전시되어 있는 곳이다. 1919년 3·1운동 당시 전국 3대 실력 항쟁지로 가장 격렬한 만세운동을 펼쳐 일제 식민통치기관을 완전히 몰아내고, 2일간의 해방을 이룩한 안성 4·1만세운동의 역사를 널리 알리며, 선열들의 숭고한 자주독립 정신을 계승 발전시켜 후세들에게 나라사랑의 산 교육장으로 활용하기 위해 세워진 곳이다.",
-youtube: "https://www.youtube.com/watch?v=4KQHz-W8Bmw",
-img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM4nvsZUs-YDFhBiO1LkjpX-4EbNQjGrkRbQ&s"
-},
-{
-name: "서운산성",
-lat: 36.930600,
-lon: 127.296286,
-desc: "안성시의 역사를 엿볼 수 있는 산성으로, 아름다운 풍경과 함께 산책하기 좋습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "남사당 전수관",
-lat: 37.052888,
-lon: 127.312648,
-desc: "국가무형문화재 남사당놀이의 전통을 이어가는 곳으로, 상설 공연을 관람할 수 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성맞춤박물관관",
-lat: 37.012172,
-lon: 127.228425,
-desc: "안성의 풍부한 문화 유산을 체험할 수 있는 테마박물관입니다",
-youtube: "",
-img: ""
-},
-{
-name: "안성시립도서관",
-lat: 37.015730,
-lon: 127.268421,
-desc: "안성시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성천",
-lat: 36.984466,
-lon: 127.200634,
-desc: "안성시를 가로지르는 하천으로, 산책로와 자전거 도로가 잘 조성되어 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성 5일장 (안성맞춤시장)",
-lat: 37.006662,
-lon: 127.270261,
-desc: "매월 2, 7일 열리는 전통 5일장으로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성종합운동장",
-lat: 37.011579,
-lon: 127.327730,
-desc: "다양한 체육 시설을 갖춘 안성시의 주요 스포츠 시설입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "의료법인안성의료재단 경기도의료원 안성병원",
-lat: 37.017621,
-lon: 127.260359,
-desc: "안성시 당왕동에 위치한 경기도 공공병원입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성시청",
-lat: 37.008052,
-lon: 127.279555,
-desc: "안성시의 행정 업무를 총괄하는 시청입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "안성종합버스터미널",
-lat: 37.012522,
-lon: 127.292395,
-desc: "안성시의 시외 및 고속버스 운행의 주요 거점입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "스타필드 안성",
-lat: 36.996468,
-lon: 127.147672,
-desc: "안성시 공도읍에 위치한 대규모 복합 쇼핑몰입니다.",
-youtube: "",
-img: ""
-},
-{
-name: "한경대학교",
-lat: 37.011772,
-lon: 127.264248,
-desc: "안성시에 위치한 국립대학교입니다.",
-youtube: "",
-img: ""
-}
-];
+        const places =
+[
+  {
+    "name": "산 - 서운산",
+    "lat": 36.966566,
+    "lng": 127.295638,
+    "desc": "서운산은 경기도 안성에 있는 높이 547미터의 산이다. 이 산은 바위가 많지 않고 길이 편해서 가족들과 함께 가볍게 오르기 좋은 산이다. 산의 북쪽으로는 석남사, 남쪽으로는 청룡사가 있는데 둘 다 유명한 절이어서 역사공부도 할 수 있는 곳이다. 주변에는 청룡호수도 있고 멋진 풍경을 볼 수 있어서 즐겁게 산행할 수 있는 곳이다. 안성의 주요 관광지 8경중 5경이다.",
+    "youtube": "https://youtu.be/1uRDlbOmOds?si=ijivSUIlXRjE1yat",
+    "img": "https://i.namu.wiki/i/AmeF9DI5IpjF9f_V6tfH8WYyCosPfNpKyk_hklFMEFxWZVG-QNm1l4-7kyl9v2YiymJ0Kbhwg3Oxvxn7igqUQQ.jpg"
+  },
+  {
+    "name": "호수 - 고삼호수",
+    "lat": 37.082939,
+    "lng": 127.28077,
+    "desc": "경기도 안성에 자리한 고삼호수는 60년에 준공한 94만평 규모로, 몽환적이고 서정적인 신비감을 간직한 천혜의 장소, 김기덕 감독의 영화 [섬]의 주무대인 고삼호수는 푸른 물과 그위에 떠있는 좌대의 풍경이 인상적이다. 고삼호수는 서울에서도 멀지 않아 낚시꾼들이 자주 찾는 장소이며, 주변에 음식점도 많아 관광지로서 인기가 많다. 안성의 주요 관광지 8경 중 7경이다.",
+    "youtube": "https://youtu.be/YIR2cT6ML3w?si=2NCgal70NQfJnQeI",
+    "img": "https://cdn.visitkorea.or.kr/img/call?cmd=VIEW&id=57b1a308-16e6-4991-a29f-1a278f160cd1"
+  },
+  {
+    "name": "호수 - 금광호수",
+    "lat": 36.996842,
+    "lng": 127.331037,
+    "desc": "금광호수는 V자 계곡형 호수로서 물낚시와 얼음낚시가 잘 돼 겨울철 빙어 낚시터로 많이 찾는 곳이다. 도로에 인접해 교통이 편리하고,좌대, 연안 낚시 모두 좋다. 봄철 산란기에는 최상류 수초밭에 떡붕어월척이 대량으로 낚이고, 여름철에는 최상류보다는 중ㆍ하류에서 호황을 보이며 포인트 이동이 쉽다. 주변의 둘레길이 잘 조성되어있어, 편안하게 산책하기도 좋은 안성의 명소이다. 안성의 주요 관광지 8경 중 6경이다.",
+    "youtube": "https://youtu.be/BMeHv4RrEQE?si=pTbIXTTEMsmMH0vR",
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAyNDEwMDdfMTM2/MDAxNzI4MjgzOTAwNDY3.BkchwYEAJzVtFjK93jiZuTYviwJOyd1gyuMDPaliZFcg.g8ZhheE1hte5oPl_O-n5jfmlNEq5H6p8icF1oTpFcxYg.JPEG/1.jpg?type=w800"
+  },
+  {
+    "name": "칠장사",
+    "lat": 37.026595,
+    "lng": 127.397673,
+    "desc": "칠장사는 신라시대 선덕여왕 때 자장법사가 세웠다고 추측되는데 그 후 고려시대 혜소국사가 7명의 악인을 현인으로 만들었다는 이야기가 전해져 산의 이름은 칠현산, 절은 칠장사라고 불려졌다. 또한 칠장사와 관련된 이야기도 많이 전래되어온다. 칠장사에는 대웅전 건물이나 부처님상, 커다란 철기둥처럼 귀한 국보 및 보물들이 많이 있는 곳이다. 조용하고 아름다운 자연 속에서 옛날 절의 모습과 보물들을 보며 마음을 편안하게 할 수 있는 곳이다. 안성의 대표 관광지 8경 중 1경이다.",
+    "youtube": "https://youtu.be/y9UAqiSaurI?si=izkTvMT24KcPGqwT",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/a790764e1545860673375.jpeg"
+  },
+  {
+    "name": "청룡사",
+    "lat": 36.914587,
+    "lng": 127.28881,
+    "desc": "청룡사는 경기도 안성에 있는 서운산 아래에 있는 아주 오래된 절이다. 이 절은 고려 시대에 나옹화상이라는 스님이 청룡을 보고 이름을 지었다는 이야기가 있는 곳이다. 절 안에는 오래된 대웅전 건물(보물 824호)과 종처럼 귀한 옛날 물건들이 있고, 옛날 남사당패 사람들이 겨울에 연습했던 곳으로도 알려져 있는 곳이다. 아름다운 자연 속에 있어서 편안하게 쉬고 옛날 절의 모습과 역사를 볼 수 있는 곳이다.",
+    "youtube": "https://youtu.be/ajM0ujY9ZSI?si=K5iBOJHHy9Y-KIt5",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4zYJvwQyfkiWaeGbHR6etHikyN-zpqfWPQ&s"
+  },
+  {
+    "name": "석남사",
+    "lat": 36.939805,
+    "lng": 127.307081,
+    "desc": "석남사는 경기도 안성에 있는 서운산 아래에 있어서 아름다운 자연 속에 있는 아주 오래된 절이다. 이 절은 신라 시대에 처음 만들어졌고, 옛날에 많은 스님들이 공부하고 마음을 닦았던 중요한 절이다. 절 안에는 오래된 대웅전 건물이나 부처님상처럼 귀한 옛날 물건들이 많이 있는 곳이다. 특히 이 절은 멋진 풍경 때문에 드라마를 찍기도 했던 아름다운 곳이다. 안성의 주요 관광지 8경 중 3경이다.",
+    "youtube": "https://youtu.be/rGW8Vt3IIAY?si=SIPa_WlaDMLttOWK",
+    "img": "https://i.namu.wiki/i/c2IT2RBmRXuq79Bb6SxhDr7_wWpLqvIAm_FfNewlVu3_A8A3aeVlx358jBpID6mp7RQYPqdmHJhw2i4kQ9TQvA.webp"
+  },
+  {
+    "name": "안성향교",
+    "lat": 37.013946,
+    "lng": 127.276391,
+    "desc": "향교는 아주 옛날 고려 시대와 조선 시대에 나라에서 만든 지방 학교이다. 이곳은 옛날 훌륭한 성현들께 제사를 지내고 마을 사람들을 가르치던 중요한 교육 기관이었다. 죽산향교는 학교 건물이 앞에 있고 제사 지내는 곳은 뒤에 있는 독특한 형태를 가진 향교이다. 오래된 건물들과 옛날 기록들이 잘 보존되어 있어서 우리나라 옛날 교육의 모습을 잘 보여주는 곳이다.",
+    "youtube": "https://youtu.be/O8JBeMkUBFI?si=LeDZpUA1rdrtejNJ",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/cfff01f81545861408836.jpeg"
+  },
+  {
+    "name": "안성객사",
+    "lat": 37.015171,
+    "lng": 127.323245,
+    "desc": "객사는 옛날 고려 시대와 조선 시대에 나라에서 온 관리나 중요한 손님들이 머물렀던 숙소이다. 안성 객사는 가운데 가장 중요한 건물과 그 양쪽에 날개처럼 붙어 있는 건물이 함께 있는 모습이다. 이 건물은 아주 옛날 고려 시대에 지어졌던 주심포 양식이라는 특별한 건축 방식을 잘 보여주는 귀한 문화유산이다.",
+    "youtube": "https://youtu.be/ekVGtyYmbAU?si=iDO4kcOFZMBrG6--",
+    "img": "https://www.heritage.go.kr/unisearch/images/tangible_cult_prop/thumb/1637667.jpg"
+  },
+  {
+    "name": "죽주산성",
+    "lat": 37.088891,
+    "lng": 127.430122,
+    "desc": "죽주산성은 죽산면에 있는 오래된 산성으로 신라 시대 때부터 나라를 지키는 중요한 역할을 했던 곳이다. 안성의 경기도 입구 쪽 중요한 교통의 요충지였는데, 군사전략적인 요새로서 죽주산성은 높은 가치가 있었으며, 주요 격전장소이기도 하였다. 송문주 장군이 여기서 몽골군을 막아냈으며 임진왜란 때도 횡징 장군이 기습작전으로 이곳을 탈환하자 왜군은 더이상 용인과 이천을 넘보지 못하였다. 죽주산성은 경기도 기념물 제69호로 지정되어 있다.",
+    "youtube": "https://youtu.be/1gSSvTihz4Q?si=XBwVKIdxVBvvwtom",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/a48a83ba1542027676275.jpeg"
+  },
+  {
+    "name": "안성팜랜드",
+    "lat": 36.992297,
+    "lng": 127.193385,
+    "desc": "아름다운 농촌경관 속에서 가축들을 직접 만지고 먹이주며 함께 즐기는 레저와 휴식·교육 기능이 복합된 국내최대 규모의 체험형 놀이목장이다. 39만평의 광활한 초원을 트랙타 마차를 타고 호밀, 유채꽃, 코스모스 등 사계절 다양하게 꽃을 구경하며 여유를 만끽할 수 있다. 안성의 주요 관광지 8경 중 8경이다.",
+    "youtube": "https://youtu.be/OPkS0TadhyY?si=XG3g1yf7L7T_kJG2",
+    "img": "https://lh6.googleusercontent.com/proxy/A0N2gzsGpEb2su_E0L5RxAbdpcYnjnwtewvJwhANsBB7pfo84GDyWZJ-qK_nR_UIiXYxmPP6frmDgz--TgiMw86HE7DW09wUW3EqvRoswXLXyw"
+  },
+  {
+    "name": "안성맞춤랜드",
+    "lat": 37.032082,
+    "lng": 127.310134,
+    "desc": "안성 맞춤랜드는 계절별로 자연의 변화를 체험할 수 있는 시민휴식공간으로서, 가족단위 여가 및 레크리에이션 활동이 가능하고 전통문화예술과 체험 학습을 함께 즐길 수 있는 곳이다. 안성시립남사당바우덕이풍물단의 전통체험과 공연이 남사당공연장에서 펼쳐지며, 안성맞춤천문과학관, 공예문화센터, 썰매장, 캠핑장, 야생화단지, 잔디광장, 수변공원, 유아숲 체험원 등 다양한 볼거리와 즐길거리가 있다. 2012년 안성세계민속축전이 열린 곳이며, 매년 9~10월에는 5일간 안성맞춤바우덕이축제가 개최된다. 안성의 주요 관광지 8경 중 4경이다.",
+    "youtube": "https://youtu.be/eU4rBvLuStw?si=2yCzLKPz37IZUbun",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrmrucd9c_2T5FM6MgJHTWvKpZW6w_R76abA&s"
+  },
+  {
+    "name": "미리내성지",
+    "lat": 37.146822,
+    "lng": 127.259492,
+    "desc": "미리내 성지에는 옛날에 천주교를 믿는 사람들이 힘들게 숨어 살았던 곳이며, 우리나라 최초의 천주교 신부님인 김대건 신부님의 묘가 있는 한국 천주교의 대표적인 성지순례 장소이다. 이 성지에 '미리내'라는 이름이 붙게 된 이유는 천주교 신자들이 밝힌 호롱 불빛이 깊은 밤중에 보면 은하수처럼 보였기 때문이라고 한다. 현재는 드라마 촬영장소로도 유명해졌다. 안성의 주요 관광지 8경 중 2경이다.",
+    "youtube": "https://youtu.be/ildfYv1jJ00?si=YGXm-Bbn1LQMAJLD",
+    "img": "https://i.namu.wiki/i/GCdzuq-fgj09Rr0qY9UTOiaD1ftPdDkufeY0BNKBHyJaly9yIKh2jEYFt2_GN0S71pxoAkyvGMQxe1SSJDkHkA.webp"
+  },
+  {
+    "name": "3.1운동기념관",
+    "lat": 37.062147,
+    "lng": 127.174157,
+    "desc": "안성 만세로에 있는 안성3·1운동 기념관은 안성지역의 만세운동과 관련한 유물과 기록들이 전시되어 있는 곳이다. 1919년 3·1운동 당시 전국 3대 실력 항쟁지로 가장 격렬한 만세운동을 펼쳐 일제 식민통치기관을 완전히 몰아내고, 2일간의 해방을 이룩한 안성 4·1만세운동의 역사를 널리 알리며, 선열들의 숭고한 자주독립 정신을 계승 발전시켜 후세들에게 나라사랑의 산 교육장으로 활용하기 위해 세워진 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=4KQHz-W8Bmw",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM4nvsZUs-YDFhBiO1LkjpX-4EbNQjGrkRbQ&s"
+  },
+  {
+    "name": "서운산성",
+    "lat": 36.9306,
+    "lng": 127.296286,
+    "desc": "안성시의 역사를 엿볼 수 있는 산성으로, 아름다운 풍경과 함께 산책하기 좋습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "남사당 전수관",
+    "lat": 37.052888,
+    "lng": 127.312648,
+    "desc": "국가무형문화재 남사당놀이의 전통을 이어가는 곳으로, 상설 공연을 관람할 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성맞춤박물관관",
+    "lat": 37.012172,
+    "lng": 127.228425,
+    "desc": "안성의 풍부한 문화 유산을 체험할 수 있는 테마박물관입니다",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성시립도서관",
+    "lat": 37.01573,
+    "lng": 127.268421,
+    "desc": "안성시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성천",
+    "lat": 36.984466,
+    "lng": 127.200634,
+    "desc": "안성시를 가로지르는 하천으로, 산책로와 자전거 도로가 잘 조성되어 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성 5일장 (안성맞춤시장)",
+    "lat": 37.006662,
+    "lng": 127.270261,
+    "desc": "매월 2, 7일 열리는 전통 5일장으로, 활기찬 분위기와 다양한 먹거리를 즐길 수 있습니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성종합운동장",
+    "lat": 37.011579,
+    "lng": 127.32773,
+    "desc": "다양한 체육 시설을 갖춘 안성시의 주요 스포츠 시설입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "의료법인안성의료재단 경기도의료원 안성병원",
+    "lat": 37.017621,
+    "lng": 127.260359,
+    "desc": "안성시 당왕동에 위치한 경기도 공공병원입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성시청",
+    "lat": 37.008052,
+    "lng": 127.279555,
+    "desc": "안성시의 행정 업무를 총괄하는 시청입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "안성종합버스터미널",
+    "lat": 37.012522,
+    "lng": 127.292395,
+    "desc": "안성시의 시외 및 고속버스 운행의 주요 거점입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "스타필드 안성",
+    "lat": 36.996468,
+    "lng": 127.147672,
+    "desc": "안성시 공도읍에 위치한 대규모 복합 쇼핑몰입니다.",
+    "youtube": "",
+    "img": ""
+  },
+  {
+    "name": "한경대학교",
+    "lat": 37.011772,
+    "lng": 127.264248,
+    "desc": "안성시에 위치한 국립대학교입니다.",
+    "youtube": "",
+    "img": ""
+  }
+      ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
