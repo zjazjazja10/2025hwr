@@ -13,290 +13,300 @@
 <body>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script>
-        // 양주시청 중심 좌표
-        const map = L.map('map').setView([37.7853, 127.0457], 12);
+   <script>
+    // 양주시청 중심 좌표
+    const map = L.map('map').setView([37.785465, 127.045822], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        // 양주시 장소 데이터 입력!
-       const places = [
+        const places =
+[
   {
-    name: "산 - 한강봉",
-    lat: 37.769694,
-    lon: 126.977406,
-    desc: "한강봉은 경기도 양주에 있는 높이 474미터의 산이다. 산 정상에 올라가면 맑은 날 멀리 한강까지 볼 수 있어서 '한강봉'이라는 이름이 붙여졌다고 한다. 산길이 부드러운 흙길로 되어 있고 경사가 심하지 않아서 가족들이 함께 가볍게 오르기 좋은 산이다. 등산하면서 시원한 풍경과 함께 편안하게 산책을 즐길 수 있는 산이다.",
-    youtube: "https://www.youtube.com/watch?v=jkZcINMcKxI",
-    img: "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P6105"
+    "name": "산 - 한강봉",
+    "lat": 37.769694,
+    "lng": 126.977406,
+    "desc": "한강봉은 경기도 양주에 있는 높이 474미터의 산이다. 산 정상에 올라가면 맑은 날 멀리 한강까지 볼 수 있어서 '한강봉'이라는 이름이 붙여졌다고 한다. 산길이 부드러운 흙길로 되어 있고 경사가 심하지 않아서 가족들이 함께 가볍게 오르기 좋은 산이다. 등산하면서 시원한 풍경과 함께 편안하게 산책을 즐길 수 있는 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=jkZcINMcKxI",
+    "img": "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P6105"
   },
   {
-    name: "산 - 칠봉산",
-    lat: 37.865190,
-    lon: 127.081814,
-    desc: "칠봉산은 경기도 동두천과 양주에 있는 산으로, 높이는 506미터이다. 이름처럼 일곱 개의 봉우리가 올망졸망 모여 있는 산이다. 산의 모습이 아름답고 등산로도 잘 되어 있어서 사람들이 많이 찾는 산이다. 주변의 자연을 느끼며 여러 봉우리를 오르는 재미가 있는 산이다.",
-    youtube: "https://www.youtube.com/shorts/pm7a_veoppw",
-    img: "https://www.ddc.go.kr/site/tour/images/contents/cnt_574_img1.jpg"
+    "name": "산 - 칠봉산",
+    "lat": 37.86519,
+    "lng": 127.081814,
+    "desc": "칠봉산은 경기도 동두천과 양주에 있는 산으로, 높이는 506미터이다. 이름처럼 일곱 개의 봉우리가 올망졸망 모여 있는 산이다. 산의 모습이 아름답고 등산로도 잘 되어 있어서 사람들이 많이 찾는 산이다. 주변의 자연을 느끼며 여러 봉우리를 오르는 재미가 있는 산이다.",
+    "youtube": "https://www.youtube.com/shorts/pm7a_veoppw",
+    "img": "https://www.ddc.go.kr/site/tour/images/contents/cnt_574_img1.jpg"
   },
   {
-    name: "산 - 도봉산",
-    lat: 37.736548,
-    lon: 127.003239,
-    desc: "도봉산은 서울과 경기도 의정부, 양주에 걸쳐 있는 높이 740미터의 산이다. 바위가 많고 봉우리들이 멋있어서 등산하는 사람들이 많이 찾는 산이다. 북한산과 함께 북한산 국립공원으로 묶여 있는 곳이다. 도심 가까이에 있어서 쉽게 찾아가 자연을 느끼고 운동하기 좋은 산이다.",
-    youtube: "https://www.youtube.com/watch?v=9weJDYIhvks",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtOcJ7cQ3JA26UBpbcJyoZqYg3UUEZSc7V2Q&s"
+    "name": "산 - 도봉산",
+    "lat": 37.736548,
+    "lng": 127.003239,
+    "desc": "도봉산은 서울과 경기도 의정부, 양주에 걸쳐 있는 높이 740미터의 산이다. 바위가 많고 봉우리들이 멋있어서 등산하는 사람들이 많이 찾는 산이다. 북한산과 함께 북한산 국립공원으로 묶여 있는 곳이다. 도심 가까이에 있어서 쉽게 찾아가 자연을 느끼고 운동하기 좋은 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=9weJDYIhvks",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtOcJ7cQ3JA26UBpbcJyoZqYg3UUEZSc7V2Q&s"
   },
   {
-    name: "산 - 사패산",
-    lat: 37.737360,
-    lon: 126.996136,
-    desc: "사패산은 경기도 양주와 의정부 사이에 있는 산으로, 북한산 국립공원에 속해 있는 곳이다. 이 산은 높이가 552미터로 아주 높지는 않지만 주변에 아름다운 계곡과 숲이 있는 곳이다. 사패산이라는 이름은 옛날 임금님이 딸에게 주었다는 이야기나 마패를 만들던 곳과 관련이 있다고 전해지는 산이다. 등산로를 따라 걸으며 자연을 느끼고 옆에 있는 도봉산과도 연결되는 산이다.",
-    youtube: "https://www.youtube.com/watch?v=LkWk7LfiIO4",
-    img: "https://i.namu.wiki/i/W9PZ7BFoMpgG9aDaBpM-r0kHDHkyA1Ms5sYLQydgOlGVVBE3oZGJxQyiqlGL6TYPDuI6ErxuNmG_gI3ZnYIBGw.webp"
+    "name": "산 - 사패산",
+    "lat": 37.73736,
+    "lng": 126.996136,
+    "desc": "사패산은 경기도 양주와 의정부 사이에 있는 산으로, 북한산 국립공원에 속해 있는 곳이다. 이 산은 높이가 552미터로 아주 높지는 않지만 주변에 아름다운 계곡과 숲이 있는 곳이다. 사패산이라는 이름은 옛날 임금님이 딸에게 주었다는 이야기나 마패를 만들던 곳과 관련이 있다고 전해지는 산이다. 등산로를 따라 걸으며 자연을 느끼고 옆에 있는 도봉산과도 연결되는 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=LkWk7LfiIO4",
+    "img": "https://i.namu.wiki/i/W9PZ7BFoMpgG9aDaBpM-r0kHDHkyA1Ms5sYLQydgOlGVVBE3oZGJxQyiqlGL6TYPDuI6ErxuNmG_gI3ZnYIBGw.webp"
   },
   {
-    name: "산 - 감악산",
-    lat: 37.931042,
-    lon: 126.974710,
-    desc: "감악산은 경기도 양주, 연천, 파주의 경계에 있는 높이 675미터의 산이다. 이 산은 아주 옛날부터 신령스러운 산이라고 불리거나 멀리서 보면 감색(어두운 푸른색)으로 보인다고 해서 이름이 붙여졌다고 한다. 옛날부터 나라에서 중요한 제사를 지내기도 했고, 산 정상에는 글자가 지워진 오래된 돌 비석(빗돌대왕비)이 있는 곳이다. 산에 오르면 주변의 넓은 경치를 시원하게 볼 수 있는 유명한 산이다.",
-    youtube: "https://www.youtube.com/watch?v=rscKiDiAglI",
-    img: "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P2166"
+    "name": "산 - 감악산",
+    "lat": 37.931042,
+    "lng": 126.97471,
+    "desc": "감악산은 경기도 양주, 연천, 파주의 경계에 있는 높이 675미터의 산이다. 이 산은 아주 옛날부터 신령스러운 산이라고 불리거나 멀리서 보면 감색(어두운 푸른색)으로 보인다고 해서 이름이 붙여졌다고 한다. 옛날부터 나라에서 중요한 제사를 지내기도 했고, 산 정상에는 글자가 지워진 오래된 돌 비석(빗돌대왕비)이 있는 곳이다. 산에 오르면 주변의 넓은 경치를 시원하게 볼 수 있는 유명한 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=rscKiDiAglI",
+    "img": "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P2166"
   },
   {
-    name: "산 - 불곡산",
-    lat: 37.801858,
-    lon: 127.023802,
-    desc: "양주 옛날부터 양주를 대표하는 중요한 산이었다. 산에 오르면 바위 봉우리와 멋진 풍경을 볼 수 있는 곳이다. 옛날 절인 백화암이 있는데, 백화암은 임진왜란과 6·25전쟁 때 많이 소실되어 지금은 아담한 규모로 남아 있다.",
-    youtube: "https://www.youtube.com/watch?v=3zY6HL38lmE",
-    img: "https://blog.kakaocdn.net/dn/COtFj/btrg0qQCEKt/Ds0Z2oyyV86NRPAUZqzs7k/img.jpg"
+    "name": "산 - 불곡산",
+    "lat": 37.801858,
+    "lng": 127.023802,
+    "desc": "양주 옛날부터 양주를 대표하는 중요한 산이었다. 산에 오르면 바위 봉우리와 멋진 풍경을 볼 수 있는 곳이다. 옛날 절인 백화암이 있는데, 백화암은 임진왜란과 6·25전쟁 때 많이 소실되어 지금은 아담한 규모로 남아 있다.",
+    "youtube": "https://www.youtube.com/watch?v=3zY6HL38lmE",
+    "img": "https://blog.kakaocdn.net/dn/COtFj/btrg0qQCEKt/Ds0Z2oyyV86NRPAUZqzs7k/img.jpg"
   },
   {
-    name: "산 - 천보산",
-    lat: 37.776431,
-    lon: 127.064955,
-    desc: "옛날 임금님이 사냥하러 자주 와서 이름이 생겼다는 이야기 있고 그런 의미에서 어등산이라는 이름 있는 산이다. 천보산은 산줄기가 길게 이어져 있어서 등산을 좋아하는 사람들이 많이 찾는 산이다. 또한 천보산은 양주시, 포천시, 동두천시를 나누는 경계선에 있는 산이다.",
-    youtube: "https://www.youtube.com/watch?v=aNFxGO-3Lck",
-    img: "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P6086"
+    "name": "산 - 천보산",
+    "lat": 37.776431,
+    "lng": 127.064955,
+    "desc": "옛날 임금님이 사냥하러 자주 와서 이름이 생겼다는 이야기 있고 그런 의미에서 어등산이라는 이름 있는 산이다. 천보산은 산줄기가 길게 이어져 있어서 등산을 좋아하는 사람들이 많이 찾는 산이다. 또한 천보산은 양주시, 포천시, 동두천시를 나누는 경계선에 있는 산이다.",
+    "youtube": "https://www.youtube.com/watch?v=aNFxGO-3Lck",
+    "img": "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P6086"
   },
   {
-    name: "호수 - 원당저수지",
-    lat: 37.918998,
-    lon: 126.987769,
-    desc: "원당저수지는 경기도 양주 남면에 있는 저수지이다. 이 저수지는 감악산에서 내려오는 깨끗한 물을 담아놓은 곳이다. 주변에 산책길이 있어서 천천히 걸으며 풍경을 즐길 수 있는 곳이다. 물고기가 많이 살아서 낚시를 하는 사람들도 찾아오는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=LmlH3o1cOQE",
-    img: "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P0167"
+    "name": "호수 - 원당저수지",
+    "lat": 37.918998,
+    "lng": 126.987769,
+    "desc": "원당저수지는 경기도 양주 남면에 있는 저수지이다. 이 저수지는 감악산에서 내려오는 깨끗한 물을 담아놓은 곳이다. 주변에 산책길이 있어서 천천히 걸으며 풍경을 즐길 수 있는 곳이다. 물고기가 많이 살아서 낚시를 하는 사람들도 찾아오는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=LmlH3o1cOQE",
+    "img": "https://yangju.grandculture.net/Image?localName=yangju&id=GC043P0167"
   },
   {
-    name: "호수 - 옥정호수공원",
-    lat: 37.823861,
-    lon: 127.097327,
-    desc: "옥정호수공원은 양주 신도시에 새로 만들어진 넓은 공원이다. 사람들이 와서 쉬고 재미있는 시간을 보내도록 만들어진 곳이다. 이곳에는 물 위에서 음악과 함께 춤추는 음악분수나 산책길 같은 여러 시설들이 있다. 특히 여름밤 음악분수가 예뻐서 많은 사람들이 구경하러 오는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=g4MVayKrOMA",
-    img: "https://i.namu.wiki/i/rhdYKNvZIgOhyAxEm0_3PziICQol9Aal_qbjf3FwQYxyrFl-U5FZ-boKeYzdVZTbAOpX2W2hwNGvavKCpc8xIA.webp"
+    "name": "호수 - 옥정호수공원",
+    "lat": 37.823861,
+    "lng": 127.097327,
+    "desc": "옥정호수공원은 양주 신도시에 새로 만들어진 넓은 공원이다. 사람들이 와서 쉬고 재미있는 시간을 보내도록 만들어진 곳이다. 이곳에는 물 위에서 음악과 함께 춤추는 음악분수나 산책길 같은 여러 시설들이 있다. 특히 여름밤 음악분수가 예뻐서 많은 사람들이 구경하러 오는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=g4MVayKrOMA",
+    "img": "https://i.namu.wiki/i/rhdYKNvZIgOhyAxEm0_3PziICQol9Aal_qbjf3FwQYxyrFl-U5FZ-boKeYzdVZTbAOpX2W2hwNGvavKCpc8xIA.webp"
   },
   {
-    name: "호수 - 기산저수지",
-    lat: 37.778291,
-    lon: 126.953966,
-    desc: "기산저수지는 경기도 양주 장흥면과 백석읍 경계에 있는 저수지이다. 주변에 산이 많아서 경치가 아주 아름다운 곳이다. 저수지 옆에는 물가를 따라 걸을 수 있는 예쁜 산책길이 잘 만들어져 있는 곳이다. 이곳은 낚시터로도 유명해서 물고기를 잡으러 오는 사람들도 많은 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=O8Vs-hluNjg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLYArLLWuqcJMHODvr3jY0mNW-_92WbAaLUw&s"
+    "name": "호수 - 기산저수지",
+    "lat": 37.778291,
+    "lng": 126.953966,
+    "desc": "기산저수지는 경기도 양주 장흥면과 백석읍 경계에 있는 저수지이다. 주변에 산이 많아서 경치가 아주 아름다운 곳이다. 저수지 옆에는 물가를 따라 걸을 수 있는 예쁜 산책길이 잘 만들어져 있는 곳이다. 이곳은 낚시터로도 유명해서 물고기를 잡으러 오는 사람들도 많은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=O8Vs-hluNjg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLYArLLWuqcJMHODvr3jY0mNW-_92WbAaLUw&s"
   },
   {
-    name: "회암사지, 화엄사지 박물관",
-    lat: 37.841040,
-    lon: 127.102848,
-    desc: "양주 회암사지는 아주 고려 시대부터 조선 초까지 있었던 절터이다. 화엄사지의 지란 화엄사가 있던 자리라는 뜻이다. 이곳은 왕실과 관계가 깊었던 절이었다. 절터를 발굴해 보니 옛날 임금님이나 왕실 사람들이 쓰던 귀한 물건들이 많이 나온 곳이다. 회암사지는 옛날 우리나라 왕실의 모습과 불교 문화를 알 수 있는 소중한 역사 유적이다. 화엄사지 옆에는 화엄사지박물관이 있는데, 사적 제128호 회암사지의 발굴조사를 통해 출토된 유물들을 수집, 보관, 연구, 전시, 교육하고자 건립된 전문박물관이다.",
-    youtube: "https://www.youtube.com/watch?v=-iBe9o_pY3k",
-    img: "https://mblogthumb-phinf.pstatic.net/MjAyMDEwMTBfMjkw/MDAxNjAyMjg0OTI2MDY0.Fd3GdoW0_NPyOgW-TA2uj-DWzdIvszE8FYiKkNfh8ikg.PotfN27uyBYcgdG7our1W24vdOuHBrScRNtA49AH9sAg.JPEG.eunmizzang1/%ED%9A%8C%EC%95%94%EC%82%AC%EC%A7%80P3670290.JPG?type=w800"
+    "name": "회암사지, 화엄사지 박물관",
+    "lat": 37.84104,
+    "lng": 127.102848,
+    "desc": "양주 회암사지는 아주 고려 시대부터 조선 초까지 있었던 절터이다. 화엄사지의 지란 화엄사가 있던 자리라는 뜻이다. 이곳은 왕실과 관계가 깊었던 절이었다. 절터를 발굴해 보니 옛날 임금님이나 왕실 사람들이 쓰던 귀한 물건들이 많이 나온 곳이다. 회암사지는 옛날 우리나라 왕실의 모습과 불교 문화를 알 수 있는 소중한 역사 유적이다. 화엄사지 옆에는 화엄사지박물관이 있는데, 사적 제128호 회암사지의 발굴조사를 통해 출토된 유물들을 수집, 보관, 연구, 전시, 교육하고자 건립된 전문박물관이다.",
+    "youtube": "https://www.youtube.com/watch?v=-iBe9o_pY3k",
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAyMDEwMTBfMjkw/MDAxNjAyMjg0OTI2MDY0.Fd3GdoW0_NPyOgW-TA2uj-DWzdIvszE8FYiKkNfh8ikg.PotfN27uyBYcgdG7our1W24vdOuHBrScRNtA49AH9sAg.JPEG.eunmizzang1/%ED%9A%8C%EC%95%94%EC%82%AC%EC%A7%80P3670290.JPG?type=w800"
   },
   {
-    name: "양주관아지",
-    lat: 37.785677,
-    lon: 127.029542,
-    desc: "양주 관아지는 조선 시대에 양주 지역을 다스리던 중요한 관청이 있었던 곳이다. 이곳은 4백년이 넘는 시간 동안 양주 지역의 중심 역할을 했던 역사적인 장소이다. 땅을 파서 옛날 건물 터와 여러 유물들을 찾았고, 지금은 옛 모습대로 건물들을 다시 만들어 놓은 곳이다. 옛날 임금님이 오셔서 활을 쏘셨던 자리나 백성들과 함께 즐겼던 정자 등 재미있는 이야기와 역사적인 의미가 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=8Ep1akeTd-o",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH_7fscLEynZfJbC9Vv96Kq-MXcaA2PDygsg&s"
+    "name": "양주관아지",
+    "lat": 37.785677,
+    "lng": 127.029542,
+    "desc": "양주 관아지는 조선 시대에 양주 지역을 다스리던 중요한 관청이 있었던 곳이다. 이곳은 4백년이 넘는 시간 동안 양주 지역의 중심 역할을 했던 역사적인 장소이다. 땅을 파서 옛날 건물 터와 여러 유물들을 찾았고, 지금은 옛 모습대로 건물들을 다시 만들어 놓은 곳이다. 옛날 임금님이 오셔서 활을 쏘셨던 자리나 백성들과 함께 즐겼던 정자 등 재미있는 이야기와 역사적인 의미가 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=8Ep1akeTd-o",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH_7fscLEynZfJbC9Vv96Kq-MXcaA2PDygsg&s"
   },
   {
-    name: "양주향교",
-    lat: 37.786574,
-    lon: 127.032786,
-    desc: "양주향교는 조선 시대에 세워진 학교이자 훌륭한 분들께 제사를 지내는 곳이다. 이곳은 전쟁 때문에 여러 번 부서졌다가 다시 만들어진 역사를 가진 곳이다. 지금은 옛날 건물들이 잘 복원되어 있고, 500년 된 커다란 느티나무도 있는 곳이다. 옛날 교육과 문화를 배우고 느낄 수 있는 소중한 문화재이다.",
-    youtube: "https://www.youtube.com/watch?v=RtC1GoyNix8",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts838_visual1.jpg"
+    "name": "양주향교",
+    "lat": 37.786574,
+    "lng": 127.032786,
+    "desc": "양주향교는 조선 시대에 세워진 학교이자 훌륭한 분들께 제사를 지내는 곳이다. 이곳은 전쟁 때문에 여러 번 부서졌다가 다시 만들어진 역사를 가진 곳이다. 지금은 옛날 건물들이 잘 복원되어 있고, 500년 된 커다란 느티나무도 있는 곳이다. 옛날 교육과 문화를 배우고 느낄 수 있는 소중한 문화재이다.",
+    "youtube": "https://www.youtube.com/watch?v=RtC1GoyNix8",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts838_visual1.jpg"
   },
   {
-    name: "양주 대모산성",
-    lat: 37.786770,
-    lon: 127.011003,
-    desc: "양주 대모산성은 양주에 있는 돌로 만든 산성이다. 이 성은 대모산 꼭대기를 둘러싸고 있고, 옛날부터 나라를 지키는 아주 중요한 곳이었다. 삼국 시대쯤에 만들어진 것으로 생각되는 오래된 성터이다. 지금은 성벽이 많이 무너졌지만, 남아있는 곳과 옛날 건물 터를 보면서 역사를 느낄 수 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=HzVwLvatozE",
-    img: "https://gjicp.ggcf.kr/storage/upload/2023/02/28/Ut8FMEkldJNd4uKRLP4iCROP6VUxzlUZao2OKwAg.jpg"
+    "name": "양주 대모산성",
+    "lat": 37.78677,
+    "lng": 127.011003,
+    "desc": "양주 대모산성은 양주에 있는 돌로 만든 산성이다. 이 성은 대모산 꼭대기를 둘러싸고 있고, 옛날부터 나라를 지키는 아주 중요한 곳이었다. 삼국 시대쯤에 만들어진 것으로 생각되는 오래된 성터이다. 지금은 성벽이 많이 무너졌지만, 남아있는 곳과 옛날 건물 터를 보면서 역사를 느낄 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=HzVwLvatozE",
+    "img": "https://gjicp.ggcf.kr/storage/upload/2023/02/28/Ut8FMEkldJNd4uKRLP4iCROP6VUxzlUZao2OKwAg.jpg"
   },
   {
-    name: "양주 온릉",
-    lat: 37.720410,
-    lon: 126.951028,
-    desc: "온릉은 조선 시대 11번째 임금님인 중종의 첫 번째 왕비였던 단경왕후 신씨의 무덤이다. 단경왕후는 왕비가 된 지 며칠 만에 아버지 때문에 왕비 자리에서 물러나야 했던 아픔을 가진 분이다. 그래서 처음에는 왕비 무덤으로 만들어지지 못하고 다른 곳에 묻혔던 인물이다. 나중에 시간이 아주 많이 지난 뒤에 왕비로 다시 높여져서 지금의 온릉으로 옮겨졌던 곳이다. 온릉에는 왕릉처럼 돌로 만든 동물 조각이나 여러 시설들이 있지만, 슬픈 역사가 담겨 있는 특별한 무덤이다.",
-    youtube: "https://www.youtube.com/watch?v=qVyKVj9pHc0",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO1E8PAZd2d5kxRSBMJTTKGGJk1FwwUv5Nwg&s"
+    "name": "양주 온릉",
+    "lat": 37.72041,
+    "lng": 126.951028,
+    "desc": "온릉은 조선 시대 11번째 임금님인 중종의 첫 번째 왕비였던 단경왕후 신씨의 무덤이다. 단경왕후는 왕비가 된 지 며칠 만에 아버지 때문에 왕비 자리에서 물러나야 했던 아픔을 가진 분이다. 그래서 처음에는 왕비 무덤으로 만들어지지 못하고 다른 곳에 묻혔던 인물이다. 나중에 시간이 아주 많이 지난 뒤에 왕비로 다시 높여져서 지금의 온릉으로 옮겨졌던 곳이다. 온릉에는 왕릉처럼 돌로 만든 동물 조각이나 여러 시설들이 있지만, 슬픈 역사가 담겨 있는 특별한 무덤이다.",
+    "youtube": "https://www.youtube.com/watch?v=qVyKVj9pHc0",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO1E8PAZd2d5kxRSBMJTTKGGJk1FwwUv5Nwg&s"
   },
   {
-    name: "필룩스조명박물관",
-    lat: 37.836208,
-    lon: 126.967875,
-    desc: "경기도 양주에 있는 조명박물관은 빛과 조명에 대해 배울 수 있는 특별한 박물관이다. 우리나라에서 빛과 조명만을 주제로 만들어진 유일한 박물관이다. 이곳에서는 아주 옛날부터 지금까지 사람들이 어떻게 빛을 사용했는지 다양한 전시와 작품을 통해 볼 수 있는 곳이다. 빛으로 만든 예술 작품도 구경하고 여러 가지 재미있는 체험을 하며 즐거운 시간을 보낼 수 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=dJNxu9FHuSg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGxSOhQTjqavrWY2dkFIfZvdRSWahEXSqacw&s"
+    "name": "필룩스조명박물관",
+    "lat": 37.836208,
+    "lng": 126.967875,
+    "desc": "경기도 양주에 있는 조명박물관은 빛과 조명에 대해 배울 수 있는 특별한 박물관이다. 우리나라에서 빛과 조명만을 주제로 만들어진 유일한 박물관이다. 이곳에서는 아주 옛날부터 지금까지 사람들이 어떻게 빛을 사용했는지 다양한 전시와 작품을 통해 볼 수 있는 곳이다. 빛으로 만든 예술 작품도 구경하고 여러 가지 재미있는 체험을 하며 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=dJNxu9FHuSg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGxSOhQTjqavrWY2dkFIfZvdRSWahEXSqacw&s"
   },
   {
-    name: "가나아트파크",
-    lat: 37.725713,
-    lon: 126.949686,
-    desc: "가나아트파크는 경기도 양주에 있는 예술과 자연이 함께 어우러진 곳이다. 이곳은 그림을 보거나 만들기 같은 다양한 체험을 할 수 있는 문화 공간이다. 미술관이나 조각공원, 어린이들이 좋아하는 시설들도 있는 곳이다. 예술가들을 위한 공간도 있어서 다양한 예술 활동이 이루어지는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=54WvOfpvPwo",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts835_photo3.jpg"
+    "name": "가나아트파크",
+    "lat": 37.725713,
+    "lng": 126.949686,
+    "desc": "가나아트파크는 경기도 양주에 있는 예술과 자연이 함께 어우러진 곳이다. 이곳은 그림을 보거나 만들기 같은 다양한 체험을 할 수 있는 문화 공간이다. 미술관이나 조각공원, 어린이들이 좋아하는 시설들도 있는 곳이다. 예술가들을 위한 공간도 있어서 다양한 예술 활동이 이루어지는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=54WvOfpvPwo",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts835_photo3.jpg"
   },
   {
-    name: "송암스페이스센터",
-    lat: 37.735866,
-    lon: 126.942516,
-    desc: "송암스페이스센터는 별과 우주를 배울 수 있는 곳이다. 이곳에는 우리나라에서 만든 큰 망원경으로 진짜 별을 볼 수 있는 곳이다. 케이블카를 타고 올라가면 여러 가지 전시도 보고 우주 체험도 할 수 있는 곳이다. 시설 규모가 세계최고 수준으로 큰 천문테마파크이 별과 우주에 대해 궁금한 어린이부터 어른까지 모두 와서 꿈을 키우고 신비를 느낄 수 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=eCjVz-ziVNM",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts836_visual1.jpg"
+    "name": "송암스페이스센터",
+    "lat": 37.735866,
+    "lng": 126.942516,
+    "desc": "송암스페이스센터는 별과 우주를 배울 수 있는 곳이다. 이곳에는 우리나라에서 만든 큰 망원경으로 진짜 별을 볼 수 있는 곳이다. 케이블카를 타고 올라가면 여러 가지 전시도 보고 우주 체험도 할 수 있는 곳이다. 시설 규모가 세계최고 수준으로 큰 천문테마파크이 별과 우주에 대해 궁금한 어린이부터 어른까지 모두 와서 꿈을 키우고 신비를 느낄 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=eCjVz-ziVNM",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts836_visual1.jpg"
   },
   {
-    name: "청암민속박물관",
-    lat: 37.722722,
-    lon: 126.946812,
-    desc: "청암민속박물관은 경기도 양주에 있는 옛날 우리나라 사람들의 생활 모습을 보여주는 박물관이다. 이곳에는 조상들이 사용했던 물건들과 옛날 집, 시장, 학교 같은 모습을 그대로 만들어 놓은 곳이다. 여러 가지 옛날 이야기나 세계의 탈 같은 재미있는 볼거리도 많이 있는 곳이다. 옛날 전통 놀이도 해보고 만들기 체험도 하며 즐거운 시간을 보낼 수 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=F9wlZVeILKA",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts845_visual1.jpg"
+    "name": "청암민속박물관",
+    "lat": 37.722722,
+    "lng": 126.946812,
+    "desc": "청암민속박물관은 경기도 양주에 있는 옛날 우리나라 사람들의 생활 모습을 보여주는 박물관이다. 이곳에는 조상들이 사용했던 물건들과 옛날 집, 시장, 학교 같은 모습을 그대로 만들어 놓은 곳이다. 여러 가지 옛날 이야기나 세계의 탈 같은 재미있는 볼거리도 많이 있는 곳이다. 옛날 전통 놀이도 해보고 만들기 체험도 하며 즐거운 시간을 보낼 수 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=F9wlZVeILKA",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts845_visual1.jpg"
   },
   {
-    name: "양주시립민복진박물관",
-    lat: 37.731410,
-    lon: 126.949321,
-    desc: "양주시립민복진미술관은 민복진이라는 유명한 조각가 선생님의 작품을 만날 수 있는 곳이다. 민복진 선생님은 가족이나 사람에 대한 사랑을 주제로 멋진 조각품을 만들었던 분이다. 이 미술관에는 선생님이 만든 여러 가지 조각과 그림들이 전시되어 있는 곳이다. 2022년에 새로 문을 연 곳으로, 우리나라 조각 미술을 알리는 중요한 역할을 하는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=Ff6UMyPptiY",
-    img: "https://ggc.ggcf.kr/uploadimg/resize/b1bc96fc1649397008052.jpeg"
+    "name": "양주시립민복진박물관",
+    "lat": 37.73141,
+    "lng": 126.949321,
+    "desc": "양주시립민복진미술관은 민복진이라는 유명한 조각가 선생님의 작품을 만날 수 있는 곳이다. 민복진 선생님은 가족이나 사람에 대한 사랑을 주제로 멋진 조각품을 만들었던 분이다. 이 미술관에는 선생님이 만든 여러 가지 조각과 그림들이 전시되어 있는 곳이다. 2022년에 새로 문을 연 곳으로, 우리나라 조각 미술을 알리는 중요한 역할을 하는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=Ff6UMyPptiY",
+    "img": "https://ggc.ggcf.kr/uploadimg/resize/b1bc96fc1649397008052.jpeg"
   },
   {
-    name: "양주시립장욱진미술관",
-    lat: 37.732534,
-    lon: 126.948476,
-    desc: "양주시립장욱진미술관은 '나는 심플하다'라고 말했던 화가 장욱진 선생님의 그림을 만날 수 있는 곳이다. 이곳에는 장욱진 선생님의 그림 230점 정도가 전시되어 있고, 다른 좋은 그림들도 볼 수 있는 곳이다. 미술관 건물은 장욱진 선생님의 그림 '호작도'와 '집'의 모습을 생각하며 멋지게 지은 특별한 건물이다. 미술관 옆에는 자연과 함께 조각 작품을 감상하며 쉴 수 있는 예쁜 조각공원도 있는 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=W-XikB5tOo8",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts832_photo3.jpg"
+    "name": "양주시립장욱진미술관",
+    "lat": 37.732534,
+    "lng": 126.948476,
+    "desc": "양주시립장욱진미술관은 '나는 심플하다'라고 말했던 화가 장욱진 선생님의 그림을 만날 수 있는 곳이다. 이곳에는 장욱진 선생님의 그림 230점 정도가 전시되어 있고, 다른 좋은 그림들도 볼 수 있는 곳이다. 미술관 건물은 장욱진 선생님의 그림 '호작도'와 '집'의 모습을 생각하며 멋지게 지은 특별한 건물이다. 미술관 옆에는 자연과 함께 조각 작품을 감상하며 쉴 수 있는 예쁜 조각공원도 있는 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=W-XikB5tOo8",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts832_photo3.jpg"
   },
   {
-    name: "나리농원",
-    lat: 37.784674,
-    lon: 127.080709,
-    desc: "양주 나리농원은 경기도 양주에 있는 아주 넓고 예쁜 꽃밭이다. 이곳은 봄에는 여러 가지 꽃들이 피고, 특히 가을에는 백만 송이가 넘는 천일홍과 핑크뮬리가 가득 피는 곳이다. 가을에 열리는 축제 기간에는 아름다운 꽃들을 보러 많은 사람들이 찾아오는 곳이다. 예쁜 꽃밭에서 산책하고 사진도 찍으며 즐거운 시간을 보낼 수 있는 양주의 유명한 장소이다.",
-    youtube: "https://www.youtube.com/watch?v=PrZs-pe_-Rg",
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDNj_sx3vYpK6PL-dZ1mKLRZYv5j-pdw4gsg&s"
+    "name": "나리농원",
+    "lat": 37.784674,
+    "lng": 127.080709,
+    "desc": "양주 나리농원은 경기도 양주에 있는 아주 넓고 예쁜 꽃밭이다. 이곳은 봄에는 여러 가지 꽃들이 피고, 특히 가을에는 백만 송이가 넘는 천일홍과 핑크뮬리가 가득 피는 곳이다. 가을에 열리는 축제 기간에는 아름다운 꽃들을 보러 많은 사람들이 찾아오는 곳이다. 예쁜 꽃밭에서 산책하고 사진도 찍으며 즐거운 시간을 보낼 수 있는 양주의 유명한 장소이다.",
+    "youtube": "https://www.youtube.com/watch?v=PrZs-pe_-Rg",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDNj_sx3vYpK6PL-dZ1mKLRZYv5j-pdw4gsg&s"
   },
   {
-    name: "자흥자생수목원",
-    lat: 37.743457,
-    lon: 126.950417,
-    desc: "장흥자생수목원은 경기도 양주에 있는 자연 그대로의 숲을 살려 만든 수목원이다. 이곳은 화려한 꽃보다는 우리나라의 다양한 야생화와 나무들을 볼 수 있는 곳이다. 숲속을 걸으며 깨끗한 공기를 마시고 여러 식물들을 배우는 체험을 할 수 있는 곳이다. 주변에 다른 문화시설도 있어서 함께 구경하고 자연 속에서 편안하게 쉴 수 있는 좋은 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=x43t6mdAzjI",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts858_visual1.jpg"
+    "name": "자흥자생수목원",
+    "lat": 37.743457,
+    "lng": 126.950417,
+    "desc": "장흥자생수목원은 경기도 양주에 있는 자연 그대로의 숲을 살려 만든 수목원이다. 이곳은 화려한 꽃보다는 우리나라의 다양한 야생화와 나무들을 볼 수 있는 곳이다. 숲속을 걸으며 깨끗한 공기를 마시고 여러 식물들을 배우는 체험을 할 수 있는 곳이다. 주변에 다른 문화시설도 있어서 함께 구경하고 자연 속에서 편안하게 쉴 수 있는 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=x43t6mdAzjI",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts858_visual1.jpg"
   },
   {
-    name: "일영허브랜드",
-    lat: 37.675449,
-    lon: 126.923728,
-    desc: "일영허브랜드는 경기도 양주에 있는 허브 향기 가득한 예쁜 정원이다. 이곳은 넓은 야외 정원에서 다양한 허브와 식물들을 구경하고 귀여운 미니 동물들도 만날 수 있는 곳이다. 최근에는 숲길 정원으로 새로 만들어져서 자연 속에서 편안하게 산책하며 쉴 수 있는 곳이다. 서울에서도 가까워서 가족이나 친구와 함께 가벼운 나들이를 하기 좋은 곳이다.",
-    youtube: "https://www.youtube.com/watch?v=b9_Ey3ogbT0",
-    img: "https://www.yangju.go.kr/site/tour/images/contents/cts860_photo7.jpg"
+    "name": "일영허브랜드",
+    "lat": 37.675449,
+    "lng": 126.923728,
+    "desc": "일영허브랜드는 경기도 양주에 있는 허브 향기 가득한 예쁜 정원이다. 이곳은 넓은 야외 정원에서 다양한 허브와 식물들을 구경하고 귀여운 미니 동물들도 만날 수 있는 곳이다. 최근에는 숲길 정원으로 새로 만들어져서 자연 속에서 편안하게 산책하며 쉴 수 있는 곳이다. 서울에서도 가까워서 가족이나 친구와 함께 가벼운 나들이를 하기 좋은 곳이다.",
+    "youtube": "https://www.youtube.com/watch?v=b9_Ey3ogbT0",
+    "img": "https://www.yangju.go.kr/site/tour/images/contents/cts860_photo7.jpg"
   },
   {
-    name: "국립아세안자연휴양림",
-    lat: 37.773825,
-    lon: 126.942200,
-    desc: "국립아세안자연휴양림은 경기도 양주에 있는 아름다운 자연휴양림이다. 이곳은 우리나라와 아세안 나라들의 문화를 체험할 수 있도록 아세안 나라들의 전통 집 모양으로 만든 특별한 곳이다. 기산저수지나 안상철미술관 등 다른 볼 것들이 있어서 함께 구경하기 좋은 곳이다. 숲속에서 산책하고 자연을 느끼며 다른 나라의 문화도 함께 배울 수 있는 곳이다.",
-    youtube: "",
-    img: ""
+    "name": "국립아세안자연휴양림",
+    "lat": 37.773825,
+    "lng": 126.9422,
+    "desc": "국립아세안자연휴양림은 경기도 양주에 있는 아름다운 자연휴양림이다. 이곳은 우리나라와 아세안 나라들의 문화를 체험할 수 있도록 아세안 나라들의 전통 집 모양으로 만든 특별한 곳이다. 기산저수지나 안상철미술관 등 다른 볼 것들이 있어서 함께 구경하기 좋은 곳이다. 숲속에서 산책하고 자연을 느끼며 다른 나라의 문화도 함께 배울 수 있는 곳이다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주역",
-    lat: 37.773919,
-    lon: 127.044847,
-    desc: "수도권 전철 1호선 양주역입니다.",
-    youtube: "",
-    img: ""
+    "name": "양주역",
+    "lat": 37.773919,
+    "lng": 127.044847,
+    "desc": "수도권 전철 1호선 양주역입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "덕정역",
-    lat: 37.843309,
-    lon: 127.061307,
-    desc: "수도권 전철 1호선 덕정역입니다.",
-    youtube: "",
-    img: ""
+    "name": "덕정역",
+    "lat": 37.843309,
+    "lng": 127.061307,
+    "desc": "수도권 전철 1호선 덕정역입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주시립도서관",
-    lat: 37.843082,
-    lon: 127.063172,
-    desc: "양주시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
-    youtube: "",
-    img: ""
+    "name": "양주시립도서관",
+    "lat": 37.843082,
+    "lng": 127.063172,
+    "desc": "양주시의 대표 도서관으로 다양한 자료와 문화 프로그램을 제공합니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주조각공원",
-    lat: 37.731210,
-    lon: 126.948801,
-    desc: "다양한 조각 작품들이 전시된 야외 공원입니다.",
-    youtube: "",
-    img: ""
+    "name": "양주조각공원",
+    "lat": 37.73121,
+    "lng": 126.948801,
+    "desc": "다양한 조각 작품들이 전시된 야외 공원입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주예스병원",
-    lat: 37.837795,
-    lon: 127.064738,
-    desc: "양주시 광적면에 위치한 종합병원입니다.",
-    youtube: "",
-    img: ""
+    "name": "양주예스병원",
+    "lat": 37.837795,
+    "lng": 127.064738,
+    "desc": "양주시 광적면에 위치한 종합병원입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주 백석생활체육공원",
-    lat: 37.814174,
-    lon: 126.983279,
-    desc: "양주시 백석읍에 위치한 체육공원입니다.",
-    youtube: "",
-    img: ""
+    "name": "양주 백석생활체육공원",
+    "lat": 37.814174,
+    "lng": 126.983279,
+    "desc": "양주시 백석읍에 위치한 체육공원입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "양주별산대놀이마당",
-    lat: 37.786186,
-    lon: 127.031669,
-    desc: "국가무형문화재 양주별산대놀이를 전승하고 공연하는 장소입니다.",
-    youtube: "",
-    img: ""
+    "name": "양주별산대놀이마당",
+    "lat": 37.786186,
+    "lng": 127.031669,
+    "desc": "국가무형문화재 양주별산대놀이를 전승하고 공연하는 장소입니다.",
+    "youtube": "",
+    "img": ""
   },
   {
-    name: "장흥유원지",
-    lat: 37.735018,
-    lon: 126.950829,
-    desc: "계곡과 함께 다양한 음식점, 카페, 숙박 시설이 밀집해 있는 유원지입니다.",
-    youtube: "",
-    img: ""
+    "name": "장흥유원지",
+    "lat": 37.735018,
+    "lng": 126.950829,
+    "desc": "계곡과 함께 다양한 음식점, 카페, 숙박 시설이 밀집해 있는 유원지입니다.",
+    "youtube": "",
+    "img": ""
   }
-];
+      ];
+   places.forEach(place => {
+            if (place.lat && place.lng) {
+                // ✨ 이 부분의 오타를 수정했습니다: lon -> lng ✨
+                const marker = L.marker([place.lat, place.lng]).addTo(map);
 
-
-        places.forEach(loc => {
-            let popupContent = `<b>${loc.name}</b>`;
-            if (loc.desc) popupContent += `<br>${loc.desc}`;
-            if (loc.img) popupContent += `<br><img class="popup-img" src="${loc.img}" />`;
-            if (loc.youtube) popupContent += `<br><a href="${loc.youtube}" target="_blank">[영상 보기]</a>`;
-
-            L.marker([loc.lat, loc.lon]).addTo(map).bindPopup(popupContent);
+                let popupContent = `<div class="popup-content"><h3>${place.name}</h3>`;
+                if(place.desc) {
+                    popupContent += `<p>${place.desc}</p>`;
+                }
+                if (place.img) {
+                    popupContent += `<img class="popup-img" src="${place.img}" alt="${place.name}">`;
+                }
+                if (place.youtube) {
+                    popupContent += `<br><a href="${place.youtube}" target="_blank">영상 보기</a>`;
+                }
+                popupContent += `</div>`;
+                
+                marker.bindPopup(popupContent);
+            }
         });
     </script>
 </body>
